@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "prac",
+        "reauthenticate",
+        "seplling"
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange",
+    "typescript.surveys.enabled": false
+}

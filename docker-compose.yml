@@ -1,0 +1,14 @@
+# version: '3.5'
+
+# services:
+#   dentalfront:
+#     build:
+#       context: .
+#       dockerfile: dentalfront/Dockerfile
+#     environment:
+#       - NODE_ENV=production
+#     command: npm start
+#     ports:
+#       - 3000:3000
+#     volumes:
+#       - .:/app
