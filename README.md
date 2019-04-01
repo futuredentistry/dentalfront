@@ -13,6 +13,9 @@ application served by nginx
 
 In the project directory /dentalfront, you can run:
 
+### `yarn`
+Install dependencies 
+
 ### `yarn start`
 
 Runs the app in the development mode.<br>
@@ -24,6 +27,7 @@ You will also see any lint errors in the console.
 ### `yarn story`
 
 Runs the story book for components development
+Open [http://localhost:9001](http://localhost:9001) 
 
 ### `yarn build`
 
