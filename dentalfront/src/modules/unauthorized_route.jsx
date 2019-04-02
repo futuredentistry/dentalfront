@@ -8,7 +8,7 @@ const UnauthorizedRoute = ({ component: Component, authorized, ...rest }) => (
     <Route
       exact
       {...rest}
-      render={props => (authorized() ? (
+      render={props => (!authorized ? (
             <Redirect
               to={{
                     pathname: ROUTES.HOME,
@@ -23,7 +23,8 @@ const UnauthorizedRoute = ({ component: Component, authorized, ...rest }) => (
 
 UnauthorizedRoute.propTypes = {
     component: PropTypes.func.isRequired,
-    authorized: PropTypes.func.isRequired,
+    authorized: PropTypes.bool.isRequired,
+    // authorized: PropTypes.func.isRequired, ToDo as a function
 }
 
 export default UnauthorizedRoute

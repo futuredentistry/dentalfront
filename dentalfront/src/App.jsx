@@ -1,10 +1,15 @@
-import React, { useEffect, useCallback, useContext } from 'react'
+import React from 'react'
 import {
-  BrowserRouter as Router, Route, Switch, Redirect,
+  BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom'
 
 import UnauthorizedRoute from 'modules/unauthorized_route'
 import * as ROUTES from 'modules/constants/routes'
+import Admin from 'screens/Admin/Admin'
+import Dentist from 'screens/Dentist/Dentist'
+import Patient from 'screens/Patient/Patient'
+import Screener from 'screens/Screener/Screener'
+import Home from 'screens/Home/Home'
 
 const App = () => {
   const authorized = true // ToDo configure auth
