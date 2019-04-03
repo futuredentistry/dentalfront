@@ -7,6 +7,14 @@ application served by nginx
 
 ``docker-compose.yml`` 
 
+* /craft
+docker Craft 3 cms
+
+``docker-compose up``
+
+[http://localhost:8080/admin](http://localhost:8080/admin)
+
+
 # Development
 
 ## Available Scripts
