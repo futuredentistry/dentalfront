@@ -9,10 +9,10 @@ import Patient from 'screens/Patient/Patient'
 import Admin from 'screens/Admin/Admin'
 import Dentist from 'screens/Dentist/Dentist'
 import Screener from 'screens/Screener/Screener'
-import Home from 'screens/Home/Home'
-import SignUpPage from 'screens/Home/components/Signup'
+import Home from 'screens/Home'
+// import SignUpPage from 'screens/Home/components/Signup'
 
-const Notfound = () => <h1>Not found</h1>
+// const Notfound = () => <h1>Not found</h1>
 
 const App = () => {
   const authorized = true // ToDo configure auth
@@ -22,18 +22,12 @@ const App = () => {
       <>
         <Route
           path={ROUTES.HOME}
-          render={({ match: { path } }) => (
-            <>
-              <Route path={ROUTES.HOME} component={Home} exact />
-              <Route path={`${path}${ROUTES.SIGNUP}`} exact component={SignUpPage} />
-            </>
-          )}
+          component={Home}
         />
-
-        <AuthorizedRoute path={ROUTES.PATIENT} exact authorized={authorized} component={Patient} />
-        <AuthorizedRoute path={ROUTES.ADMIN} authorized={authorized} component={Admin} />
-        <AuthorizedRoute path={ROUTES.DENTIST} authorized={authorized} component={Dentist} />
-        <AuthorizedRoute path={ROUTES.SCREENER} authorized={authorized} component={Screener} />
+        <AuthorizedRoute path={ROUTES.PATIENT} authorized={authorized} component={Patient} />
+        <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={authorized} component={Admin} />
+        <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={authorized} component={Dentist} />
+        <AuthorizedRoute path={ROUTES.SCREENER} exact authorized={authorized} component={Screener} />
       </>
 
     </Router>

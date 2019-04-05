@@ -7,7 +7,7 @@ import Patient from './Patient'
 
 const PatientRouter = ({ match: { path }, location: { pathname } }) => (
     <>
-        <Route path={`${path}/${ROUTES.PATIENT}`} component={Patient} />
+        <Route path={ROUTES.PATIENT} component={Patient} />
     </>
 )
 
