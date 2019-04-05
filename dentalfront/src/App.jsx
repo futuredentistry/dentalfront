@@ -1,38 +1,42 @@
 import React from 'react'
 import {
-  BrowserRouter as Router, Route, Switch,
+  BrowserRouter as Router, Route,
 } from 'react-router-dom'
 
-import UnauthorizedRoute from 'modules/unauthorized_route'
+import AuthorizedRoute from 'modules/AuthorizedRoute'
 import * as ROUTES from 'modules/constants/routes'
+import Patient from 'screens/Patient/Patient'
 import Admin from 'screens/Admin/Admin'
 import Dentist from 'screens/Dentist/Dentist'
-import Patient from 'screens/Patient/Patient'
 import Screener from 'screens/Screener/Screener'
 import Home from 'screens/Home/Home'
+import SignUpPage from 'screens/Home/components/Signup'
+
+// const Notfound = () => <h1>Not found</h1>
 
 const App = () => {
   const authorized = true // ToDo configure auth
   return (
     <Router>
-      <Switch>
-        {/*
-        ToDo by role if needed
+
+      <>
         <Route
-          exact
-          path={ROUTES.LANDING}
-          render={props => (authorized ? <Redirect to={ROUTES.HOME} /> : <LandingPage {...props} />)}
-        /> */}
+          path={ROUTES.HOME}
+          render={({ match: { path } }) => (
+            <>
+              <Route path={ROUTES.HOME} component={Home} exact />
+              <Route path={`${path}${ROUTES.SIGNUP}`} exact component={SignUpPage} />
+            </>
+          )}
+        />
 
-        <Route exact path={ROUTES.HOME} component={Home} />
+        <AuthorizedRoute path={ROUTES.PATIENT} authorized={authorized} component={Patient} />
+        <AuthorizedRoute path={ROUTES.ADMIN} authorized={authorized} component={Admin} />
+        <AuthorizedRoute path={ROUTES.DENTIST} authorized={authorized} component={Dentist} />
+        <AuthorizedRoute path={ROUTES.SCREENER} authorized={authorized} component={Screener} />
 
-        <UnauthorizedRoute path={ROUTES.ADMIN} authorized={authorized} component={Admin} />
-        <UnauthorizedRoute path={ROUTES.DENTIST} authorized={authorized} component={Dentist} />
-        <UnauthorizedRoute path={ROUTES.PATIENT} authorized={authorized} component={Patient} />
-        <UnauthorizedRoute path={ROUTES.SCREENER} authorized={authorized} component={Screener} />
+      </>
 
-        <Route component={() => <p>No Match</p>} />
-      </Switch>
     </Router>
   )
 }

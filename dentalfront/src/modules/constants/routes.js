@@ -1,6 +1,10 @@
 // Unauthorized
 export const HOME = '/'
-export const LOGIN = '/login'
+
+export const SIGNIN = '/signin'
+export const SIGNUP = 'signup'
+export const PASSWORD_FORGET = '/pw-forget'
+export const GET_STARTED = '/get-started'
 
 // Patient
 export const PATIENT = '/patient'
