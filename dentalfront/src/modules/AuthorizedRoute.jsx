@@ -6,17 +6,13 @@ import * as ROUTES from 'modules/constants/routes'
 
 const AuthorizedRoute = ({
     component: Component, authorized, ...rest
-}) => (
+}) => {
+    if (!authorized) return <Redirect to={{ pathname: ROUTES.HOME }} />
 
-        <Route
-          {...rest}
-          render={props => (
-                authorized
-                    ? <Component {...props} />
-                    : <Redirect to={{ pathname: ROUTES.HOME }} />
-            )}
-        />
+    return (
+        <Route {...rest} component={Component} />
     )
+}
 
 AuthorizedRoute.propTypes = {
     component: PropTypes.func.isRequired,
