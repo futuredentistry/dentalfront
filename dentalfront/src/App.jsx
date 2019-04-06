@@ -10,9 +10,6 @@ import Admin from 'screens/Admin/Admin'
 import Dentist from 'screens/Dentist/Dentist'
 import Screener from 'screens/Screener/Screener'
 import Home from 'screens/Home'
-// import SignUpPage from 'screens/Home/components/Signup'
-
-// const Notfound = () => <h1>Not found</h1>
 
 const App = () => {
   const authorized = true // ToDo configure auth

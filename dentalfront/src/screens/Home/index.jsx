@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import * as ROUTES from 'modules/constants/routes'
 import Home from './Home'
 import SignUpPage from './components/Signup'
+import SignInPage from './components/Signin'
 
 const HomeRouter = () => (
     <Route
@@ -13,6 +14,7 @@ const HomeRouter = () => (
             <>
                 <Route path={ROUTES.HOME} exact component={Home} />
                 <Route path={ROUTES.SIGNUP} exact component={SignUpPage} />
+                <Route path={ROUTES.SIGNIN} exact component={SignInPage} />
             </>
         )}
     />

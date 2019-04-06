@@ -6,24 +6,25 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import Typography from '@material-ui/core/Typography'
 
-// import * as ROUTES from 'modules/constants/routes'
+import * as ROUTES from 'modules/constants/routes'
 import FirebaseContext from 'modules/Firebase'
 
-const Signup = ({ history }) => {
+const SignIn = ({ history }) => {
   const firebase = useContext(FirebaseContext)
   const [errMessage, setErrMessage] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
   return (
     <>
       <form className="">
         <Typography variant="h3">
-          Create Account
+          Welcome to Pronounce.ly
         </Typography>
         <Typography variant="subtitle1">
-          Please enter your name and best email address to get started.
+          Please sign to get started.
         </Typography>
+        <br />
+        <br />
         <br />
         <FormControl margin="normal" required>
           <InputLabel htmlFor="email">Email</InputLabel>
@@ -43,53 +44,47 @@ const Signup = ({ history }) => {
             name="password"
             type="password"
             id="password"
+            autoComplete="current-password"
             onChange={e => setPassword(e.currentTarget.value)}
           />
         </FormControl>
-        <Typography color="error">
-          {password !== confirmPassword && (password !== '' && confirmPassword !== '')
-            && 'No match'}
-        </Typography>
-
-        <FormControl margin="normal" required>
-          <InputLabel htmlFor="password">Confirm Password</InputLabel>
-          <Input
-            value={confirmPassword}
-            name="confirm_password"
-            type="password"
-            id="confirm_password"
-            onChange={e => setConfirmPassword(e.currentTarget.value)}
-          />
-        </FormControl>
         <Typography color="error">{errMessage}</Typography>
+        <Button color="primary" variant="text" onClick={() => history.push(ROUTES.PASSWORD_FORGET)}>
+          I forgot my password
+        </Button>
+
+
       </form>
 
       <Button
-        disabled={email === '' || password === '' || password !== confirmPassword}
+        disabled={email === '' || password === ''}
         variant="contained"
         color="primary"
         onClick={() => firebase
-          .doCreateUserWithEmailAndPassword(email, password)
-          .then(({ user }) => {
+          .doSignInWithEmailAndPassword(email, password)
+          .then((user) => {
             localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(user))
-            // history.push(ROUTES.USER)
+            // history.push(`${ROUTES.USER}${ROUTES.LESSONS}`)
           })
-          .catch(({ message }) => setErrMessage(message))
+          .catch(({ message }) => {
+            localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
+            firebase.doSignOut()
+            setErrMessage(message)
+          })
         }
       >
-        Next
+        Login
       </Button>
 
       <Button variant="text" color="primary" onClick={() => history.goBack()}>
         Back
       </Button>
-
     </>
   )
 }
 
-Signup.propTypes = {
+SignIn.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
 }
 
-export default Signup
+export default SignIn
