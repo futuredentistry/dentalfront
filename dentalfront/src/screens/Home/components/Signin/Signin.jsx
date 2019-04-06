@@ -18,7 +18,7 @@ const SignIn = ({ history }) => {
     <>
       <form className="">
         <Typography variant="h3">
-          Welcome to Pronounce.ly
+          Welcome to Beemo
         </Typography>
         <Typography variant="subtitle1">
           Please sign to get started.

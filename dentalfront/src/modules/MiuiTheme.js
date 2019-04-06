@@ -85,7 +85,7 @@ const MiuiTheme = {
         fontSize: '14px',
       },
       label: {
-        textTransform: 'capitalize',
+        // textTransform: 'capitalize',
         fontWeight: 600,
         fontStretch: 'normal',
         fontStyle: 'normal',
