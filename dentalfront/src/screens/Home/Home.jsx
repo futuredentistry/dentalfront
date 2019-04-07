@@ -19,7 +19,7 @@ const Home = ({ history }) => (
         <Button
           variant="contained"
           color="primary"
-          onClick={() => history.push(ROUTES.SIGNUP)}
+          onClick={() => history.push(ROUTES.GET_STARTED)}
         >
             Create an account
         </Button>

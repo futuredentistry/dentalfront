@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import {
   BrowserRouter as Router, Route,
 } from 'react-router-dom'
@@ -10,8 +10,20 @@ import Admin from 'screens/Admin/Admin'
 import Dentist from 'screens/Dentist/Dentist'
 import Screener from 'screens/Screener/Screener'
 import Home from 'screens/Home'
+import FirebaseContext from 'modules/Firebase'
 
 const App = () => {
+  const firebase = useContext(FirebaseContext)
+  useEffect(() => {
+    firebase.onAuthUserListener(
+      (authUser) => {
+        localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser))
+      },
+      () => {
+        localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
+      },
+    )
+  })
   const authorized = true // ToDo configure auth
   return (
     <Router>
