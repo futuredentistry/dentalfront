@@ -7,6 +7,7 @@ import SignUpPage from './components/Signup'
 import SignInPage from './components/Signin'
 import ForgetPasswordPage from './components/ForgetPassword'
 import GetStarted from './components/GetStarted'
+import ContactAs from './components/ContactAs'
 
 const HomeRouter = () => (
     <Route
@@ -18,6 +19,7 @@ const HomeRouter = () => (
                 <Route path={ROUTES.SIGNIN} exact component={SignInPage} />
                 <Route path={ROUTES.PASSWORD_FORGET} exact component={ForgetPasswordPage} />
                 <Route path={ROUTES.GET_STARTED} exact component={GetStarted} />
+                <Route path={ROUTES.CONTACTS_AS} exact component={ContactAs} />
             </>
         )}
     />

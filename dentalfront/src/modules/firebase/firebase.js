@@ -1,6 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
+import 'firebase/firestore'
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -24,6 +25,8 @@ class Firebase {
 
     this.auth = app.auth()
     this.db = app.database()
+    this.firestore = app.firestore()
+    // this.collection = this.collection()
   }
 
   // *** Auth API ***
@@ -73,7 +76,11 @@ class Firebase {
 
   // *** User API ***
 
-  user = uid => this.db.ref(`users/${uid}`)
+  // user = uid => this.db.ref(`users/${uid}`)
+
+  userCollection = uid => this.firestore.collection('users').doc(uid).set({
+    role: 'PATIENT',
+  })
 
   // *** Change email/password API ***
   reauthenticate = (currentPassword) => {

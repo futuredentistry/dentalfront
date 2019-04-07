@@ -14,7 +14,23 @@ const GetStarted = ({ history }) => (
           color="primary"
           onClick={() => history.push(ROUTES.SIGNUP)}
         >
-            Patient
+            I'm a Patient
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(ROUTES.CONTACTS_AS)}
+        >
+            I'm an Affiliate
+        </Button>
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push(ROUTES.CONTACTS_AS)}
+        >
+            I'm a Dentist
         </Button>
     </>
 )

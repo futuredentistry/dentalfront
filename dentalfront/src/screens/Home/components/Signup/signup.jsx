@@ -6,7 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import Typography from '@material-ui/core/Typography'
 
-// import * as ROUTES from 'modules/constants/routes'
+import * as ROUTES from 'modules/constants/routes'
 import FirebaseContext from 'modules/Firebase'
 
 const Signup = ({ history }) => {
@@ -71,8 +71,9 @@ const Signup = ({ history }) => {
         onClick={() => firebase
           .doCreateUserWithEmailAndPassword(email, password)
           .then(({ user }) => {
+            firebase.userCollection(user.uid)
             localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(user))
-            // history.push(ROUTES.USER)
+            history.push(ROUTES.CONTACTS_AS)
           })
           .catch(({ message }) => setErrMessage(message))
         }
