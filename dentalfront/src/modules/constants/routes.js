@@ -6,6 +6,7 @@ export const SIGNUP = '/signup'
 export const PASSWORD_FORGET = '/pw-forget'
 export const GET_STARTED = '/get-started'
 export const CONTACTS_AS = '/contacts-as'
+export const CONFIRM_EMAIL = '/confirm-email'
 
 // Patient
 export const PATIENT = '/patient'

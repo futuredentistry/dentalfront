@@ -73,7 +73,7 @@ const Signup = ({ history }) => {
           .then(({ user }) => {
             firebase.userCollection(user.uid)
             localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(user))
-            history.push(ROUTES.CONTACTS_AS)
+            history.push(ROUTES.CONFIRM_EMAIL)
           })
           .catch(({ message }) => setErrMessage(message))
         }

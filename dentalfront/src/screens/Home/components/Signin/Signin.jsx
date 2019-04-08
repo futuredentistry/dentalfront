@@ -64,7 +64,7 @@ const SignIn = ({ history }) => {
           .doSignInWithEmailAndPassword(email, password)
           .then((user) => {
             localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(user))
-            if (!user.user.emailVerified) history.push(ROUTES.CONTACTS_AS)
+            if (!user.user.emailVerified) history.push(ROUTES.CONFIRM_EMAIL)
             // history.push(`${ROUTES.USER}${ROUTES.LESSONS}`)
           })
           .catch(({ message }) => {

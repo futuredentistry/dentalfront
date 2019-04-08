@@ -1,24 +1,47 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import ReactRouterPropTypes from 'react-router-prop-types'
 import { Button } from '@material-ui/core'
-// import Typography from '@material-ui/core/Typography'
+import Dialog from 'ui/Dialog'
+import Typography from '@material-ui/core/Typography'
 
 import * as ROUTES from 'modules/constants/routes'
 import FirebaseContext from 'modules/Firebase'
 
 const ConfirmEmail = ({ history }) => {
     const firebase = useContext(FirebaseContext)
+    const [open, setModalOpen] = useState(false)
     return (
         <>
-            Please confirm your email
+            <Dialog
+              open={open}
+              onClose={() => setModalOpen(false)}
+            >
+                <Typography variant="h3">
+                    Check Your Email
+                </Typography>
+                <Typography variant="subtitle1">
+                    We've sent you an email with a link to confirm your email.
+                </Typography>
+                <br />
+                <br />
+                <br />
+            </Dialog>
 
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => firebase.doSendEmailVerification()}
-        >
+
+            <Typography variant="subtitle1">
+                Please confirm your email
+            </Typography>
+
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                    firebase.doSendEmailVerification()
+                    setModalOpen(true)
+                }}
+            >
                 Confirm
-        </Button>
+            </Button>
         </>
     )
 }

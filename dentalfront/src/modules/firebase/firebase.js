@@ -30,6 +30,7 @@ class Firebase {
   }
 
   // *** Auth API ***
+  user = uid => this.db.ref(`users/${uid}`)
 
   // eslint-disable-next-line max-len
   doCreateUserWithEmailAndPassword = (email, password) => this.auth.createUserWithEmailAndPassword(email, password)
