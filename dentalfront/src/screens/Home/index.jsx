@@ -12,7 +12,7 @@ import ConfirmEmail from './components/ConfirmEmail'
 
 const logonUser = () => !!localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
 const emailVerified = () => (logonUser()
-    ? JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)).user.emailVerified
+    ? JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)).emailVerified
     : false)
 
 
@@ -26,11 +26,11 @@ const HomeRouter = () => {
                 <>
                     {authorized()
                         && !email()
+                        && window.location.pathname !== ROUTES.PATIENT
                         && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
 
                     {authorized()
                         && email()
-                        && window.location.pathname !== ROUTES.PATIENT
                         && <Redirect to={ROUTES.PATIENT} />}
 
                     <Route path={ROUTES.HOME} exact component={Home} />
