@@ -8,9 +8,10 @@ import * as ROUTES from 'modules/constants/routes'
 import Patient from 'screens/Patient/Patient'
 import Admin from 'screens/Admin/Admin'
 import Dentist from 'screens/Dentist/Dentist'
-import Screener from 'screens/Screener/Screener'
+import Affiliate from 'screens/Affiliate/Affiliate'
 import Home from 'screens/Home'
 import FirebaseContext from 'modules/Firebase'
+
 
 const App = () => {
   const firebase = useContext(FirebaseContext)
@@ -36,7 +37,7 @@ const App = () => {
         <AuthorizedRoute path={ROUTES.PATIENT} authorized={authorized} component={Patient} />
         <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={authorized} component={Admin} />
         <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={authorized} component={Dentist} />
-        <AuthorizedRoute path={ROUTES.SCREENER} exact authorized={authorized} component={Screener} />
+        <AuthorizedRoute path={ROUTES.AFFILIATE} exact authorized={authorized} component={Affiliate} />
       </>
 
     </Router>

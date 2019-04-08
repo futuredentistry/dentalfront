@@ -2,10 +2,10 @@ import React from 'react'
 
 import * as ROUTES from 'modules/constants/routes'
 
-const Screener = () => (
+const Affiliate = () => (
         <>
-            Screener
+            Affiliate
         </>
     )
 
-export default Screener
+export default Affiliate

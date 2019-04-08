@@ -16,11 +16,11 @@ export const MEDICAL = `${PATIENT}/medical`
 export const SUMMARY = `${PATIENT}/summary`
 export const APPOINTMENT = `${PATIENT}/appointment`
 
-// Screener
-export const SCREENER = '/screener'
-export const REVIEW = `${SCREENER}/review`
-export const IMAGE_CAPTURE = `${SCREENER}/image_capture`
-export const SCREENER_COMPLETE = `${SCREENER}/completed`
+// Affiliate
+export const AFFILIATE = '/affiliate'
+export const REVIEW = `${AFFILIATE}/review`
+export const IMAGE_CAPTURE = `${AFFILIATE}/image_capture`
+export const SCREENER_COMPLETE = `${AFFILIATE}/completed`
 
 // Dentist
 export const DENTIST = '/dentist'

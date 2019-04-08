@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 
 import * as ROUTES from 'modules/constants/routes'
-import Screener from './Screener'
+import Affiliate from './Affiliate'
 
-const ScreenerRouter = ({ match: { path }, location: { pathname } }) => (
+const AffiliateRouter = ({ match: { path }, location: { pathname } }) => (
     <>
-        <Route exact path={`${path}/${ROUTES.SCREENER}`} component={Screener} />
+        <Route exact path={`${path}/${ROUTES.AFFILIATE}`} component={Affiliate} />
     </>
 )
 
-ScreenerRouter.propTypes = {
+AffiliateRouter.propTypes = {
     match: PropTypes.shape({
         path: PropTypes.string.isRequired,
     }).isRequired,
@@ -20,4 +20,4 @@ ScreenerRouter.propTypes = {
     }).isRequired,
 }
 
-export default ScreenerRouter
+export default AffiliateRouter
