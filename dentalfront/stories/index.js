@@ -1,1 +1,2 @@
-import './home'
+import './Buttons'
+import './Inputs'

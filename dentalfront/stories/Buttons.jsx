@@ -16,6 +16,9 @@ stories.addDecorator(withViewport('iphonex'))
 stories.addDecorator(muiThemeDecorator)
 // stories.addDecorator(centered)
 
-stories.add('Standard Button', () => (
-  <Button variant="contained" color="primary" onClick={action()}>{text('Label', 'My Text')}</Button>
+stories.add('Primary Button', () => (
+  <Button variant="contained" color="primary" onClick={action()}>{text('Label', 'my text')}</Button>
 ))
+  .add('Secondary Button', () => (
+    <Button variant="contained" color="secondary" onClick={action()}>{text('Label', 'my text')}</Button>
+  ))

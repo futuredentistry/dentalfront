@@ -4,7 +4,7 @@ const MiuiTheme = {
     fontFamily: 'Nunito Sans',
   },
   palette: {
-    primary: { main: '#000' },
+    primary: { main: '#233D4D' },
     secondary: { main: '#fff' },
   },
 
@@ -58,12 +58,11 @@ const MiuiTheme = {
       root: {
         marginBlockEnd: '10px',
         marginBlockStart: '10px',
-        height: 50,
-        borderRadius: '10px',
-        fontSize: '18px',
-        width: '90%',
-        marginLeft: '5%',
-        marginRight: '5%',
+        height: 62,
+        borderRadius: '200px',
+        width: '70%',
+        marginLeft: '15%',
+        marginRight: '15%',
       },
       sizeSmall: {
         height: 36,
@@ -85,11 +84,14 @@ const MiuiTheme = {
         fontSize: '14px',
       },
       label: {
-        // textTransform: 'capitalize',
-        fontWeight: 600,
-        fontStretch: 'normal',
-        fontStyle: 'normal',
-        textAlign: 'left',
+        fontWeight: 900,
+        fontSize: '14px',
+        lineHeight: '16px',
+        textAlign: 'center',
+        letterSpacing: '0.75px',
+        textTransform: 'lowercase',
+
+
       },
       flat: {
         marginBlockEnd: '0px',
