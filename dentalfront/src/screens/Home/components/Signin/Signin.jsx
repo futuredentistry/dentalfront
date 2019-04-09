@@ -62,9 +62,9 @@ const SignIn = ({ history }) => {
         color="primary"
         onClick={() => firebase
           .doSignInWithEmailAndPassword(email, password)
-          .then((user) => {
-            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(user))
-            if (!user.user.emailVerified) history.push(ROUTES.CONFIRM_EMAIL)
+          .then((authUser) => {
+            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser.user))
+            if (!authUser.user.emailVerified) history.push(ROUTES.CONFIRM_EMAIL)
             // history.push(`${ROUTES.USER}${ROUTES.LESSONS}`)
           })
           .catch(({ message }) => {

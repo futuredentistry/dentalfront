@@ -24,9 +24,9 @@ const HomeRouter = () => {
           path={ROUTES.HOME}
           render={() => (
                 <>
+
                     {authorized()
                         && !email()
-                        && window.location.pathname !== ROUTES.PATIENT
                         && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
 
                     {authorized()

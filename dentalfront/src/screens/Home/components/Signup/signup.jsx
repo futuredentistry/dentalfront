@@ -70,9 +70,15 @@ const Signup = ({ history }) => {
         color="primary"
         onClick={() => firebase
           .doCreateUserWithEmailAndPassword(email, password)
-          .then(({ user }) => {
-            firebase.userCollection(user.uid)
-            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(user))
+          .then((authUser) => {
+            firebase
+              .user(authUser.user.uid)
+              .set({
+                email,
+                role: 'PATIENT',
+              })
+
+            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser.user))
             history.push(ROUTES.CONFIRM_EMAIL)
           })
           .catch(({ message }) => setErrMessage(message))
