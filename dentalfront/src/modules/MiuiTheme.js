@@ -1,7 +1,7 @@
 const MiuiTheme = {
   typography: {
     useNextVariants: true,
-    fontFamily: 'Open Sans',
+    fontFamily: 'Nunito Sans',
   },
   palette: {
     primary: { main: '#000' },

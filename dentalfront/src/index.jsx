@@ -7,6 +7,8 @@ import App from 'App'
 
 import MiuiTheme from 'modules/MiuiTheme'
 
+import './style.scss'
+
 // @ts-ignore
 const theme = createMuiTheme(MiuiTheme)
 
