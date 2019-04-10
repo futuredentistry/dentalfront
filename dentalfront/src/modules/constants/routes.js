@@ -10,12 +10,12 @@ export const CONFIRM_EMAIL = '/confirm-email'
 
 // Patient
 export const PATIENT = '/patient'
-export const PERSONAL = `${PATIENT}/personal`
-export const LIFESTYLE = `${PATIENT}/lifestyle`
-export const DENTAL = `${PATIENT}/dental`
-export const MEDICAL = `${PATIENT}/medical`
-export const SUMMARY = `${PATIENT}/summary`
-export const APPOINTMENT = `${PATIENT}/appointment`
+export const PATIENT_REPORT = `${PATIENT}/report`
+// export const LIFESTYLE = `${PATIENT}/lifestyle`
+// export const DENTAL = `${PATIENT}/dental`
+// export const MEDICAL = `${PATIENT}/medical`
+// export const SUMMARY = `${PATIENT}/summary`
+// export const APPOINTMENT = `${PATIENT}/appointment`
 
 // Affiliate
 export const AFFILIATE = '/affiliate'
@@ -32,6 +32,6 @@ export const DENTIST_COMPLETE = `${DENTIST}/completed`
 
 // Admin
 export const ADMIN = '/admin'
-export const ORGANISATION_REPORT = `${ADMIN}/organisation_report`
-export const PATIENT_REPORT = `${ADMIN}/patient_report`
-export const DENTIST_REPORT = `${ADMIN}/dentist_report`
+export const ADMIN_ORGANISATION_REPORT = `${ADMIN}/organisation_report`
+export const ADMIN_PATIENT_REPORT = `${ADMIN}/patient_report`
+export const ADMIN_DENTIST_REPORT = `${ADMIN}/dentist_report`

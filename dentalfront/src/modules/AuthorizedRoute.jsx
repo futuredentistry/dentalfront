@@ -8,7 +8,6 @@ const AuthorizedRoute = ({
     component: Component, authorized, ...rest
 }) => (
         <Route
-          exact
           {...rest}
           render={props => (authorized() ? (
                 <Component {...props} />

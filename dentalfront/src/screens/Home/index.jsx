@@ -17,13 +17,12 @@ import ConfirmEmail from './components/ConfirmEmail'
 //     : false)
 
 
-const HomeRouter = () => 
-    // const authorized = useCallback(() => logonUser(), [])
-    // const email = useCallback(() => emailVerified(), [])
-     (
+// const authorized = useCallback(() => logonUser(), [])
+// const email = useCallback(() => emailVerified(), [])
+const HomeRouter = () => (
         <Route
-            path={ROUTES.HOME}
-            render={() => (
+          path={ROUTES.HOME}
+          render={() => (
                 <>
 
                     {/* {authorized()

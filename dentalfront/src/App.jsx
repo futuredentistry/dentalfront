@@ -6,10 +6,10 @@ import {
 
 import AuthorizedRoute from 'modules/AuthorizedRoute'
 import * as ROUTES from 'modules/constants/routes'
-import * as ROLES from 'modules/constants/roles'
-import Patient from 'screens/Patient/Patient'
-import Admin from 'screens/Admin/Admin'
-import Dentist from 'screens/Dentist/Dentist'
+// import * as ROLES from 'modules/constants/roles'
+import Patient from 'screens/Patient'
+import Admin from 'screens/Admin'
+import Dentist from 'screens/Dentist'
 import Affiliate from 'screens/Affiliate'
 import Home from 'screens/Home'
 import FirebaseContext from 'modules/Firebase'
@@ -41,6 +41,10 @@ const App = () => {
           path={ROUTES.HOME}
           component={Home}
         />
+        {/* <Route
+          path={ROUTES.PATIENT}
+          component={Patient}
+        /> */}
         <AuthorizedRoute path={ROUTES.PATIENT} authorized={authorized} component={Patient} />
         <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={authorized} component={Admin} />
         <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={authorized} component={Dentist} />
