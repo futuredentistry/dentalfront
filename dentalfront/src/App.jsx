@@ -41,10 +41,6 @@ const App = () => {
           path={ROUTES.HOME}
           component={Home}
         />
-        {/* <Route
-          path={ROUTES.PATIENT}
-          component={Patient}
-        /> */}
         <AuthorizedRoute path={ROUTES.PATIENT} authorized={authorized} component={Patient} />
         <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={authorized} component={Admin} />
         <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={authorized} component={Dentist} />
