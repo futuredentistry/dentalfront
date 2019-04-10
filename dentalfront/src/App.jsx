@@ -21,7 +21,7 @@ const App = () => {
   useEffect(() => {
     firebase.onAuthUserListener(
       (authUser) => {
-        localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser))
+        if (authUser.role) return localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser))
       },
       () => {
         localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
@@ -37,7 +37,7 @@ const App = () => {
     <Router>
 
       <>
-
+        <button onClick={() => firebase.doSignOut()}>LOGOUT</button>
         <Route
           path={ROUTES.HOME}
           component={Home}

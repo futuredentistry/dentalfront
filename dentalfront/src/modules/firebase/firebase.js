@@ -52,22 +52,26 @@ class Firebase {
 
   // *** Merge Auth and DB User API *** //
 
-  onAuthUserListener = (next, fallback) => this.auth.onAuthStateChanged((authUser) => {
+  onAuthUserListener = (next, fallback = () => {}) => this.auth.onAuthStateChanged((authUser) => {
     if (authUser) {
       this.user(authUser.uid)
         .once('value')
         .then((snapshot) => {
           const dbUser = snapshot.val()
 
+          // default empty roles
+          // if (!dbUser.role) {
+          //   dbUser.roles = ''
+          // }
+
           if (dbUser) {
             next({
               uid: authUser.uid,
               email: authUser.email,
               emailVerified: authUser.emailVerified,
-              providerData: authUser.providerData,
               ...dbUser,
             })
-          } else next(authUser)
+          } // else { next(authUser) }
         })
     } else {
       fallback()

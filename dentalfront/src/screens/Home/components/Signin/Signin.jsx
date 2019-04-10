@@ -63,9 +63,14 @@ const SignIn = ({ history }) => {
         onClick={() => firebase
           .doSignInWithEmailAndPassword(email, password)
           .then((authUser) => {
-            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser.user))
             if (!authUser.user.emailVerified) history.push(ROUTES.CONFIRM_EMAIL)
-            // history.push(`${ROUTES.USER}${ROUTES.LESSONS}`)
+
+            firebase.user(authUser.user.uid)
+              .once('value')
+              .then((snapshot) => {
+                const dbUser = snapshot.val()
+                history.push(ROUTES[dbUser.role])
+              })
           })
           .catch(({ message }) => {
             localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
