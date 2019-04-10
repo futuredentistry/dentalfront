@@ -10,25 +10,25 @@ import GetStarted from './components/GetStarted'
 import ContactAs from './components/ContactAs'
 import ConfirmEmail from './components/ConfirmEmail'
 
-const logonUser = () => !!localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
-const emailVerified = () => true
+// const logonUser = () => !!localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+// const emailVerified = () => true
 // (logonUser()
 //     ? JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)).emailVerified
 //     : false)
 
 
-const HomeRouter = () => {
-    const authorized = useCallback(() => logonUser(), [])
-    const email = useCallback(() => emailVerified(), [])
-    return (
+const HomeRouter = () => 
+    // const authorized = useCallback(() => logonUser(), [])
+    // const email = useCallback(() => emailVerified(), [])
+     (
         <Route
-          path={ROUTES.HOME}
-          render={() => (
+            path={ROUTES.HOME}
+            render={() => (
                 <>
 
-                    {authorized()
+                    {/* {authorized()
                         && !email()
-                        && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
+                        && <Redirect to={ROUTES.CONFIRM_EMAIL} />} */}
 
                     <Route path={ROUTES.HOME} exact component={Home} />
                     <Route path={ROUTES.SIGNUP} exact component={SignUpPage} />
@@ -42,7 +42,7 @@ const HomeRouter = () => {
         />
 
     )
-}
+
 
 HomeRouter.propTypes = {
 }

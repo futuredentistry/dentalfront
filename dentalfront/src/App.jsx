@@ -6,6 +6,7 @@ import {
 
 import AuthorizedRoute from 'modules/AuthorizedRoute'
 import * as ROUTES from 'modules/constants/routes'
+import * as ROLES from 'modules/constants/roles'
 import Patient from 'screens/Patient/Patient'
 import Admin from 'screens/Admin/Admin'
 import Dentist from 'screens/Dentist/Dentist'
@@ -13,7 +14,7 @@ import Affiliate from 'screens/Affiliate'
 import Home from 'screens/Home'
 import FirebaseContext from 'modules/Firebase'
 
-const logonUser = () => !!localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
+const logonUser = () => JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE))
 
 
 const App = () => {
@@ -29,9 +30,7 @@ const App = () => {
     )
   })
   const authorized = useCallback(() => logonUser(), [])
-
-  // if (authorized() && email()) return <Redirect to={ROUTES.PATIENT} />
-  // if (authorized() && !email()) return <Redirect to={ROUTES.CONFIRM_EMAIL} />
+  const emailVerified = useCallback(() => (logonUser() ? logonUser().emailVerified : false), [])
 
   return (
     <Router>
@@ -47,7 +46,8 @@ const App = () => {
         <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={authorized} component={Dentist} />
         <AuthorizedRoute path={ROUTES.AFFILIATE} exact authorized={authorized} component={Affiliate} />
 
-
+        {authorized() && emailVerified() && window.location.pathname === '/' && <Redirect to={ROUTES[authorized().role]} />}
+        {authorized() && !emailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
       </>
 
     </Router>

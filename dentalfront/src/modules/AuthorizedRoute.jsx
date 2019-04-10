@@ -10,21 +10,20 @@ const AuthorizedRoute = ({
         <Route
           exact
           {...rest}
-          render={props => (!authorized() ? (
-                <Redirect
-                  to={{
-                        pathname: ROUTES.HOME,
-                    }}
-                />
+          render={props => (authorized() ? (
+                <Component {...props} />
             ) : (
-                    <Component {...props} />
+                    <Redirect
+                      to={{
+                            pathname: ROUTES.HOME,
+                        }}
+                    />
                 ))
             }
         />
     )
 AuthorizedRoute.propTypes = {
     component: PropTypes.func.isRequired,
-    // authorized: PropTypes.bool.isRequired,
     path: PropTypes.string.isRequired,
     authorized: PropTypes.func.isRequired,
 }
