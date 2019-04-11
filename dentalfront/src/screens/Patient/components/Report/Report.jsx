@@ -34,6 +34,14 @@ const Report = (props) => {
     const [softDrinks, setSoftDrinks] = useState('every few days')
     const [alcohol, setAlcohol] = useState('every few days')
 
+    // Dental
+    const [brush, setBrush] = useState('4-7 times a week')
+    const [floss, setFloss] = useState('4-7 times a week')
+    const [visitDentist, setVisitDentist] = useState('every 1-3 years')
+    const [comfortable, setComfortable] = useState('yes')
+    const [dentalCorners, setDentalCorners] = useState('')
+    const [pain, setPain] = useState('')
+
     const steper = (n) => {
         switch (n) {
             case 0:
@@ -86,7 +94,24 @@ const Report = (props) => {
                     />
                 )
             case 2:
-                return '2'
+                return (
+                    <Dental {...{
+                        brush,
+                        setBrush,
+                        floss,
+                        setFloss,
+                        visitDentist,
+                        setVisitDentist,
+                        comfortable,
+                        setComfortable,
+                        dentalCorners,
+                        setDentalCorners,
+                        pain,
+                        setPain,
+
+                    }}
+                    />
+                )
             case 3:
                 return '3'
             case 4:
