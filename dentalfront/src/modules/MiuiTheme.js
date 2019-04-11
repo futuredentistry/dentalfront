@@ -22,12 +22,10 @@ const MiuiTheme = {
         textAlign: 'center',
         color: '#44566c',
       },
-      h6: {
-        fontSize: '16px',
-        lineHeight: '1.69',
-        fontWeight: 'bold',
+      h4: {
+        fontSize: '34px',
         textAlign: 'center',
-        color: '#44566c',
+        letterSpacing: '0.25px',
       },
       subtitle1: {
         fontSize: '14px',
@@ -90,8 +88,6 @@ const MiuiTheme = {
         textAlign: 'center',
         letterSpacing: '0.75px',
         textTransform: 'lowercase',
-
-
       },
       flat: {
         marginBlockEnd: '0px',

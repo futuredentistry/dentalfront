@@ -26,6 +26,9 @@ stories.add('Typography', () => (
     <Typography variant="h3">
       {text('Label', 'H3 my text')}
     </Typography>
+    <Typography variant="h4">
+      {text('Label', 'H4 my text')}
+    </Typography>
     <Typography variant="body">
       {text('Label', 'Body my text')}
     </Typography>
