@@ -47,6 +47,7 @@ const Personal = ({
   organisation, setOrganisation,
   medicare, setMedicare,
   individualNumber, setIndividualNumber,
+  expiredDate, handleExpiredChange,
 }) => {
   console.log('')
   return (
@@ -171,6 +172,27 @@ const Personal = ({
       />
 
 
+      <div className="picker">
+        <DatePicker
+          keyboard
+          label="Expire date"
+          format="MM/dd/yyyy"
+          mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])
+          }
+          value={expiredDate}
+          onChange={handleExpiredChange}
+          disableOpenOnEnter
+          animateYearScrolling={false}
+        />
+      </div>
+
+      <TextField
+        label="Which organisation are you part of?"
+        value={organisation}
+        onChange={e => setOrganisation(e.currentTarget.value)}
+        margin="normal"
+        variant="filled"
+      />
     </>
   )
 }
@@ -197,10 +219,13 @@ Personal.propTypes = {
   setMedicare: PropTypes.func.isRequired,
   individualNumber: PropTypes.string.isRequired,
   setIndividualNumber: PropTypes.func.isRequired,
+  expiredDate: PropTypes.instanceOf(Date),
+  handleExpiredChange: PropTypes.func.isRequired,
 
 }
 
 Personal.defaultProps = {
   selectedDate: null,
+  expiredDate: null,
 }
 export default Personal
