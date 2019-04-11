@@ -16,6 +16,7 @@ const Personal = ({
     postcode, setPostcode,
     gender, setGender,
     otherGender, setOtherGender,
+    contactNumber, setContactNumber,
 }) => {
     console.log('')
     return (
@@ -88,6 +89,17 @@ const Personal = ({
                     />
                 )
             }
+
+            <TextField
+              label="Contact number"
+              value={contactNumber}
+              inputProps={
+                    { maxLength: 10 }
+                }
+              onChange={e => /^(\s*|\d+)$/.test(e.currentTarget.value) && setContactNumber(e.currentTarget.value)}
+              margin="normal"
+              variant="filled"
+            />
         </>
     )
 }
@@ -105,6 +117,8 @@ Personal.propTypes = {
     setGender: PropTypes.func.isRequired,
     otherGender: PropTypes.string.isRequired,
     setOtherGender: PropTypes.func.isRequired,
+    contactNumber: PropTypes.string.isRequired,
+    setContactNumber: PropTypes.func.isRequired,
 }
 
 Personal.defaultProps = {
