@@ -16,11 +16,24 @@ const Lifestyle = ({
     return (
         <>
             <FormControl component="fieldset">
+                <FormLabel component="legend">Are you a social or regular smoker?</FormLabel>
+                <RadioGroup
+                  aria-label="Gender"
+                  name="smoker"
+                  value={smoker}
+                  onChange={e => setSmoker(e.currentTarget.value)}
+                >
+                    <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
+                    <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
+                </RadioGroup>
+            </FormControl>
+
+            <FormControl component="fieldset">
                 <FormLabel component="legend">How often do you drink soft drinks?</FormLabel>
                 <RadioGroup
                   row
                   aria-label="Soft drinks"
-                  name="Soft drinks"
+                  name="soft drinks"
                   value={softDrinks}
                   onChange={e => setSoftDrinks(e.currentTarget.value)}
                 >
@@ -35,7 +48,7 @@ const Lifestyle = ({
                 <RadioGroup
                   row
                   aria-label="Alcohol"
-                  name="Alcohol"
+                  name="alcohol"
                   value={alcohol}
                   onChange={e => setAlcohol(e.currentTarget.value)}
                 >
