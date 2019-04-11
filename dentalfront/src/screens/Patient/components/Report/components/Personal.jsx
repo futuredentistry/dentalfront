@@ -9,6 +9,9 @@ import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
+import Checkbox from '@material-ui/core/Checkbox'
+import FormGroup from '@material-ui/core/FormGroup'
+
 
 // ToDo move to utils and use to validate next button
 const validateMedicare = (medicare) => {
@@ -51,6 +54,7 @@ const Personal = ({
   expiredDate, handleExpiredChange,
   privateInsurance, setPrivateInsurance,
   privateInsuranceOther, setPrivateInsuranceOther,
+  inscludeDental, setInscludeDental,
 }) => {
   console.log('')
   return (
@@ -204,6 +208,22 @@ const Personal = ({
         margin="normal"
         variant="filled"
       />
+
+      <FormGroup>
+        <FormControlLabel
+          control={(
+            <Checkbox
+              checked={inscludeDental}
+              value={inscludeDental}
+              onChange={() => setInscludeDental(!inscludeDental)}
+
+              color="primary"
+            />
+          )}
+          label="My private health insurance includes dental"
+        />
+      </FormGroup>
+
     </>
   )
 }
@@ -236,7 +256,7 @@ Personal.propTypes = {
   setPrivateInsurance: PropTypes.func.isRequired,
   privateInsuranceOther: PropTypes.string.isRequired,
   setPrivateInsuranceOther: PropTypes.func.isRequired,
-
+  inscludeDental: PropTypes.bool.isRequired,
 }
 
 Personal.defaultProps = {
