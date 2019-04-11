@@ -1,30 +1,52 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import DateFnsUtils from '@date-io/date-fns'
+import { MuiPickersUtilsProvider } from 'material-ui-pickers'
 
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-
-function steper(step) {
-    switch (step) {
-        case 0:
-            return '0'
-        case 1:
-            return '1'
-        case 2:
-            return '2'
-        case 3:
-            return '3'
-        case 4:
-            return '4'
-        default:
-            return null
-    }
-}
+import Personal from './components/Personal'
 
 const Report = (props) => {
     const maxStep = 4
     const [step, setStep] = useState(0)
+    const [firstName, setFirstName] = useState('')
+    const [familyName, setFamilyName] = useState('')
+    const [selectedDate, handleDateChange] = useState(null)
+    const [postcode, setPostcode] = useState('')
+
+    const steper = (n) => {
+        switch (n) {
+            case 0:
+                return (
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <Personal {...{
+                            firstName,
+                            setFirstName,
+                            familyName,
+                            setFamilyName,
+                            selectedDate,
+                            handleDateChange,
+                            postcode,
+                            setPostcode,
+                        }}
+                        />
+                    </MuiPickersUtilsProvider>
+                )
+            case 1:
+                return '1'
+            case 2:
+                return '2'
+            case 3:
+                return '3'
+            case 4:
+                return '4'
+            default:
+                return null
+        }
+    }
+
     return (
         <div>
             <LinearProgress color="primary" variant="determinate" value={step * 100 / 4} />
