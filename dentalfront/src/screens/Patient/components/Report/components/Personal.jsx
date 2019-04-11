@@ -46,6 +46,7 @@ const Personal = ({
   contactNumber, setContactNumber,
   organisation, setOrganisation,
   medicare, setMedicare,
+  individualNumber, setIndividualNumber,
 }) => {
   console.log('')
   return (
@@ -158,6 +159,17 @@ const Personal = ({
         variant="filled"
       />
 
+      <TextField
+        label="Individual number"
+        value={individualNumber}
+        inputProps={
+          { maxLength: 10 }
+        }
+        onChange={e => /^(\s*|\d+)$/.test(e.currentTarget.value) && setIndividualNumber(e.currentTarget.value)}
+        margin="normal"
+        variant="filled"
+      />
+
 
     </>
   )
@@ -183,6 +195,8 @@ Personal.propTypes = {
   //
   medicare: PropTypes.string.isRequired,
   setMedicare: PropTypes.func.isRequired,
+  individualNumber: PropTypes.string.isRequired,
+  setIndividualNumber: PropTypes.func.isRequired,
 
 }
 
