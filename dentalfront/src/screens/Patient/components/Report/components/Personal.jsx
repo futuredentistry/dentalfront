@@ -10,6 +10,32 @@ import FormLabel from '@material-ui/core/FormLabel'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 
+// ToDo move to utils and use to validate next button
+const validateMedicare = (medicare) => {
+  let isValid = false
+
+  if (medicare && medicare.length === 10) {
+    const matches = medicare.match(/^(\d{8})(\d)/)
+
+    if (!matches) {
+      return { invalid: true }
+    }
+
+    const base = matches[1]
+    const checkDigit = matches[2]
+    const weights = [1, 3, 7, 9, 1, 3, 7, 9]
+
+    let sum = 0
+    for (let i = 0; i < weights.length; i++) {
+      sum += parseInt(base[i], 10) * weights[i]
+    }
+
+    isValid = sum % 10 === parseInt(checkDigit, 10)
+  }
+
+  return isValid
+}
+
 const Personal = ({
   firstName, setFirstName,
   familyName, setFamilyName,
@@ -19,6 +45,7 @@ const Personal = ({
   otherGender, setOtherGender,
   contactNumber, setContactNumber,
   organisation, setOrganisation,
+  medicare, setMedicare,
 }) => {
   console.log('')
   return (
@@ -119,6 +146,18 @@ const Personal = ({
         Do you have health care?
       </Typography>
 
+      <TextField
+        label="Medicare"
+        value={medicare}
+        error={!validateMedicare(medicare) && medicare !== ''}
+        inputProps={
+          { maxLength: 10 }
+        }
+        onChange={e => /^(\s*|\d+)$/.test(e.currentTarget.value) && setMedicare(e.currentTarget.value)}
+        margin="normal"
+        variant="filled"
+      />
+
 
     </>
   )
@@ -141,6 +180,10 @@ Personal.propTypes = {
   setContactNumber: PropTypes.func.isRequired,
   organisation: PropTypes.string.isRequired,
   setOrganisation: PropTypes.func.isRequired,
+  //
+  medicare: PropTypes.string.isRequired,
+  setMedicare: PropTypes.func.isRequired,
+
 }
 
 Personal.defaultProps = {

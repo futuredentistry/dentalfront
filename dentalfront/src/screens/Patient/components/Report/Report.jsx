@@ -21,6 +21,9 @@ const Report = (props) => {
     const [otherGender, setOtherGender] = useState('')
     const [contactNumber, setContactNumber] = useState('')
     const [organisation, setOrganisation] = useState('')
+    //
+    const [medicare, setMedicare] = useState('')
+
     // Lifestyle
     const [smoker, setSmoker] = useState('yes')
     const [softDrinks, setSoftDrinks] = useState('every few days')
@@ -28,7 +31,7 @@ const Report = (props) => {
 
     const steper = (n) => {
         switch (n) {
-            case 1:
+            case 0:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Personal {...{
@@ -48,11 +51,14 @@ const Report = (props) => {
                             setContactNumber,
                             organisation,
                             setOrganisation,
+                            //
+                            medicare,
+                            setMedicare,
                         }}
                         />
                     </MuiPickersUtilsProvider>
                 )
-            case 0:
+            case 1:
                 return (
                     <Lifestyle {...{
                         smoker,
