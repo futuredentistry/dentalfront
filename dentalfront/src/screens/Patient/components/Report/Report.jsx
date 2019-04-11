@@ -25,6 +25,8 @@ const Report = (props) => {
     const [medicare, setMedicare] = useState('')
     const [individualNumber, setIndividualNumber] = useState('')
     const [expiredDate, handleExpiredChange] = useState(null)
+    const [privateInsurance, setPrivateInsurance] = useState('')
+    const [privateInsuranceOther, setPrivateInsuranceOther] = useState('')
 
     // Lifestyle
     const [smoker, setSmoker] = useState('yes')
@@ -60,6 +62,10 @@ const Report = (props) => {
                             setIndividualNumber,
                             expiredDate,
                             handleExpiredChange,
+                            privateInsurance,
+                            setPrivateInsurance,
+                            privateInsuranceOther,
+                            setPrivateInsuranceOther,
                         }}
                         />
                     </MuiPickersUtilsProvider>

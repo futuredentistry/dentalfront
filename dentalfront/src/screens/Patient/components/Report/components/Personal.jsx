@@ -45,9 +45,12 @@ const Personal = ({
   otherGender, setOtherGender,
   contactNumber, setContactNumber,
   organisation, setOrganisation,
+  //
   medicare, setMedicare,
   individualNumber, setIndividualNumber,
   expiredDate, handleExpiredChange,
+  privateInsurance, setPrivateInsurance,
+  privateInsuranceOther, setPrivateInsuranceOther,
 }) => {
   console.log('')
   return (
@@ -187,9 +190,17 @@ const Personal = ({
       </div>
 
       <TextField
-        label="Which organisation are you part of?"
-        value={organisation}
-        onChange={e => setOrganisation(e.currentTarget.value)}
+        label="Private health insurance or other"
+        value={privateInsurance}
+        onChange={e => setPrivateInsurance(e.currentTarget.value)}
+        margin="normal"
+        variant="filled"
+      />
+
+      <TextField
+        label="Other"
+        value={privateInsuranceOther}
+        onChange={e => setPrivateInsuranceOther(e.currentTarget.value)}
         margin="normal"
         variant="filled"
       />
@@ -221,6 +232,10 @@ Personal.propTypes = {
   setIndividualNumber: PropTypes.func.isRequired,
   expiredDate: PropTypes.instanceOf(Date),
   handleExpiredChange: PropTypes.func.isRequired,
+  privateInsurance: PropTypes.string.isRequired,
+  setPrivateInsurance: PropTypes.func.isRequired,
+  privateInsuranceOther: PropTypes.string.isRequired,
+  setPrivateInsuranceOther: PropTypes.func.isRequired,
 
 }
 
