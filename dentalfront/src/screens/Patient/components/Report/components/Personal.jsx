@@ -214,7 +214,6 @@ const Personal = ({
           control={(
             <Checkbox
               checked={inscludeDental}
-              value={inscludeDental}
               onChange={() => setInscludeDental(!inscludeDental)}
 
               color="primary"

@@ -60,7 +60,7 @@ const Report = (props) => {
 
     const steper = (n) => {
         switch (n) {
-            case 2:
+            case 0:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Personal {...{
@@ -97,7 +97,7 @@ const Report = (props) => {
                         />
                     </MuiPickersUtilsProvider>
                 )
-            case 1:
+            case 0:
                 return (
                     <Lifestyle {...{
                         smoker,
@@ -109,7 +109,7 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 0:
+            case 2:
                 return (
                     <Dental {...{
                         brush,
@@ -175,11 +175,11 @@ const Report = (props) => {
             {steper(step)}
 
             <Grid
-                container
-                spacing={8}
-                direction="row"
-                justify="center"
-                alignItems="center"
+              container
+              spacing={8}
+              direction="row"
+              justify="center"
+              alignItems="center"
             >
 
                 {
@@ -187,19 +187,19 @@ const Report = (props) => {
                         <>
                             <Grid item xs={6}>
                                 <Button
-                                    variant="text"
-                                    color="primary"
-                                    disabled={step < 1}
-                                    onClick={() => setStep(step - 1)}
+                                  variant="text"
+                                  color="primary"
+                                  disabled={step < 1}
+                                  onClick={() => setStep(step - 1)}
                                 >
                                     Back
                                 </Button>
                             </Grid>
                             <Grid item xs={6}>
                                 <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={() => setStep(step + 1)}
+                                  variant="contained"
+                                  color="primary"
+                                  onClick={() => setStep(step + 1)}
                                 >
                                     Next
                                 </Button>
@@ -213,9 +213,9 @@ const Report = (props) => {
                     step === maxStep && (
                         <Grid item xs={12}>
                             <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={() => setStep(step + 1)}
+                              variant="contained"
+                              color="primary"
+                              onClick={() => setStep(step + 1)}
                             >
                                 Submit
                             </Button>
