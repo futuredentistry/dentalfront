@@ -7,6 +7,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Personal from './components/Personal'
+import Lifestyle from './components/Lifestyle'
 
 const Report = (props) => {
     const maxStep = 4
@@ -20,10 +21,14 @@ const Report = (props) => {
     const [otherGender, setOtherGender] = useState('')
     const [contactNumber, setContactNumber] = useState('')
     const [organisation, setOrganisation] = useState('')
+    // Lifestyle
+    const [smoker, setSmoker] = useState('yes')
+    const [softDrinks, setSoftDrinks] = useState('every few days')
+    const [alcohol, setAlcohol] = useState('every few days')
 
     const steper = (n) => {
         switch (n) {
-            case 0:
+            case 1:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Personal {...{
@@ -42,13 +47,23 @@ const Report = (props) => {
                             contactNumber,
                             setContactNumber,
                             organisation,
-setOrganisation,
+                            setOrganisation,
                         }}
                         />
                     </MuiPickersUtilsProvider>
                 )
-            case 1:
-                return '1'
+            case 0:
+                return (
+                    <Lifestyle {...{
+                        smoker,
+                        setSmoker,
+                        softDrinks,
+                        setSoftDrinks,
+                        alcohol,
+                        setAlcohol,
+                    }}
+                    />
+                )
             case 2:
                 return '2'
             case 3:
