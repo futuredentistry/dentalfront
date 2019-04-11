@@ -11,10 +11,13 @@ import Personal from './components/Personal'
 const Report = (props) => {
     const maxStep = 4
     const [step, setStep] = useState(0)
+    // Personal
     const [firstName, setFirstName] = useState('')
     const [familyName, setFamilyName] = useState('')
     const [selectedDate, handleDateChange] = useState(null)
     const [postcode, setPostcode] = useState('')
+    const [gender, setGender] = useState('male')
+    const [otherGender, setOtherGender] = useState('')
 
     const steper = (n) => {
         switch (n) {
@@ -30,6 +33,10 @@ const Report = (props) => {
                             handleDateChange,
                             postcode,
                             setPostcode,
+                            gender,
+                            setGender,
+                            otherGender,
+                            setOtherGender,
                         }}
                         />
                     </MuiPickersUtilsProvider>

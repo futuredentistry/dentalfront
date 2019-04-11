@@ -1,8 +1,12 @@
+// @ts-nocheck
 import React from 'react'
 import PropTypes from 'prop-types'
 import { DatePicker } from 'material-ui-pickers'
-import DateFnsUtils from '@date-io/date-fns'
-
+import Radio from '@material-ui/core/Radio'
+import RadioGroup from '@material-ui/core/RadioGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormControl from '@material-ui/core/FormControl'
+import FormLabel from '@material-ui/core/FormLabel'
 import TextField from '@material-ui/core/TextField'
 
 const Personal = ({
@@ -10,9 +14,10 @@ const Personal = ({
     familyName, setFamilyName,
     selectedDate, handleDateChange,
     postcode, setPostcode,
-    ...rest
+    gender, setGender,
+    otherGender, setOtherGender,
 }) => {
-    console.log(rest)
+    console.log('')
     return (
         <>
             <TextField
@@ -57,6 +62,32 @@ const Personal = ({
               margin="normal"
               variant="filled"
             />
+
+            <FormControl component="fieldset">
+                <FormLabel component="legend">Which gender do you most identify with?</FormLabel>
+                <RadioGroup
+                  aria-label="Gender"
+                  name="gender"
+                  value={gender}
+                  onChange={e => setGender(e.currentTarget.value)}
+                >
+                    <FormControlLabel value="female" control={<Radio color="primary" />} label="Female" />
+                    <FormControlLabel value="male" control={<Radio color="primary" />} label="Male" />
+                    <FormControlLabel value="other" control={<Radio color="primary" />} label="Other" />
+                </RadioGroup>
+            </FormControl>
+
+            {
+                gender === 'other' && (
+                    <TextField
+                      label="Other gender"
+                      value={otherGender}
+                      onChange={e => setOtherGender(e.currentTarget.value)}
+                      margin="normal"
+                      variant="filled"
+                    />
+                )
+            }
         </>
     )
 }
@@ -70,6 +101,10 @@ Personal.propTypes = {
     handleDateChange: PropTypes.func.isRequired,
     postcode: PropTypes.string.isRequired,
     setPostcode: PropTypes.func.isRequired,
+    gender: PropTypes.string.isRequired,
+    setGender: PropTypes.func.isRequired,
+    otherGender: PropTypes.string.isRequired,
+    setOtherGender: PropTypes.func.isRequired,
 }
 
 Personal.defaultProps = {
