@@ -11,9 +11,7 @@ const Lifestyle = ({
     smoker, setSmoker,
     softDrinks, setSoftDrinks,
     alcohol, setAlcohol,
-}) => {
-    console.log('')
-    return (
+}) => (
         <>
             <FormControl component="fieldset">
                 <FormLabel component="legend">Are you a social or regular smoker?</FormLabel>
@@ -37,9 +35,24 @@ const Lifestyle = ({
                   value={softDrinks}
                   onChange={e => setSoftDrinks(e.currentTarget.value)}
                 >
-                    <FormControlLabel labelPlacement="top" value="less than once a week" control={<Radio color="primary" />} label="Less than once a week" />
-                    <FormControlLabel labelPlacement="top" value="every few days" control={<Radio color="primary" />} label="Every few days" />
-                    <FormControlLabel labelPlacement="top" value="daily" control={<Radio color="primary" />} label="Daily" />
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value="less than once a week"
+                      control={<Radio color="primary" />}
+                      label="Less than once a week"
+                    />
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value="every few days"
+                      control={<Radio color="primary" />}
+                      label="Every few days"
+                    />
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value="daily"
+                      control={<Radio color="primary" />}
+                      label="Daily"
+                    />
                 </RadioGroup>
             </FormControl>
 
@@ -52,15 +65,29 @@ const Lifestyle = ({
                   value={alcohol}
                   onChange={e => setAlcohol(e.currentTarget.value)}
                 >
-                    <FormControlLabel labelPlacement="top" value="less than once a week" control={<Radio color="primary" />} label="Less than once a week" />
-                    <FormControlLabel labelPlacement="top" value="every few days" control={<Radio color="primary" />} label="Every few days" />
-                    <FormControlLabel labelPlacement="top" value="daily" control={<Radio color="primary" />} label="Daily" />
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value="less than once a week"
+                      control={<Radio color="primary" />}
+                      label="Less than once a week"
+                    />
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value="every few days"
+                      control={<Radio color="primary" />}
+                      label="Every few days"
+                    />
+                    <FormControlLabel
+                      labelPlacement="top"
+                      value="daily"
+                      control={<Radio color="primary" />}
+                      label="Daily"
+                    />
                 </RadioGroup>
             </FormControl>
 
         </>
     )
-}
 
 Lifestyle.propTypes = {
     alcohol: PropTypes.string.isRequired,

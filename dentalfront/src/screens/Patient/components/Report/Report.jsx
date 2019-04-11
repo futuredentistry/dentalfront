@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Personal from './components/Personal'
 import Lifestyle from './components/Lifestyle'
+import Dental from './components/Dental'
 
 const Report = (props) => {
     const maxStep = 4
@@ -35,16 +36,31 @@ const Report = (props) => {
     const [alcohol, setAlcohol] = useState('every few days')
 
     // Dental
-    const [brush, setBrush] = useState('4-7 times a week')
-    const [floss, setFloss] = useState('4-7 times a week')
+    const [brush, setBrush] = useState('every few days')
+    const [floss, setFloss] = useState('every few days')
     const [visitDentist, setVisitDentist] = useState('every 1-3 years')
     const [comfortable, setComfortable] = useState('yes')
-    const [dentalCorners, setDentalCorners] = useState('')
-    const [pain, setPain] = useState('')
+    const [dentalCornersBreath, setDentalCornersBreath] = useState(false)
+    const [dentalCornersBleedingGum, setDentalCornersBleedingGum] = useState(false)
+    const [dentalCornersCosmetic, setDentalCornersCosmetic] = useState(false)
+    const [dentalCornersTeethPain, setDentalCornersTeethPain] = useState(false)
+    const [dentalCornersGumPain, setDentalCornersGumPain] = useState(false)
+    const [dentalCornersGrinding, setDentalCornersGrinding] = useState(false)
+    const [dentalCornersDamagedTeeth, setDentalCornersDamagedTeeth] = useState(false)
+    const [dentalCornersSore, setDentalCornersSore] = useState(false)
+    const [dentalCornersOldFillings, setDentalCornersOldFillings] = useState(false)
+    const [dentalCornersDentures, setDentalCornersDentures] = useState(false)
+    const [dentalCornersLoose, setDentalCornersLoose] = useState(false)
+    const [painTopRight, setPainTopRight] = useState(false)
+    const [painTopCenter, setPainTopCenter] = useState(false)
+    const [painTopLeft, setPainTopLeft] = useState(false)
+    const [painBottomRight, setPainBottomRight] = useState(false)
+    const [painBottomCenter, setPainBottomCenter] = useState(false)
+    const [painBottomLeft, setPainBottomLeft] = useState(false)
 
     const steper = (n) => {
         switch (n) {
-            case 0:
+            case 2:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Personal {...{
@@ -93,7 +109,7 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 2:
+            case 0:
                 return (
                     <Dental {...{
                         brush,
@@ -104,10 +120,40 @@ const Report = (props) => {
                         setVisitDentist,
                         comfortable,
                         setComfortable,
-                        dentalCorners,
-                        setDentalCorners,
-                        pain,
-                        setPain,
+                        dentalCornersBreath,
+                        setDentalCornersBreath,
+                        dentalCornersBleedingGum,
+                        setDentalCornersBleedingGum,
+                        dentalCornersCosmetic,
+                        setDentalCornersCosmetic,
+                        dentalCornersTeethPain,
+                        setDentalCornersTeethPain,
+                        dentalCornersGumPain,
+                        setDentalCornersGumPain,
+                        dentalCornersGrinding,
+                        setDentalCornersGrinding,
+                        dentalCornersDamagedTeeth,
+                        setDentalCornersDamagedTeeth,
+                        dentalCornersSore,
+                        setDentalCornersSore,
+                        dentalCornersOldFillings,
+                        setDentalCornersOldFillings,
+                        dentalCornersDentures,
+                        setDentalCornersDentures,
+                        dentalCornersLoose,
+                        setDentalCornersLoose,
+                        painTopRight,
+                        setPainTopRight,
+                        painTopCenter,
+                        setPainTopCenter,
+                        painTopLeft,
+                        setPainTopLeft,
+                        painBottomRight,
+                        setPainBottomRight,
+                        painBottomCenter,
+                        setPainBottomCenter,
+                        painBottomLeft,
+                        setPainBottomLeft,
 
                     }}
                     />
@@ -129,11 +175,11 @@ const Report = (props) => {
             {steper(step)}
 
             <Grid
-              container
-              spacing={8}
-              direction="row"
-              justify="center"
-              alignItems="center"
+                container
+                spacing={8}
+                direction="row"
+                justify="center"
+                alignItems="center"
             >
 
                 {
@@ -141,19 +187,19 @@ const Report = (props) => {
                         <>
                             <Grid item xs={6}>
                                 <Button
-                                  variant="text"
-                                  color="primary"
-                                  disabled={step < 1}
-                                  onClick={() => setStep(step - 1)}
+                                    variant="text"
+                                    color="primary"
+                                    disabled={step < 1}
+                                    onClick={() => setStep(step - 1)}
                                 >
                                     Back
                                 </Button>
                             </Grid>
                             <Grid item xs={6}>
                                 <Button
-                                  variant="contained"
-                                  color="primary"
-                                  onClick={() => setStep(step + 1)}
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={() => setStep(step + 1)}
                                 >
                                     Next
                                 </Button>
@@ -167,9 +213,9 @@ const Report = (props) => {
                     step === maxStep && (
                         <Grid item xs={12}>
                             <Button
-                              variant="contained"
-                              color="primary"
-                              onClick={() => setStep(step + 1)}
+                                variant="contained"
+                                color="primary"
+                                onClick={() => setStep(step + 1)}
                             >
                                 Submit
                             </Button>
