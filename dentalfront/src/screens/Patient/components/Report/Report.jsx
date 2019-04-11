@@ -19,6 +19,7 @@ const Report = (props) => {
     const [gender, setGender] = useState('male')
     const [otherGender, setOtherGender] = useState('')
     const [contactNumber, setContactNumber] = useState('')
+    const [organisation, setOrganisation] = useState('')
 
     const steper = (n) => {
         switch (n) {
@@ -40,6 +41,8 @@ const Report = (props) => {
                             setOtherGender,
                             contactNumber,
                             setContactNumber,
+                            organisation,
+setOrganisation,
                         }}
                         />
                     </MuiPickersUtilsProvider>

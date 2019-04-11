@@ -17,6 +17,7 @@ const Personal = ({
     gender, setGender,
     otherGender, setOtherGender,
     contactNumber, setContactNumber,
+    organisation, setOrganisation,
 }) => {
     console.log('')
     return (
@@ -100,6 +101,14 @@ const Personal = ({
               margin="normal"
               variant="filled"
             />
+
+            <TextField
+              label="Which organisation are you part of?"
+              value={organisation}
+              onChange={e => setOrganisation(e.currentTarget.value)}
+              margin="normal"
+              variant="filled"
+            />
         </>
     )
 }
@@ -119,6 +128,8 @@ Personal.propTypes = {
     setOtherGender: PropTypes.func.isRequired,
     contactNumber: PropTypes.string.isRequired,
     setContactNumber: PropTypes.func.isRequired,
+    organisation: PropTypes.string.isRequired,
+    setOrganisation: PropTypes.func.isRequired,
 }
 
 Personal.defaultProps = {
