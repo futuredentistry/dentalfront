@@ -21,6 +21,21 @@ const Lifestyle = ({
                   row
                   aria-label="Soft drinks"
                   name="Soft drinks"
+                  value={softDrinks}
+                  onChange={e => setSoftDrinks(e.currentTarget.value)}
+                >
+                    <FormControlLabel labelPlacement="top" value="less than once a week" control={<Radio color="primary" />} label="Less than once a week" />
+                    <FormControlLabel labelPlacement="top" value="every few days" control={<Radio color="primary" />} label="Every few days" />
+                    <FormControlLabel labelPlacement="top" value="daily" control={<Radio color="primary" />} label="Daily" />
+                </RadioGroup>
+            </FormControl>
+
+            <FormControl component="fieldset">
+                <FormLabel component="legend">How often do you drink alcohol?</FormLabel>
+                <RadioGroup
+                  row
+                  aria-label="Alcohol"
+                  name="Alcohol"
                   value={alcohol}
                   onChange={e => setAlcohol(e.currentTarget.value)}
                 >
