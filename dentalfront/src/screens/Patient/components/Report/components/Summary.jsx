@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { format } from 'date-fns'
 import Typography from '@material-ui/core/Typography'
-import Checkbox from '@material-ui/core/Checkbox'
-import FormGroup from '@material-ui/core/FormGroup'
 
 // ToDo move to utils
 const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1)
