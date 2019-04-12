@@ -10,6 +10,7 @@ import Medical from './components/Medical'
 import Personal from './components/Personal'
 import Lifestyle from './components/Lifestyle'
 import Dental from './components/Dental'
+import Summary from './components/Summary'
 
 const Report = (props) => {
     const maxStep = 4
@@ -29,7 +30,7 @@ const Report = (props) => {
     const [expiredDate, handleExpiredChange] = useState(null)
     const [privateInsurance, setPrivateInsurance] = useState('')
     const [privateInsuranceOther, setPrivateInsuranceOther] = useState('')
-    const [inscludeDental, setInscludeDental] = useState(false)
+    const [includeDental, setInscludeDental] = useState(false)
 
     // Lifestyle
     const [smoker, setSmoker] = useState('yes')
@@ -75,9 +76,13 @@ const Report = (props) => {
     const [otherConditions, setOtherConditions] = useState(false)
     const [otherConditionsList, setOtherConditionsList] = useState('')
 
+    // Summary
+    const [research, setResearch] = useState(false)
+    const [policy, setPolicy] = useState(false)
+
     const steper = (n) => {
         switch (n) {
-            case 3:
+            case 0:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Personal {...{
@@ -108,13 +113,13 @@ const Report = (props) => {
                             setPrivateInsurance,
                             privateInsuranceOther,
                             setPrivateInsuranceOther,
-                            inscludeDental,
+                            includeDental,
                             setInscludeDental,
                         }}
                         />
                     </MuiPickersUtilsProvider>
                 )
-            case 1:
+            case 5:
                 return (
                     <Lifestyle {...{
                         smoker,
@@ -175,7 +180,7 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 0:
+            case 4:
                 return (
                     <Medical {...{
                         bloodDiseases,
@@ -209,8 +214,28 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 4:
-                return '4'
+            case 1:
+                return (
+                    <Summary {...{
+                        firstName,
+                        familyName,
+                        selectedDate,
+                        postcode,
+                        gender,
+                        otherGender,
+                        contactNumber,
+                        medicare,
+                        privateInsurance,
+                        privateInsuranceOther,
+                        includeDental,
+
+                        research,
+                        setResearch,
+                        policy,
+                        setPolicy,
+                    }}
+                    />
+                )
             default:
                 return null
         }

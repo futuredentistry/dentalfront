@@ -54,7 +54,7 @@ const Personal = ({
   expiredDate, handleExpiredChange,
   privateInsurance, setPrivateInsurance,
   privateInsuranceOther, setPrivateInsuranceOther,
-  inscludeDental, setInscludeDental,
+  includeDental, setInscludeDental,
 }) => {
   console.log('')
   return (
@@ -213,8 +213,8 @@ const Personal = ({
         <FormControlLabel
           control={(
             <Checkbox
-              checked={inscludeDental}
-              onChange={() => setInscludeDental(!inscludeDental)}
+              checked={includeDental}
+              onChange={() => setInscludeDental(!includeDental)}
 
               color="primary"
             />
@@ -255,7 +255,8 @@ Personal.propTypes = {
   setPrivateInsurance: PropTypes.func.isRequired,
   privateInsuranceOther: PropTypes.string.isRequired,
   setPrivateInsuranceOther: PropTypes.func.isRequired,
-  inscludeDental: PropTypes.bool.isRequired,
+  includeDental: PropTypes.bool.isRequired,
+  setInscludeDental: PropTypes.func.isRequired,
 }
 
 Personal.defaultProps = {
