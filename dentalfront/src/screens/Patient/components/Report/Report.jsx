@@ -6,6 +6,7 @@ import { MuiPickersUtilsProvider } from 'material-ui-pickers'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import Medical from './components/Medical'
 import Personal from './components/Personal'
 import Lifestyle from './components/Lifestyle'
 import Dental from './components/Dental'
@@ -58,9 +59,25 @@ const Report = (props) => {
     const [painBottomCenter, setPainBottomCenter] = useState(false)
     const [painBottomLeft, setPainBottomLeft] = useState(false)
 
+    // Medical
+    const [bloodDiseases, setBloodDiseases] = useState('no')
+    const [pregnant, setPregnant] = useState('no')
+    const [allergies, setAllergies] = useState('no')
+    const [allergiesList, setAllergiesList] = useState('')
+    const [heartConditions, setHeartConditions] = useState(false)
+    const [breathingProblems, setBreathingProblems] = useState(false)
+    const [bloodDisorders, setBloodDisorders] = useState(false)
+    const [boneDisease, setBoneDisease] = useState(false)
+    const [cancer, setCancer] = useState(false)
+    const [diabetes, setDiabetes] = useState(false)
+    const [stroke, setStroke] = useState(false)
+    const [pacemaker, setPacemaker] = useState(false)
+    const [otherConditions, setOtherConditions] = useState(false)
+    const [otherConditionsList, setOtherConditionsList] = useState('')
+
     const steper = (n) => {
         switch (n) {
-            case 0:
+            case 3:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Personal {...{
@@ -97,7 +114,7 @@ const Report = (props) => {
                         />
                     </MuiPickersUtilsProvider>
                 )
-            case 0:
+            case 1:
                 return (
                     <Lifestyle {...{
                         smoker,
@@ -158,8 +175,40 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 3:
-                return '3'
+            case 0:
+                return (
+                    <Medical {...{
+                        bloodDiseases,
+                        setBloodDiseases,
+                        pregnant,
+                        setPregnant,
+                        allergies,
+                        setAllergies,
+                        allergiesList,
+                        setAllergiesList,
+                        heartConditions,
+                        setHeartConditions,
+                        breathingProblems,
+                        setBreathingProblems,
+                        bloodDisorders,
+                        setBloodDisorders,
+                        boneDisease,
+                        setBoneDisease,
+                        cancer,
+                        setCancer,
+                        diabetes,
+                        setDiabetes,
+                        stroke,
+                        setStroke,
+                        pacemaker,
+                        setPacemaker,
+                        otherConditions,
+                        setOtherConditions,
+                        otherConditionsList,
+                        setOtherConditionsList,
+                    }}
+                    />
+                )
             case 4:
                 return '4'
             default:
