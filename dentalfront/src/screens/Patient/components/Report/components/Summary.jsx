@@ -21,6 +21,10 @@ const Summary = ({
     privateInsurance,
     privateInsuranceOther,
     includeDental,
+
+    smoker,
+    softDrinks,
+    alcohol,
 }) => {
     console.log('')
     return (
@@ -79,6 +83,18 @@ const Summary = ({
                 Lifestyle
             </Typography>
 
+            {'You'}
+            <b>{`${smoker === 'yes' ? ' are social or regular smoker' : ' don\'t smoke'}`}</b>
+            <br />
+
+            {'You'}
+            <b>{` ${softDrinks} drink soft drinks`}</b>
+            <br />
+
+            {'and you'}
+            <b>{` ${alcohol} drink alcohol`}</b>
+            <br />
+
             <Typography variant="h5">
                 Dental
             </Typography>
@@ -103,6 +119,11 @@ Summary.propTypes = {
     privateInsuranceOther: PropTypes.string.isRequired,
     includeDental: PropTypes.bool.isRequired,
     // email,
+
+    smoker: PropTypes.string.isRequired,
+    softDrinks: PropTypes.string.isRequired,
+    alcohol: PropTypes.string.isRequired,
+
 }
 
 Summary.defaultProps = {
