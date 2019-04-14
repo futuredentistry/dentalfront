@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1)
 
 const Summary = ({
+    // Personal
     firstName,
     familyName,
     selectedDate,
@@ -20,10 +21,39 @@ const Summary = ({
     privateInsuranceOther,
     includeDental,
 
+    // Lifestyle
     smoker,
     softDrinks,
     alcohol,
+
+    // Medical
+    bloodDiseases,
+    pregnant,
+    allergies,
+    allergiesList,
+    heartConditions,
+    breathingProblems,
+    bloodDisorders,
+    boneDisease,
+    cancer,
+    diabetes,
+    stroke,
+    pacemaker,
+    otherConditions,
+    otherConditionsList,
 }) => {
+    const conditions = [
+        heartConditions,
+        breathingProblems,
+        bloodDisorders,
+        boneDisease,
+        cancer,
+        diabetes,
+        stroke,
+        pacemaker,
+        otherConditions,
+        otherConditionsList,
+    ]
     console.log('')
     return (
         <div>
@@ -70,7 +100,12 @@ const Summary = ({
                 {(privateInsurance || privateInsuranceOther) && (
                     <>
                         {'and you have health insurance with'}
-                        <b>{` ${privateInsurance} ${privateInsuranceOther} ${includeDental ? ' with optional extras' : ''}`}</b>
+                        <b>
+                            {` ${privateInsurance} ${privateInsuranceOther} ${includeDental
+                                ? ' with optional extras'
+                                : ''}`}
+
+                        </b>
                         <br />
                     </>
                 )}
@@ -81,17 +116,19 @@ const Summary = ({
                 Lifestyle
             </Typography>
 
-            {'You'}
-            <b>{`${smoker === 'yes' ? ' are social or regular smoker' : ' don\'t smoke'}`}</b>
-            <br />
+            <Typography variant="body1">
+                {'You'}
+                <b>{`${smoker === 'yes' ? ' are social or regular smoker' : ' don\'t smoke'}`}</b>
+                <br />
 
-            {'You'}
-            <b>{` ${softDrinks} drink soft drinks`}</b>
-            <br />
+                {'You'}
+                <b>{` ${softDrinks} drink soft drinks`}</b>
+                <br />
 
-            {'and you'}
-            <b>{` ${alcohol} drink alcohol`}</b>
-            <br />
+                {'and you'}
+                <b>{` ${alcohol} drink alcohol`}</b>
+                <br />
+            </Typography>
 
             <Typography variant="h5">
                 Dental
@@ -100,11 +137,49 @@ const Summary = ({
             <Typography variant="h5">
                 Medical
             </Typography>
+
+            <Typography variant="body1">
+                {'You'}
+                <b>{` ${bloodDiseases === 'yes' ? 'have' : 'have no'} blood diseases`}</b>
+                <br />
+
+                {'You'}
+                <b>{` ${pregnant === 'yes' ? ' are' : 'aren\'t'} pregnant or breast feeding`}</b>
+                <br />
+
+                {'You'}
+                <b>
+                    {`${allergies === 'yes'
+                        ? ` do have a serious allergy to ${allergiesList}`
+                        : ' have no blood diseases'}`}
+
+                </b>
+                <br />
+
+                {`and you ${conditions.some(item => item)
+                    ? ' do have some existing conditions, including'
+                    : ' do not have any existing conditions.'}`}
+                <b>
+                    {heartConditions && ' heart conditions'}
+                    {breathingProblems && ', breathing problems'}
+                    {bloodDisorders && ', blood disorders'}
+                    {boneDisease && ', bone disease'}
+                    {cancer && ', cancer'}
+                    {diabetes && ', diabetes'}
+                    {stroke && ', stroke'}
+                    {pacemaker && ', pacemaker'}
+                    {otherConditions && `, ${otherConditionsList}`}
+                </b>
+                .
+                <br />
+            </Typography>
+
         </div>
     )
 }
 
 Summary.propTypes = {
+    // Personal
     firstName: PropTypes.string.isRequired,
     familyName: PropTypes.string.isRequired,
     selectedDate: PropTypes.string,
@@ -116,12 +191,28 @@ Summary.propTypes = {
     privateInsurance: PropTypes.string.isRequired,
     privateInsuranceOther: PropTypes.string.isRequired,
     includeDental: PropTypes.bool.isRequired,
-    // email,
+    // email, ToDo
 
+    // Lifestyle
     smoker: PropTypes.string.isRequired,
     softDrinks: PropTypes.string.isRequired,
     alcohol: PropTypes.string.isRequired,
 
+    // Medical
+    bloodDiseases: PropTypes.string.isRequired,
+    pregnant: PropTypes.string.isRequired,
+    allergies: PropTypes.string.isRequired,
+    allergiesList: PropTypes.string.isRequired,
+    heartConditions: PropTypes.bool.isRequired,
+    breathingProblems: PropTypes.bool.isRequired,
+    bloodDisorders: PropTypes.bool.isRequired,
+    boneDisease: PropTypes.bool.isRequired,
+    cancer: PropTypes.bool.isRequired,
+    diabetes: PropTypes.bool.isRequired,
+    stroke: PropTypes.bool.isRequired,
+    pacemaker: PropTypes.bool.isRequired,
+    otherConditions: PropTypes.bool.isRequired,
+    otherConditionsList: PropTypes.string.isRequired,
 }
 
 Summary.defaultProps = {

@@ -119,7 +119,7 @@ const Report = (props) => {
                         />
                     </MuiPickersUtilsProvider>
                 )
-            case 0:
+            case 8:
                 return (
                     <Lifestyle {...{
                         smoker,
@@ -180,7 +180,7 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 4:
+            case 0:
                 return (
                     <Medical {...{
                         bloodDiseases,
@@ -237,6 +237,21 @@ const Report = (props) => {
                         setResearch,
                         policy,
                         setPolicy,
+
+                        bloodDiseases,
+                        pregnant,
+                        allergies,
+                        allergiesList,
+                        heartConditions,
+                        breathingProblems,
+                        bloodDisorders,
+                        boneDisease,
+                        cancer,
+                        diabetes,
+                        stroke,
+                        pacemaker,
+                        otherConditions,
+                        otherConditionsList,
                     }}
                     />
                 )
