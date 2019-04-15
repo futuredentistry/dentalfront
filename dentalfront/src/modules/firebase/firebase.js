@@ -1,7 +1,7 @@
 import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
-// import 'firebase/firestore'
+import 'firebase/firestore'
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -25,7 +25,7 @@ class Firebase {
 
     this.auth = app.auth()
     this.db = app.database()
-    // this.firestore = app.firestore()
+    this.firestore = app.firestore()
     // this.collection = this.collection()
   }
 
@@ -52,7 +52,7 @@ class Firebase {
 
   // *** Merge Auth and DB User API *** //
 
-  onAuthUserListener = (next, fallback = () => {}) => this.auth.onAuthStateChanged((authUser) => {
+  onAuthUserListener = (next, fallback = () => { }) => this.auth.onAuthStateChanged((authUser) => {
     if (authUser) {
       this.user(authUser.uid)
         .once('value')
@@ -103,6 +103,14 @@ class Firebase {
     const user = this.auth.currentUser
     return user.updateEmail(newEmail)
   }
+
+  // Report documents
+  patientCollection = (email, report) => this.firestore
+      .collection('patient')
+      .doc(email)
+      .collection('report')
+      .doc(new Date().toISOString())
+      .set(report)
 }
 
 export default Firebase

@@ -10,37 +10,29 @@ import GetStarted from './components/GetStarted'
 import ContactAs from './components/ContactAs'
 import ConfirmEmail from './components/ConfirmEmail'
 
-// const logonUser = () => !!localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)
-// const emailVerified = () => true
-// (logonUser()
-//     ? JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE)).emailVerified
-//     : false)
 
-
-// const authorized = useCallback(() => logonUser(), [])
-// const email = useCallback(() => emailVerified(), [])
 const HomeRouter = () => (
-        <Route
-          path={ROUTES.HOME}
-          render={() => (
-                <>
+    <Route
+      path={ROUTES.HOME}
+      render={() => (
+            <>
 
-                    {/* {authorized()
+                {/* {authorized()
                         && !email()
                         && <Redirect to={ROUTES.CONFIRM_EMAIL} />} */}
 
-                    <Route path={ROUTES.HOME} exact component={Home} />
-                    <Route path={ROUTES.SIGNUP} exact component={SignUpPage} />
-                    <Route path={ROUTES.SIGNIN} exact component={SignInPage} />
-                    <Route path={ROUTES.PASSWORD_FORGET} exact component={ForgetPasswordPage} />
-                    <Route path={ROUTES.GET_STARTED} exact component={GetStarted} />
-                    <Route path={ROUTES.CONTACTS_AS} exact component={ContactAs} />
-                    <Route path={ROUTES.CONFIRM_EMAIL} exact component={ConfirmEmail} />
-                </>
-            )}
-        />
+                <Route path={ROUTES.HOME} exact component={Home} />
+                <Route path={ROUTES.SIGNUP} exact component={SignUpPage} />
+                <Route path={ROUTES.SIGNIN} exact component={SignInPage} />
+                <Route path={ROUTES.PASSWORD_FORGET} exact component={ForgetPasswordPage} />
+                <Route path={ROUTES.GET_STARTED} exact component={GetStarted} />
+                <Route path={ROUTES.CONTACTS_AS} exact component={ContactAs} />
+                <Route path={ROUTES.CONFIRM_EMAIL} exact component={ConfirmEmail} />
+            </>
+        )}
+    />
 
-    )
+)
 
 
 HomeRouter.propTypes = {

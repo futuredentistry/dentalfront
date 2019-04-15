@@ -14,6 +14,7 @@ import Affiliate from 'screens/Affiliate'
 import Home from 'screens/Home'
 import FirebaseContext from 'modules/Firebase'
 
+// ToDo move to utils
 const logonUser = () => JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE))
 
 

@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider } from 'material-ui-pickers'
 
+import FirebaseContext from 'modules/Firebase'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
@@ -13,9 +14,17 @@ import Lifestyle from './components/Lifestyle'
 import Dental from './components/Dental'
 import Summary from './components/Summary'
 
+const logonUser = () => JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE))
+
 const Report = (props) => {
+    // ToDo move to utils
+    const email = useCallback(() => (logonUser() ? logonUser().email : false), [])
+
+    const firebase = useContext(FirebaseContext)
+
     const maxStep = 4
     const [step, setStep] = useState(0)
+
     // Personal
     const [firstName, setFirstName] = useState('')
     const [familyName, setFamilyName] = useState('')
@@ -331,7 +340,73 @@ const Report = (props) => {
                             <Button
                               variant="contained"
                               color="primary"
-                              onClick={() => setStep(step + 1)}
+                              onClick={() => {
+                                    setStep(step + 1)
+                                    firebase.patientCollection(email(), {
+                                        // Personal
+                                        firstName,
+                                        familyName,
+                                        selectedDate,
+                                        postcode,
+                                        gender,
+                                        otherGender,
+                                        contactNumber,
+                                        organisation,
+                                        //
+                                        medicare,
+                                        individualNumber,
+                                        expiredDate,
+                                        privateInsurance,
+                                        privateInsuranceOther,
+                                        includeDental,
+                                        // Lifestyle
+                                        smoker,
+                                        softDrinks,
+                                        alcohol,
+                                        // Dental
+                                        brush,
+                                        floss,
+                                        visitDentist,
+                                        comfortable,
+                                        breath,
+                                        bleedingGum,
+                                        cosmetic,
+                                        teethPain,
+                                        gumPain,
+                                        grinding,
+                                        damagedTeeth,
+                                        sore,
+                                        oldFillings,
+                                        dentures,
+                                        loose,
+                                        painTopRight,
+                                        painTopCenter,
+                                        painTopLeft,
+                                        painBottomRight,
+                                        painBottomCenter,
+                                        painBottomLeft,
+                                        // Medical
+                                        bloodDiseases,
+                                        pregnant,
+                                        allergies,
+                                        allergiesList,
+                                        heartConditions,
+                                        breathingProblems,
+                                        bloodDisorders,
+                                        boneDisease,
+                                        cancer,
+                                        diabetes,
+                                        stroke,
+                                        pacemaker,
+                                        otherConditions,
+                                        otherConditionsList,
+                                        // Summary
+                                        research,
+                                        policy,
+
+                                    })
+                                }
+                                }
                             >
                                 Submit
                             </Button>
