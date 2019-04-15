@@ -91,7 +91,7 @@ const Summary = ({
             </Typography>
 
             <Typography variant="body2">
-                Let's take one last look over your information before we submit it
+                {'Let\'s take one last look over your information before we submit it'}
             </Typography>
 
             <Typography variant="h5">
