@@ -82,7 +82,7 @@ const Report = (props) => {
 
     const steper = (n) => {
         switch (n) {
-            case 5:
+            case 0:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Personal {...{
@@ -119,7 +119,7 @@ const Report = (props) => {
                         />
                     </MuiPickersUtilsProvider>
                 )
-            case 8:
+            case 1:
                 return (
                     <Lifestyle {...{
                         smoker,
@@ -131,7 +131,7 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 0:
+            case 2:
                 return (
                     <Dental {...{
                         brush,
@@ -180,7 +180,7 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 9:
+            case 3:
                 return (
                     <Medical {...{
                         bloodDiseases,
@@ -214,7 +214,7 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 1:
+            case 4:
                 return (
                     <Summary {...{
                         // Personal

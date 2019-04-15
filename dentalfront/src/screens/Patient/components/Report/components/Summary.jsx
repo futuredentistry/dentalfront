@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { format } from 'date-fns'
 import Typography from '@material-ui/core/Typography'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
 
 // ToDo move to utils
 const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1)
@@ -58,6 +60,12 @@ const Summary = ({
     pacemaker,
     otherConditions,
     otherConditionsList,
+
+    // Summary
+    research,
+    setResearch,
+    policy,
+    setPolicy,
 }) => {
     const conditionsMedical = [
         heartConditions,
@@ -241,6 +249,30 @@ const Summary = ({
                 <br />
             </Typography>
 
+
+            <FormControlLabel
+              control={(
+                    <Checkbox
+                      checked={research}
+                      onChange={() => setResearch(!research)}
+                      color="primary"
+                    />
+                )}
+              label="I am happy for images of my teeth to be separated from my personal information for use in research"
+            />
+
+            <FormControlLabel
+              control={(
+                    <Checkbox
+                      checked={policy}
+                      onChange={() => setPolicy(!policy)}
+                      color="primary"
+                    />
+                )}
+              label="By submitting this form you agree to our terms and conditions and privacy policy"
+            />
+
+
         </div>
     )
 }
@@ -249,7 +281,7 @@ Summary.propTypes = {
     // Personal
     firstName: PropTypes.string.isRequired,
     familyName: PropTypes.string.isRequired,
-    selectedDate: PropTypes.string,
+    selectedDate: PropTypes.instanceOf(Date),
     postcode: PropTypes.string.isRequired,
     gender: PropTypes.string.isRequired,
     otherGender: PropTypes.string.isRequired,
@@ -297,6 +329,12 @@ Summary.propTypes = {
     pacemaker: PropTypes.bool.isRequired,
     otherConditions: PropTypes.bool.isRequired,
     otherConditionsList: PropTypes.string.isRequired,
+
+    // Summary
+    research: PropTypes.bool.isRequired,
+    setResearch: PropTypes.func.isRequired,
+    policy: PropTypes.bool.isRequired,
+    setPolicy: PropTypes.func.isRequired,
 }
 
 Summary.defaultProps = {
