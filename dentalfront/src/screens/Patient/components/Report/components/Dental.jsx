@@ -45,24 +45,37 @@ const Dental = ({
         <FormLabel component="legend">How frequently do you brush?</FormLabel>
         <RadioGroup
           row
+          style={{ flexWrap: 'inherit' }}
           aria-label="brush"
           name="brush"
           value={brush}
           onChange={e => setBrush(e.currentTarget.value)}
         >
           <FormControlLabel
+            style={{
+              flexBasis: '33%',
+              flexGrow: 0,
+            }}
             labelPlacement="top"
             value="less than once a week"
             control={<Radio color="primary" />}
             label="Less than once a week"
           />
           <FormControlLabel
+            style={{
+              flexBasis: '33%',
+              flexGrow: 0,
+            }}
             labelPlacement="top"
             value="every few days"
             control={<Radio color="primary" />}
             label="Every few days"
           />
           <FormControlLabel
+            style={{
+              flexBasis: '33%',
+              flexGrow: 0,
+            }}
             labelPlacement="top"
             value="daily"
             control={<Radio color="primary" />}
@@ -75,24 +88,37 @@ const Dental = ({
         <FormLabel component="legend">How frequently do you floss?</FormLabel>
         <RadioGroup
           row
+          style={{ flexWrap: 'inherit' }}
           aria-label="floss"
           name="floss"
           value={floss}
           onChange={e => setFloss(e.currentTarget.value)}
         >
           <FormControlLabel
+            style={{
+              flexBasis: '33%',
+              flexGrow: 0,
+            }}
             labelPlacement="top"
             value="less than once a week"
             control={<Radio color="primary" />}
             label="Less than once a week"
           />
           <FormControlLabel
+            style={{
+              flexBasis: '33%',
+              flexGrow: 0,
+            }}
             labelPlacement="top"
             value="every few days"
             control={<Radio color="primary" />}
             label="Every few days"
           />
           <FormControlLabel
+            style={{
+              flexBasis: '33%',
+              flexGrow: 0,
+            }}
             labelPlacement="top"
             value="daily"
             control={<Radio color="primary" />}
@@ -105,24 +131,40 @@ const Dental = ({
         <FormLabel component="legend">How frequently do you visit the dentist?</FormLabel>
         <RadioGroup
           row
+          style={{
+            flexWrap: 'inherit',
+          }}
           aria-label="visitDentist"
           name="visitDentist"
           value={visitDentist}
           onChange={e => setVisitDentist(e.currentTarget.value)}
+
         >
           <FormControlLabel
+            style={{
+              flexBasis: '33%',
+              flexGrow: 0,
+            }}
             labelPlacement="top"
             value="less than every 3 years"
             control={<Radio color="primary" />}
             label="Less than every 3 years"
           />
           <FormControlLabel
+            style={{
+              flexBasis: '33%',
+              flexGrow: 0,
+            }}
             labelPlacement="top"
             value="every 1-3 years"
             control={<Radio color="primary" />}
             label="Every 1-3 years"
           />
           <FormControlLabel
+            style={{
+              flexBasis: '33%',
+              flexGrow: 0,
+            }}
             labelPlacement="top"
             value="at least every year"
             control={<Radio color="primary" />}
