@@ -102,7 +102,7 @@ const Summary = ({
                 {'Let\'s take one last look over your information before we submit it'}
             </Typography>
 
-            <Typography variant="h5">
+            <Typography variant="h4">
                 Personal
             </Typography>
             <Typography variant="body1">
@@ -149,7 +149,7 @@ const Summary = ({
 
             </Typography>
 
-            <Typography variant="h5">
+            <Typography variant="h4">
                 Lifestyle
             </Typography>
 
@@ -167,7 +167,7 @@ const Summary = ({
                 <br />
             </Typography>
 
-            <Typography variant="h5">
+            <Typography variant="h4">
                 Dental
             </Typography>
 
@@ -209,7 +209,7 @@ const Summary = ({
                 <br />
             </Typography>
 
-            <Typography variant="h5">
+            <Typography variant="h4">
                 Medical
             </Typography>
 

@@ -27,6 +27,12 @@ const MiuiTheme = {
         textAlign: 'center',
         letterSpacing: '0.25px',
       },
+      h5: {
+        fontWeight: 300,
+        fontSize: '24px',
+        lineHeight: 'normal',
+        textAlign: 'center',
+      },
       subtitle1: {
         fontSize: '14px',
         fontWeight: 'bold',
