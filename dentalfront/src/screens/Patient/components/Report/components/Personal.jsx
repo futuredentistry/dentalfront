@@ -92,6 +92,7 @@ const Personal = ({
           onChange={handleDateChange}
           disableOpenOnEnter
           animateYearScrolling={false}
+          maxDate={new Date()}
         />
       </div>
 
@@ -190,6 +191,7 @@ const Personal = ({
           onChange={handleExpiredChange}
           disableOpenOnEnter
           animateYearScrolling={false}
+          minDate={new Date()}
         />
       </div>
 
