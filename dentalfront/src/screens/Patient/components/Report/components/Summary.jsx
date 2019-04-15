@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1)
 
 const Summary = ({
-    // Personal
+
     firstName,
     familyName,
     selectedDate,
@@ -26,6 +26,23 @@ const Summary = ({
     softDrinks,
     alcohol,
 
+    // Dental
+    brush,
+    floss,
+    visitDentist,
+    comfortable,
+    breath,
+    bleedingGum,
+    cosmetic,
+    teethPain,
+    gumPain,
+    grinding,
+    damagedTeeth,
+    sore,
+    oldFillings,
+    dentures,
+    loose,
+
     // Medical
     bloodDiseases,
     pregnant,
@@ -42,7 +59,7 @@ const Summary = ({
     otherConditions,
     otherConditionsList,
 }) => {
-    const conditions = [
+    const conditionsMedical = [
         heartConditions,
         breathingProblems,
         bloodDisorders,
@@ -54,7 +71,19 @@ const Summary = ({
         otherConditions,
         otherConditionsList,
     ]
-    console.log('')
+    const conditionsDental = [
+        breath,
+        bleedingGum,
+        cosmetic,
+        teethPain,
+        gumPain,
+        grinding,
+        damagedTeeth,
+        sore,
+        oldFillings,
+        dentures,
+        loose,
+    ]
     return (
         <div>
             <Typography variant="h4">
@@ -134,6 +163,44 @@ const Summary = ({
                 Dental
             </Typography>
 
+            <Typography variant="body1">
+
+                {'You superstar, you '}
+                <b>{`brush your teeth ${brush}`}</b>
+                <br />
+
+                {'You also '}
+                <b>{`floss ${floss}`}</b>
+                <br />
+
+                {'You visit the dentist '}
+                <b>{visitDentist}</b>
+                <br />
+
+                {'You'}
+                <b>{` ${comfortable === 'yes' ? ' are ' : 'are un'}comfortable with dental procedures`}</b>
+                <br />
+
+                {`and you ${conditionsDental.some(item => item)
+                    ? 'you have concerns about your'
+                    : 'not have any concerns'}`}
+                <b>
+                    {breath && ' bad breath'}
+                    {bleedingGum && ', bleeding gum'}
+                    {cosmetic && ', cosmetic issues'}
+                    {teethPain && ', teeth pain'}
+                    {gumPain && ', gum pain'}
+                    {grinding && ', grinding'}
+                    {damagedTeeth && ', damaged teeth'}
+                    {sore && ', ulcers, lumps or sores'}
+                    {oldFillings && ', old fillings'}
+                    {dentures && ', dentures'}
+                    {loose && ', loose tooth'}
+                </b>
+                .
+                <br />
+            </Typography>
+
             <Typography variant="h5">
                 Medical
             </Typography>
@@ -156,7 +223,7 @@ const Summary = ({
                 </b>
                 <br />
 
-                {`and you ${conditions.some(item => item)
+                {`and you ${conditionsMedical.some(item => item)
                     ? ' do have some existing conditions, including'
                     : ' do not have any existing conditions.'}`}
                 <b>
@@ -197,6 +264,23 @@ Summary.propTypes = {
     smoker: PropTypes.string.isRequired,
     softDrinks: PropTypes.string.isRequired,
     alcohol: PropTypes.string.isRequired,
+
+    // Dental
+    brush: PropTypes.string.isRequired,
+    floss: PropTypes.string.isRequired,
+    visitDentist: PropTypes.string.isRequired,
+    comfortable: PropTypes.string.isRequired,
+    breath: PropTypes.bool.isRequired,
+    bleedingGum: PropTypes.bool.isRequired,
+    cosmetic: PropTypes.bool.isRequired,
+    teethPain: PropTypes.bool.isRequired,
+    gumPain: PropTypes.bool.isRequired,
+    grinding: PropTypes.bool.isRequired,
+    damagedTeeth: PropTypes.bool.isRequired,
+    sore: PropTypes.bool.isRequired,
+    oldFillings: PropTypes.bool.isRequired,
+    dentures: PropTypes.bool.isRequired,
+    loose: PropTypes.bool.isRequired,
 
     // Medical
     bloodDiseases: PropTypes.string.isRequired,

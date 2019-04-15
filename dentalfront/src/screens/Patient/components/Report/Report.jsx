@@ -42,17 +42,17 @@ const Report = (props) => {
     const [floss, setFloss] = useState('every few days')
     const [visitDentist, setVisitDentist] = useState('every 1-3 years')
     const [comfortable, setComfortable] = useState('yes')
-    const [dentalCornersBreath, setDentalCornersBreath] = useState(false)
-    const [dentalCornersBleedingGum, setDentalCornersBleedingGum] = useState(false)
-    const [dentalCornersCosmetic, setDentalCornersCosmetic] = useState(false)
-    const [dentalCornersTeethPain, setDentalCornersTeethPain] = useState(false)
-    const [dentalCornersGumPain, setDentalCornersGumPain] = useState(false)
-    const [dentalCornersGrinding, setDentalCornersGrinding] = useState(false)
-    const [dentalCornersDamagedTeeth, setDentalCornersDamagedTeeth] = useState(false)
-    const [dentalCornersSore, setDentalCornersSore] = useState(false)
-    const [dentalCornersOldFillings, setDentalCornersOldFillings] = useState(false)
-    const [dentalCornersDentures, setDentalCornersDentures] = useState(false)
-    const [dentalCornersLoose, setDentalCornersLoose] = useState(false)
+    const [breath, setbreath] = useState(false)
+    const [bleedingGum, setbleedingGum] = useState(false)
+    const [cosmetic, setcosmetic] = useState(false)
+    const [teethPain, setteethPain] = useState(false)
+    const [gumPain, setgumPain] = useState(false)
+    const [grinding, setgrinding] = useState(false)
+    const [damagedTeeth, setdamagedTeeth] = useState(false)
+    const [sore, setsore] = useState(false)
+    const [oldFillings, setoldFillings] = useState(false)
+    const [dentures, setdentures] = useState(false)
+    const [loose, setloose] = useState(false)
     const [painTopRight, setPainTopRight] = useState(false)
     const [painTopCenter, setPainTopCenter] = useState(false)
     const [painTopLeft, setPainTopLeft] = useState(false)
@@ -131,7 +131,7 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 2:
+            case 0:
                 return (
                     <Dental {...{
                         brush,
@@ -142,28 +142,28 @@ const Report = (props) => {
                         setVisitDentist,
                         comfortable,
                         setComfortable,
-                        dentalCornersBreath,
-                        setDentalCornersBreath,
-                        dentalCornersBleedingGum,
-                        setDentalCornersBleedingGum,
-                        dentalCornersCosmetic,
-                        setDentalCornersCosmetic,
-                        dentalCornersTeethPain,
-                        setDentalCornersTeethPain,
-                        dentalCornersGumPain,
-                        setDentalCornersGumPain,
-                        dentalCornersGrinding,
-                        setDentalCornersGrinding,
-                        dentalCornersDamagedTeeth,
-                        setDentalCornersDamagedTeeth,
-                        dentalCornersSore,
-                        setDentalCornersSore,
-                        dentalCornersOldFillings,
-                        setDentalCornersOldFillings,
-                        dentalCornersDentures,
-                        setDentalCornersDentures,
-                        dentalCornersLoose,
-                        setDentalCornersLoose,
+                        breath,
+                        setbreath,
+                        bleedingGum,
+                        setbleedingGum,
+                        cosmetic,
+                        setcosmetic,
+                        teethPain,
+                        setteethPain,
+                        gumPain,
+                        setgumPain,
+                        grinding,
+                        setgrinding,
+                        damagedTeeth,
+                        setdamagedTeeth,
+                        sore,
+                        setsore,
+                        oldFillings,
+                        setoldFillings,
+                        dentures,
+                        setdentures,
+                        loose,
+                        setloose,
                         painTopRight,
                         setPainTopRight,
                         painTopCenter,
@@ -180,7 +180,7 @@ const Report = (props) => {
                     }}
                     />
                 )
-            case 0:
+            case 9:
                 return (
                     <Medical {...{
                         bloodDiseases,
@@ -217,6 +217,7 @@ const Report = (props) => {
             case 1:
                 return (
                     <Summary {...{
+                        // Personal
                         firstName,
                         familyName,
                         selectedDate,
@@ -229,15 +230,29 @@ const Report = (props) => {
                         privateInsuranceOther,
                         includeDental,
 
+                        // Lifestyle
                         smoker,
                         softDrinks,
                         alcohol,
 
-                        research,
-                        setResearch,
-                        policy,
-                        setPolicy,
+                        // Dental
+                        brush,
+                        floss,
+                        visitDentist,
+                        comfortable,
+                        breath,
+                        bleedingGum,
+                        cosmetic,
+                        teethPain,
+                        gumPain,
+                        grinding,
+                        damagedTeeth,
+                        sore,
+                        oldFillings,
+                        dentures,
+                        loose,
 
+                        // Medical
                         bloodDiseases,
                         pregnant,
                         allergies,
@@ -252,6 +267,12 @@ const Report = (props) => {
                         pacemaker,
                         otherConditions,
                         otherConditionsList,
+
+                        // Summary
+                        research,
+                        setResearch,
+                        policy,
+                        setPolicy,
                     }}
                     />
                 )
