@@ -6,6 +6,7 @@ import { MuiPickersUtilsProvider } from 'material-ui-pickers'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import Success from './components/Success'
 import Medical from './components/Medical'
 import Personal from './components/Personal'
 import Lifestyle from './components/Lifestyle'
@@ -277,13 +278,15 @@ const Report = (props) => {
                     />
                 )
             default:
-                return null
+                return <Success />
         }
     }
 
     return (
         <>
-            <LinearProgress color="primary" variant="determinate" value={step * 100 / 4} />
+            {
+                step <= maxStep && <LinearProgress color="primary" variant="determinate" value={step * 100 / 4} />
+            }
 
             {steper(step)}
 
