@@ -38,20 +38,6 @@ const MiuiTheme = {
         textAlign: 'center',
       },
     },
-    MuiFab: {
-      root: {
-        height: 125,
-        width: 125,
-      },
-      sizeSmall: {
-        height: 40,
-        width: 40,
-      },
-      sizeMedium: {
-        height: 75,
-        width: 75,
-      },
-    },
     MuiButton: {
       root: {
         marginBlockEnd: '10px',
@@ -111,10 +97,14 @@ const MiuiTheme = {
         color: '#8996a6',
       },
     },
-
     MuiInput: {
       underline: {
         borderBottom: '2px solid #824fa0',
+      },
+    },
+    MuiFormControlLabel: {
+      root: {
+        marginLeft: 'inherit!important',
       },
     },
   },
