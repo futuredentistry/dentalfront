@@ -282,15 +282,14 @@ const Report = (props) => {
     }
 
     return (
-        <div>
+        <>
             <LinearProgress color="primary" variant="determinate" value={step * 100 / 4} />
-            Report
 
             {steper(step)}
 
             <Grid
               container
-              spacing={8}
+              spacing={0}
               direction="row"
               justify="center"
               alignItems="center"
@@ -338,7 +337,7 @@ const Report = (props) => {
                 }
             </Grid>
 
-        </div>
+        </>
     )
 }
 
