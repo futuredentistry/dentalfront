@@ -45,7 +45,6 @@ const Personal = ({
   selectedDate, handleDateChange,
   postcode, setPostcode,
   gender, setGender,
-  otherGender, setOtherGender,
   contactNumber, setContactNumber,
   organisation, setOrganisation,
   //
@@ -120,18 +119,6 @@ const Personal = ({
           <FormControlLabel value="other" control={<Radio color="primary" />} label="Other" />
         </RadioGroup>
       </FormControl>
-
-      {
-        gender === 'other' && (
-          <TextField
-            label="Other gender"
-            value={otherGender}
-            onChange={e => setOtherGender(e.currentTarget.value)}
-            margin="normal"
-            variant="filled"
-          />
-        )
-      }
 
       <TextField
         label="Contact number"
@@ -240,8 +227,6 @@ Personal.propTypes = {
   setPostcode: PropTypes.func.isRequired,
   gender: PropTypes.string.isRequired,
   setGender: PropTypes.func.isRequired,
-  otherGender: PropTypes.string.isRequired,
-  setOtherGender: PropTypes.func.isRequired,
   contactNumber: PropTypes.string.isRequired,
   setContactNumber: PropTypes.func.isRequired,
   organisation: PropTypes.string.isRequired,

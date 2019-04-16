@@ -31,7 +31,6 @@ const Report = (props) => {
     const [selectedDate, handleDateChange] = useState(null)
     const [postcode, setPostcode] = useState('')
     const [gender, setGender] = useState('male')
-    const [otherGender, setOtherGender] = useState('')
     const [contactNumber, setContactNumber] = useState('')
     const [organisation, setOrganisation] = useState('')
     //
@@ -106,8 +105,6 @@ const Report = (props) => {
                             setPostcode,
                             gender,
                             setGender,
-                            otherGender,
-                            setOtherGender,
                             contactNumber,
                             setContactNumber,
                             organisation,
@@ -233,7 +230,6 @@ const Report = (props) => {
                         selectedDate,
                         postcode,
                         gender,
-                        otherGender,
                         contactNumber,
                         medicare,
                         privateInsurance,
@@ -349,7 +345,6 @@ const Report = (props) => {
                                         selectedDate,
                                         postcode,
                                         gender,
-                                        otherGender,
                                         contactNumber,
                                         organisation,
                                         //

@@ -15,7 +15,6 @@ const Summary = ({
     selectedDate,
     postcode,
     gender,
-    otherGender,
     // email,
     contactNumber,
     medicare,
@@ -118,8 +117,8 @@ const Summary = ({
                 <b>{` ${postcode}`}</b>
                 <br />
 
-                {'You identify yourself as a '}
-                <b>{` ${otherGender || gender}`}</b>
+                {'You identify yourself as '}
+                <b>{` ${gender === 'other' ? 'an ' : 'a '}${gender}`}</b>
                 <br />
 
                 {/* {'Your email is'}
@@ -284,7 +283,6 @@ Summary.propTypes = {
     selectedDate: PropTypes.instanceOf(Date),
     postcode: PropTypes.string.isRequired,
     gender: PropTypes.string.isRequired,
-    otherGender: PropTypes.string.isRequired,
     contactNumber: PropTypes.string.isRequired,
     medicare: PropTypes.string.isRequired,
     privateInsurance: PropTypes.string.isRequired,
