@@ -113,6 +113,14 @@ const MiuiTheme = {
         marginLeft: 'inherit!important',
       },
     },
+    MuiListItem: {
+      root: {
+
+        paddingBottom: 0,
+        paddingTop: 0,
+
+      },
+    },
   },
 }
 export default MiuiTheme

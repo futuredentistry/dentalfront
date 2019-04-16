@@ -136,10 +136,9 @@ const Personal = ({
           if (key === 8 || key === 46) return setMedicare('')
           return null
         }}
-        onChange={(e) => {
-          /^(\d)$/.test(e.currentTarget.value.slice(-1))
-            && setMedicare(medicare + e.currentTarget.value.slice(-1))
-        }}
+        // eslint-disable-next-line max-len
+        onChange={e => /^(\d)$/.test(e.currentTarget.value.slice(-1)) && setMedicare(medicare + e.currentTarget.value.slice(-1))
+        }
         margin="normal"
         variant="filled"
       />
