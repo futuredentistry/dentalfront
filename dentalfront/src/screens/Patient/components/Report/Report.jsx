@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider } from 'material-ui-pickers'
 
@@ -16,7 +16,7 @@ import Summary from './components/Summary'
 
 const logonUser = () => JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE))
 
-const Report = (props) => {
+const Report = () => {
     // ToDo move to utils
     const email = useCallback(() => (logonUser() ? logonUser().email : false), [])
 
@@ -414,8 +414,8 @@ const Report = (props) => {
     )
 }
 
-Report.propTypes = {
+// Report.propTypes = {
 
-}
+// }
 
 export default Report

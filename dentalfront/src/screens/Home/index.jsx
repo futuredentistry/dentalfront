@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import React from 'react'
+import { Route } from 'react-router-dom'
 
 import * as ROUTES from 'modules/constants/routes'
 import Home from './Home'

@@ -1,12 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Route, Switch } from 'react-router-dom'
+// import PropTypes from 'prop-types'
+import { Route } from 'react-router-dom'
 
 import * as ROUTES from 'modules/constants/routes'
 import Patient from './Patient'
 import Report from './components/Report'
 
-const PatientRouter = ({ match: { path }, location: { pathname } }) => (
+const PatientRouter = () => (
     <Route
       path={ROUTES.HOME}
       render={() => (
@@ -21,12 +21,7 @@ const PatientRouter = ({ match: { path }, location: { pathname } }) => (
 )
 
 PatientRouter.propTypes = {
-    match: PropTypes.shape({
-        path: PropTypes.string.isRequired,
-    }).isRequired,
-    location: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-    }).isRequired,
+
 }
 
 export default PatientRouter

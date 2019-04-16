@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react'
-import ReactRouterPropTypes from 'react-router-prop-types'
+// import ReactRouterPropTypes from 'react-router-prop-types'
 import { Button } from '@material-ui/core'
 import Dialog from 'ui/Dialog'
 import Typography from '@material-ui/core/Typography'
 
-import * as ROUTES from 'modules/constants/routes'
+// import * as ROUTES from 'modules/constants/routes'
 import FirebaseContext from 'modules/Firebase'
 
-const ConfirmEmail = ({ history }) => {
+const ConfirmEmail = () => {
     const firebase = useContext(FirebaseContext)
     const [open, setModalOpen] = useState(false)
     return (
@@ -47,7 +47,7 @@ const ConfirmEmail = ({ history }) => {
 }
 
 ConfirmEmail.propTypes = {
-    history: ReactRouterPropTypes.history.isRequired,
+    // history: ReactRouterPropTypes.history.isRequired,
 }
 
 export default ConfirmEmail

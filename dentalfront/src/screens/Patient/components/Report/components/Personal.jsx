@@ -12,33 +12,6 @@ import Typography from '@material-ui/core/Typography'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 
-
-// ToDo move to utils and use to validate next button
-const validateMedicare = (medicare) => {
-  let isValid = false
-
-  if (medicare && medicare.length === 10) {
-    const matches = medicare.match(/^(\d{8})(\d)/)
-
-    if (!matches) {
-      return { invalid: true }
-    }
-
-    const base = matches[1]
-    const checkDigit = matches[2]
-    const weights = [1, 3, 7, 9, 1, 3, 7, 9]
-
-    let sum = 0
-    for (let i = 0; i < weights.length; i++) {
-      sum += parseInt(base[i], 10) * weights[i]
-    }
-
-    isValid = sum % 10 === parseInt(checkDigit, 10)
-  }
-
-  return isValid
-}
-
 const Personal = ({
   firstName, setFirstName,
   familyName, setFamilyName,
@@ -55,7 +28,13 @@ const Personal = ({
   privateInsuranceOther, setPrivateInsuranceOther,
   includeDental, setInscludeDental,
 }) => {
-  console.log('')
+  const display = medicare !== '' ? [...medicare].map((char, i) => {
+    if (i === 4) return ` ${char}`
+    if (i === 9) return ` ${char}`
+    if (i === 10) return `-${char}`
+    return char
+  }).join('') : ''
+
   return (
     <>
       <Typography variant="h4">
@@ -145,12 +124,22 @@ const Personal = ({
 
       <TextField
         label="Medicare"
-        value={medicare}
-        error={!validateMedicare(medicare) && medicare !== ''}
+        value={display}
+        // value={medicare}
+        error={!/^[2-6]\d{3}[ ]?\d{5}[ ]?\d{1}[- ]?\d?$/.test(display) && medicare !== ''}
+        // error={!validateMedicare(medicare) && medicare !== ''}
         inputProps={
-          { maxLength: 10 }
+          { maxLength: 14 }
         }
-        onChange={e => /^(\s*|\d+)$/.test(e.currentTarget.value) && setMedicare(e.currentTarget.value)}
+        onKeyDown={(e) => {
+          const key = e.keyCode || e.charCode
+          if (key === 8 || key === 46) return setMedicare('')
+          return null
+        }}
+        onChange={(e) => {
+          /^(\d)$/.test(e.currentTarget.value.slice(-1))
+            && setMedicare(medicare + e.currentTarget.value.slice(-1))
+        }}
         margin="normal"
         variant="filled"
       />
