@@ -115,10 +115,16 @@ const MiuiTheme = {
     },
     MuiListItem: {
       root: {
-
         paddingBottom: 0,
         paddingTop: 0,
-
+      },
+    },
+    MuiFormHelperText: {
+      root: {
+        width: '90%',
+        marginLeft: '5%',
+        marginRight: '5%',
+        marginTop: 0,
       },
     },
   },

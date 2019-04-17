@@ -11,8 +11,13 @@ import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
+import FormHelperText from '@material-ui/core/FormHelperText'
+
+import 'modules/styles/datePicker.scss'
 
 const Personal = ({
+  validFormStep,
+
   firstName, setFirstName,
   familyName, setFamilyName,
   selectedDate, handleDateChange,
@@ -42,6 +47,7 @@ const Personal = ({
       </Typography>
 
       <TextField
+        error={validFormStep && firstName === ''}
         label="First name"
         value={firstName}
         onChange={e => setFirstName(e.currentTarget.value)}
@@ -49,14 +55,17 @@ const Personal = ({
         margin="normal"
         variant="filled"
       />
+      {validFormStep && firstName === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
 
       <TextField
+        error={validFormStep && familyName === ''}
         label="Family name"
         value={familyName}
         onChange={e => setFamilyName(e.currentTarget.value)}
         margin="normal"
         variant="filled"
       />
+      {validFormStep && familyName === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
 
 
       <div className="picker">
@@ -73,8 +82,10 @@ const Personal = ({
           maxDate={new Date()}
         />
       </div>
+      {validFormStep && selectedDate === null && <FormHelperText error>Please fill out this field</FormHelperText>}
 
       <TextField
+        error={validFormStep && postcode === ''}
         label="Postcode"
         value={postcode}
         inputProps={
@@ -84,6 +95,7 @@ const Personal = ({
         margin="normal"
         variant="filled"
       />
+      {validFormStep && postcode === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
 
       <FormControl component="fieldset">
         <FormLabel component="legend">Which gender do you most identify with?</FormLabel>
@@ -100,6 +112,7 @@ const Personal = ({
       </FormControl>
 
       <TextField
+        error={validFormStep && contactNumber === ''}
         label="Contact number"
         value={contactNumber}
         inputProps={
@@ -109,14 +122,17 @@ const Personal = ({
         margin="normal"
         variant="filled"
       />
+      {validFormStep && contactNumber === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
 
       <TextField
+        error={validFormStep && organisation === ''}
         label="Which organisation are you part of?"
         value={organisation}
         onChange={e => setOrganisation(e.currentTarget.value)}
         margin="normal"
         variant="filled"
       />
+      {validFormStep && organisation === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
 
       <Typography variant="h4">
         Do you have health care?
@@ -125,9 +141,10 @@ const Personal = ({
       <TextField
         label="Medicare"
         value={display}
-        // value={medicare}
-        error={!/^[2-6]\d{3}[ ]?\d{5}[ ]?\d{1}[- ]?\d?$/.test(display) && medicare !== ''}
-        // error={!validateMedicare(medicare) && medicare !== ''}
+        error={
+          (!/^[2-6]\d{3}[ ]?\d{5}[ ]?\d{1}[- ]?\d?$/.test(display) && medicare !== '')
+          || (validFormStep && medicare === '')
+        }
         inputProps={
           { maxLength: 14 }
         }
@@ -142,8 +159,10 @@ const Personal = ({
         margin="normal"
         variant="filled"
       />
+      {validFormStep && medicare === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
 
       <TextField
+        error={validFormStep && individualNumber === ''}
         label="Individual number"
         value={individualNumber}
         inputProps={
@@ -153,7 +172,7 @@ const Personal = ({
         margin="normal"
         variant="filled"
       />
-
+      {validFormStep && individualNumber === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
 
       <div className="picker">
         <DatePicker
@@ -169,6 +188,7 @@ const Personal = ({
           minDate={new Date()}
         />
       </div>
+      {validFormStep && expiredDate === null && <FormHelperText error>Please fill out this field</FormHelperText>}
 
       <TextField
         label="Private health insurance or other"
@@ -192,7 +212,6 @@ const Personal = ({
             <Checkbox
               checked={includeDental}
               onChange={() => setInscludeDental(!includeDental)}
-
               color="primary"
             />
           )}
@@ -205,6 +224,7 @@ const Personal = ({
 }
 
 Personal.propTypes = {
+  validFormStep: PropTypes.bool.isRequired,
   firstName: PropTypes.string.isRequired,
   setFirstName: PropTypes.func.isRequired,
   familyName: PropTypes.string.isRequired,

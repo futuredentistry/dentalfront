@@ -17,6 +17,8 @@ import Summary from './components/Summary'
 const logonUser = () => JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE))
 
 const Report = () => {
+    const [validFormStep, setValidFormStep] = useState(false)
+
     // ToDo move to utils
     const email = useCallback(() => (logonUser() ? logonUser().email : false), [])
 
@@ -89,12 +91,36 @@ const Report = () => {
     const [research, setResearch] = useState(false)
     const [policy, setPolicy] = useState(false)
 
+    const formValidator = (n) => {
+        let valid = true
+        switch (n) {
+            case 0:
+                if (firstName === '') valid = false
+                if (familyName === '') valid = false
+                if (selectedDate === null) valid = false
+                if (postcode === '') valid = false
+                if (contactNumber === '') valid = false
+                if (organisation === '') valid = false
+                if (medicare === '') valid = false
+                if (individualNumber === '') valid = false
+                if (expiredDate === null) valid = false
+                return valid
+            case 3:
+                if (otherConditions && otherConditionsList === '') valid = false
+                return valid
+            default:
+                return valid
+        }
+    }
+
     const steper = (n) => {
         switch (n) {
             case 0:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Personal {...{
+                            validFormStep,
+
                             firstName,
                             setFirstName,
                             familyName,
@@ -190,6 +216,8 @@ const Report = () => {
             case 3:
                 return (
                     <Medical {...{
+                        validFormStep,
+
                         bloodDiseases,
                         setBloodDiseases,
                         pregnant,
@@ -320,7 +348,15 @@ const Report = () => {
                                 <Button
                                   variant="contained"
                                   color="primary"
-                                  onClick={() => setStep(step + 1)}
+                                  disabled={!formValidator(step) && validFormStep}
+                                  onClick={() => {
+                                        setValidFormStep(true)
+                                        if (formValidator(step)) {
+                                            setStep(step + 1)
+                                            setValidFormStep(false)
+                                        }
+                                    }
+                                    }
                                 >
                                     Next
                                 </Button>
@@ -336,6 +372,7 @@ const Report = () => {
                             <Button
                               variant="contained"
                               color="primary"
+                              disabled={!policy}
                               onClick={() => {
                                     setStep(step + 1)
                                     firebase.patientCollection(email(), {
