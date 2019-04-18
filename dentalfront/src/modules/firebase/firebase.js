@@ -106,11 +106,17 @@ class Firebase {
 
   // Report documents
   patientCollection = (email, report) => this.firestore
-      .collection('patient')
-      .doc(email)
-      .collection('report')
-      .doc(new Date().toISOString())
-      .set(report)
+    .collection('patient')
+    .doc(email)
+    .collection('report')
+    .doc(new Date().toISOString())
+    .set(report)
+
+  // Organisations documents
+  getOrganisationsCollection = () => this.firestore
+    .collection('form')
+    .doc('organisations')
+    .get()
 }
 
 export default Firebase

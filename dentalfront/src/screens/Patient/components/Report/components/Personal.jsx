@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { DatePicker } from 'material-ui-pickers'
 import Radio from '@material-ui/core/Radio'
@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormHelperText from '@material-ui/core/FormHelperText'
+
+import SelectOrganisation from 'ui/SelectOrganisation'
 
 import 'modules/styles/datePicker.scss'
 
@@ -42,6 +44,7 @@ const Personal = ({
 
   return (
     <>
+
       <Typography variant="h4">
         Getting to know you
       </Typography>
@@ -124,15 +127,7 @@ const Personal = ({
       />
       {validFormStep && contactNumber === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
 
-      <TextField
-        error={validFormStep && organisation === ''}
-        label="Which organisation are you part of?"
-        value={organisation}
-        onChange={e => setOrganisation(e.currentTarget.value)}
-        margin="normal"
-        variant="filled"
-      />
-      {validFormStep && organisation === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
+      <SelectOrganisation {...{ organisation, setOrganisation, validFormStep }} />
 
       <Typography variant="h4">
         Do you have health care?
