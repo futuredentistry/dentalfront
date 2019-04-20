@@ -15,7 +15,7 @@ const Summary = ({
 
     firstName,
     familyName,
-    selectedDate,
+    birthDate,
     postcode,
     gender,
     email,
@@ -113,7 +113,7 @@ const Summary = ({
                 <br />
 
                 {'You\'re born on the'}
-                <b>{` ${format(new Date(selectedDate), 'MM/dd/yyyy')}`}</b>
+                <b>{` ${format(new Date(birthDate), 'MM/dd/yyyy')}`}</b>
                 <br />
 
                 {'Your postcode is'}
@@ -417,7 +417,7 @@ Summary.propTypes = {
     // Personal
     firstName: PropTypes.string.isRequired,
     familyName: PropTypes.string.isRequired,
-    selectedDate: PropTypes.instanceOf(Date),
+    birthDate: PropTypes.instanceOf(Date),
     postcode: PropTypes.string.isRequired,
     gender: PropTypes.string.isRequired,
     contactNumber: PropTypes.string.isRequired,
@@ -473,7 +473,7 @@ Summary.propTypes = {
 }
 
 Summary.defaultProps = {
-    selectedDate: null,
+    birthDate: null,
 }
 
 export default Summary

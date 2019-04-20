@@ -31,7 +31,7 @@ const Report = () => {
     // Personal
     const [firstName, setFirstName] = useState('')
     const [familyName, setFamilyName] = useState('')
-    const [selectedDate, handleDateChange] = useState(null)
+    const [birthDate, handleDateBirthChange] = useState(null)
     const [postcode, setPostcode] = useState('')
     const [gender, setGender] = useState('male')
     const [contactNumber, setContactNumber] = useState('')
@@ -98,7 +98,7 @@ const Report = () => {
             case 0:
                 if (firstName === '') valid = false
                 if (familyName === '') valid = false
-                if (selectedDate === null) valid = false
+                if (birthDate === null) valid = false
                 if (postcode === '') valid = false
                 if (contactNumber === '') valid = false
                 if (organisation === '') valid = false
@@ -126,8 +126,8 @@ const Report = () => {
                             setFirstName,
                             familyName,
                             setFamilyName,
-                            selectedDate,
-                            handleDateChange,
+                            birthDate,
+                            handleDateBirthChange,
                             postcode,
                             setPostcode,
                             gender,
@@ -256,7 +256,7 @@ const Report = () => {
                         // Personal
                         firstName,
                         familyName,
-                        selectedDate,
+                        birthDate,
                         postcode,
                         gender,
                         contactNumber,
@@ -380,7 +380,7 @@ const Report = () => {
                                         // Personal
                                         firstName,
                                         familyName,
-                                        selectedDate,
+                                        birthDate,
                                         postcode,
                                         gender,
                                         contactNumber,

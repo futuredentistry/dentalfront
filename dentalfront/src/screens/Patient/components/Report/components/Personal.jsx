@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { DatePicker } from 'material-ui-pickers'
 import Radio from '@material-ui/core/Radio'
@@ -22,7 +22,7 @@ const Personal = ({
 
   firstName, setFirstName,
   familyName, setFamilyName,
-  selectedDate, handleDateChange,
+  birthDate, handleDateBirthChange,
   postcode, setPostcode,
   gender, setGender,
   contactNumber, setContactNumber,
@@ -78,14 +78,14 @@ const Personal = ({
           format="MM/dd/yyyy"
           mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])
           }
-          value={selectedDate}
-          onChange={handleDateChange}
+          value={birthDate}
+          onChange={handleDateBirthChange}
           disableOpenOnEnter
           animateYearScrolling={false}
           maxDate={new Date()}
         />
       </div>
-      {validFormStep && selectedDate === null && <FormHelperText error>Please fill out this field</FormHelperText>}
+      {validFormStep && birthDate === null && <FormHelperText error>Please fill out this field</FormHelperText>}
 
       <TextField
         error={validFormStep && postcode === ''}
@@ -224,8 +224,8 @@ Personal.propTypes = {
   setFirstName: PropTypes.func.isRequired,
   familyName: PropTypes.string.isRequired,
   setFamilyName: PropTypes.func.isRequired,
-  selectedDate: PropTypes.instanceOf(Date),
-  handleDateChange: PropTypes.func.isRequired,
+  birthDate: PropTypes.instanceOf(Date),
+  handleDateBirthChange: PropTypes.func.isRequired,
   postcode: PropTypes.string.isRequired,
   setPostcode: PropTypes.func.isRequired,
   gender: PropTypes.string.isRequired,
@@ -250,7 +250,7 @@ Personal.propTypes = {
 }
 
 Personal.defaultProps = {
-  selectedDate: null,
+  birthDate: null,
   expiredDate: null,
 }
 export default Personal
