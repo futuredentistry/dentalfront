@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 
-const SelectPatient = ({ waitingReport, patientFirstName }) => {
+const SelectPatient = ({ waitingReport, patientFirstName, nextStep }) => {
     const [dentistName] = useState('dentistName')
     return (
         <>
@@ -24,6 +25,15 @@ const SelectPatient = ({ waitingReport, patientFirstName }) => {
                         {capitalizeFirstLetter(patientFirstName)}
                     </Typography>
 
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => nextStep()
+
+                        }
+                    >
+                        Start Report
+                    </Button>
                 </>
             )}
 
@@ -36,10 +46,11 @@ const SelectPatient = ({ waitingReport, patientFirstName }) => {
 SelectPatient.propTypes = {
     waitingReport: PropTypes.bool.isRequired,
     patientFirstName: PropTypes.string,
+    nextStep: PropTypes.func.isRequired,
 }
 
 SelectPatient.defaultProps = {
-    firstName: null,
+    patientFirstName: null,
 }
 
 export default SelectPatient

@@ -57,6 +57,7 @@ const Dentist = () => {
                     <SelectPatient {...{
                         waitingReport,
                         patientFirstName: patient && patient.firstName,
+                        nextStep: () => setStep(1),
                     }}
                     />
                 )
