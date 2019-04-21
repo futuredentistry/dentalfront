@@ -299,7 +299,7 @@ const Summary = ({
                 <b>
                     {`${allergies === 'yes'
                         ? ` do have a serious allergy to ${allergiesList}`
-                        : ' have no blood diseases'}`}
+                        : ' have no allergies'}`}
 
                 </b>
                 <br />

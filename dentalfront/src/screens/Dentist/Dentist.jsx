@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useState } from 'react'
-// import PropTypes from 'prop-types'
 
 import * as STATUS from 'modules/constants/reportStatus'
 import FirebaseContext from 'modules/Firebase'
@@ -15,6 +14,7 @@ import Success from './components/Success'
 
 const Dentist = () => {
     const [patient, setPatient] = useState(null)
+    // console.log(patient && patient.birthDate)
     const [waitingReport, setWaitingReport] = useState(true)
     const firebase = useContext(FirebaseContext)
 
@@ -52,7 +52,7 @@ const Dentist = () => {
 
     const steper = (n) => {
         switch (n) {
-            case 0:
+            case 9:
                 return (
                     <SelectPatient {...{
                         waitingReport,
@@ -62,8 +62,51 @@ const Dentist = () => {
                     />
                 )
             case 1:
-                return (patient && <Patient />)
-            case 2:
+                return (patient && (
+                    <Patient {...{
+                        // About
+                        firstName: patient.firstName,
+                        birthDate: patient.birthDate,
+                        gender: patient.gender,
+                        medicare: patient.medicare,
+                        privateInsurance: patient.privateInsurance,
+                        privateInsuranceOther: patient.privateInsuranceOther,
+                        smoker: patient.smoker,
+                        softDrinks: patient.softDrinks,
+                        alcohol: patient.alcohol,
+                        // Dental
+                        brush: patient.brush,
+                        floss: patient.floss,
+                        visitDentist: patient.visitDentist,
+                        bloodDiseases: patient.bloodDiseases,
+                        allergies: patient.allergies,
+                        allergiesList: patient.allergiesList,
+                        heartConditions: patient.heartConditions,
+                        breathingProblems: patient.breathingProblems,
+                        bloodDisorders: patient.bloodDisorders,
+                        boneDisease: patient.boneDisease,
+                        cancer: patient.cancer,
+                        diabetes: patient.diabetes,
+                        stroke: patient.stroke,
+                        pacemaker: patient.pacemaker,
+                        otherConditions: patient.otherConditions,
+                        otherConditionsList: patient.otherConditionsList,
+                        breath: patient.breath,
+                        bleedingGum: patient.bleedingGum,
+                        cosmetic: patient.cosmetic,
+                        teethPain: patient.teethPain,
+                        gumPain: patient.gumPain,
+                        grinding: patient.grinding,
+                        damagedTeeth: patient.damagedTeeth,
+                        sore: patient.sore,
+                        oldFillings: patient.oldFillings,
+                        dentures: patient.dentures,
+                        loose: patient.loose,
+                    }}
+                    />
+                )
+                )
+            case 0:
                 return (
                     <Chart />
                 )

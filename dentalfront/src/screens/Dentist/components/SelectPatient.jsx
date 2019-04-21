@@ -12,7 +12,7 @@ const SelectPatient = ({ waitingReport, patientFirstName, nextStep }) => {
             <Typography variant="h4">
                 Welcome back
                         {' '}
-                {dentistName}
+                {capitalizeFirstLetter(dentistName)}
             </Typography>
 
             {waitingReport && (
