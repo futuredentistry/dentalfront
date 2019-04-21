@@ -25,10 +25,6 @@ export const SCREENER_COMPLETE = `${AFFILIATE}/completed`
 
 // Dentist
 export const DENTIST = '/dentist'
-export const PATIENT_REVIEW = `${DENTIST}/patient_review`
-export const DENTIST_CHART = `${DENTIST}/chart` // ToDO issue and image issue
-export const DENTAL_REPORT = `${DENTIST}/dental_report`
-export const DENTIST_COMPLETE = `${DENTIST}/completed`
 
 // Admin
 export const ADMIN = '/admin'

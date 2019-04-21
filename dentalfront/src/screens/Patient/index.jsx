@@ -16,8 +16,6 @@ const PatientRouter = () => (
             </>
         )}
     />
-
-
 )
 
 PatientRouter.propTypes = {

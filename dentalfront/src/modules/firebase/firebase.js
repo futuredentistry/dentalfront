@@ -59,11 +59,6 @@ class Firebase {
         .then((snapshot) => {
           const dbUser = snapshot.val()
 
-          // default empty roles
-          // if (!dbUser.role) {
-          //   dbUser.roles = ''
-          // }
-
           if (dbUser) {
             next({
               uid: authUser.uid,
@@ -71,7 +66,7 @@ class Firebase {
               emailVerified: authUser.emailVerified,
               ...dbUser,
             })
-          } // else { next(authUser) }
+          }
         })
     } else {
       fallback()
@@ -81,10 +76,6 @@ class Firebase {
   // *** User API ***
 
   user = uid => this.db.ref(`users/${uid}`)
-
-  // userCollection = uid => this.firestore.collection('users').doc(uid).set({
-  //   role: 'PATIENT',
-  // })
 
   // *** Change email/password API ***
   reauthenticate = (currentPassword) => {
@@ -105,18 +96,26 @@ class Firebase {
   }
 
   // Report documents
-  patientCollection = (email, report) => this.firestore
-    .collection('patient')
-    .doc(email)
-    .collection('report')
+  setPatientReport = report => this.firestore
+    .collection('reports')
     .doc(new Date().toISOString())
     .set(report)
+
 
   // Organisations documents
   getOrganisationsCollection = () => this.firestore
     .collection('form')
     .doc('organisations')
     .get()
+
+
+  getPatientReportsForDentist = () => this.firestore
+    .collection('reports')
+    .where('status', '==', 'IN_PROGRESS')
+    .limit(1)
+    .get()
+
+  updatePatientReport = patient => console.log(patient)
 }
 
 export default Firebase
