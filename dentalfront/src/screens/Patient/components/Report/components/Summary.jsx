@@ -8,8 +8,7 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
-// ToDo move to utils
-const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1)
+import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 
 const Summary = ({
 
@@ -202,77 +201,77 @@ const Summary = ({
                             {breath && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>bad breath</b>}
+                                      primary={<b>bad breath</b>}
                                     />
                                 </ListItem>
                             )}
                             {bleedingGum && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>bleeding gum</b>}
+                                      primary={<b>bleeding gum</b>}
                                     />
                                 </ListItem>
                             )}
                             {cosmetic && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>cosmetic issues</b>}
+                                      primary={<b>cosmetic issues</b>}
                                     />
                                 </ListItem>
                             )}
                             {teethPain && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>teeth pain</b>}
+                                      primary={<b>teeth pain</b>}
                                     />
                                 </ListItem>
                             )}
                             {gumPain && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>gum pain</b>}
+                                      primary={<b>gum pain</b>}
                                     />
                                 </ListItem>
                             )}
                             {grinding && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>grinding</b>}
+                                      primary={<b>grinding</b>}
                                     />
                                 </ListItem>
                             )}
                             {damagedTeeth && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>damaged teeth</b>}
+                                      primary={<b>damaged teeth</b>}
                                     />
                                 </ListItem>
                             )}
                             {sore && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>ulcers, lumps or sores</b>}
+                                      primary={<b>ulcers, lumps or sores</b>}
                                     />
                                 </ListItem>
                             )}
                             {oldFillings && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>old fillings</b>}
+                                      primary={<b>old fillings</b>}
                                     />
                                 </ListItem>
                             )}
                             {dentures && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>dentures</b>}
+                                      primary={<b>dentures</b>}
                                     />
                                 </ListItem>
                             )}
                             {loose && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>loose tooth</b>}
+                                      primary={<b>loose tooth</b>}
                                     />
                                 </ListItem>
                             )}
@@ -317,63 +316,63 @@ const Summary = ({
                             {heartConditions && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>heart conditions</b>}
+                                      primary={<b>heart conditions</b>}
                                     />
                                 </ListItem>
                             )}
                             {breathingProblems && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>breathing problems</b>}
+                                      primary={<b>breathing problems</b>}
                                     />
                                 </ListItem>
                             )}
                             {bloodDisorders && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>blood disorders</b>}
+                                      primary={<b>blood disorders</b>}
                                     />
                                 </ListItem>
                             )}
                             {boneDisease && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>bone disease</b>}
+                                      primary={<b>bone disease</b>}
                                     />
                                 </ListItem>
                             )}
                             {cancer && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>cancer</b>}
+                                      primary={<b>cancer</b>}
                                     />
                                 </ListItem>
                             )}
                             {diabetes && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>diabetes</b>}
+                                      primary={<b>diabetes</b>}
                                     />
                                 </ListItem>
                             )}
                             {stroke && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>stroke</b>}
+                                      primary={<b>stroke</b>}
                                     />
                                 </ListItem>
                             )}
                             {pacemaker && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>pacemaker</b>}
+                                      primary={<b>pacemaker</b>}
                                     />
                                 </ListItem>
                             )}
                             {otherConditions && (
                                 <ListItem>
                                     <ListItemText
-                                        primary={<b>{otherConditionsList}</b>}
+                                      primary={<b>{otherConditionsList}</b>}
                                     />
                                 </ListItem>
                             )}
@@ -387,25 +386,25 @@ const Summary = ({
 
 
             <FormControlLabel
-                control={(
+              control={(
                     <Checkbox
-                        checked={research}
-                        onChange={() => setResearch(!research)}
-                        color="primary"
+                      checked={research}
+                      onChange={() => setResearch(!research)}
+                      color="primary"
                     />
                 )}
-                label="I am happy for images of my teeth to be separated from my personal information for use in research"
+              label="I am happy for images of my teeth to be separated from my personal information for use in research"
             />
 
             <FormControlLabel
-                control={(
+              control={(
                     <Checkbox
-                        checked={policy}
-                        onChange={() => setPolicy(!policy)}
-                        color="primary"
+                      checked={policy}
+                      onChange={() => setPolicy(!policy)}
+                      color="primary"
                     />
                 )}
-                label="By submitting this form you agree to our terms and conditions and privacy policy"
+              label="By submitting this form you agree to our terms and conditions and privacy policy"
             />
 
 

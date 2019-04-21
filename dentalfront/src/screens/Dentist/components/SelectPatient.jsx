@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 
+import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
+
 const SelectPatient = ({ waitingReport, patientFirstName }) => {
     const [dentistName] = useState('dentistName')
     return (
@@ -19,7 +21,7 @@ const SelectPatient = ({ waitingReport, patientFirstName }) => {
                     </Typography>
 
                     <Typography variant="h4">
-                        {patientFirstName}
+                        {capitalizeFirstLetter(patientFirstName)}
                     </Typography>
 
                 </>
