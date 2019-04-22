@@ -14,7 +14,8 @@ import Success from './components/Success'
 
 const Dentist = () => {
     const [patient, setPatient] = useState(null)
-    // console.log(patient && patient.birthDate)
+    const [reportId, setReportId] = useState(null)
+    console.log(reportId)
     const [waitingReport, setWaitingReport] = useState(true)
     const firebase = useContext(FirebaseContext)
 
@@ -24,7 +25,7 @@ const Dentist = () => {
                 setWaitingReport(!querySnapshot.empty)
                 querySnapshot.forEach((doc) => {
                     setPatient(doc.data())
-                    // console.log(doc.data())
+                    setReportId(doc.id)
                 })
             },
         )
@@ -108,7 +109,11 @@ const Dentist = () => {
                 )
             case 0:
                 return (
-                    <Chart />
+                    <Chart {...{
+                        reportId,
+                    }}
+
+                    />
                 )
             case 3:
                 return (

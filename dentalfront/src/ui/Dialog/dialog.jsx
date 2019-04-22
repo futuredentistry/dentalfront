@@ -12,13 +12,14 @@ import CloseIcon from '@material-ui/icons/Close'
 import './style.scss'
 
 const Dialog = ({
-  children, onClose, open, showClose,
+  children, onClose, open, showClose, ...rest
 }) => (
     <PopUp
       open={open}
       onClose={onClose}
       fullWidth
       maxWidth="sm"
+      {...rest}
     >
       <div className="dialog_header_row">
         <div className="dialog_empty_container" />
