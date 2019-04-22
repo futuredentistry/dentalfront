@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react'
 
-import * as STATUS from 'modules/constants/reportStatus'
+// import * as STATUS from 'modules/constants/reportStatus'
 import FirebaseContext from 'modules/Firebase'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button'

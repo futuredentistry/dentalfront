@@ -11,40 +11,46 @@ import CloseIcon from '@material-ui/icons/Close'
 
 import './style.scss'
 
-const Dialog = ({ children, onClose, open }) => (
-  <PopUp
-    open={open}
-    onClose={onClose}
-    fullWidth
-    maxWidth="sm"
-  >
-    <div className="dialog_header_row">
-      <div className="dialog_empty_container" />
+const Dialog = ({
+  children, onClose, open, showClose,
+}) => (
+    <PopUp
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth="sm"
+    >
+      <div className="dialog_header_row">
+        <div className="dialog_empty_container" />
 
-      <div className="dialog_button_container">
-        <IconButton aria-label="Close" onClick={onClose}>
-          <CloseIcon />
-        </IconButton>
+        {showClose && (
+          <div className="dialog_button_container">
+            <IconButton aria-label="Close" onClick={onClose}>
+              <CloseIcon />
+            </IconButton>
+          </div>
+        )}
       </div>
-    </div>
 
-    <Card>
-      <CardContent>
-        {children}
-      </CardContent>
+      <Card>
+        <CardContent>
+          {children}
+        </CardContent>
 
-    </Card>
-  </PopUp>
-)
+      </Card>
+    </PopUp>
+  )
 
 Dialog.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  showClose: PropTypes.bool,
 }
 
 Dialog.defaultProps = {
   children: null,
+  showClose: true,
 }
 
 export default Dialog
