@@ -1,6 +1,7 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 // @ts-nocheck
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
@@ -26,36 +27,84 @@ const MODAL = {
 }
 
 // ToDo request imgs by report id
-const Chart = ({ reportId }) => {
+const Chart = ({
+    topRight, setTopRight,
+    topMiddle, setTopMiddle,
+    topLeft, setTopLeft,
+    bottomRight, setBottomRight,
+    bottomMiddle, setBottomMiddle,
+    bottomLeft, setBottomLeft,
+}) => {
     const [open, setModalOpen] = useState(false)
     const [modalComponent, setModalComponent] = useState(null)
     const [workingOnImg, setWorkingOnImg] = useState(null)
 
-    const [topRight, setTopRight] = useState(null)
-    const [topMiddle, setTopMiddle] = useState(null)
-    const [topLeft, setTopLeft] = useState(null)
-    const [bottomRight, setBottomRight] = useState(null)
-    const [bottomMiddle, setBottomMiddle] = useState(null)
-    const [bottomLeft, setBottomLeft] = useState(null)
-    console.log(topRight)
-    const setImgProps = (newImgProps) => {
+    // ImageIssue
+    const [dark, setDark] = useState(false)
+    const [light, setLight] = useState(false)
+    const [close, setClose] = useState(false)
+    const [blurry, setBlurry] = useState(false)
+    const [far, setFar] = useState(false)
+    const [other, setOther] = useState(false)
+
+    const setDefaultImageIssueProps = () => {
+        setDark(false)
+        setLight(false)
+        setClose(false)
+        setBlurry(false)
+        setFar(false)
+        setOther(false)
+    }
+
+    const getImageIssueProps = () => {
         switch (workingOnImg) {
             case 'Top right':
-                return setTopRight({ ...topRight, ...newImgProps })
+                return topRight
             case 'Top middle':
-                return setTopMiddle({ ...topMiddle, ...newImgProps })
+                return topMiddle
             case 'Top left':
-                return setTopLeft({ ...topLeft, ...newImgProps })
+                return topLeft
             case 'Bottom right':
-                return setBottomRight({ ...bottomRight, ...newImgProps })
+                return bottomRight
             case 'Bottom middle':
-                return setBottomMiddle({ ...bottomMiddle, ...newImgProps })
+                return bottomMiddle
             case 'Bottom left':
-                return setBottomLeft({ ...bottomLeft, ...newImgProps })
+                return bottomLeft
             default:
                 return null
         }
     }
+
+    const setImgProps = useCallback(
+        (newImgProps) => {
+            switch (workingOnImg) {
+                case 'Top right':
+                    return setTopRight({ ...topRight, ...newImgProps })
+                case 'Top middle':
+                    return setTopMiddle({ ...topMiddle, ...newImgProps })
+                case 'Top left':
+                    return setTopLeft({ ...topLeft, ...newImgProps })
+                case 'Bottom right':
+                    return setBottomRight({ ...bottomRight, ...newImgProps })
+                case 'Bottom middle':
+                    return setBottomMiddle({ ...bottomMiddle, ...newImgProps })
+                case 'Bottom left':
+                    return setBottomLeft({ ...bottomLeft, ...newImgProps })
+                default:
+                    return null
+            }
+        },
+        [
+            workingOnImg,
+            topRight,
+            topMiddle,
+            topLeft,
+            bottomRight,
+            bottomMiddle,
+            bottomLeft,
+        ],
+    )
+
 
     return (
         <>
@@ -63,10 +112,7 @@ const Chart = ({ reportId }) => {
               disableBackdropClick
               open={open}
               showClose={false}
-              onClose={() => {
-                    setModalOpen(false)
-                    setModalComponent(null)
-                }}
+              onClose={() => { }}
             >
                 <>
                     {modalComponent === MODAL.ISSUE && (
@@ -85,6 +131,22 @@ const Chart = ({ reportId }) => {
                           onClose={() => {
                                 setModalOpen(false)
                                 setModalComponent(null)
+                                setDefaultImageIssueProps()
+                            }}
+                          {...{
+                                dark,
+                                setDark,
+                                light,
+                                setLight,
+                                close,
+                                setClose,
+                                blurry,
+                                setBlurry,
+                                far,
+                                setFar,
+                                other,
+                                setOther,
+                                ...(getImageIssueProps()),
                             }}
                         />
                     )}
@@ -94,6 +156,7 @@ const Chart = ({ reportId }) => {
                       onClick={() => {
                             setModalOpen(false)
                             setModalComponent(null)
+                            setDefaultImageIssueProps()
                         }}
                     >
 
@@ -120,6 +183,7 @@ const Chart = ({ reportId }) => {
                               variant="text"
                               color="primary"
                               onClick={() => {
+                                    setWorkingOnImg(key)
                                     setModalComponent(MODAL.IMAGE_ISSUE)
                                     setModalOpen(true)
                                 }
@@ -161,11 +225,27 @@ const Chart = ({ reportId }) => {
 }
 
 Chart.propTypes = {
-    reportId: PropTypes.string,
+    topRight: PropTypes.object,
+    setTopRight: PropTypes.func.isRequired,
+    topMiddle: PropTypes.object,
+    setTopMiddle: PropTypes.func.isRequired,
+    topLeft: PropTypes.object,
+    setTopLeft: PropTypes.func.isRequired,
+    bottomRight: PropTypes.object,
+    setBottomRight: PropTypes.func.isRequired,
+    bottomMiddle: PropTypes.object,
+    setBottomMiddle: PropTypes.func.isRequired,
+    bottomLeft: PropTypes.object,
+    setBottomLeft: PropTypes.func.isRequired,
 }
 
 Chart.defaultProps = {
-    reportId: null,
+    topRight: null,
+    topMiddle: null,
+    topLeft: null,
+    bottomRight: null,
+    bottomMiddle: null,
+    bottomLeft: null,
 }
 
 

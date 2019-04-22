@@ -15,8 +15,16 @@ import Success from './components/Success'
 const Dentist = () => {
     const [patient, setPatient] = useState(null)
     const [reportId, setReportId] = useState(null)
-    console.log(reportId)
     const [waitingReport, setWaitingReport] = useState(true)
+
+    // Chart
+    const [topRight, setTopRight] = useState(null)
+    const [topMiddle, setTopMiddle] = useState(null)
+    const [topLeft, setTopLeft] = useState(null)
+    const [bottomRight, setBottomRight] = useState(null)
+    const [bottomMiddle, setBottomMiddle] = useState(null)
+    const [bottomLeft, setBottomLeft] = useState(null)
+
     const firebase = useContext(FirebaseContext)
 
     useEffect(() => {
@@ -53,7 +61,7 @@ const Dentist = () => {
 
     const steper = (n) => {
         switch (n) {
-            case 9:
+            case 4:
                 return (
                     <SelectPatient {...{
                         waitingReport,
@@ -110,12 +118,23 @@ const Dentist = () => {
             case 0:
                 return (
                     <Chart {...{
-                        reportId,
+                        topRight,
+                        setTopRight,
+                        topMiddle,
+                        setTopMiddle,
+                        topLeft,
+                        setTopLeft,
+                        bottomRight,
+                        setBottomRight,
+                        bottomMiddle,
+                        setBottomMiddle,
+                        bottomLeft,
+                        setBottomLeft,
                     }}
 
                     />
                 )
-            case 3:
+            case 5:
                 return (
                     <Report />
                 )
@@ -127,7 +146,9 @@ const Dentist = () => {
     return (
         <>
             {
-                step <= maxStep && step !== 0 && <LinearProgress color="primary" variant="determinate" value={step * 100 / 4} />
+                step <= maxStep
+                && step !== 0
+                && <LinearProgress color="primary" variant="determinate" value={step * 100 / maxStep} />
             }
 
             {steper(step)}
