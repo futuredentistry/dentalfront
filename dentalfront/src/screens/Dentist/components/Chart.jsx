@@ -30,13 +30,14 @@ const Chart = ({ reportId }) => {
     const [open, setModalOpen] = useState(false)
     const [modalComponent, setModalComponent] = useState(null)
     const [workingOnImg, setWorkingOnImg] = useState(null)
+
     const [topRight, setTopRight] = useState(null)
     const [topMiddle, setTopMiddle] = useState(null)
     const [topLeft, setTopLeft] = useState(null)
     const [bottomRight, setBottomRight] = useState(null)
     const [bottomMiddle, setBottomMiddle] = useState(null)
     const [bottomLeft, setBottomLeft] = useState(null)
-
+    console.log(topRight)
     const setImgProps = (newImgProps) => {
         switch (workingOnImg) {
             case 'Top right':
@@ -78,7 +79,15 @@ const Chart = ({ reportId }) => {
                         />
                     )
                     }
-                    {modalComponent === MODAL.IMAGE_ISSUE && <ImageIssue />}
+                    {modalComponent === MODAL.IMAGE_ISSUE && (
+                        <ImageIssue
+                          setImgProps={setImgProps}
+                          onClose={() => {
+                                setModalOpen(false)
+                                setModalComponent(null)
+                            }}
+                        />
+                    )}
                     <Button
                       variant="text"
                       color="primary"

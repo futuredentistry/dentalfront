@@ -112,7 +112,7 @@ const Summary = ({
                 <br />
 
                 {'You\'re born on the'}
-                <b>{` ${format(new Date(birthDate), 'MM/dd/yyyy')}`}</b>
+                {<b>{` ${format(new Date(birthDate), 'MM/dd/yyyy')}`}</b>}
                 <br />
 
                 {'Your postcode is'}
