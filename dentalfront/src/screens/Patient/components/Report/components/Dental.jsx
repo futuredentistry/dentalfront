@@ -16,17 +16,17 @@ const Dental = ({
   floss, setFloss,
   visitDentist, setVisitDentist,
   comfortable, setComfortable,
-  breath, setbreath,
-  bleedingGum, setbleedingGum,
-  cosmetic, setcosmetic,
-  teethPain, setteethPain,
-  gumPain, setgumPain,
-  grinding, setgrinding,
-  damagedTeeth, setdamagedTeeth,
-  sore, setsore,
-  oldFillings, setoldFillings,
-  dentures, setdentures,
-  loose, setloose,
+  breath, setBreath,
+  bleedingGum, setBleedingGum,
+  cosmetic, setCosmetic,
+  teethPain, setTeethPain,
+  gumPain, setGumPain,
+  grinding, setGrinding,
+  damagedTeeth, setDamagedTeeth,
+  sore, setSore,
+  oldFillings, setOldFillings,
+  dentures, setDentures,
+  loose, setLoose,
   painTopRight, setPainTopRight,
   painTopCenter, setPainTopCenter,
   painTopLeft, setPainTopLeft,
@@ -195,7 +195,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={breath}
-              onChange={() => setbreath(!breath)}
+              onChange={() => setBreath(!breath)}
               color="primary"
             />
           )}
@@ -206,7 +206,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={bleedingGum}
-              onChange={() => setbleedingGum(!bleedingGum)}
+              onChange={() => setBleedingGum(!bleedingGum)}
               color="primary"
             />
           )}
@@ -217,7 +217,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={cosmetic}
-              onChange={() => setcosmetic(!cosmetic)}
+              onChange={() => setCosmetic(!cosmetic)}
               color="primary"
             />
           )}
@@ -228,7 +228,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={teethPain}
-              onChange={() => setteethPain(!teethPain)}
+              onChange={() => setTeethPain(!teethPain)}
               color="primary"
             />
           )}
@@ -239,7 +239,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={gumPain}
-              onChange={() => setgumPain(!gumPain)}
+              onChange={() => setGumPain(!gumPain)}
               color="primary"
             />
           )}
@@ -250,7 +250,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={grinding}
-              onChange={() => setgrinding(!grinding)}
+              onChange={() => setGrinding(!grinding)}
               color="primary"
             />
           )}
@@ -261,7 +261,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={damagedTeeth}
-              onChange={() => setdamagedTeeth(!damagedTeeth)}
+              onChange={() => setDamagedTeeth(!damagedTeeth)}
               color="primary"
             />
           )}
@@ -272,7 +272,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={sore}
-              onChange={() => setsore(!sore)}
+              onChange={() => setSore(!sore)}
               color="primary"
             />
           )}
@@ -283,7 +283,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={oldFillings}
-              onChange={() => setoldFillings(!oldFillings)}
+              onChange={() => setOldFillings(!oldFillings)}
               color="primary"
             />
           )}
@@ -294,7 +294,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={dentures}
-              onChange={() => setdentures(!dentures)}
+              onChange={() => setDentures(!dentures)}
               color="primary"
             />
           )}
@@ -305,7 +305,7 @@ const Dental = ({
           control={(
             <Checkbox
               checked={loose}
-              onChange={() => setloose(!loose)}
+              onChange={() => setLoose(!loose)}
               color="primary"
             />
           )}
@@ -371,27 +371,27 @@ Dental.propTypes = {
   setComfortable: PropTypes.func.isRequired,
 
   breath: PropTypes.bool.isRequired,
-  setbreath: PropTypes.func.isRequired,
+  setBreath: PropTypes.func.isRequired,
   bleedingGum: PropTypes.bool.isRequired,
-  setbleedingGum: PropTypes.func.isRequired,
+  setBleedingGum: PropTypes.func.isRequired,
   cosmetic: PropTypes.bool.isRequired,
-  setcosmetic: PropTypes.func.isRequired,
+  setCosmetic: PropTypes.func.isRequired,
   teethPain: PropTypes.bool.isRequired,
-  setteethPain: PropTypes.func.isRequired,
+  setTeethPain: PropTypes.func.isRequired,
   gumPain: PropTypes.bool.isRequired,
-  setgumPain: PropTypes.func.isRequired,
+  setGumPain: PropTypes.func.isRequired,
   grinding: PropTypes.bool.isRequired,
-  setgrinding: PropTypes.func.isRequired,
+  setGrinding: PropTypes.func.isRequired,
   damagedTeeth: PropTypes.bool.isRequired,
-  setdamagedTeeth: PropTypes.func.isRequired,
+  setDamagedTeeth: PropTypes.func.isRequired,
   sore: PropTypes.bool.isRequired,
-  setsore: PropTypes.func.isRequired,
+  setSore: PropTypes.func.isRequired,
   oldFillings: PropTypes.bool.isRequired,
-  setoldFillings: PropTypes.func.isRequired,
+  setOldFillings: PropTypes.func.isRequired,
   dentures: PropTypes.bool.isRequired,
-  setdentures: PropTypes.func.isRequired,
+  setDentures: PropTypes.func.isRequired,
   loose: PropTypes.bool.isRequired,
-  setloose: PropTypes.func.isRequired,
+  setLoose: PropTypes.func.isRequired,
 
   painTopRight: PropTypes.bool.isRequired,
   setPainTopRight: PropTypes.func.isRequired,

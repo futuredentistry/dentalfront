@@ -54,17 +54,17 @@ const Report = () => {
     const [floss, setFloss] = useState('every few days')
     const [visitDentist, setVisitDentist] = useState('every 1-3 years')
     const [comfortable, setComfortable] = useState('yes')
-    const [breath, setbreath] = useState(false)
-    const [bleedingGum, setbleedingGum] = useState(false)
-    const [cosmetic, setcosmetic] = useState(false)
-    const [teethPain, setteethPain] = useState(false)
-    const [gumPain, setgumPain] = useState(false)
-    const [grinding, setgrinding] = useState(false)
-    const [damagedTeeth, setdamagedTeeth] = useState(false)
-    const [sore, setsore] = useState(false)
-    const [oldFillings, setoldFillings] = useState(false)
-    const [dentures, setdentures] = useState(false)
-    const [loose, setloose] = useState(false)
+    const [breath, setBreath] = useState(false)
+    const [bleedingGum, setBleedingGum] = useState(false)
+    const [cosmetic, setCosmetic] = useState(false)
+    const [teethPain, setTeethPain] = useState(false)
+    const [gumPain, setGumPain] = useState(false)
+    const [grinding, setGrinding] = useState(false)
+    const [damagedTeeth, setDamagedTeeth] = useState(false)
+    const [sore, setSore] = useState(false)
+    const [oldFillings, setOldFillings] = useState(false)
+    const [dentures, setDentures] = useState(false)
+    const [loose, setLoose] = useState(false)
     const [painTopRight, setPainTopRight] = useState(false)
     const [painTopCenter, setPainTopCenter] = useState(false)
     const [painTopLeft, setPainTopLeft] = useState(false)
@@ -177,27 +177,27 @@ const Report = () => {
                         comfortable,
                         setComfortable,
                         breath,
-                        setbreath,
+                        setBreath,
                         bleedingGum,
-                        setbleedingGum,
+                        setBleedingGum,
                         cosmetic,
-                        setcosmetic,
+                        setCosmetic,
                         teethPain,
-                        setteethPain,
+                        setTeethPain,
                         gumPain,
-                        setgumPain,
+                        setGumPain,
                         grinding,
-                        setgrinding,
+                        setGrinding,
                         damagedTeeth,
-                        setdamagedTeeth,
+                        setDamagedTeeth,
                         sore,
-                        setsore,
+                        setSore,
                         oldFillings,
-                        setoldFillings,
+                        setOldFillings,
                         dentures,
-                        setdentures,
+                        setDentures,
                         loose,
-                        setloose,
+                        setLoose,
                         painTopRight,
                         setPainTopRight,
                         painTopCenter,
