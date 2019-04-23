@@ -2,6 +2,11 @@
 import PropTypes from 'prop-types'
 
 export const segment = PropTypes.shape({
+    // Treatment
+    concern: PropTypes.string.isRequired,
+    treatment: PropTypes.string.isRequired,
+    toothNumber: PropTypes.string.isRequired,
+    // ImmageIssue
     dark: PropTypes.bool.isRequired,
     light: PropTypes.bool.isRequired,
     close: PropTypes.bool.isRequired,

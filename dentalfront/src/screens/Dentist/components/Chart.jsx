@@ -82,37 +82,6 @@ const Chart = ({
         }
     }
 
-    const setImgProps = useCallback(
-        (newImgProps) => {
-            switch (workingOnImg) {
-                case 'Top right':
-                    return setTopRight({ ...topRight, ...newImgProps })
-                case 'Top middle':
-                    return setTopMiddle({ ...topMiddle, ...newImgProps })
-                case 'Top left':
-                    return setTopLeft({ ...topLeft, ...newImgProps })
-                case 'Bottom right':
-                    return setBottomRight({ ...bottomRight, ...newImgProps })
-                case 'Bottom middle':
-                    return setBottomMiddle({ ...bottomMiddle, ...newImgProps })
-                case 'Bottom left':
-                    return setBottomLeft({ ...bottomLeft, ...newImgProps })
-                default:
-                    return null
-            }
-        },
-        [
-            workingOnImg,
-            topRight,
-            topMiddle,
-            topLeft,
-            bottomRight,
-            bottomMiddle,
-            bottomLeft,
-        ],
-    )
-
-
     return (
         <>
             <Dialog
@@ -124,17 +93,17 @@ const Chart = ({
                 <>
                     {modalComponent === MODAL.ISSUE && (
                         <Issue
-                          setImgProps={setImgProps}
                           onClose={() => {
                                 setModalOpen(false)
                                 setModalComponent(null)
                             }}
+                          segmentProps={getImageIssueProps()}
+                          setSegment={getImageIssueSetMethod()}
                         />
                     )
                     }
                     {modalComponent === MODAL.IMAGE_ISSUE && (
                         <ImageIssue
-                          setImgProps={setImgProps}
                           onClose={() => {
                                 setModalOpen(false)
                                 setModalComponent(null)

@@ -5,13 +5,12 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
-const Issue = ({ onClose, setImgProps }) => {
-    const [validateForm, setValidateForm] = useState(false)
-    const [concern, setConcern] = useState('')
-    const [treatment, setTreatment] = useState('')
-    const [toothNumber, setToothNumber] = useState('')
+import { segment } from 'modules/Dentist/props'
 
-    const validator = () => concern !== '' && treatment !== '' && toothNumber !== ''
+const Issue = ({ onClose, segmentProps, setSegment }) => {
+    const [validateForm, setValidateForm] = useState(false)
+
+    const validator = () => segmentProps.concern !== '' && segmentProps.treatment !== '' && segmentProps.toothNumber !== ''
 
     return (
         <>
@@ -20,37 +19,46 @@ const Issue = ({ onClose, setImgProps }) => {
             </Typography>
 
             <TextField
-              error={validateForm && concern === ''}
+              error={validateForm && segmentProps.concern === ''}
               label="Concern"
-              value={concern}
-              onChange={e => setConcern(e.currentTarget.value)}
+              value={segmentProps.concern}
+              onChange={e => setSegment({ ...segmentProps, ...{ concern: e.currentTarget.value } })}
               margin="normal"
               variant="filled"
             />
-            {validateForm && concern === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
+            {
+                validateForm
+                && segmentProps.concern === ''
+                && <FormHelperText error>Please fill out this field</FormHelperText>}
 
             <TextField
-              error={validateForm && treatment === ''}
+              error={validateForm && segmentProps.treatment === ''}
               label="Recommended treatment"
-              value={treatment}
-              onChange={e => setTreatment(e.currentTarget.value)}
+              value={segmentProps.treatment}
+              onChange={e => setSegment({ ...segmentProps, ...{ treatment: e.currentTarget.value } })}
               margin="normal"
               variant="filled"
             />
-            {validateForm && treatment === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
+            {
+                validateForm
+                && segmentProps.treatment === ''
+                && <FormHelperText error>Please fill out this field</FormHelperText>}
 
             <TextField
-              error={validateForm && toothNumber === ''}
+              error={validateForm && segmentProps.toothNumber === ''}
               label="Tooth number"
-              value={toothNumber}
+              value={segmentProps.toothNumber}
               inputProps={
                     { maxLength: 2 }
                 }
-              onChange={e => /^(\s*|\d+)$/.test(e.currentTarget.value) && setToothNumber(e.currentTarget.value)}
+              onChange={e => /^(\s*|\d+)$/.test(e.currentTarget.value) && setSegment({ ...segmentProps, ...{ toothNumber: e.currentTarget.value } })}
               margin="normal"
               variant="filled"
             />
-            {validateForm && toothNumber === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
+            {
+                validateForm
+                && segmentProps.toothNumber === ''
+                && <FormHelperText error>Please fill out this field</FormHelperText>}
 
 
             <Button
@@ -59,10 +67,7 @@ const Issue = ({ onClose, setImgProps }) => {
               disabled={!validator() && validateForm}
               onClick={() => {
                     setValidateForm(true)
-                    if (validator()) {
-                        setImgProps({ concern, treatment, toothNumber })
-                        onClose()
-                    }
+                    if (validator()) onClose()
                 }
                 }
             >
@@ -75,7 +80,8 @@ const Issue = ({ onClose, setImgProps }) => {
 
 Issue.propTypes = {
     onClose: PropTypes.func.isRequired,
-    setImgProps: PropTypes.func.isRequired,
+    segmentProps: segment.isRequired,
+    setSegment: PropTypes.func.isRequired,
 }
 
 export default Issue

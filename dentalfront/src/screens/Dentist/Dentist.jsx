@@ -19,6 +19,9 @@ const Dentist = () => {
 
     // Chart
     const segmentProps = {
+        concern: '',
+        treatment: '',
+        toothNumber: '',
         dark: false,
         light: false,
         close: false,
