@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { format } from 'date-fns'
 import Typography from '@material-ui/core/Typography'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
+import FormGroup from '@material-ui/core/FormGroup'
 import List from '@material-ui/core/List'
 
 import PrimaryListItem from 'ui/PrimaryListItem/PrimaryListItem'
+import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 
 const Summary = ({
@@ -251,30 +251,10 @@ const Summary = ({
             }
 
             <br />
-
-            <FormControlLabel
-              control={(
-                    <Checkbox
-                      checked={research}
-                      onChange={() => setResearch(!research)}
-                      color="primary"
-                    />
-                )}
-              label="I am happy for images of my teeth to be separated from my personal information for use in research"
-            />
-
-            <FormControlLabel
-              control={(
-                    <Checkbox
-                      checked={policy}
-                      onChange={() => setPolicy(!policy)}
-                      color="primary"
-                    />
-                )}
-              label="By submitting this form you agree to our terms and conditions and privacy policy"
-            />
-
-
+            <FormGroup>
+                <PrimaryCheckbox formLabel="I am happy for images of my teeth to be separated from my personal information for use in research" formValue={research} onChange={setResearch} />
+                <PrimaryCheckbox formLabel="By submitting this form you agree to our terms and conditions and privacy policy" formValue={policy} onChange={setPolicy} />
+            </FormGroup>
         </>
     )
 }

@@ -1,18 +1,13 @@
 // @ts-nocheck
 import React from 'react'
 import PropTypes from 'prop-types'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormControl from '@material-ui/core/FormControl'
-import FormLabel from '@material-ui/core/FormLabel'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
-import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
 import RadioGroupYesNo from 'ui/RadioGroupYesNo'
+import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 
 const Medical = ({
   validFormStep,
@@ -76,96 +71,15 @@ const Medical = ({
       </Typography>
 
       <FormGroup>
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={heartConditions}
-              onChange={() => setHeartConditions(!heartConditions)}
-              color="primary"
-            />
-          )}
-          label="Heart conditions"
-        />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={breathingProblems}
-              onChange={() => setBreathingProblems(!breathingProblems)}
-              color="primary"
-            />
-          )}
-          label="Breathing problems"
-        />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={bloodDisorders}
-              onChange={() => setBloodDisorders(!bloodDisorders)}
-              color="primary"
-            />
-          )}
-          label="Blood disorders"
-        />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={boneDisease}
-              onChange={() => setBoneDisease(!boneDisease)}
-              color="primary"
-            />
-          )}
-          label="Bone disease"
-        />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={cancer}
-              onChange={() => setCancer(!cancer)}
-              color="primary"
-            />
-          )}
-          label="Cancer"
-        />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={diabetes}
-              onChange={() => setDiabetes(!diabetes)}
-              color="primary"
-            />
-          )}
-          label="Diabetes"
-        />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={stroke}
-              onChange={() => setStroke(!stroke)}
-              color="primary"
-            />
-          )}
-          label="Stroke"
-        />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={pacemaker}
-              onChange={() => setPacemaker(!pacemaker)}
-              color="primary"
-            />
-          )}
-          label="Pacemaker"
-        />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={otherConditions}
-              onChange={() => setOtherConditions(!otherConditions)}
-              color="primary"
-            />
-          )}
-          label="Any other conditions?"
-        />
+        <PrimaryCheckbox formLabel="Heart conditions" formValue={heartConditions} onChange={setHeartConditions} />
+        <PrimaryCheckbox formLabel="Breathing problems" formValue={breathingProblems} onChange={setBreathingProblems} />
+        <PrimaryCheckbox formLabel="Blood disorders" formValue={bloodDisorders} onChange={setBloodDisorders} />
+        <PrimaryCheckbox formLabel="Bone disease" formValue={boneDisease} onChange={setBoneDisease} />
+        <PrimaryCheckbox formLabel="Cancer" formValue={cancer} onChange={setCancer} />
+        <PrimaryCheckbox formLabel="Diabetes" formValue={diabetes} onChange={setDiabetes} />
+        <PrimaryCheckbox formLabel="Stroke" formValue={stroke} onChange={setStroke} />
+        <PrimaryCheckbox formLabel="Pacemaker" formValue={pacemaker} onChange={setPacemaker} />
+        <PrimaryCheckbox formLabel="Any other conditions?" formValue={otherConditions} onChange={setOtherConditions} />
       </FormGroup>
 
 
@@ -180,7 +94,10 @@ const Medical = ({
               margin="normal"
               variant="filled"
             />
-            {validFormStep && otherConditions && otherConditionsList === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
+            {validFormStep
+              && otherConditions
+              && otherConditionsList === ''
+              && <FormHelperText error>Please fill out this field</FormHelperText>}
           </>
         )
       }

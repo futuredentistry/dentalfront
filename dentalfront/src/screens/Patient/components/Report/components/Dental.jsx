@@ -2,13 +2,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Typography from '@material-ui/core/Typography'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 
 import LineRadioGroup from 'ui/LineRadioGroup'
 import RadioGroupYesNo from 'ui/RadioGroupYesNo'
+import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 
 const Dental = ({
   brush, setBrush,
@@ -76,126 +76,17 @@ const Dental = ({
       </Typography>
 
       <FormGroup>
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={breath}
-              onChange={() => setBreath(!breath)}
-              color="primary"
-            />
-          )}
-          label="Bad breath"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={bleedingGum}
-              onChange={() => setBleedingGum(!bleedingGum)}
-              color="primary"
-            />
-          )}
-          label="Bleeding gums"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={cosmetic}
-              onChange={() => setCosmetic(!cosmetic)}
-              color="primary"
-            />
-          )}
-          label="Cosmetic issues"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={teethPain}
-              onChange={() => setTeethPain(!teethPain)}
-              color="primary"
-            />
-          )}
-          label="Teeth pain"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={gumPain}
-              onChange={() => setGumPain(!gumPain)}
-              color="primary"
-            />
-          )}
-          label="Gum pain"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={grinding}
-              onChange={() => setGrinding(!grinding)}
-              color="primary"
-            />
-          )}
-          label="Grinding"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={damagedTeeth}
-              onChange={() => setDamagedTeeth(!damagedTeeth)}
-              color="primary"
-            />
-          )}
-          label="Damaged teeth"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={sore}
-              onChange={() => setSore(!sore)}
-              color="primary"
-            />
-          )}
-          label="Ulcers, lumps or sores"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={oldFillings}
-              onChange={() => setOldFillings(!oldFillings)}
-              color="primary"
-            />
-          )}
-          label="Old fillings"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={dentures}
-              onChange={() => setDentures(!dentures)}
-              color="primary"
-            />
-          )}
-          label="Dentures"
-        />
-
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={loose}
-              onChange={() => setLoose(!loose)}
-              color="primary"
-            />
-          )}
-          label="Loose tooth"
-        />
+        <PrimaryCheckbox formLabel="Bad breath" formValue={breath} onChange={setBreath} />
+        <PrimaryCheckbox formLabel="Bleeding gums" formValue={bleedingGum} onChange={setBleedingGum} />
+        <PrimaryCheckbox formLabel="Cosmetic issues" formValue={cosmetic} onChange={setCosmetic} />
+        <PrimaryCheckbox formLabel="Teeth pain" formValue={teethPain} onChange={setTeethPain} />
+        <PrimaryCheckbox formLabel="Gum pain" formValue={gumPain} onChange={setGumPain} />
+        <PrimaryCheckbox formLabel="Grinding" formValue={grinding} onChange={setGrinding} />
+        <PrimaryCheckbox formLabel="Damaged teeth" formValue={damagedTeeth} onChange={setDamagedTeeth} />
+        <PrimaryCheckbox formLabel="Ulcers, lumps or sores" formValue={sore} onChange={setSore} />
+        <PrimaryCheckbox formLabel="Old fillings" formValue={oldFillings} onChange={setOldFillings} />
+        <PrimaryCheckbox formLabel="Dentures" formValue={dentures} onChange={setDentures} />
+        <PrimaryCheckbox formLabel="Loose tooth" formValue={loose} onChange={setLoose} />
       </FormGroup>
 
       <Typography variant="h5">
