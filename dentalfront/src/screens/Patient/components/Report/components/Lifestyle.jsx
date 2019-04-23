@@ -1,14 +1,10 @@
 // @ts-nocheck
 import React from 'react'
 import PropTypes from 'prop-types'
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormControl from '@material-ui/core/FormControl'
-import FormLabel from '@material-ui/core/FormLabel'
 import Typography from '@material-ui/core/Typography'
 
-import LineRadioGroup from 'ui/LineRadioGroup/LineRadioGroup'
+import LineRadioGroup from 'ui/LineRadioGroup'
+import RadioGroupYesNo from 'ui/RadioGroupYesNo'
 
 const Lifestyle = ({
   smoker, setSmoker,
@@ -20,18 +16,11 @@ const Lifestyle = ({
         Your lifestyle
       </Typography>
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Are you a social or regular smoker?</FormLabel>
-        <RadioGroup
-          aria-label="Gender"
-          name="smoker"
-          value={smoker}
-          onChange={e => setSmoker(e.currentTarget.value)}
-        >
-          <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
-          <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
-        </RadioGroup>
-      </FormControl>
+      <RadioGroupYesNo
+        formLabel="Are you a social or regular smoker?"
+        formValue={smoker}
+        onChange={setSmoker}
+      />
 
       <LineRadioGroup
         formLabel="How often do you drink soft drinks?"

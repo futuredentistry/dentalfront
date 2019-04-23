@@ -106,6 +106,7 @@ const Report = () => {
                 if (expiredDate === null) valid = false
                 return valid
             case 3:
+                if (allergies === 'yes' && allergiesList === '') valid = false
                 if (otherConditions && otherConditionsList === '') valid = false
                 return valid
             default:
@@ -324,11 +325,11 @@ const Report = () => {
             {stepper(step)}
 
             <Grid
-              container
-              spacing={0}
-              direction="row"
-              justify="center"
-              alignItems="center"
+                container
+                spacing={0}
+                direction="row"
+                justify="center"
+                alignItems="center"
             >
 
                 {
@@ -336,20 +337,20 @@ const Report = () => {
                         <>
                             <Grid item xs={6}>
                                 <Button
-                                  variant="text"
-                                  color="primary"
-                                  disabled={step < 1}
-                                  onClick={() => setStep(step - 1)}
+                                    variant="text"
+                                    color="primary"
+                                    disabled={step < 1}
+                                    onClick={() => setStep(step - 1)}
                                 >
                                     Back
                                 </Button>
                             </Grid>
                             <Grid item xs={6}>
                                 <Button
-                                  variant="contained"
-                                  color="primary"
-                                  disabled={!formValidator(step) && validFormStep}
-                                  onClick={() => {
+                                    variant="contained"
+                                    color="primary"
+                                    disabled={!formValidator(step) && validFormStep}
+                                    onClick={() => {
                                         setValidFormStep(true)
                                         if (formValidator(step)) {
                                             setStep(step + 1)
@@ -370,10 +371,10 @@ const Report = () => {
                     step === maxStep && (
                         <Grid item xs={12}>
                             <Button
-                              variant="contained"
-                              color="primary"
-                              disabled={!policy}
-                              onClick={() => {
+                                variant="contained"
+                                color="primary"
+                                disabled={!policy}
+                                onClick={() => {
                                     setStep(step + 1)
                                     firebase.setPatientReport({
                                         // Personal

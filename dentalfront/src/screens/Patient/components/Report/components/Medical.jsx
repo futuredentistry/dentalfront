@@ -12,6 +12,8 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
+import RadioGroupYesNo from 'ui/RadioGroupYesNo'
+
 const Medical = ({
   validFormStep,
 
@@ -35,78 +37,37 @@ const Medical = ({
         Finally, your medical history
       </Typography>
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Do you have any blood diseases?</FormLabel>
-        <RadioGroup
-          aria-label="bloodDiseases"
-          name="bloodDiseases"
-          value={bloodDiseases}
-          onChange={e => setBloodDiseases(e.currentTarget.value)}
-        >
-          <FormControlLabel
-            value="no"
-            control={<Radio color="primary" />}
-            label="No"
-          />
-          <FormControlLabel
-            value="yes"
-            control={<Radio color="primary" />}
-            label="Yes"
-          />
-        </RadioGroup>
-      </FormControl>
+      <RadioGroupYesNo
+        formLabel="Do you have any blood diseases?"
+        formValue={bloodDiseases}
+        onChange={setBloodDiseases}
+      />
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Are you currently pregnant or breastfeeding?</FormLabel>
-        <RadioGroup
-          aria-label="pregnant"
-          name="pregnant"
-          value={pregnant}
-          onChange={e => setPregnant(e.currentTarget.value)}
-        >
-          <FormControlLabel
-            value="no"
-            control={<Radio color="primary" />}
-            label="No"
-          />
-          <FormControlLabel
-            value="yes"
-            control={<Radio color="primary" />}
-            label="Yes"
-          />
-        </RadioGroup>
-      </FormControl>
+      <RadioGroupYesNo
+        formLabel="Are you currently pregnant or breastfeeding?"
+        formValue={pregnant}
+        onChange={setPregnant}
+      />
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Do you have any serious allergies?</FormLabel>
-        <RadioGroup
-          aria-label="allergies"
-          name="allergies"
-          value={allergies}
-          onChange={e => setAllergies(e.currentTarget.value)}
-        >
-          <FormControlLabel
-            value="no"
-            control={<Radio color="primary" />}
-            label="No"
-          />
-          <FormControlLabel
-            value="yes"
-            control={<Radio color="primary" />}
-            label="Yes"
-          />
-        </RadioGroup>
-      </FormControl>
+      <RadioGroupYesNo
+        formLabel="Do you have any serious allergies?"
+        formValue={allergies}
+        onChange={setAllergies}
+      />
 
       {
         allergies === 'yes' && (
-          <TextField
-            label="Please list any serious allergies"
-            value={allergiesList}
-            onChange={e => setAllergiesList(e.currentTarget.value)}
-            margin="normal"
-            variant="filled"
-          />
+          <>
+            <TextField
+              label="Please list any serious allergies"
+              error={validFormStep && allergiesList === ''}
+              value={allergiesList}
+              onChange={e => setAllergiesList(e.currentTarget.value)}
+              margin="normal"
+              variant="filled"
+            />
+            {validFormStep && allergiesList === '' && <FormHelperText error>Please fill out this field</FormHelperText>}
+          </>
         )
       }
 

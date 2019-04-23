@@ -11,7 +11,8 @@ import Typography from '@material-ui/core/Typography'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 
-import LineRadioGroup from 'ui/LineRadioGroup/LineRadioGroup'
+import LineRadioGroup from 'ui/LineRadioGroup'
+import RadioGroupYesNo from 'ui/RadioGroupYesNo'
 
 const Dental = ({
   brush, setBrush,
@@ -68,18 +69,11 @@ const Dental = ({
         fightValue="at least every year"
       />
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Are you comfortable with dental procedures?</FormLabel>
-        <RadioGroup
-          aria-label="comfortable"
-          name="comfortable"
-          value={comfortable}
-          onChange={e => setComfortable(e.currentTarget.value)}
-        >
-          <FormControlLabel value="yes" control={<Radio color="primary" />} label="Yes" />
-          <FormControlLabel value="no" control={<Radio color="primary" />} label="No" />
-        </RadioGroup>
-      </FormControl>
+      <RadioGroupYesNo
+        formLabel="Are you comfortable with dental procedures?"
+        formValue={comfortable}
+        onChange={setComfortable}
+      />
 
       <Typography variant="h5">
         What dental concerns do you have?

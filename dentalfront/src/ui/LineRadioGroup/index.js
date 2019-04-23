@@ -1,1 +1,1 @@
-import { default } './LineRadioGroup'
+export { default } from './LineRadioGroup'
