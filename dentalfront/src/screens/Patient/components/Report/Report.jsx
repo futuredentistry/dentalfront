@@ -114,7 +114,7 @@ const Report = () => {
         }
     }
 
-    const steper = (n) => {
+    const stepper = (n) => {
         switch (n) {
             case 0:
                 return (
@@ -322,7 +322,7 @@ const Report = () => {
                 step <= maxStep && <LinearProgress color="primary" variant="determinate" value={step * 100 / 4} />
             }
 
-            {steper(step)}
+            {stepper(step)}
 
             <Grid
               container

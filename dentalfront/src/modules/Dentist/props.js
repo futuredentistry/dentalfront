@@ -14,3 +14,15 @@ export const segment = PropTypes.shape({
     far: PropTypes.bool.isRequired,
     other: PropTypes.bool.isRequired,
 })
+
+export const segmentDefaultProps = {
+    concern: '',
+    treatment: '',
+    toothNumber: '',
+    dark: false,
+    light: false,
+    close: false,
+    blurry: false,
+    far: false,
+    other: false,
+}

@@ -3,8 +3,8 @@ import React, { useEffect, useContext, useState } from 'react'
 // import * as STATUS from 'modules/constants/reportStatus'
 import FirebaseContext from 'modules/Firebase'
 import LinearProgress from '@material-ui/core/LinearProgress'
-import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
+import { segmentDefaultProps } from 'modules/Dentist/props'
+import StepperButtons from 'ui/StepperButtons'
 import SelectPatient from './components/SelectPatient'
 import Patient from './components/Patient'
 import Chart from './components/Chart'
@@ -12,29 +12,20 @@ import Report from './components/Report'
 import Success from './components/Success'
 // import * as ROUTES from 'modules/constants/routes'
 
+
 const Dentist = () => {
     const [patient, setPatient] = useState(null)
     const [reportId, setReportId] = useState(null)
     const [waitingReport, setWaitingReport] = useState(true)
 
     // Chart
-    const segmentProps = {
-        concern: '',
-        treatment: '',
-        toothNumber: '',
-        dark: false,
-        light: false,
-        close: false,
-        blurry: false,
-        far: false,
-        other: false,
-    }
-    const [topRight, setTopRight] = useState({ ...segmentProps })
-    const [topMiddle, setTopMiddle] = useState({ ...segmentProps })
-    const [topLeft, setTopLeft] = useState({ ...segmentProps })
-    const [bottomRight, setBottomRight] = useState({ ...segmentProps })
-    const [bottomMiddle, setBottomMiddle] = useState({ ...segmentProps })
-    const [bottomLeft, setBottomLeft] = useState({ ...segmentProps })
+
+    const [topRight, setTopRight] = useState({ ...segmentDefaultProps })
+    const [topMiddle, setTopMiddle] = useState({ ...segmentDefaultProps })
+    const [topLeft, setTopLeft] = useState({ ...segmentDefaultProps })
+    const [bottomRight, setBottomRight] = useState({ ...segmentDefaultProps })
+    const [bottomMiddle, setBottomMiddle] = useState({ ...segmentDefaultProps })
+    const [bottomLeft, setBottomLeft] = useState({ ...segmentDefaultProps })
 
     const firebase = useContext(FirebaseContext)
 
@@ -50,8 +41,6 @@ const Dentist = () => {
         )
     }, [])
 
-    const [validFormStep, setValidFormStep] = useState(false)
-
     const maxStep = 3
     const [step, setStep] = useState(0)
 
@@ -60,19 +49,23 @@ const Dentist = () => {
     // Summary
     const [summaryReview, setSummaryReview] = useState('')
 
-    const formValidator = (n) => {
-        const valid = true
-        switch (n) {
-            case 3:
-                return valid
-            default:
-                return valid
+    const stepper = (n) => {
+        const segmentsProps = {
+            topRight,
+            setTopRight,
+            topMiddle,
+            setTopMiddle,
+            topLeft,
+            setTopLeft,
+            bottomRight,
+            setBottomRight,
+            bottomMiddle,
+            setBottomMiddle,
+            bottomLeft,
+            setBottomLeft,
         }
-    }
-
-    const steper = (n) => {
         switch (n) {
-            case 4:
+            case 0:
                 return (
                     <SelectPatient {...{
                         waitingReport,
@@ -82,77 +75,16 @@ const Dentist = () => {
                     />
                 )
             case 1:
-                return (patient && (
-                    <Patient {...{
-                        // About
-                        firstName: patient.firstName,
-                        birthDate: patient.birthDate,
-                        gender: patient.gender,
-                        medicare: patient.medicare,
-                        privateInsurance: patient.privateInsurance,
-                        privateInsuranceOther: patient.privateInsuranceOther,
-                        smoker: patient.smoker,
-                        softDrinks: patient.softDrinks,
-                        alcohol: patient.alcohol,
-                        // Dental
-                        brush: patient.brush,
-                        floss: patient.floss,
-                        visitDentist: patient.visitDentist,
-                        bloodDiseases: patient.bloodDiseases,
-                        allergies: patient.allergies,
-                        allergiesList: patient.allergiesList,
-                        heartConditions: patient.heartConditions,
-                        breathingProblems: patient.breathingProblems,
-                        bloodDisorders: patient.bloodDisorders,
-                        boneDisease: patient.boneDisease,
-                        cancer: patient.cancer,
-                        diabetes: patient.diabetes,
-                        stroke: patient.stroke,
-                        pacemaker: patient.pacemaker,
-                        otherConditions: patient.otherConditions,
-                        otherConditionsList: patient.otherConditionsList,
-                        breath: patient.breath,
-                        bleedingGum: patient.bleedingGum,
-                        cosmetic: patient.cosmetic,
-                        teethPain: patient.teethPain,
-                        gumPain: patient.gumPain,
-                        grinding: patient.grinding,
-                        damagedTeeth: patient.damagedTeeth,
-                        sore: patient.sore,
-                        oldFillings: patient.oldFillings,
-                        dentures: patient.dentures,
-                        loose: patient.loose,
-                    }}
-                    />
-                )
-                )
-            case 0:
-                return (
-                    <Chart {...{
-                        topRight,
-                        setTopRight,
-                        topMiddle,
-                        setTopMiddle,
-                        topLeft,
-                        setTopLeft,
-                        bottomRight,
-                        setBottomRight,
-                        bottomMiddle,
-                        setBottomMiddle,
-                        bottomLeft,
-                        setBottomLeft,
-                    }}
-
-                    />
-                )
-            case 5:
-                return (
-                    <Report />
-                )
+                return patient && <Patient {...patient} />
+            case 2:
+                return <Chart {...segmentsProps} />
+            case 3:
+                return <Report {...segmentsProps} />
             default:
                 return <Success />
         }
     }
+
 
     return (
         <>
@@ -162,70 +94,23 @@ const Dentist = () => {
                 && <LinearProgress color="primary" variant="determinate" value={step * 100 / maxStep} />
             }
 
-            {steper(step)}
+            {stepper(step)}
 
-            <Grid
-              container
-              spacing={0}
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
-
-                {
-                    step < maxStep && step !== 0 && (
-                        <>
-                            <Grid item xs={6}>
-                                <Button
-                                  variant="text"
-                                  color="primary"
-                                  disabled={step < 1}
-                                  onClick={() => setStep(step - 1)}
-                                >
-                                    Back
-                                </Button>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <Button
-                                  variant="contained"
-                                  color="primary"
-                                  disabled={!formValidator(step) && validFormStep}
-                                  onClick={() => {
-                                        setValidFormStep(true)
-                                        if (formValidator(step)) {
-                                            setStep(step + 1)
-                                            setValidFormStep(false)
-                                        }
-                                    }
-                                    }
-                                >
-                                    Next
-                                </Button>
-                            </Grid>
-                        </>
-
-                    )
-                }
-
-                {
-                    step === maxStep && (
-                        <Grid item xs={12}>
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              disabled={!summaryReview}
-                              onClick={() => {
-                                    setStep(step + 1)
-                                    firebase.updatePatientReport({})
-                                }
-                                }
-                            >
-                                Submit
-                            </Button>
-                        </Grid>
-                    )
-                }
-            </Grid>
+            <StepperButtons {...{
+                maxStep,
+                step,
+                setStep,
+                disabledBackButton: step < 2,
+                showSubmitButton: step === maxStep,
+                showNextButton: step !== maxStep,
+                disabledNextButton: false,
+                showButtonsGrid: step !== (1 + maxStep) && step !== 0,
+                increaseOnClick: () => setStep(step + 1),
+                decreaseOnClick: () => setStep(step - 1),
+                onSubmit: () => firebase.updatePatientReport({}),
+                disabledSubmit: false,
+            }}
+            />
 
         </>
     )
