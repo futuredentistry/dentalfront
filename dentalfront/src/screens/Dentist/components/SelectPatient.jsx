@@ -28,9 +28,7 @@ const SelectPatient = ({ waitingReport, patientFirstName, nextStep }) => {
                     <Button
                       variant="contained"
                       color="primary"
-                      onClick={() => nextStep()
-
-                        }
+                      onClick={() => nextStep()}
                     >
                         Start Report
                     </Button>
@@ -38,7 +36,6 @@ const SelectPatient = ({ waitingReport, patientFirstName, nextStep }) => {
             )}
 
             {!waitingReport && 'No reports'}
-
         </>
     )
 }
