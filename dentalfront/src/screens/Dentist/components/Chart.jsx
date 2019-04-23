@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 
+import { segment } from 'modules/Dentist/props'
 import Dialog from 'ui/Dialog'
 import Issue from './Issue'
 import ImageIssue from './ImageIssue'
@@ -40,21 +41,8 @@ const Chart = ({
     const [workingOnImg, setWorkingOnImg] = useState(null)
 
     // ImageIssue
-    const [dark, setDark] = useState(false)
-    const [light, setLight] = useState(false)
-    const [close, setClose] = useState(false)
-    const [blurry, setBlurry] = useState(false)
-    const [far, setFar] = useState(false)
-    const [other, setOther] = useState(false)
 
-    const setDefaultImageIssueProps = () => {
-        setDark(false)
-        setLight(false)
-        setClose(false)
-        setBlurry(false)
-        setFar(false)
-        setOther(false)
-    }
+    console.log(topRight)
 
     const getImageIssueProps = () => {
         switch (workingOnImg) {
@@ -70,6 +58,25 @@ const Chart = ({
                 return bottomMiddle
             case 'Bottom left':
                 return bottomLeft
+            default:
+                return null
+        }
+    }
+
+    const getImageIssueSetMethod = () => {
+        switch (workingOnImg) {
+            case 'Top right':
+                return setTopRight
+            case 'Top middle':
+                return setTopMiddle
+            case 'Top left':
+                return setTopLeft
+            case 'Bottom right':
+                return setBottomRight
+            case 'Bottom middle':
+                return setBottomMiddle
+            case 'Bottom left':
+                return setBottomLeft
             default:
                 return null
         }
@@ -131,23 +138,9 @@ const Chart = ({
                           onClose={() => {
                                 setModalOpen(false)
                                 setModalComponent(null)
-                                setDefaultImageIssueProps()
                             }}
-                          {...{
-                                dark,
-                                setDark,
-                                light,
-                                setLight,
-                                close,
-                                setClose,
-                                blurry,
-                                setBlurry,
-                                far,
-                                setFar,
-                                other,
-                                setOther,
-                                ...(getImageIssueProps()),
-                            }}
+                          segmentProps={getImageIssueProps()}
+                          setSegment={getImageIssueSetMethod()}
                         />
                     )}
                     <Button
@@ -156,10 +149,8 @@ const Chart = ({
                       onClick={() => {
                             setModalOpen(false)
                             setModalComponent(null)
-                            setDefaultImageIssueProps()
                         }}
                     >
-
                         close without saving
                     </Button>
                 </>
@@ -225,28 +216,18 @@ const Chart = ({
 }
 
 Chart.propTypes = {
-    topRight: PropTypes.object,
+    topRight: segment.isRequired,
     setTopRight: PropTypes.func.isRequired,
-    topMiddle: PropTypes.object,
+    topMiddle: segment.isRequired,
     setTopMiddle: PropTypes.func.isRequired,
-    topLeft: PropTypes.object,
+    topLeft: segment.isRequired,
     setTopLeft: PropTypes.func.isRequired,
-    bottomRight: PropTypes.object,
+    bottomRight: segment.isRequired,
     setBottomRight: PropTypes.func.isRequired,
-    bottomMiddle: PropTypes.object,
+    bottomMiddle: segment.isRequired,
     setBottomMiddle: PropTypes.func.isRequired,
-    bottomLeft: PropTypes.object,
+    bottomLeft: segment.isRequired,
     setBottomLeft: PropTypes.func.isRequired,
 }
-
-Chart.defaultProps = {
-    topRight: null,
-    topMiddle: null,
-    topLeft: null,
-    bottomRight: null,
-    bottomMiddle: null,
-    bottomLeft: null,
-}
-
 
 export default Chart

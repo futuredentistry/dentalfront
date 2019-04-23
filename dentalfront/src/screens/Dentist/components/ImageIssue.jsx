@@ -6,15 +6,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 
+import { segment } from 'modules/Dentist/props'
+
 const ImageIssue = ({
+    segmentProps,
+    setSegment,
     onClose,
-    setImgProps,
-    dark, setDark,
-    light, setLight,
-    close, setClose,
-    blurry, setBlurry,
-    far, setFar,
-    other, setOther,
 }) => (
         <>
             <Typography variant="h4">
@@ -25,8 +22,8 @@ const ImageIssue = ({
                 <FormControlLabel
                   control={(
                         <Checkbox
-                          checked={dark}
-                          onChange={() => setDark(!dark)}
+                          checked={segmentProps.dark}
+                          onChange={e => setSegment({ ...segmentProps, ...{ dark: e.currentTarget.checked } })}
                           color="primary"
                         />
                     )}
@@ -35,8 +32,8 @@ const ImageIssue = ({
                 <FormControlLabel
                   control={(
                         <Checkbox
-                          checked={light}
-                          onChange={() => setLight(!light)}
+                          checked={segmentProps.light}
+                          onChange={e => setSegment({ ...segmentProps, ...{ light: e.currentTarget.checked } })}
                           color="primary"
                         />
                     )}
@@ -45,8 +42,8 @@ const ImageIssue = ({
                 <FormControlLabel
                   control={(
                         <Checkbox
-                          checked={close}
-                          onChange={() => setClose(!close)}
+                          checked={segmentProps.close}
+                          onChange={e => setSegment({ ...segmentProps, ...{ close: e.currentTarget.checked } })}
                           color="primary"
                         />
                     )}
@@ -55,8 +52,8 @@ const ImageIssue = ({
                 <FormControlLabel
                   control={(
                         <Checkbox
-                          checked={blurry}
-                          onChange={() => setBlurry(!blurry)}
+                          checked={segmentProps.blurry}
+                          onChange={e => setSegment({ ...segmentProps, ...{ blurry: e.currentTarget.checked } })}
                           color="primary"
                         />
                     )}
@@ -65,8 +62,8 @@ const ImageIssue = ({
                 <FormControlLabel
                   control={(
                         <Checkbox
-                          checked={far}
-                          onChange={() => setFar(!far)}
+                          checked={segmentProps.far}
+                          onChange={e => setSegment({ ...segmentProps, ...{ far: e.currentTarget.checked } })}
                           color="primary"
                         />
                     )}
@@ -75,8 +72,8 @@ const ImageIssue = ({
                 <FormControlLabel
                   control={(
                         <Checkbox
-                          checked={other}
-                          onChange={() => setOther(!other)}
+                          checked={segmentProps.other}
+                          onChange={e => setSegment({ ...segmentProps, ...{ other: e.currentTarget.checked } })}
                           color="primary"
                         />
                     )}
@@ -87,41 +84,17 @@ const ImageIssue = ({
             <Button
               variant="contained"
               color="primary"
-              onClick={() => {
-                    const newProps = {
-                        ...(dark && { dark }),
-                        ...(light && { light }),
-                        ...(close && { close }),
-                        ...(blurry && { blurry }),
-                        ...(far && { far }),
-                        ...(other && { other }),
-                    }
-                    setImgProps(newProps)
-                    onClose()
-                }
-                }
+              onClick={() => onClose()}
             >
                 Save
             </Button>
         </>
     )
 
-
 ImageIssue.propTypes = {
     onClose: PropTypes.func.isRequired,
-    setImgProps: PropTypes.func.isRequired,
-    dark: PropTypes.bool.isRequired,
-    setDark: PropTypes.func.isRequired,
-    light: PropTypes.bool.isRequired,
-    setLight: PropTypes.func.isRequired,
-    close: PropTypes.bool.isRequired,
-    setClose: PropTypes.func.isRequired,
-    blurry: PropTypes.bool.isRequired,
-    setBlurry: PropTypes.func.isRequired,
-    far: PropTypes.bool.isRequired,
-    setFar: PropTypes.func.isRequired,
-    other: PropTypes.bool.isRequired,
-    setOther: PropTypes.func.isRequired,
+    segmentProps: segment.isRequired,
+    setSegment: PropTypes.func.isRequired,
 }
 
 // ImageIssue.defaultProps = { }

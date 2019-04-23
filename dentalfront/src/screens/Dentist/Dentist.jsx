@@ -18,12 +18,20 @@ const Dentist = () => {
     const [waitingReport, setWaitingReport] = useState(true)
 
     // Chart
-    const [topRight, setTopRight] = useState(null)
-    const [topMiddle, setTopMiddle] = useState(null)
-    const [topLeft, setTopLeft] = useState(null)
-    const [bottomRight, setBottomRight] = useState(null)
-    const [bottomMiddle, setBottomMiddle] = useState(null)
-    const [bottomLeft, setBottomLeft] = useState(null)
+    const segmentProps = {
+        dark: false,
+        light: false,
+        close: false,
+        blurry: false,
+        far: false,
+        other: false,
+    }
+    const [topRight, setTopRight] = useState({ ...segmentProps })
+    const [topMiddle, setTopMiddle] = useState({ ...segmentProps })
+    const [topLeft, setTopLeft] = useState({ ...segmentProps })
+    const [bottomRight, setBottomRight] = useState({ ...segmentProps })
+    const [bottomMiddle, setBottomMiddle] = useState({ ...segmentProps })
+    const [bottomLeft, setBottomLeft] = useState({ ...segmentProps })
 
     const firebase = useContext(FirebaseContext)
 
