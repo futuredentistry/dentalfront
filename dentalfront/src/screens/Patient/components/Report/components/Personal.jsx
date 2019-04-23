@@ -161,7 +161,7 @@ const Personal = ({
         label="Individual number"
         value={individualNumber}
         inputProps={
-          { maxLength: 10 }
+          { maxLength: 1 }
         }
         onChange={e => /^(\s*|\d+)$/.test(e.currentTarget.value) && setIndividualNumber(e.currentTarget.value)}
         margin="normal"
