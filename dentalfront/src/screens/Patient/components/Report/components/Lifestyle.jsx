@@ -8,6 +8,8 @@ import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import Typography from '@material-ui/core/Typography'
 
+import LineRadioGroup from 'ui/LineRadioGroup/LineRadioGroup'
+
 const Lifestyle = ({
   smoker, setSmoker,
   softDrinks, setSoftDrinks,
@@ -31,92 +33,23 @@ const Lifestyle = ({
         </RadioGroup>
       </FormControl>
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">How often do you drink soft drinks?</FormLabel>
-        <RadioGroup
-          row
-          style={{ flexWrap: 'inherit' }}
-          aria-label="Soft drinks"
-          name="soft drinks"
-          value={softDrinks}
-          onChange={e => setSoftDrinks(e.currentTarget.value)}
-        >
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="less than once a week"
-            control={<Radio color="primary" />}
-            label="Less than once a week"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="every few days"
-            control={<Radio color="primary" />}
-            label="Every few days"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="daily"
-            control={<Radio color="primary" />}
-            label="Daily"
-          />
-        </RadioGroup>
-      </FormControl>
+      <LineRadioGroup
+        formLabel="How often do you drink soft drinks?"
+        formValue={softDrinks}
+        onChange={setSoftDrinks}
+        leftValue="less than once a week"
+        centerValue="every few days"
+        fightValue="daily"
+      />
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">How often do you drink alcohol?</FormLabel>
-        <RadioGroup
-          row
-          style={{ flexWrap: 'inherit' }}
-          aria-label="Alcohol"
-          name="alcohol"
-          value={alcohol}
-          onChange={e => setAlcohol(e.currentTarget.value)}
-        >
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="less than once a week"
-            control={<Radio color="primary" />}
-            label="Less than once a week"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="every few days"
-            control={<Radio color="primary" />}
-            label="Every few days"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="daily"
-            control={<Radio color="primary" />}
-            label="Daily"
-          />
-        </RadioGroup>
-      </FormControl>
-
+      <LineRadioGroup
+        formLabel="How often do you drink alcohol?"
+        formValue={alcohol}
+        onChange={setAlcohol}
+        leftValue="less than once a week"
+        centerValue="every few days"
+        fightValue="daily"
+      />
     </>
   )
 

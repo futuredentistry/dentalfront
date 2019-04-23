@@ -11,6 +11,8 @@ import Typography from '@material-ui/core/Typography'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 
+import LineRadioGroup from 'ui/LineRadioGroup/LineRadioGroup'
+
 const Dental = ({
   brush, setBrush,
   floss, setFloss,
@@ -33,145 +35,38 @@ const Dental = ({
   painBottomRight, setPainBottomRight,
   painBottomCenter, setPainBottomCenter,
   painBottomLeft, setPainBottomLeft,
-}) => {
-  console.log('')
-  return (
+}) => (
     <>
       <Typography variant="h4">
         Now some dental questions
       </Typography>
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">How frequently do you brush?</FormLabel>
-        <RadioGroup
-          row
-          style={{ flexWrap: 'inherit' }}
-          aria-label="brush"
-          name="brush"
-          value={brush}
-          onChange={e => setBrush(e.currentTarget.value)}
-        >
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="less than once a week"
-            control={<Radio color="primary" />}
-            label="Less than once a week"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="every few days"
-            control={<Radio color="primary" />}
-            label="Every few days"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="daily"
-            control={<Radio color="primary" />}
-            label="Daily"
-          />
-        </RadioGroup>
-      </FormControl>
+      <LineRadioGroup
+        formLabel="How frequently do you brush?"
+        formValue={brush}
+        onChange={setBrush}
+        leftValue="less than once a week"
+        centerValue="every few days"
+        fightValue="daily"
+      />
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">How frequently do you floss?</FormLabel>
-        <RadioGroup
-          row
-          style={{ flexWrap: 'inherit' }}
-          aria-label="floss"
-          name="floss"
-          value={floss}
-          onChange={e => setFloss(e.currentTarget.value)}
-        >
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="less than once a week"
-            control={<Radio color="primary" />}
-            label="Less than once a week"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="every few days"
-            control={<Radio color="primary" />}
-            label="Every few days"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="daily"
-            control={<Radio color="primary" />}
-            label="Daily"
-          />
-        </RadioGroup>
-      </FormControl>
+      <LineRadioGroup
+        formLabel="How frequently do you floss?"
+        formValue={floss}
+        onChange={setFloss}
+        leftValue="less than once a week"
+        centerValue="every few days"
+        fightValue="daily"
+      />
 
-      <FormControl component="fieldset">
-        <FormLabel component="legend">How frequently do you visit the dentist?</FormLabel>
-        <RadioGroup
-          row
-          style={{
-            flexWrap: 'inherit',
-          }}
-          aria-label="visitDentist"
-          name="visitDentist"
-          value={visitDentist}
-          onChange={e => setVisitDentist(e.currentTarget.value)}
-
-        >
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="less than every 3 years"
-            control={<Radio color="primary" />}
-            label="Less than every 3 years"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="every 1-3 years"
-            control={<Radio color="primary" />}
-            label="Every 1-3 years"
-          />
-          <FormControlLabel
-            style={{
-              flexBasis: '33%',
-              flexGrow: 0,
-            }}
-            labelPlacement="top"
-            value="at least every year"
-            control={<Radio color="primary" />}
-            label="At least every year"
-          />
-        </RadioGroup>
-      </FormControl>
+      <LineRadioGroup
+        formLabel="How frequently do you visit the dentist?"
+        formValue={visitDentist}
+        onChange={setVisitDentist}
+        leftValue="less than every 3 years"
+        centerValue="every 1-3 years"
+        fightValue="at least every year"
+      />
 
       <FormControl component="fieldset">
         <FormLabel component="legend">Are you comfortable with dental procedures?</FormLabel>
@@ -358,7 +253,6 @@ const Dental = ({
       </FormGroup>
     </>
   )
-}
 
 Dental.propTypes = {
   brush: PropTypes.string.isRequired,

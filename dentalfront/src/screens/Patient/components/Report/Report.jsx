@@ -65,13 +65,13 @@ const Report = () => {
     const [oldFillings, setOldFillings] = useState(false)
     const [dentures, setDentures] = useState(false)
     const [loose, setLoose] = useState(false)
+    // Pain map
     const [painTopRight, setPainTopRight] = useState(false)
     const [painTopCenter, setPainTopCenter] = useState(false)
     const [painTopLeft, setPainTopLeft] = useState(false)
     const [painBottomRight, setPainBottomRight] = useState(false)
     const [painBottomCenter, setPainBottomCenter] = useState(false)
     const [painBottomLeft, setPainBottomLeft] = useState(false)
-
     // Medical
     const [bloodDiseases, setBloodDiseases] = useState('no')
     const [pregnant, setPregnant] = useState('no')
@@ -87,7 +87,6 @@ const Report = () => {
     const [pacemaker, setPacemaker] = useState(false)
     const [otherConditions, setOtherConditions] = useState(false)
     const [otherConditionsList, setOtherConditionsList] = useState('')
-
     // Summary
     const [research, setResearch] = useState(false)
     const [policy, setPolicy] = useState(false)
