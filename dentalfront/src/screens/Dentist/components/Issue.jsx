@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
@@ -11,6 +11,8 @@ const Issue = ({ onClose, segmentProps, setSegment }) => {
     const [validateForm, setValidateForm] = useState(false)
 
     const validator = () => segmentProps.concern !== '' && segmentProps.treatment !== '' && segmentProps.toothNumber !== ''
+    const [starterProps, setStarterProps] = useState(null)
+    useEffect(() => !starterProps && setStarterProps(segmentProps), [])
 
     return (
         <>
@@ -74,6 +76,16 @@ const Issue = ({ onClose, segmentProps, setSegment }) => {
                 Save
             </Button>
 
+            <Button
+              variant="text"
+              color="primary"
+              onClick={() => {
+                    onClose()
+                    setSegment(starterProps)
+                }}
+            >
+                close without saving
+            </Button>
         </>
     )
 }

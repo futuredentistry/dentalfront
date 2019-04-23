@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 // @ts-nocheck
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
@@ -41,9 +41,6 @@ const Chart = ({
     const [workingOnImg, setWorkingOnImg] = useState(null)
 
     // ImageIssue
-
-    console.log(topRight)
-
     const getImageIssueProps = () => {
         switch (workingOnImg) {
             case 'Top right':
@@ -93,35 +90,20 @@ const Chart = ({
                 <>
                     {modalComponent === MODAL.ISSUE && (
                         <Issue
-                          onClose={() => {
-                                setModalOpen(false)
-                                setModalComponent(null)
-                            }}
+                          onClose={() => setModalOpen(false)}
                           segmentProps={getImageIssueProps()}
                           setSegment={getImageIssueSetMethod()}
                         />
                     )
                     }
+
                     {modalComponent === MODAL.IMAGE_ISSUE && (
                         <ImageIssue
-                          onClose={() => {
-                                setModalOpen(false)
-                                setModalComponent(null)
-                            }}
+                          onClose={() => setModalOpen(false)}
                           segmentProps={getImageIssueProps()}
                           setSegment={getImageIssueSetMethod()}
                         />
                     )}
-                    <Button
-                      variant="text"
-                      color="primary"
-                      onClick={() => {
-                            setModalOpen(false)
-                            setModalComponent(null)
-                        }}
-                    >
-                        close without saving
-                    </Button>
                 </>
             </Dialog>
 
