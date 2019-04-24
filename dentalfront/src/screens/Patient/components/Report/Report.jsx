@@ -7,6 +7,7 @@ import FirebaseContext from 'modules/Firebase'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import StepperButtons from 'ui/StepperButtons'
 import Success from './components/Success'
 import Medical from './components/Medical'
 import Personal from './components/Personal'
@@ -294,83 +295,44 @@ const Report = () => {
     return (
         <>
             {
-                step <= maxStep && <LinearProgress color="primary" variant="determinate" value={step * 100 / 4} />
+                step <= maxStep && <LinearProgress color="primary" variant="determinate" value={step * 100 / maxStep} />
             }
 
             {stepper(step)}
 
-            <Grid
-              container
-              spacing={0}
-              direction="row"
-              justify="center"
-              alignItems="center"
-            >
-
-                {
-                    step < maxStep && (
-                        <>
-                            <Grid item xs={6}>
-                                <Button
-                                  variant="text"
-                                  color="primary"
-                                  disabled={step < 1}
-                                  onClick={() => setStep(step - 1)}
-                                >
-                                    Back
-                                </Button>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <Button
-                                  variant="contained"
-                                  color="primary"
-                                  disabled={!formValidator(step) && validFormStep}
-                                  onClick={() => {
-                                        setValidFormStep(true)
-                                        if (formValidator(step)) {
-                                            setStep(step + 1)
-                                            setValidFormStep(false)
-                                        }
-                                    }
-                                    }
-                                >
-                                    Next
-                                </Button>
-                            </Grid>
-                        </>
-
-                    )
-                }
-
-                {
-                    step === maxStep && (
-                        <Grid item xs={12}>
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              disabled={!policy}
-                              onClick={() => {
-                                    setStep(step + 1)
-                                    firebase.setPatientReport({
-                                        email: email(),
-                                        ...propsPersonal,
-                                        ...propsLifestyle,
-                                        ...propsDental,
-                                        ...propsMedical,
-                                        ...propsSummary,
-                                        // Initial report status
-                                        status: STATUS.IN_PROGRESS,
-                                    })
-                                }
-                                }
-                            >
-                                Submit
-                            </Button>
-                        </Grid>
-                    )
-                }
-            </Grid>
-
+            <StepperButtons {...{
+                maxStep,
+                step,
+                setStep,
+                disabledBackButton: step < 1,
+                showSubmitButton: step === maxStep,
+                showNextButton: step !== maxStep,
+                disabledNextButton: !formValidator(step) && validFormStep,
+                showButtonsGrid: step <= maxStep,
+                increaseOnClick: () => {
+                    setValidFormStep(true)
+                    if (formValidator(step)) {
+                        setStep(step + 1)
+                        setValidFormStep(false)
+                    }
+                },
+                decreaseOnClick: () => setStep(step - 1),
+                onSubmit: () => {
+                    setStep(step + 1)
+                    firebase.setPatientReport({
+                        email: email(),
+                        ...propsPersonal,
+                        ...propsLifestyle,
+                        ...propsDental,
+                        ...propsMedical,
+                        ...propsSummary,
+                        // Initial report status
+                        status: STATUS.IN_PROGRESS,
+                    })
+                },
+                disabledSubmit: !policy,
+            }}
+            />
         </>
     )
 }
