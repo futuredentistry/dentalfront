@@ -1,6 +1,5 @@
 // @ts-nocheck
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Typography from '@material-ui/core/Typography'
 import Checkbox from '@material-ui/core/Checkbox'
@@ -9,6 +8,9 @@ import FormGroup from '@material-ui/core/FormGroup'
 import LineRadioGroup from 'ui/LineRadioGroup'
 import RadioGroupYesNo from 'ui/RadioGroupYesNo'
 import PrimaryCheckbox from 'ui/PrimaryCheckbox'
+import {
+  propsDental, methodsDental, propsPainMap, methodsPainMap,
+} from 'modules/Patient/props'
 
 const Dental = ({
   brush, setBrush,
@@ -136,50 +138,10 @@ const Dental = ({
   )
 
 Dental.propTypes = {
-  brush: PropTypes.string.isRequired,
-  setBrush: PropTypes.func.isRequired,
-  floss: PropTypes.string.isRequired,
-  setFloss: PropTypes.func.isRequired,
-  visitDentist: PropTypes.string.isRequired,
-  setVisitDentist: PropTypes.func.isRequired,
-  comfortable: PropTypes.string.isRequired,
-  setComfortable: PropTypes.func.isRequired,
-
-  breath: PropTypes.bool.isRequired,
-  setBreath: PropTypes.func.isRequired,
-  bleedingGum: PropTypes.bool.isRequired,
-  setBleedingGum: PropTypes.func.isRequired,
-  cosmetic: PropTypes.bool.isRequired,
-  setCosmetic: PropTypes.func.isRequired,
-  teethPain: PropTypes.bool.isRequired,
-  setTeethPain: PropTypes.func.isRequired,
-  gumPain: PropTypes.bool.isRequired,
-  setGumPain: PropTypes.func.isRequired,
-  grinding: PropTypes.bool.isRequired,
-  setGrinding: PropTypes.func.isRequired,
-  damagedTeeth: PropTypes.bool.isRequired,
-  setDamagedTeeth: PropTypes.func.isRequired,
-  sore: PropTypes.bool.isRequired,
-  setSore: PropTypes.func.isRequired,
-  oldFillings: PropTypes.bool.isRequired,
-  setOldFillings: PropTypes.func.isRequired,
-  dentures: PropTypes.bool.isRequired,
-  setDentures: PropTypes.func.isRequired,
-  loose: PropTypes.bool.isRequired,
-  setLoose: PropTypes.func.isRequired,
-
-  painTopRight: PropTypes.bool.isRequired,
-  setPainTopRight: PropTypes.func.isRequired,
-  painTopCenter: PropTypes.bool.isRequired,
-  setPainTopCenter: PropTypes.func.isRequired,
-  painTopLeft: PropTypes.bool.isRequired,
-  setPainTopLeft: PropTypes.func.isRequired,
-  painBottomRight: PropTypes.bool.isRequired,
-  setPainBottomRight: PropTypes.func.isRequired,
-  painBottomCenter: PropTypes.bool.isRequired,
-  setPainBottomCenter: PropTypes.func.isRequired,
-  painBottomLeft: PropTypes.bool.isRequired,
-  setPainBottomLeft: PropTypes.func.isRequired,
+  ...propsDental,
+  ...methodsDental,
+  ...propsPainMap,
+  ...methodsPainMap,
 }
 
 export default Dental

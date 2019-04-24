@@ -1,10 +1,10 @@
 // @ts-nocheck
 import React from 'react'
-import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 
 import LineRadioGroup from 'ui/LineRadioGroup'
 import RadioGroupYesNo from 'ui/RadioGroupYesNo'
+import { propsLifestyle, methodsLifestyle } from 'modules/Patient/props'
 
 const Lifestyle = ({
   smoker, setSmoker,
@@ -43,12 +43,8 @@ const Lifestyle = ({
   )
 
 Lifestyle.propTypes = {
-  alcohol: PropTypes.string.isRequired,
-  setAlcohol: PropTypes.func.isRequired,
-  smoker: PropTypes.string.isRequired,
-  setSmoker: PropTypes.func.isRequired,
-  softDrinks: PropTypes.string.isRequired,
-  setSoftDrinks: PropTypes.func.isRequired,
+  ...propsLifestyle,
+  ...methodsLifestyle,
 }
 
 export default Lifestyle

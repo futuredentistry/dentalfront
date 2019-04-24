@@ -8,6 +8,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 
 import RadioGroupYesNo from 'ui/RadioGroupYesNo'
 import PrimaryCheckbox from 'ui/PrimaryCheckbox'
+import { propsMedical, methodsMedical } from 'modules/Patient/props'
 
 const Medical = ({
   validFormStep,
@@ -82,7 +83,6 @@ const Medical = ({
         <PrimaryCheckbox formLabel="Any other conditions?" formValue={otherConditions} onChange={setOtherConditions} />
       </FormGroup>
 
-
       {
         otherConditions && (
           <>
@@ -106,36 +106,8 @@ const Medical = ({
 
 Medical.propTypes = {
   validFormStep: PropTypes.bool.isRequired,
-
-  bloodDiseases: PropTypes.string.isRequired,
-  setBloodDiseases: PropTypes.func.isRequired,
-  pregnant: PropTypes.string.isRequired,
-  setPregnant: PropTypes.func.isRequired,
-  allergies: PropTypes.string.isRequired,
-  setAllergies: PropTypes.func.isRequired,
-  allergiesList: PropTypes.string.isRequired,
-  setAllergiesList: PropTypes.func.isRequired,
-
-  heartConditions: PropTypes.bool.isRequired,
-  setHeartConditions: PropTypes.func.isRequired,
-  breathingProblems: PropTypes.bool.isRequired,
-  setBreathingProblems: PropTypes.func.isRequired,
-  bloodDisorders: PropTypes.bool.isRequired,
-  setBloodDisorders: PropTypes.func.isRequired,
-  boneDisease: PropTypes.bool.isRequired,
-  setBoneDisease: PropTypes.func.isRequired,
-  cancer: PropTypes.bool.isRequired,
-  setCancer: PropTypes.func.isRequired,
-  diabetes: PropTypes.bool.isRequired,
-  setDiabetes: PropTypes.func.isRequired,
-  stroke: PropTypes.bool.isRequired,
-  setStroke: PropTypes.func.isRequired,
-  pacemaker: PropTypes.bool.isRequired,
-  setPacemaker: PropTypes.func.isRequired,
-  otherConditions: PropTypes.bool.isRequired,
-  setOtherConditions: PropTypes.func.isRequired,
-  otherConditionsList: PropTypes.string.isRequired,
-  setOtherConditionsList: PropTypes.func.isRequired,
+  ...propsMedical,
+  ...methodsMedical,
 }
 
 export default Medical

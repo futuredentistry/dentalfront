@@ -16,6 +16,7 @@ import SelectOrganisation from 'ui/SelectOrganisation'
 import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 
 import 'modules/styles/datePicker.scss'
+import { propsPersonal, methodsPersonal } from 'modules/Patient/props'
 
 const Personal = ({
   validFormStep,
@@ -44,7 +45,6 @@ const Personal = ({
 
   return (
     <>
-
       <Typography variant="h4">
         Getting to know you
       </Typography>
@@ -174,8 +174,7 @@ const Personal = ({
           keyboard
           label="Expire date"
           format="MM/dd/yyyy"
-          mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])
-          }
+          mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])}
           value={expiredDate}
           onChange={handleExpiredChange}
           disableOpenOnEnter
@@ -208,44 +207,14 @@ const Personal = ({
           onChange={setIncludeDental}
         />
       </FormGroup>
-
     </>
   )
 }
 
 Personal.propTypes = {
   validFormStep: PropTypes.bool.isRequired,
-  firstName: PropTypes.string.isRequired,
-  setFirstName: PropTypes.func.isRequired,
-  familyName: PropTypes.string.isRequired,
-  setFamilyName: PropTypes.func.isRequired,
-  birthDate: PropTypes.instanceOf(Date),
-  handleDateBirthChange: PropTypes.func.isRequired,
-  postcode: PropTypes.string.isRequired,
-  setPostcode: PropTypes.func.isRequired,
-  gender: PropTypes.string.isRequired,
-  setGender: PropTypes.func.isRequired,
-  contactNumber: PropTypes.string.isRequired,
-  setContactNumber: PropTypes.func.isRequired,
-  organisation: PropTypes.string.isRequired,
-  setOrganisation: PropTypes.func.isRequired,
-  //
-  medicare: PropTypes.string.isRequired,
-  setMedicare: PropTypes.func.isRequired,
-  individualNumber: PropTypes.string.isRequired,
-  setIndividualNumber: PropTypes.func.isRequired,
-  expiredDate: PropTypes.instanceOf(Date),
-  handleExpiredChange: PropTypes.func.isRequired,
-  privateInsurance: PropTypes.string.isRequired,
-  setPrivateInsurance: PropTypes.func.isRequired,
-  privateInsuranceOther: PropTypes.string.isRequired,
-  setPrivateInsuranceOther: PropTypes.func.isRequired,
-  includeDental: PropTypes.bool.isRequired,
-  setIncludeDental: PropTypes.func.isRequired,
+  ...propsPersonal,
+  ...methodsPersonal,
 }
 
-Personal.defaultProps = {
-  birthDate: null,
-  expiredDate: null,
-}
 export default Personal

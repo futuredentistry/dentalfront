@@ -8,6 +8,9 @@ import List from '@material-ui/core/List'
 import PrimaryListItem from 'ui/PrimaryListItem/PrimaryListItem'
 import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
+import {
+    propsDental, propsPersonal, propsLifestyle, propsMedical,
+} from 'modules/Patient/props'
 
 const Summary = ({
     firstName,
@@ -252,74 +255,31 @@ const Summary = ({
 
             <br />
             <FormGroup>
-                <PrimaryCheckbox formLabel="I am happy for images of my teeth to be separated from my personal information for use in research" formValue={research} onChange={setResearch} />
-                <PrimaryCheckbox formLabel="By submitting this form you agree to our terms and conditions and privacy policy" formValue={policy} onChange={setPolicy} />
+                <PrimaryCheckbox
+                  formLabel="I am happy for images of my teeth to be separated from my personal information for use in research"
+                  formValue={research}
+                  onChange={setResearch}
+                />
+                <PrimaryCheckbox
+                  formLabel="By submitting this form you agree to our terms and conditions and privacy policy"
+                  formValue={policy}
+                  onChange={setPolicy}
+                />
             </FormGroup>
         </>
     )
 }
 
 Summary.propTypes = {
-    // Personal
-    firstName: PropTypes.string.isRequired,
-    familyName: PropTypes.string.isRequired,
-    birthDate: PropTypes.instanceOf(Date),
-    postcode: PropTypes.string.isRequired,
-    gender: PropTypes.string.isRequired,
-    contactNumber: PropTypes.string.isRequired,
-    medicare: PropTypes.string.isRequired,
-    privateInsurance: PropTypes.string.isRequired,
-    privateInsuranceOther: PropTypes.string.isRequired,
-    includeDental: PropTypes.bool.isRequired,
     email: PropTypes.string.isRequired,
-
-    // Lifestyle
-    smoker: PropTypes.string.isRequired,
-    softDrinks: PropTypes.string.isRequired,
-    alcohol: PropTypes.string.isRequired,
-
-    // Dental
-    brush: PropTypes.string.isRequired,
-    floss: PropTypes.string.isRequired,
-    visitDentist: PropTypes.string.isRequired,
-    comfortable: PropTypes.string.isRequired,
-    breath: PropTypes.bool.isRequired,
-    bleedingGum: PropTypes.bool.isRequired,
-    cosmetic: PropTypes.bool.isRequired,
-    teethPain: PropTypes.bool.isRequired,
-    gumPain: PropTypes.bool.isRequired,
-    grinding: PropTypes.bool.isRequired,
-    damagedTeeth: PropTypes.bool.isRequired,
-    sore: PropTypes.bool.isRequired,
-    oldFillings: PropTypes.bool.isRequired,
-    dentures: PropTypes.bool.isRequired,
-    loose: PropTypes.bool.isRequired,
-
-    // Medical
-    bloodDiseases: PropTypes.string.isRequired,
-    pregnant: PropTypes.string.isRequired,
-    allergies: PropTypes.string.isRequired,
-    allergiesList: PropTypes.string.isRequired,
-    heartConditions: PropTypes.bool.isRequired,
-    breathingProblems: PropTypes.bool.isRequired,
-    bloodDisorders: PropTypes.bool.isRequired,
-    boneDisease: PropTypes.bool.isRequired,
-    cancer: PropTypes.bool.isRequired,
-    diabetes: PropTypes.bool.isRequired,
-    stroke: PropTypes.bool.isRequired,
-    pacemaker: PropTypes.bool.isRequired,
-    otherConditions: PropTypes.bool.isRequired,
-    otherConditionsList: PropTypes.string.isRequired,
-
-    // Summary
+    ...propsPersonal,
+    ...propsLifestyle,
+    ...propsDental,
+    ...propsMedical,
     research: PropTypes.bool.isRequired,
     setResearch: PropTypes.func.isRequired,
     policy: PropTypes.bool.isRequired,
     setPolicy: PropTypes.func.isRequired,
-}
-
-Summary.defaultProps = {
-    birthDate: null,
 }
 
 export default Summary

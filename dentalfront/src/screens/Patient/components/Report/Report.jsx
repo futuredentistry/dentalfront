@@ -41,7 +41,6 @@ const Report = () => {
     const [privateInsurance, setPrivateInsurance] = useState('')
     const [privateInsuranceOther, setPrivateInsuranceOther] = useState('')
     const [includeDental, setIncludeDental] = useState(false)
-
     const propsPersonal = {
         firstName,
         familyName,

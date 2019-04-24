@@ -6,7 +6,7 @@ export const segment = PropTypes.shape({
     concern: PropTypes.string.isRequired,
     treatment: PropTypes.string.isRequired,
     toothNumber: PropTypes.string.isRequired,
-    // ImmageIssue
+    // ImageIssue
     dark: PropTypes.bool.isRequired,
     light: PropTypes.bool.isRequired,
     close: PropTypes.bool.isRequired,
