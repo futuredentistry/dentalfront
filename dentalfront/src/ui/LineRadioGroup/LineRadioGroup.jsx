@@ -9,10 +9,11 @@ import FormLabel from '@material-ui/core/FormLabel'
 
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 
+const labelStyle = { flexBasis: '33%', flexGrow: 0 }
+
 const LineRadioGroup = ({
     formLabel, formValue, onChange, leftValue, centerValue, fightValue,
 }) => {
-    const labelStyle = { flexBasis: '33%', flexGrow: 0 }
     const buttons = [leftValue, centerValue, fightValue]
     return (
         <FormControl component="fieldset">

@@ -9,11 +9,11 @@ import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
-import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
 import SelectOrganisation from 'ui/SelectOrganisation'
+import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 
 import 'modules/styles/datePicker.scss'
 
@@ -202,15 +202,10 @@ const Personal = ({
       />
 
       <FormGroup>
-        <FormControlLabel
-          control={(
-            <Checkbox
-              checked={includeDental}
-              onChange={() => setInscludeDental(!includeDental)}
-              color="primary"
-            />
-          )}
-          label="My private health insurance includes dental"
+        <PrimaryCheckbox
+          formLabel="My private health insurance includes dental"
+          formValue={includeDental}
+          onChange={setInscludeDental}
         />
       </FormGroup>
 

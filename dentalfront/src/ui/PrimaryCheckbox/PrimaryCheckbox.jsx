@@ -7,22 +7,22 @@ import Checkbox from '@material-ui/core/Checkbox'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 
 const PrimaryCheckbox = ({ formLabel, formValue, onChange }) => (
-    <FormControlLabel
-      control={(
-            <Checkbox
-              checked={formValue}
-              onChange={() => onChange(!formLabel)}
-              color="primary"
-            />
-        )}
-      label={capitalizeFirstLetter(formLabel)}
-    />
+  <FormControlLabel
+    control={(
+      <Checkbox
+        checked={formValue}
+        onChange={() => onChange(!formValue)}
+        color="primary"
+      />
+    )}
+    label={capitalizeFirstLetter(formLabel)}
+  />
 )
 
 PrimaryCheckbox.propTypes = {
-    formLabel: PropTypes.string.isRequired,
-    formValue: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
+  formLabel: PropTypes.string.isRequired,
+  formValue: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default PrimaryCheckbox
