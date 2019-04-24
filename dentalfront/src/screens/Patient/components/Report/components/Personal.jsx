@@ -33,7 +33,7 @@ const Personal = ({
   expiredDate, handleExpiredChange,
   privateInsurance, setPrivateInsurance,
   privateInsuranceOther, setPrivateInsuranceOther,
-  includeDental, setInscludeDental,
+  includeDental, setIncludeDental,
 }) => {
   const display = medicare !== '' ? [...medicare].map((char, i) => {
     if (i === 4) return ` ${char}`
@@ -205,7 +205,7 @@ const Personal = ({
         <PrimaryCheckbox
           formLabel="My private health insurance includes dental"
           formValue={includeDental}
-          onChange={setInscludeDental}
+          onChange={setIncludeDental}
         />
       </FormGroup>
 
@@ -241,7 +241,7 @@ Personal.propTypes = {
   privateInsuranceOther: PropTypes.string.isRequired,
   setPrivateInsuranceOther: PropTypes.func.isRequired,
   includeDental: PropTypes.bool.isRequired,
-  setInscludeDental: PropTypes.func.isRequired,
+  setIncludeDental: PropTypes.func.isRequired,
 }
 
 Personal.defaultProps = {
