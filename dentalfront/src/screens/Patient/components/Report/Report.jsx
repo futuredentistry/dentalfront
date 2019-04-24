@@ -78,6 +78,16 @@ const Report = () => {
     const [smoker, setSmoker] = useState('yes')
     const [softDrinks, setSoftDrinks] = useState('every few days')
     const [alcohol, setAlcohol] = useState('every few days')
+    const propsLifestyle = {
+        smoker,
+        softDrinks,
+        alcohol,
+    }
+    const methodsLifestyle = {
+        setSmoker,
+        setSoftDrinks,
+        setAlcohol,
+    }
 
     // Dental
     const [brush, setBrush] = useState('every few days')
@@ -95,6 +105,41 @@ const Report = () => {
     const [oldFillings, setOldFillings] = useState(false)
     const [dentures, setDentures] = useState(false)
     const [loose, setLoose] = useState(false)
+    const propsDental = {
+        brush,
+        floss,
+        visitDentist,
+        comfortable,
+        breath,
+        bleedingGum,
+        cosmetic,
+        teethPain,
+        gumPain,
+        grinding,
+        damagedTeeth,
+        sore,
+        oldFillings,
+        dentures,
+        loose,
+    }
+    const methodsDental = {
+        setBrush,
+        setFloss,
+        setVisitDentist,
+        setComfortable,
+        setBreath,
+        setBleedingGum,
+        setCosmetic,
+        setTeethPain,
+        setGumPain,
+        setGrinding,
+        setDamagedTeeth,
+        setSore,
+        setOldFillings,
+        setDentures,
+        setLoose,
+    }
+
     // Pain map
     const [painTopRight, setPainTopRight] = useState(false)
     const [painTopCenter, setPainTopCenter] = useState(false)
@@ -102,6 +147,23 @@ const Report = () => {
     const [painBottomRight, setPainBottomRight] = useState(false)
     const [painBottomCenter, setPainBottomCenter] = useState(false)
     const [painBottomLeft, setPainBottomLeft] = useState(false)
+    const propsPainMap = {
+        painTopRight,
+        painTopCenter,
+        painTopLeft,
+        painBottomRight,
+        painBottomCenter,
+        painBottomLeft,
+    }
+    const methodsPainMap = {
+        setPainTopRight,
+        setPainTopCenter,
+        setPainTopLeft,
+        setPainBottomRight,
+        setPainBottomCenter,
+        setPainBottomLeft,
+    }
+
     // Medical
     const [bloodDiseases, setBloodDiseases] = useState('no')
     const [pregnant, setPregnant] = useState('no')
@@ -117,9 +179,50 @@ const Report = () => {
     const [pacemaker, setPacemaker] = useState(false)
     const [otherConditions, setOtherConditions] = useState(false)
     const [otherConditionsList, setOtherConditionsList] = useState('')
+    const propsMedical = {
+        bloodDiseases,
+        pregnant,
+        allergies,
+        allergiesList,
+        heartConditions,
+        breathingProblems,
+        bloodDisorders,
+        boneDisease,
+        cancer,
+        diabetes,
+        stroke,
+        pacemaker,
+        otherConditions,
+        otherConditionsList,
+    }
+    const methodsMedical = {
+        setBloodDiseases,
+        setPregnant,
+        setAllergies,
+        setAllergiesList,
+        setHeartConditions,
+        setBreathingProblems,
+        setBloodDisorders,
+        setBoneDisease,
+        setCancer,
+        setDiabetes,
+        setStroke,
+        setPacemaker,
+        setOtherConditions,
+        setOtherConditionsList,
+    }
+
     // Summary
     const [research, setResearch] = useState(false)
     const [policy, setPolicy] = useState(false)
+    const propsSummary = {
+        research,
+        policy,
+    }
+    const methodsSummary = {
+        setResearch,
+        setPolicy,
+    }
 
     const formValidator = (n) => {
         let valid = true
@@ -149,195 +252,37 @@ const Report = () => {
             case 0:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <Personal {...{
-                            validFormStep,
-
-                            firstName,
-                            setFirstName,
-                            familyName,
-                            setFamilyName,
-                            birthDate,
-                            handleDateBirthChange,
-                            postcode,
-                            setPostcode,
-                            gender,
-                            setGender,
-                            contactNumber,
-                            setContactNumber,
-                            organisation,
-                            setOrganisation,
-                            //
-                            medicare,
-                            setMedicare,
-                            individualNumber,
-                            setIndividualNumber,
-                            expiredDate,
-                            handleExpiredChange,
-                            privateInsurance,
-                            setPrivateInsurance,
-                            privateInsuranceOther,
-                            setPrivateInsuranceOther,
-                            includeDental,
-                            setIncludeDental,
-                        }}
-                        />
+                        <Personal {...{ validFormStep, ...propsPersonal, ...methodsPersonal }} />
                     </MuiPickersUtilsProvider>
                 )
             case 1:
                 return (
-                    <Lifestyle {...{
-                        smoker,
-                        setSmoker,
-                        softDrinks,
-                        setSoftDrinks,
-                        alcohol,
-                        setAlcohol,
-                    }}
-                    />
+                    <Lifestyle {...{ ...propsLifestyle, ...methodsLifestyle }} />
                 )
             case 2:
                 return (
                     <Dental {...{
-                        brush,
-                        setBrush,
-                        floss,
-                        setFloss,
-                        visitDentist,
-                        setVisitDentist,
-                        comfortable,
-                        setComfortable,
-                        breath,
-                        setBreath,
-                        bleedingGum,
-                        setBleedingGum,
-                        cosmetic,
-                        setCosmetic,
-                        teethPain,
-                        setTeethPain,
-                        gumPain,
-                        setGumPain,
-                        grinding,
-                        setGrinding,
-                        damagedTeeth,
-                        setDamagedTeeth,
-                        sore,
-                        setSore,
-                        oldFillings,
-                        setOldFillings,
-                        dentures,
-                        setDentures,
-                        loose,
-                        setLoose,
-                        painTopRight,
-                        setPainTopRight,
-                        painTopCenter,
-                        setPainTopCenter,
-                        painTopLeft,
-                        setPainTopLeft,
-                        painBottomRight,
-                        setPainBottomRight,
-                        painBottomCenter,
-                        setPainBottomCenter,
-                        painBottomLeft,
-                        setPainBottomLeft,
-
+                        ...propsDental,
+                        ...methodsDental,
+                        ...propsPainMap,
+                        ...methodsPainMap,
                     }}
                     />
                 )
             case 3:
                 return (
-                    <Medical {...{
-                        validFormStep,
-
-                        bloodDiseases,
-                        setBloodDiseases,
-                        pregnant,
-                        setPregnant,
-                        allergies,
-                        setAllergies,
-                        allergiesList,
-                        setAllergiesList,
-                        heartConditions,
-                        setHeartConditions,
-                        breathingProblems,
-                        setBreathingProblems,
-                        bloodDisorders,
-                        setBloodDisorders,
-                        boneDisease,
-                        setBoneDisease,
-                        cancer,
-                        setCancer,
-                        diabetes,
-                        setDiabetes,
-                        stroke,
-                        setStroke,
-                        pacemaker,
-                        setPacemaker,
-                        otherConditions,
-                        setOtherConditions,
-                        otherConditionsList,
-                        setOtherConditionsList,
-                    }}
-                    />
+                    <Medical {...{ validFormStep, ...propsMedical, ...methodsMedical }} />
                 )
             case 4:
                 return (
                     <Summary {...{
-                        // Personal
-                        firstName,
-                        familyName,
-                        birthDate,
-                        postcode,
-                        gender,
-                        contactNumber,
-                        medicare,
-                        privateInsurance,
-                        privateInsuranceOther,
-                        includeDental,
                         email: `${email()}`,
-                        // Lifestyle
-                        smoker,
-                        softDrinks,
-                        alcohol,
-
-                        // Dental
-                        brush,
-                        floss,
-                        visitDentist,
-                        comfortable,
-                        breath,
-                        bleedingGum,
-                        cosmetic,
-                        teethPain,
-                        gumPain,
-                        grinding,
-                        damagedTeeth,
-                        sore,
-                        oldFillings,
-                        dentures,
-                        loose,
-
-                        // Medical
-                        bloodDiseases,
-                        pregnant,
-                        allergies,
-                        allergiesList,
-                        heartConditions,
-                        breathingProblems,
-                        bloodDisorders,
-                        boneDisease,
-                        cancer,
-                        diabetes,
-                        stroke,
-                        pacemaker,
-                        otherConditions,
-                        otherConditionsList,
-
-                        // Summary
-                        research,
-                        setResearch,
-                        policy,
-                        setPolicy,
+                        ...propsPersonal,
+                        ...propsLifestyle,
+                        ...propsDental,
+                        ...propsMedical,
+                        ...propsSummary,
+                        ...methodsSummary,
                     }}
                     />
                 )
@@ -407,66 +352,12 @@ const Report = () => {
                               onClick={() => {
                                     setStep(step + 1)
                                     firebase.setPatientReport({
-                                        // Personal
                                         email: email(),
-                                        firstName,
-                                        familyName,
-                                        birthDate,
-                                        postcode,
-                                        gender,
-                                        contactNumber,
-                                        organisation,
-                                        //
-                                        medicare,
-                                        individualNumber,
-                                        expiredDate,
-                                        privateInsurance,
-                                        privateInsuranceOther,
-                                        includeDental,
-                                        // Lifestyle
-                                        smoker,
-                                        softDrinks,
-                                        alcohol,
-                                        // Dental
-                                        brush,
-                                        floss,
-                                        visitDentist,
-                                        comfortable,
-                                        breath,
-                                        bleedingGum,
-                                        cosmetic,
-                                        teethPain,
-                                        gumPain,
-                                        grinding,
-                                        damagedTeeth,
-                                        sore,
-                                        oldFillings,
-                                        dentures,
-                                        loose,
-                                        painTopRight,
-                                        painTopCenter,
-                                        painTopLeft,
-                                        painBottomRight,
-                                        painBottomCenter,
-                                        painBottomLeft,
-                                        // Medical
-                                        bloodDiseases,
-                                        pregnant,
-                                        allergies,
-                                        allergiesList,
-                                        heartConditions,
-                                        breathingProblems,
-                                        bloodDisorders,
-                                        boneDisease,
-                                        cancer,
-                                        diabetes,
-                                        stroke,
-                                        pacemaker,
-                                        otherConditions,
-                                        otherConditionsList,
-                                        // Summary
-                                        research,
-                                        policy,
+                                        ...propsPersonal,
+                                        ...propsLifestyle,
+                                        ...propsDental,
+                                        ...propsMedical,
+                                        ...propsSummary,
                                         // Initial report status
                                         status: STATUS.IN_PROGRESS,
                                     })
