@@ -46,7 +46,7 @@ const Dentist = () => {
     // Summary
     const [summaryReview, setSummaryReview] = useState('outstanding')
     const [overallHealth, setOverallHealth] = useState('no')
-    const [risk, setRisk] = useState('')
+    const [risk, setRisk] = useState('outstanding')
     const propsSummary = { summaryReview, overallHealth, risk }
     const methodsSummary = { setSummaryReview, setOverallHealth, setRisk }
 
@@ -66,7 +66,7 @@ const Dentist = () => {
             setBottomLeft,
         }
         switch (n) {
-            case 0:
+            case 9:
                 return (
                     <SelectPatient {...{
                         waitingReport,
@@ -79,7 +79,7 @@ const Dentist = () => {
                 return patient && <Patient {...patient} />
             case 2:
                 return <Chart {...segmentsProps} />
-            case 3:
+            case 0:
                 return <Report {...{ ...segmentsProps, ...propsSummary, ...methodsSummary }} />
             default:
                 return <Success />
