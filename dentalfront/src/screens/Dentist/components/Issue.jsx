@@ -10,7 +10,10 @@ import { segment } from 'modules/Dentist/props'
 const Issue = ({ onClose, segmentProps, setSegment }) => {
     const [validateForm, setValidateForm] = useState(false)
 
-    const validator = () => segmentProps.concern !== '' && segmentProps.treatment !== '' && segmentProps.toothNumber !== ''
+    const validator = () => segmentProps.concern !== ''
+        && segmentProps.treatment !== ''
+        && segmentProps.toothNumber !== ''
+
     const [starterProps, setStarterProps] = useState(null)
     useEffect(() => !starterProps && setStarterProps(segmentProps), [])
 
@@ -53,7 +56,10 @@ const Issue = ({ onClose, segmentProps, setSegment }) => {
               inputProps={
                     { maxLength: 2 }
                 }
-              onChange={e => /^(\s*|\d+)$/.test(e.currentTarget.value) && setSegment({ ...segmentProps, ...{ toothNumber: e.currentTarget.value } })}
+              onChange={
+                    e => /^(\s*|\d+)$/.test(e.currentTarget.value)
+                        && setSegment({ ...segmentProps, ...{ toothNumber: e.currentTarget.value } })
+                }
               margin="normal"
               variant="filled"
             />

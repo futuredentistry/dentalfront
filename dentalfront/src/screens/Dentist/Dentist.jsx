@@ -19,7 +19,6 @@ const Dentist = () => {
     const [waitingReport, setWaitingReport] = useState(true)
 
     // Chart
-
     const [topRight, setTopRight] = useState({ ...segmentDefaultProps })
     const [topMiddle, setTopMiddle] = useState({ ...segmentDefaultProps })
     const [topLeft, setTopLeft] = useState({ ...segmentDefaultProps })
@@ -44,10 +43,12 @@ const Dentist = () => {
     const maxStep = 3
     const [step, setStep] = useState(0)
 
-    // Patient
-
     // Summary
-    const [summaryReview, setSummaryReview] = useState('')
+    const [summaryReview, setSummaryReview] = useState('outstanding')
+    const [overallHealth, setOverallHealth] = useState('no')
+    const [risk, setRisk] = useState('')
+    const propsSummary = { summaryReview, overallHealth, risk }
+    const methodsSummary = { setSummaryReview, setOverallHealth, setRisk }
 
     const stepper = (n) => {
         const segmentsProps = {
@@ -79,7 +80,7 @@ const Dentist = () => {
             case 2:
                 return <Chart {...segmentsProps} />
             case 3:
-                return <Report {...segmentsProps} />
+                return <Report {...{ ...segmentsProps, ...propsSummary, ...methodsSummary }} />
             default:
                 return <Success />
         }
@@ -108,7 +109,7 @@ const Dentist = () => {
                 increaseOnClick: () => setStep(step + 1),
                 decreaseOnClick: () => setStep(step - 1),
                 onSubmit: () => firebase.updatePatientReport({}),
-                disabledSubmit: false,
+                disabledSubmit: summaryReview === '',
             }}
             />
         </>
