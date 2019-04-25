@@ -5,6 +5,9 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
+import FormHelperText from '@material-ui/core/FormHelperText'
 
 import { segment } from 'modules/Dentist/props'
 import ReportTreatment from './ReportTreatment'
@@ -20,7 +23,6 @@ const Report = ({
     overallHealth, setOverallHealth,
     risk, setRisk,
 }) => {
-    console.log('risk', risk)
     const treatmentSegments = [
         { segmentProps: topRight, setMethod: setTopRight },
         { segmentProps: topMiddle, setMethod: setTopMiddle },
@@ -56,18 +58,44 @@ const Report = ({
                 </Select>
             </FormControl>
 
+            <Typography variant="h4">
+                Summary
+            </Typography>
+
+            <TextField
+                // error={validateForm && segmentProps.concern === ''}
+              placeholder="Overall what is the state of the patient oral health? Any recommendations you'd like to pass on?"
+              value={summaryReview}
+              onChange={e => setSummaryReview(e.currentTarget.value)}
+              margin="normal"
+              variant="filled"
+              multiline
+              rows={6}
+            />
+
             <FormControl>
-                <InputLabel>What risk profile do you feel this patient's oral health is at?</InputLabel>
+                <InputLabel>
+                    What risk profile do you feel this patient's oral health is at?
+                </InputLabel>
                 <Select
                   value={risk}
                   onChange={e => setRisk(e.target.value)}
                   input={<Input />}
                   autoWidth
                 >
-                    <MenuItem value="no">No risk - The patient has good oral health</MenuItem>
-                    <MenuItem value="high">Medium risk - there are items that left untreated will causes serious distress</MenuItem>
-                    <MenuItem value="medium">Medium risk - there are items that left untreated will causes serious distress</MenuItem>
-                    <MenuItem value="low">Low risk - The patient has some corrective measures to implement</MenuItem>
+                    <MenuItem value="no">
+                        No risk - The patient has good oral health
+
+                    </MenuItem>
+                    <MenuItem value="high">
+                        Medium risk - there are items that left untreated will causes serious distress
+                    </MenuItem>
+                    <MenuItem value="medium">
+                        Medium risk - there are items that left untreated will causes serious distress
+                    </MenuItem>
+                    <MenuItem value="low">
+                        Low risk - The patient has some corrective measures to implement
+                    </MenuItem>
                 </Select>
             </FormControl>
         </>
