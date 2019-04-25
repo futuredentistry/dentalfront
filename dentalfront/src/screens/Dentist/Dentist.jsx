@@ -44,9 +44,9 @@ const Dentist = () => {
     const [step, setStep] = useState(0)
 
     // Summary
-    const [summaryReview, setSummaryReview] = useState('outstanding')
-    const [overallHealth, setOverallHealth] = useState('no')
-    const [risk, setRisk] = useState('outstanding')
+    const [overallHealth, setOverallHealth] = useState('outstanding')
+    const [summaryReview, setSummaryReview] = useState('')
+    const [risk, setRisk] = useState('no')
     const propsSummary = { summaryReview, overallHealth, risk }
     const methodsSummary = { setSummaryReview, setOverallHealth, setRisk }
 
