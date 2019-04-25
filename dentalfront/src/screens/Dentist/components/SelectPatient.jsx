@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
+import SelectPatientButton from 'ui/SelectPatientButton'
 
 const SelectPatient = ({ waitingReport, patientFirstName, nextStep }) => {
+    // ToDo get utile for user name
     const [dentistName] = useState('dentistName')
     return (
         <>
@@ -15,27 +16,12 @@ const SelectPatient = ({ waitingReport, patientFirstName, nextStep }) => {
                 {capitalizeFirstLetter(dentistName)}
             </Typography>
 
-            {waitingReport && (
-                <>
-                    <Typography variant="body2">
-                        We have new reports waiting to be completed. Let's get started!
-                    </Typography>
-
-                    <Typography variant="h4">
-                        {capitalizeFirstLetter(patientFirstName)}
-                    </Typography>
-
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={() => nextStep()}
-                    >
-                        Start Report
-                    </Button>
-                </>
-            )}
-
-            {!waitingReport && 'No reports'}
+            <SelectPatientButton
+              waitingReport={waitingReport}
+              patientName={capitalizeFirstLetter(patientFirstName)}
+              message="We have new reports waiting to be completed. Let\'s get started!"
+              onClick={() => nextStep()}
+            />
         </>
     )
 }

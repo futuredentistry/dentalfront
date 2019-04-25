@@ -12,7 +12,6 @@ import Report from './components/Report'
 import Success from './components/Success'
 // import * as ROUTES from 'modules/constants/routes'
 
-
 const Dentist = () => {
     const [patient, setPatient] = useState(null)
     const [reportId, setReportId] = useState(null)
@@ -26,6 +25,25 @@ const Dentist = () => {
     const [bottomMiddle, setBottomMiddle] = useState({ ...segmentDefaultProps })
     const [bottomLeft, setBottomLeft] = useState({ ...segmentDefaultProps })
 
+
+    // Summary
+    const [overallHealth, setOverallHealth] = useState('outstanding')
+    const [summaryReview, setSummaryReview] = useState('')
+    const [risk, setRisk] = useState('no')
+    const propsSummary = { summaryReview, overallHealth, risk }
+    const methodsSummary = { setSummaryReview, setOverallHealth, setRisk }
+
+    const setReportDefaultProps = () => {
+        setTopRight({ ...segmentDefaultProps })
+        setTopMiddle({ ...segmentDefaultProps })
+        setTopLeft({ ...segmentDefaultProps })
+        setBottomRight({ ...segmentDefaultProps })
+        setBottomMiddle({ ...segmentDefaultProps })
+        setBottomLeft({ ...segmentDefaultProps })
+        setOverallHealth('outstanding')
+        setSummaryReview('')
+        setRisk('no')
+    }
     const firebase = useContext(FirebaseContext)
 
     useEffect(() => {
@@ -37,18 +55,11 @@ const Dentist = () => {
                     setReportId(doc.id)
                 })
             },
-        )
-    }, [])
+        ).then(() => patient != null && setReportDefaultProps())
+    }, [reportId])
 
     const maxStep = 3
     const [step, setStep] = useState(0)
-
-    // Summary
-    const [overallHealth, setOverallHealth] = useState('outstanding')
-    const [summaryReview, setSummaryReview] = useState('')
-    const [risk, setRisk] = useState('no')
-    const propsSummary = { summaryReview, overallHealth, risk }
-    const methodsSummary = { setSummaryReview, setOverallHealth, setRisk }
 
     const stepper = (n) => {
         const segmentsProps = {
@@ -66,7 +77,7 @@ const Dentist = () => {
             setBottomLeft,
         }
         switch (n) {
-            case 9:
+            case 0:
                 return (
                     <SelectPatient {...{
                         waitingReport,
@@ -79,13 +90,19 @@ const Dentist = () => {
                 return patient && <Patient {...patient} />
             case 2:
                 return <Chart {...segmentsProps} />
-            case 0:
+            case 3:
                 return <Report {...{ ...segmentsProps, ...propsSummary, ...methodsSummary }} />
             default:
-                return <Success />
+                return (
+                    <Success {...{
+                        waitingReport,
+                        patientFirstName: patient && patient.firstName,
+                        nextStep: () => setStep(1),
+                    }}
+                    />
+                )
         }
     }
-
 
     return (
         <>
@@ -108,7 +125,8 @@ const Dentist = () => {
                 showButtonsGrid: step !== (1 + maxStep) && step !== 0,
                 increaseOnClick: () => setStep(step + 1),
                 decreaseOnClick: () => setStep(step - 1),
-                onSubmit: () => firebase.updatePatientReport({}),
+                onSubmit: () => setReportId(''),
+                // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
                 disabledSubmit: summaryReview === '',
             }}
             />

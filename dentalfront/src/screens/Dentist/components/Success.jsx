@@ -1,24 +1,37 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
+import PropTypes from 'prop-types'
 
-const Success = () => (
+import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
+import SelectPatientButton from 'ui/SelectPatientButton'
+
+const Success = ({ waitingReport, patientFirstName, nextStep }) => (
     <>
         <Typography variant="h4">
-            Success!
+            Thank you!
         </Typography>
 
         <Typography variant="body2">
-            That wasn't so bad was it? Next we'll get some pictures of your teeth!
+            Your report has been successfully submitted. Do you have time for another report?
         </Typography>
 
-        <br />
-        <br />
-        <Typography variant="body2">
-            <b>Did you know</b>
-            {' '}
-            that if you're brushing too hard you can damage your gums. Take it easy, your teeth are your friends not your foe.
-        </Typography>
+        <SelectPatientButton
+          waitingReport={waitingReport}
+          patientName={capitalizeFirstLetter(patientFirstName)}
+          message="We have new reports waiting to be completed. Let\'s get started!"
+          onClick={() => nextStep()}
+        />
     </>
 )
+
+Success.propTypes = {
+    waitingReport: PropTypes.bool.isRequired,
+    patientFirstName: PropTypes.string,
+    nextStep: PropTypes.func.isRequired,
+}
+
+Success.defaultProps = {
+    patientFirstName: null,
+}
 
 export default Success

@@ -7,7 +7,6 @@ import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
-import FormHelperText from '@material-ui/core/FormHelperText'
 
 import { segment } from 'modules/Dentist/props'
 import ReportTreatment from './ReportTreatment'
@@ -37,7 +36,7 @@ const Report = ({
                 treatmentSegments.map(treatment => treatment.segmentProps
                     && treatment.segmentProps.concern !== ''
                     && (
-                        <div key={treatment.concern}>
+                        <div key={treatment.segmentProps.concern}>
                             <ReportTreatment {...treatment} />
                         </div>
                     ))
@@ -63,7 +62,6 @@ const Report = ({
             </Typography>
 
             <TextField
-                // error={validateForm && segmentProps.concern === ''}
               placeholder="Overall what is the state of the patient oral health? Any recommendations you'd like to pass on?"
               value={summaryReview}
               onChange={e => setSummaryReview(e.currentTarget.value)}
@@ -85,7 +83,6 @@ const Report = ({
                 >
                     <MenuItem value="no">
                         No risk - The patient has good oral health
-
                     </MenuItem>
                     <MenuItem value="high">
                         Medium risk - there are items that left untreated will causes serious distress
