@@ -1,8 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
-
-// import * as STATUS from 'modules/constants/reportStatus'
-import FirebaseContext from 'modules/Firebase'
 import LinearProgress from '@material-ui/core/LinearProgress'
+
+import FirebaseContext from 'modules/Firebase'
 import { segmentDefaultProps } from 'modules/Dentist/props'
 import StepperButtons from 'ui/StepperButtons'
 import SelectPatient from './components/SelectPatient'

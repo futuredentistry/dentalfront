@@ -8,6 +8,15 @@ import Affiliate from './Affiliate'
 const AffiliateRouter = ({ match: { path }, location: { pathname } }) => (
     <>
         <Route exact path={`${path}/${ROUTES.AFFILIATE}`} component={Affiliate} />
+        <Route
+          path={ROUTES.DENTIST}
+          render={() => (
+                <>
+                    <Route exact path={ROUTES.AFFILIATE} component={Affiliate} />
+                    {/* <Route path={ROUTES.REVIEW} component={Report} /> */}
+                </>
+            )}
+        />
     </>
 )
 

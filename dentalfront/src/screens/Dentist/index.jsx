@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 
 import * as ROUTES from 'modules/constants/routes'
-import Report from './components/Report'
+// import Report from './components/Report'
 import Dentist from './Dentist'
 
 const DentistRouter = ({ match: { path }, location: { pathname } }) => (
@@ -12,7 +12,7 @@ const DentistRouter = ({ match: { path }, location: { pathname } }) => (
       render={() => (
             <>
                 <Route exact path={ROUTES.DENTIST} component={Dentist} />
-                <Route path={ROUTES.PATIENT_REPORT} component={Report} />
+                {/* <Route path={ROUTES.PATIENT_REPORT} component={Report} /> */}
             </>
         )}
     />

@@ -35,14 +35,13 @@ const App = () => {
 
   return (
     <Router>
-
       <>
         <button onClick={() => firebase.doSignOut()}>LOGOUT</button>
         <Route
           path={ROUTES.HOME}
           component={Home}
         />
-        <AuthorizedRoute path={ROUTES.PATIENT} authorized={authorized} component={Patient} />
+        <AuthorizedRoute path={ROUTES.PATIENT} exact authorized={authorized} component={Patient} />
         <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={authorized} component={Admin} />
         <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={authorized} component={Dentist} />
         <AuthorizedRoute path={ROUTES.AFFILIATE} exact authorized={authorized} component={Affiliate} />
@@ -50,7 +49,6 @@ const App = () => {
         {authorized() && emailVerified() && window.location.pathname === '/' && <Redirect to={ROUTES[authorized().role]} />}
         {authorized() && !emailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
       </>
-
     </Router>
   )
 }

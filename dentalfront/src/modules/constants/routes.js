@@ -11,17 +11,10 @@ export const CONFIRM_EMAIL = '/confirm-email'
 // Patient
 export const PATIENT = '/patient'
 export const PATIENT_REPORT = `${PATIENT}/report`
-// export const LIFESTYLE = `${PATIENT}/lifestyle`
-// export const DENTAL = `${PATIENT}/dental`
-// export const MEDICAL = `${PATIENT}/medical`
-// export const SUMMARY = `${PATIENT}/summary`
-// export const APPOINTMENT = `${PATIENT}/appointment`
 
 // Affiliate
 export const AFFILIATE = '/affiliate'
 export const REVIEW = `${AFFILIATE}/review`
-export const IMAGE_CAPTURE = `${AFFILIATE}/image_capture`
-export const SCREENER_COMPLETE = `${AFFILIATE}/completed`
 
 // Dentist
 export const DENTIST = '/dentist'
