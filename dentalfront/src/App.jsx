@@ -32,10 +32,11 @@ const App = () => {
   })
   const authorized = useCallback(() => logonUser(), [])
   const emailVerified = useCallback(() => (logonUser() ? logonUser().emailVerified : false), [])
-
+  // ToDo Switch
   return (
     <Router>
       <>
+
         <button onClick={() => firebase.doSignOut()}>LOGOUT</button>
         <Route
           path={ROUTES.HOME}
@@ -46,7 +47,7 @@ const App = () => {
         <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={authorized} component={Dentist} />
         <AuthorizedRoute path={ROUTES.AFFILIATE} exact authorized={authorized} component={Affiliate} />
 
-        {authorized() && emailVerified() && window.location.pathname === '/' && <Redirect to={ROUTES[authorized().role]} />}
+        {/* {authorized() && emailVerified() && <Redirect to={ROUTES[authorized().role]} />} */}
         {authorized() && !emailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
       </>
     </Router>
