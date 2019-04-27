@@ -16,12 +16,15 @@ const SelectPatient = ({ waitingReport, patientFirstName, nextStep }) => {
                 {capitalizeFirstLetter(dentistName)}
             </Typography>
 
-            <SelectPatientButton
-              waitingReport={waitingReport}
-              patientName={capitalizeFirstLetter(patientFirstName)}
-              message="We have new reports waiting to be completed. Let\'s get started!"
-              onClick={() => nextStep()}
-            />
+            {!waitingReport && 'No reports for today'}
+
+            {waitingReport && (
+                <SelectPatientButton
+                  patientName={capitalizeFirstLetter(patientFirstName)}
+                  message="We have new reports waiting to be completed. Let\'s get started!"
+                  onClick={() => nextStep()}
+                />
+            )}
         </>
     )
 }
