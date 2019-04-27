@@ -9,9 +9,12 @@ const SelectPatientButton = ({
         <>
             {waitingReport && (
                 <>
-                    <Typography variant="body2">
-                        {message}
-                    </Typography>
+                    {message && (
+                        <Typography variant="body2">
+                            {message}
+                        </Typography>
+                    )
+                    }
 
                     <Typography variant="h4">
                         {patientName}
