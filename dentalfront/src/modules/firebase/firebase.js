@@ -115,6 +115,12 @@ class Firebase {
     .limit(1)
     .get()
 
+  getPatientReportsForAffiliate = organisation => this.firestore
+    .collection('reports')
+    .where('status', '==', 'IN_PROGRESS')
+    .where('organisation', '==', organisation)
+    .get()
+
   updatePatientReport = patient => console.log(patient)
 }
 
