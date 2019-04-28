@@ -9,8 +9,9 @@ import Success from './components/Success'
 import ImageCapture from './components/ImageCapture'
 
 const Affiliate = () => {
+    const maxStep = 3
     const [step, setStep] = useState(0)
-    const [patients, setPatients] = useState(null)
+    const [patients, setPatients] = useState([])
     const [patient, setPatient] = useState(null)
     const [waitingReport, setWaitingReport] = useState(true)
     const [search, setSearch] = useState('')
@@ -21,13 +22,15 @@ const Affiliate = () => {
         if (organisation !== '') {
             firebase.getPatientReportsForAffiliate(organisation).then(
                 (querySnapshot) => {
+                    const newPatients = []
                     setWaitingReport(!querySnapshot.empty)
-                    querySnapshot.forEach(doc => setPatients({ ...patients, ...doc.data() }))
+                    querySnapshot.forEach(doc => newPatients.push(doc.data()))
+                    setPatients(newPatients)
                 },
             )
         }
     }, [organisation])
-
+    // console.log(patients)
     const stepper = (n) => {
         switch (n) {
             case 0:
@@ -62,7 +65,11 @@ const Affiliate = () => {
 
     return (
         <>
-            Affiliate
+            {
+                step <= maxStep
+                && step !== 0
+                && <LinearProgress color="primary" variant="determinate" value={step * 100 / maxStep} />
+            }
             {stepper(step)}
         </>
     )
