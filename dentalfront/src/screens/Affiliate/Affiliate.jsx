@@ -3,7 +3,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 
 import FirebaseContext from 'modules/Firebase'
 
-// import * as ROUTES from 'modules/constants/routes'
+import StepperButtons from 'ui/StepperButtons'
 import SelectPatient from './components/SelectPatient'
 import Success from './components/Success'
 import ImageCapture from './components/ImageCapture'
@@ -70,7 +70,25 @@ const Affiliate = () => {
                 && step !== 0
                 && <LinearProgress color="primary" variant="determinate" value={step * 100 / maxStep} />
             }
+
             {stepper(step)}
+
+            <StepperButtons {...{
+                maxStep,
+                step,
+                setStep,
+                disabledBackButton: step < 2,
+                showSubmitButton: step === maxStep,
+                showNextButton: step !== maxStep,
+                disabledNextButton: false,
+                showButtonsGrid: step !== (1 + maxStep) && step !== 0,
+                increaseOnClick: () => setStep(step + 1),
+                decreaseOnClick: () => setStep(step - 1),
+                onSubmit: () => setReportId(''),
+                // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
+                disabledSubmit: false,
+            }}
+            />
         </>
     )
 }
