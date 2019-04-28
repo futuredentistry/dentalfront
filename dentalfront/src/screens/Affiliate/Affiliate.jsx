@@ -33,7 +33,7 @@ const Affiliate = () => {
     // console.log(patients)
     const stepper = (n) => {
         switch (n) {
-            case 0:
+            case 2:
                 return (
                     <SelectPatient {...{
                         setStep,
@@ -49,7 +49,7 @@ const Affiliate = () => {
                 )
             case 1:
                 return patient && <Review {...patient} />
-            case 2:
+            case 0:
                 return <ImageCapture />
             // case 3:
             //     return <Report {...{ ...segmentsProps, ...propsSummary, ...methodsSummary }} />

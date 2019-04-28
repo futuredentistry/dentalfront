@@ -12,9 +12,7 @@ const Review = ({
   comfortable,
   allergies,
   allergiesList,
-}) => {
-  console.log(allergiesList)
-  return (
+}) => (
     <>
       <Typography variant="h4">
         You'll be seeing
@@ -67,7 +65,6 @@ const Review = ({
       )}
     </>
   )
-}
 
 Review.propTypes = {
   firstName: PropTypes.string.isRequired,

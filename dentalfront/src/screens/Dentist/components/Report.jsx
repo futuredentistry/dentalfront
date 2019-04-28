@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 
 import { segment } from 'modules/Dentist/props'
-import ReportTreatment from './ReportTreatment'
+import ReportTreatment from 'ui/ReportTreatment'
 
 const Report = ({
     topRight, setTopRight,
