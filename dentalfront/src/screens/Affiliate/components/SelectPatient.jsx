@@ -4,23 +4,29 @@ import Typography from '@material-ui/core/Typography'
 import SearchBar from 'material-ui-search-bar'
 
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
-// import SelectPatientButton from 'ui/SelectPatientButton'
 import SelectOrganisation from 'ui/SelectOrganisation'
+import SelectPatientButton from 'ui/SelectPatientButton'
+import Button from '@material-ui/core/Button'
 
 const SelectPatient = ({
-    nextStep,
+    setStep,
     patients,
     setPatient,
+    setReportId,
     search,
     setSearch,
-    waitingReport,
     organisation,
     setOrganisation,
 }) => {
-    // console.log(patients)
     // ToDo get utile for user name
     const [affiliateName] = useState('affiliateName')
     const [filteredPatients, setFilteredPatients] = useState([])
+    const [showAll, setShowAll] = useState(false)
+
+    useEffect(() => {
+        setSearch('')
+        setShowAll(false)
+    }, [organisation])
 
     useEffect(() => {
         if (patients !== [] && search !== '') {
@@ -30,11 +36,12 @@ const SelectPatient = ({
                 if (searchArray.some(str => `${patient.firstName} ${patient.familyName}`.includes(str))) {
                     matchedPatients.push(patient)
                 }
+                return null
             })
             setFilteredPatients(matchedPatients)
         } else setFilteredPatients(patients)
     }, [patients, search])
-    console.log('filteredPatients', filteredPatients)
+
     return (
         <>
             <Typography variant="h4">
@@ -50,29 +57,80 @@ const SelectPatient = ({
             <SelectOrganisation {...{ organisation, setOrganisation, validFormStep: false }} />
 
             <SearchBar
+              value={search}
               disabled={organisation === ''}
               onRequestSearch={(e) => {
                     setSearch(e)
                     // @ts-ignore
                     document.activeElement.blur()
-                    console.log(e)
                 }}
               style={{
                     margin: '0 auto',
                     maxWidth: '90%',
                 }}
             />
+
+            {filteredPatients.length === 0 && <Typography variant="body2">No reports available</Typography>}
+
+            {filteredPatients.length > 0 && filteredPatients.map((patient, i) => {
+                // eslint-disable-next-line max-len
+                const fullName = `${capitalizeFirstLetter(patient.firstName)} ${capitalizeFirstLetter(patient.familyName)}`
+                const selectPatientCard = (
+                    <div key={patient.id}>
+                        <SelectPatientButton
+                          patientName={fullName}
+                          message=""
+                          onClick={() => {
+                                setStep(1)
+                                setPatient(patient)
+                                setReportId(patient.id)
+                            }
+                            }
+                        />
+                    </div>
+                )
+
+                if (showAll) return selectPatientCard
+                if (!showAll && i < 2) return selectPatientCard
+
+                return null
+            })
+            }
+
+            {filteredPatients.length > 2 && !showAll && (
+                <Button
+                  variant="text"
+                  color="primary"
+                  onClick={() => setShowAll(true)}
+                >
+                    Show all
+                    {' '}
+                    {filteredPatients.length}
+                    {' '}
+                    results
+                </Button>
+            )}
         </>
     )
 }
 
 SelectPatient.propTypes = {
-    waitingReport: PropTypes.bool.isRequired,
-    nextStep: PropTypes.func.isRequired,
+    setStep: PropTypes.func.isRequired,
+    patients: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        firstName: PropTypes.string.isRequired,
+        familyName: PropTypes.string.isRequired,
+    })),
+    setPatient: PropTypes.func.isRequired,
+    setReportId: PropTypes.func.isRequired,
+    search: PropTypes.string.isRequired,
+    setSearch: PropTypes.func.isRequired,
+    organisation: PropTypes.string.isRequired,
+    setOrganisation: PropTypes.func.isRequired,
 }
 
 SelectPatient.defaultProps = {
-    patientFirstName: null,
+    patients: [],
 }
 
 export default SelectPatient

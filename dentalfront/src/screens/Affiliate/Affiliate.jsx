@@ -7,13 +7,14 @@ import FirebaseContext from 'modules/Firebase'
 import SelectPatient from './components/SelectPatient'
 import Success from './components/Success'
 import ImageCapture from './components/ImageCapture'
+import Review from './components/Review'
 
 const Affiliate = () => {
     const maxStep = 3
     const [step, setStep] = useState(0)
     const [patients, setPatients] = useState([])
     const [patient, setPatient] = useState(null)
-    const [waitingReport, setWaitingReport] = useState(true)
+    const [reportId, setReportId] = useState(null)
     const [search, setSearch] = useState('')
     const [organisation, setOrganisation] = useState('')
     // const [] = useState()
@@ -23,8 +24,7 @@ const Affiliate = () => {
             firebase.getPatientReportsForAffiliate(organisation).then(
                 (querySnapshot) => {
                     const newPatients = []
-                    setWaitingReport(!querySnapshot.empty)
-                    querySnapshot.forEach(doc => newPatients.push(doc.data()))
+                    querySnapshot.forEach(doc => newPatients.push({ ...doc.data(), id: doc.id }))
                     setPatients(newPatients)
                 },
             )
@@ -36,19 +36,19 @@ const Affiliate = () => {
             case 0:
                 return (
                     <SelectPatient {...{
-                        nextStep: () => setStep(1),
+                        setStep,
                         patients,
                         setPatient,
                         search,
                         setSearch,
+                        setReportId,
                         organisation,
                         setOrganisation,
-                        waitingReport,
                     }}
                     />
                 )
-            // case 1:
-            //     return patient && <Patient {...patient} />
+            case 1:
+                return patient && <Review {...patient} />
             case 2:
                 return <ImageCapture />
             // case 3:
