@@ -7,6 +7,7 @@ import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import SelectOrganisation from 'ui/SelectOrganisation'
 import SelectPatientButton from 'ui/SelectPatientButton'
 import Button from '@material-ui/core/Button'
+import { UserFirstName } from 'utils/logonUser'
 
 const SelectPatient = ({
     setStep,
@@ -18,8 +19,6 @@ const SelectPatient = ({
     organisation,
     setOrganisation,
 }) => {
-    // ToDo get utile for user name
-    const [affiliateName] = useState('affiliateName')
     const [filteredPatients, setFilteredPatients] = useState([])
     const [showAll, setShowAll] = useState(false)
 
@@ -47,7 +46,7 @@ const SelectPatient = ({
             <Typography variant="h4">
                 Welcome
                 {' '}
-                {capitalizeFirstLetter(affiliateName)}
+                {capitalizeFirstLetter(UserFirstName())}
             </Typography>
 
             <Typography variant="body2">

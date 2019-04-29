@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from 'react'
+import React, { useState, useContext } from 'react'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider } from 'material-ui-pickers'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -6,6 +6,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import * as STATUS from 'modules/constants/reportStatus'
 import FirebaseContext from 'modules/Firebase'
 import StepperButtons from 'ui/StepperButtons'
+import { UserEmail, UserUid } from 'utils/logonUser'
 import Success from './components/Success'
 import Start from './components/Start'
 import Medical from './components/Medical'
@@ -14,14 +15,8 @@ import Lifestyle from './components/Lifestyle'
 import Dental from './components/Dental'
 import Summary from './components/Summary'
 
-// ToDo move to utils
-const logonUser = () => JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE))
-
 const Patient = () => {
     const [validFormStep, setValidFormStep] = useState(false)
-
-    // ToDo move to utils
-    const email = useCallback(() => (logonUser() ? logonUser().email : false), [])
 
     const firebase = useContext(FirebaseContext)
 
@@ -278,7 +273,7 @@ const Patient = () => {
             case 5:
                 return (
                     <Summary {...{
-                        email: `${email()}`,
+                        email: UserEmail,
                         ...propsPersonal,
                         ...propsLifestyle,
                         ...propsDental,
@@ -323,7 +318,7 @@ const Patient = () => {
                 onSubmit: () => {
                     setStep(step + 1)
                     firebase.setPatientReport({
-                        email: email(),
+                        email: UserEmail,
                         ...propsPersonal,
                         ...propsLifestyle,
                         ...propsDental,
@@ -332,6 +327,13 @@ const Patient = () => {
                         // Initial report status
                         status: STATUS.IN_PROGRESS,
                     })
+                    // Add fields to real time db
+                    firebase
+                        .user(UserUid)
+                        .update({
+                            firstName,
+                            familyName,
+                        })
                 },
                 disabledSubmit: !policy,
             }}

@@ -4,23 +4,30 @@ import PropTypes from 'prop-types'
 
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import SelectPatientButton from 'ui/SelectPatientButton'
+import { UserFirstName } from 'utils/logonUser'
 
 const Success = ({ waitingReport, patientFirstName, nextStep }) => (
     <>
         <Typography variant="h4">
-            Thank you!
+            Thank you
+            {' '}
+            {capitalizeFirstLetter(UserFirstName())}
+            !
         </Typography>
 
         <Typography variant="body2">
-            Your report has been successfully submitted. Do you have time for another report?
+            Your report has been successfully submitted.
+            {' '}
+            {waitingReport && 'Do you have time for another report?'}
         </Typography>
 
-        <SelectPatientButton
-          waitingReport={waitingReport}
-          patientName={capitalizeFirstLetter(patientFirstName)}
-          message="We have new reports waiting to be completed. Let\'s get started!"
-          onClick={() => nextStep()}
-        />
+        {waitingReport && (
+            <SelectPatientButton
+              patientName={capitalizeFirstLetter(patientFirstName)}
+              message="We have new reports waiting to be completed. Let\'s get started!"
+              onClick={() => nextStep()}
+            />
+        )}
     </>
 )
 

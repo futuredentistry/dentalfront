@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useContext, useEffect, useCallback } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {
   BrowserRouter as Router, Route, Redirect,
 } from 'react-router-dom'
@@ -13,10 +13,7 @@ import Dentist from 'screens/Dentist'
 import Affiliate from 'screens/Affiliate'
 import Home from 'screens/Home'
 import FirebaseContext from 'modules/Firebase'
-
-// ToDo move to utils
-const logonUser = () => JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE))
-
+import { UserAuthorized, UserEmailVerified } from 'utils/logonUser'
 
 const App = () => {
   const firebase = useContext(FirebaseContext)
@@ -24,14 +21,13 @@ const App = () => {
     firebase.onAuthUserListener(
       (authUser) => {
         if (authUser.role) return localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser))
+        return null
       },
       () => {
         localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
       },
     )
   })
-  const authorized = useCallback(() => logonUser(), [])
-  const emailVerified = useCallback(() => (logonUser() ? logonUser().emailVerified : false), [])
   // ToDo Switch
   return (
     <Router>
@@ -42,13 +38,13 @@ const App = () => {
           path={ROUTES.HOME}
           component={Home}
         />
-        <AuthorizedRoute path={ROUTES.PATIENT} exact authorized={authorized} component={Patient} />
-        <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={authorized} component={Admin} />
-        <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={authorized} component={Dentist} />
-        <AuthorizedRoute path={ROUTES.AFFILIATE} exact authorized={authorized} component={Affiliate} />
+        <AuthorizedRoute path={ROUTES.PATIENT} exact authorized={UserAuthorized} component={Patient} />
+        <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={UserAuthorized} component={Admin} />
+        <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={UserAuthorized} component={Dentist} />
+        <AuthorizedRoute path={ROUTES.AFFILIATE} exact authorized={UserAuthorized} component={Affiliate} />
 
         {/* {authorized() && emailVerified() && <Redirect to={ROUTES[authorized().role]} />} */}
-        {authorized() && !emailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
+        {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
       </>
     </Router>
   )

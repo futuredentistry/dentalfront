@@ -1,12 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
+import { UserFirstName } from 'utils/logonUser'
 
 const Start = ({ startNewReport }) => (
     <>
-        Patient
+        <Typography variant="h4">
+            Welcome
+            {' '}
+            {capitalizeFirstLetter(UserFirstName())}
+        </Typography>
 
-            <Button variant="contained" color="primary" onClick={startNewReport}>Create a new report</Button>
+        <Button variant="contained" color="primary" onClick={startNewReport}>Create a new report</Button>
     </>
 )
 
