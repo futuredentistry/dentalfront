@@ -1,12 +1,15 @@
 import React from 'react'
 // import ReactRouterPropTypes from 'react-router-prop-types'
-// import Typography from '@material-ui/core/Typography'
+import Typography from '@material-ui/core/Typography'
+import FormGrid from 'ui/FormGrid'
 
 
 const ContactAs = () => (
-    <>
-        Please contact as and we'll take care
-    </>
+    <FormGrid>
+        <Typography variant="h3">
+            Please contact as and we'll take care
+        </Typography>
+    </FormGrid>
 )
 
 ContactAs.propTypes = {

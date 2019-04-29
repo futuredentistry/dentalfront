@@ -42,6 +42,7 @@ const Report = ({
                     ))
             }
 
+            <br />
             <FormControl>
                 <InputLabel>Overall, what is the state of their oral health</InputLabel>
                 <Select

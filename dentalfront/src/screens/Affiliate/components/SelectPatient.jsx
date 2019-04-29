@@ -65,7 +65,7 @@ const SelectPatient = ({
                 }}
               style={{
                     margin: '0 auto',
-                    maxWidth: '90%',
+                    maxWidth: '100%',
                 }}
             />
 

@@ -4,6 +4,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import FirebaseContext from 'modules/Firebase'
 import { segmentDefaultProps } from 'modules/Dentist/props'
 import StepperButtons from 'ui/StepperButtons'
+import FormGrid from 'ui/FormGrid'
 import SelectPatient from './components/SelectPatient'
 import Patient from './components/Patient'
 import Chart from './components/Chart'
@@ -110,25 +111,28 @@ const Dentist = () => {
                 && step !== 0
                 && <LinearProgress color="primary" variant="determinate" value={step * 100 / maxStep} />
             }
+            <FormGrid>
+                <>
+                    {stepper(step)}
 
-            {stepper(step)}
-
-            <StepperButtons {...{
-                maxStep,
-                step,
-                setStep,
-                disabledBackButton: step < 2,
-                showSubmitButton: step === maxStep,
-                showNextButton: step !== maxStep,
-                disabledNextButton: false,
-                showButtonsGrid: step !== (1 + maxStep) && step !== 0,
-                increaseOnClick: () => setStep(step + 1),
-                decreaseOnClick: () => setStep(step - 1),
-                onSubmit: () => setReportId(''),
-                // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
-                disabledSubmit: summaryReview === '',
-            }}
-            />
+                    <StepperButtons {...{
+                        maxStep,
+                        step,
+                        setStep,
+                        disabledBackButton: step < 2,
+                        showSubmitButton: step === maxStep,
+                        showNextButton: step !== maxStep,
+                        disabledNextButton: false,
+                        showButtonsGrid: step !== (1 + maxStep) && step !== 0,
+                        increaseOnClick: () => setStep(step + 1),
+                        decreaseOnClick: () => setStep(step - 1),
+                        onSubmit: () => setReportId(''),
+                        // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
+                        disabledSubmit: summaryReview === '',
+                    }}
+                    />
+                </>
+            </FormGrid>
         </>
     )
 }

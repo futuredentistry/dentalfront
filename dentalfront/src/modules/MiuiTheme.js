@@ -92,9 +92,9 @@ const MiuiTheme = {
     },
     MuiFormControl: {
       root: {
-        width: '90%',
-        marginLeft: '5%',
-        marginRight: '5%',
+        width: '100%',
+        // marginLeft: '5%',
+        // marginRight: '5%',
 
       },
     },
@@ -104,6 +104,7 @@ const MiuiTheme = {
         fontWeight: 'bold',
         letterSpacing: '1.2px',
         color: '#8996a6',
+        // marginTop: '2%',
       },
     },
     MuiInput: {

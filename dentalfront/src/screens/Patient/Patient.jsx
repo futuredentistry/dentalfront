@@ -7,6 +7,7 @@ import * as STATUS from 'modules/constants/reportStatus'
 import FirebaseContext from 'modules/Firebase'
 import StepperButtons from 'ui/StepperButtons'
 import { UserEmail, UserUid } from 'utils/logonUser'
+import FormGrid from 'ui/FormGrid'
 import Success from './components/Success'
 import Start from './components/Start'
 import Medical from './components/Medical'
@@ -296,48 +297,52 @@ const Patient = () => {
                 && <LinearProgress color="primary" variant="determinate" value={step * 100 / maxStep} />
             }
 
-            {stepper(step)}
+            <FormGrid>
+                <>
+                    {stepper(step)}
 
-            <StepperButtons {...{
-                maxStep,
-                step,
-                setStep,
-                disabledBackButton: step < 1,
-                showSubmitButton: step === maxStep,
-                showNextButton: step !== maxStep,
-                disabledNextButton: !formValidator(step) && validFormStep,
-                showButtonsGrid: step !== (1 + maxStep) && step !== 0,
-                increaseOnClick: () => {
-                    setValidFormStep(true)
-                    if (formValidator(step)) {
-                        setStep(step + 1)
-                        setValidFormStep(false)
-                    }
-                },
-                decreaseOnClick: () => setStep(step - 1),
-                onSubmit: () => {
-                    setStep(step + 1)
-                    firebase.setPatientReport({
-                        email: UserEmail(),
-                        ...propsPersonal,
-                        ...propsLifestyle,
-                        ...propsDental,
-                        ...propsMedical,
-                        ...propsSummary,
-                        // Initial report status
-                        status: STATUS.IN_PROGRESS,
-                    })
-                    // Add fields to real time db
-                    firebase
-                        .user(UserUid())
-                        .update({
-                            firstName,
-                            familyName,
-                        })
-                },
-                disabledSubmit: !policy,
-            }}
-            />
+                    <StepperButtons {...{
+                        maxStep,
+                        step,
+                        setStep,
+                        disabledBackButton: step < 1,
+                        showSubmitButton: step === maxStep,
+                        showNextButton: step !== maxStep,
+                        disabledNextButton: !formValidator(step) && validFormStep,
+                        showButtonsGrid: step !== (1 + maxStep) && step !== 0,
+                        increaseOnClick: () => {
+                            setValidFormStep(true)
+                            if (formValidator(step)) {
+                                setStep(step + 1)
+                                setValidFormStep(false)
+                            }
+                        },
+                        decreaseOnClick: () => setStep(step - 1),
+                        onSubmit: () => {
+                            setStep(step + 1)
+                            firebase.setPatientReport({
+                                email: UserEmail(),
+                                ...propsPersonal,
+                                ...propsLifestyle,
+                                ...propsDental,
+                                ...propsMedical,
+                                ...propsSummary,
+                                // Initial report status
+                                status: STATUS.IN_PROGRESS,
+                            })
+                            // Add fields to real time db
+                            firebase
+                                .user(UserUid())
+                                .update({
+                                    firstName,
+                                    familyName,
+                                })
+                        },
+                        disabledSubmit: !policy,
+                    }}
+                    />
+                </>
+            </FormGrid>
         </>
     )
 }

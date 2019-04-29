@@ -4,6 +4,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import FirebaseContext from 'modules/Firebase'
 
 import StepperButtons from 'ui/StepperButtons'
+import FormGrid from 'ui/FormGrid'
 import SelectPatient from './components/SelectPatient'
 import Success from './components/Success'
 import ImageCapture from './components/ImageCapture'
@@ -69,24 +70,29 @@ const Affiliate = () => {
                 && <LinearProgress color="primary" variant="determinate" value={step * 100 / maxStep} />
             }
 
-            {stepper(step)}
+            <FormGrid>
+                <>
+                    {stepper(step)}
 
-            <StepperButtons {...{
-                maxStep,
-                step,
-                setStep,
-                disabledBackButton: step < 2,
-                showSubmitButton: false,
-                showNextButton: step !== maxStep,
-                disabledNextButton: false,
-                showButtonsGrid: step !== maxStep && step !== 0,
-                increaseOnClick: () => setStep(step + 1),
-                decreaseOnClick: () => setStep(step - 1),
-                onSubmit: () => setReportId(''),
-                // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
-                disabledSubmit: false,
-            }}
-            />
+                    <StepperButtons {...{
+                        maxStep,
+                        step,
+                        setStep,
+                        disabledBackButton: step < 2,
+                        showSubmitButton: false,
+                        showNextButton: step !== maxStep,
+                        disabledNextButton: false,
+                        showButtonsGrid: step !== maxStep && step !== 0,
+                        increaseOnClick: () => setStep(step + 1),
+                        decreaseOnClick: () => setStep(step - 1),
+                        onSubmit: () => setReportId(''),
+                        // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
+                        disabledSubmit: false,
+                    }}
+                    />
+                </>
+            </FormGrid>
+
         </>
     )
 }

@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 
 import FirebaseContext from 'modules/Firebase'
 import Dialog from 'ui/Dialog'
-// import EmptyBoxLayout from 'ui/BoxLayout'
+import FormGrid from 'ui/FormGrid'
 
 const ForgetPassword = ({ history }) => {
   const firebase = useContext(FirebaseContext)
@@ -33,8 +33,7 @@ const ForgetPassword = ({ history }) => {
         <br />
       </Dialog>
 
-      {/* <EmptyBoxLayout marginOnSides={false}> */}
-      <form className="">
+      <FormGrid>
         <Typography variant="h3">
           Forgot Your Password?
         </Typography>
@@ -56,28 +55,26 @@ const ForgetPassword = ({ history }) => {
           />
         </FormControl>
         <Typography color="error">{errMessage}</Typography>
-      </form>
-      {/* </EmptyBoxLayout> */}
 
-      <Button
-        disabled={email === ''}
-        variant="contained"
-        color="primary"
-        onClick={() => firebase
-          .doPasswordReset(email)
-          .then(() => {
-            setModalOpen(true)
-          })
-          .catch(({ message }) => setErrMessage(message))
-        }
-      >
-        Reset Password
-      </Button>
+        <Button
+          disabled={email === ''}
+          variant="contained"
+          color="primary"
+          onClick={() => firebase
+            .doPasswordReset(email)
+            .then(() => {
+              setModalOpen(true)
+            })
+            .catch(({ message }) => setErrMessage(message))
+          }
+        >
+          Reset Password
+        </Button>
 
-      <Button variant="text" color="primary" onClick={() => history.goBack()}>
-        Back
-      </Button>
-
+        <Button variant="text" color="primary" onClick={() => history.goBack()}>
+          Back
+        </Button>
+      </FormGrid>
     </>
   )
 }

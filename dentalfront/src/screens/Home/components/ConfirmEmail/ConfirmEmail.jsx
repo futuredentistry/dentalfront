@@ -28,7 +28,7 @@ const ConfirmEmail = () => {
             </Dialog>
 
 
-            <Typography variant="subtitle1">
+            <Typography variant="h4">
                 Please confirm your email
             </Typography>
 

@@ -17,9 +17,13 @@ const ReportTreatment = ({ segmentProps, setMethod }) => (
           direction="row"
         >
             <Grid item xs={6}>
-                <Typography variant="body2">
+                <Button
+                  variant="text"
+                  color="primary"
+                  disabled
+                >
                     {capitalizeFirstLetter(segmentProps.concern)}
-                </Typography>
+                </Button>
             </Grid>
             <Grid item xs={6}>
                 <Button
