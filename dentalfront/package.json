@@ -18,7 +18,8 @@
     "react-router-dom": "^4.3.1",
     "react-router-prop-types": "^1.0.4",
     "react-scripts": "2.1.8",
-    "react-select": "^2.4.2"
+    "react-select": "^2.4.2",
+    "react-swipeable-views": "^0.13.1"
   },
   "scripts": {
     "start": "react-scripts start",
