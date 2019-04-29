@@ -130,6 +130,11 @@ const MiuiTheme = {
         marginTop: 0,
       },
     },
+    MuiLinearProgress: {
+      root: {
+        margin: '5% 5% 0 5%',
+      },
+    },
   },
 }
 export default MiuiTheme
