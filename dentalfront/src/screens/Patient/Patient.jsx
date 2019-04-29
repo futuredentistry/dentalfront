@@ -273,7 +273,7 @@ const Patient = () => {
             case 5:
                 return (
                     <Summary {...{
-                        email: UserEmail,
+                        email: UserEmail(),
                         ...propsPersonal,
                         ...propsLifestyle,
                         ...propsDental,
