@@ -21,17 +21,20 @@ const MiuiTheme = {
         fontWeight: 'bold',
         textAlign: 'center',
         color: '#44566c',
+        paddingTop: '6%',
       },
       h4: {
         fontSize: '34px',
         textAlign: 'center',
         letterSpacing: '0.25px',
+        paddingTop: '6%',
       },
       h5: {
         fontWeight: 300,
         fontSize: '24px',
         lineHeight: 'normal',
         textAlign: 'center',
+        paddingTop: '6%',
       },
       subtitle1: {
         fontSize: '14px',
