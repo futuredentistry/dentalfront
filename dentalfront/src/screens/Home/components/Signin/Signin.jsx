@@ -20,12 +20,14 @@ const SignIn = ({ history }) => {
         <Typography variant="h3">
           Welcome to Beemo
         </Typography>
+
         <Typography variant="subtitle1">
           Please sign to get started.
         </Typography>
         <br />
         <br />
         <br />
+
         <FormControl margin="normal" required>
           <InputLabel htmlFor="email">Email</InputLabel>
           <Input
@@ -37,6 +39,7 @@ const SignIn = ({ history }) => {
             onChange={e => setEmail(e.currentTarget.value)}
           />
         </FormControl>
+
         <FormControl margin="normal" required>
           <InputLabel htmlFor="password">Password</InputLabel>
           <Input
@@ -48,12 +51,12 @@ const SignIn = ({ history }) => {
             onChange={e => setPassword(e.currentTarget.value)}
           />
         </FormControl>
+
         <Typography color="error">{errMessage}</Typography>
+
         <Button color="primary" variant="text" onClick={() => history.push(ROUTES.PASSWORD_FORGET)}>
           I forgot my password
         </Button>
-
-
       </form>
 
       <Button

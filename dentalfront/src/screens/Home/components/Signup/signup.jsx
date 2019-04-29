@@ -21,10 +21,12 @@ const Signup = ({ history }) => {
         <Typography variant="h3">
           Create Account
         </Typography>
+
         <Typography variant="subtitle1">
           Please enter your name and best email address to get started.
         </Typography>
         <br />
+
         <FormControl margin="normal" required>
           <InputLabel htmlFor="email">Email</InputLabel>
           <Input
@@ -36,6 +38,7 @@ const Signup = ({ history }) => {
             onChange={e => setEmail(e.currentTarget.value)}
           />
         </FormControl>
+
         <FormControl margin="normal" required>
           <InputLabel htmlFor="password">Password</InputLabel>
           <Input
@@ -46,6 +49,7 @@ const Signup = ({ history }) => {
             onChange={e => setPassword(e.currentTarget.value)}
           />
         </FormControl>
+
         <Typography color="error">
           {password !== confirmPassword && (password !== '' && confirmPassword !== '')
             && 'No match'}
