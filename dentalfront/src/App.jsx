@@ -34,7 +34,7 @@ const App = () => {
     <Router>
       <>
 
-        {/* <button onClick={() => firebase.doSignOut()}>LOGOUT</button> */}
+
         <Header />
         <Route
           path={ROUTES.HOME}
