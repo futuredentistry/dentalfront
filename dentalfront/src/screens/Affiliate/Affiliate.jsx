@@ -17,7 +17,7 @@ const Affiliate = () => {
     const [reportId, setReportId] = useState(null)
     const [search, setSearch] = useState('')
     const [organisation, setOrganisation] = useState('')
-    // const [] = useState()
+
     const firebase = useContext(FirebaseContext)
     useEffect(() => {
         if (organisation !== '') {
@@ -30,10 +30,10 @@ const Affiliate = () => {
             )
         }
     }, [organisation])
-    // console.log(patients)
+
     const stepper = (n) => {
         switch (n) {
-            case 2:
+            case 0:
                 return (
                     <SelectPatient {...{
                         setStep,
@@ -49,10 +49,8 @@ const Affiliate = () => {
                 )
             case 1:
                 return patient && <Review {...patient} />
-            case 0:
+            case 2:
                 return <ImageCapture />
-            // case 3:
-            //     return <Report {...{ ...segmentsProps, ...propsSummary, ...methodsSummary }} />
             default:
                 return (
                     <Success
@@ -78,10 +76,10 @@ const Affiliate = () => {
                 step,
                 setStep,
                 disabledBackButton: step < 2,
-                showSubmitButton: step === maxStep,
+                showSubmitButton: false,
                 showNextButton: step !== maxStep,
                 disabledNextButton: false,
-                showButtonsGrid: step !== (1 + maxStep) && step !== 0,
+                showButtonsGrid: step !== maxStep && step !== 0,
                 increaseOnClick: () => setStep(step + 1),
                 decreaseOnClick: () => setStep(step - 1),
                 onSubmit: () => setReportId(''),
