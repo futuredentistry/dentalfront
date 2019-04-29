@@ -14,6 +14,7 @@ import Affiliate from 'screens/Affiliate'
 import Home from 'screens/Home'
 import FirebaseContext from 'modules/Firebase'
 import { UserAuthorized, UserEmailVerified } from 'utils/logonUser'
+import Header from 'ui/Header'
 
 const App = () => {
   const firebase = useContext(FirebaseContext)
@@ -33,7 +34,8 @@ const App = () => {
     <Router>
       <>
 
-        <button onClick={() => firebase.doSignOut()}>LOGOUT</button>
+        {/* <button onClick={() => firebase.doSignOut()}>LOGOUT</button> */}
+        <Header />
         <Route
           path={ROUTES.HOME}
           component={Home}
