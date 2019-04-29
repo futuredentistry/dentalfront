@@ -318,7 +318,7 @@ const Patient = () => {
                 onSubmit: () => {
                     setStep(step + 1)
                     firebase.setPatientReport({
-                        email: UserEmail,
+                        email: UserEmail(),
                         ...propsPersonal,
                         ...propsLifestyle,
                         ...propsDental,
@@ -329,7 +329,7 @@ const Patient = () => {
                     })
                     // Add fields to real time db
                     firebase
-                        .user(UserUid)
+                        .user(UserUid())
                         .update({
                             firstName,
                             familyName,

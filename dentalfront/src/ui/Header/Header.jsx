@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import ReactRouterPropTypes from 'react-router-prop-types'
 import Button from '@material-ui/core/Button'
 
 import FirebaseContext from 'modules/Firebase'
@@ -41,7 +40,6 @@ const Header = ({
 
 Header.propTypes = {
     gradient: PropTypes.bool.isRequired,
-    history: ReactRouterPropTypes.history.isRequired,
     showButton: PropTypes.bool.isRequired,
     historyLink: PropTypes.string,
 }
