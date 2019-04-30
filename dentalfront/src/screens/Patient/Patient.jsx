@@ -6,6 +6,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import * as STATUS from 'modules/constants/reportStatus'
 import FirebaseContext from 'modules/Firebase'
 import StepperButtons from 'ui/StepperButtons'
+import Footer from 'ui/Footer'
 import { UserEmail, UserUid } from 'utils/logonUser'
 import FormGrid from 'ui/FormGrid'
 import Success from './components/Success'
@@ -343,6 +344,8 @@ const Patient = () => {
                     />
                 </>
             </FormGrid>
+
+            <Footer />
         </>
     )
 }
