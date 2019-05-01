@@ -18,6 +18,7 @@ const LineRadioGroup = ({
     return (
         <FormControl component="fieldset">
             <FormLabel component="legend">{formLabel}</FormLabel>
+            <br />
             <RadioGroup
               row
               style={{ flexWrap: 'inherit' }}

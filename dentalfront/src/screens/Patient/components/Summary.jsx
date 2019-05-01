@@ -256,14 +256,15 @@ const Summary = ({
             <br />
             <FormGroup>
                 <PrimaryCheckbox
-                  formLabel="I am happy for images of my teeth to be separated from my personal information for use in research"
-                  formValue={research}
-                  onChange={setResearch}
+                    formLabel="I am happy for images of my teeth to be separated from my personal information for use in research"
+                    formValue={research}
+                    onChange={setResearch}
                 />
+                <br />
                 <PrimaryCheckbox
-                  formLabel="By submitting this form you agree to our terms and conditions and privacy policy"
-                  formValue={policy}
-                  onChange={setPolicy}
+                    formLabel="By submitting this form you agree to our terms and conditions and privacy policy"
+                    formValue={policy}
+                    onChange={setPolicy}
                 />
             </FormGroup>
         </>
