@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import { createMuiTheme } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/styles'
+import { HeaderFooterProvider } from 'modules/HeaderFooter/context'
 import App from 'App'
 
 import MiuiTheme from 'modules/MiuiTheme'
@@ -16,7 +17,9 @@ const theme = createMuiTheme(MiuiTheme)
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <CssBaseline />
-    <App />
+    <HeaderFooterProvider>
+      <App />
+    </HeaderFooterProvider>
   </ThemeProvider>,
   document.getElementById('root'),
 )

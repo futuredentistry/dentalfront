@@ -7,7 +7,7 @@ import FormGrid from 'ui/FormGrid'
 const ContactAs = () => (
     <FormGrid>
         <Typography variant="h3">
-            Please contact as and we'll take care
+            Please contact us and we'll take care
         </Typography>
     </FormGrid>
 )

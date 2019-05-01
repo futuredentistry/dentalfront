@@ -17,11 +17,15 @@ import PrivacyPolicy from 'screens/PrivacyPolicy'
 import FAQ from 'screens/FAQ'
 import Beemo from 'screens/Beemo'
 import ContactUs from 'screens/ContactUs'
-import { UserAuthorized, UserEmailVerified } from 'utils/logonUser'
+import { UserAuthorized, UserEmailVerified, UserRole } from 'utils/logonUser'
 import Header from 'ui/Header'
+import Footer from 'ui/Footer'
+import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 
 const App = () => {
   const firebase = useContext(FirebaseContext)
+  const [show, dark] = useContext(HeaderFooterContext)
+
   useEffect(() => {
     firebase.onAuthUserListener(
       (authUser) => {
@@ -32,14 +36,12 @@ const App = () => {
         localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
       },
     )
-  })
+  }, [])
   // ToDo Switch
   return (
     <Router>
       <>
-
-
-        <Header />
+        <Header dark={dark} />
         <Route path={ROUTES.HOME} component={Home} />
 
         <AuthorizedRoute path={ROUTES.PATIENT} exact authorized={UserAuthorized} component={Patient} />
@@ -51,8 +53,10 @@ const App = () => {
         <Route path={ROUTES.FAQ} exact component={FAQ} />
         <Route path={ROUTES.BEEMO} exact component={Beemo} />
         <Route path={ROUTES.CONTACT_US} exact component={ContactUs} />
-        {/* {authorized() && emailVerified() && <Redirect to={ROUTES[authorized().role]} />} */}
+
+        {/* {UserAuthorized() && UserEmailVerified() && <Redirect to={ROUTES[UserRole()]} />} */}
         {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
+        {show && <Footer />}
       </>
     </Router>
   )

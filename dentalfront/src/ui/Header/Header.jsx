@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
 import FirebaseContext from 'modules/Firebase'
+import { UserAuthorized } from 'utils/logonUser'
 import WhiteLogo from './images/white_logo.svg'
 import DarkBeemo from './images/dark_beemo.svg'
 import DarkLogo from './images/dark_logo.svg'
@@ -29,9 +30,11 @@ const Header = ({
                 <img src={WhiteBeemo} alt="Logo" />
             </div>
             <div className="header_right_container">
-                <Button variant="text" color="primary" component={Link} to="/" onClick={() => firebase.doSignOut()}>
-                    log out
-                </Button>
+                {UserAuthorized() && (
+                    <Button variant="text" color="primary" component={Link} to="/" onClick={() => firebase.doSignOut()}>
+                        log out
+                    </Button>
+                )}
 
             </div>
         </div>
