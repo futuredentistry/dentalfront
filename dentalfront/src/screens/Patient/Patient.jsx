@@ -245,9 +245,9 @@ const Patient = () => {
 
     const stepper = (n) => {
         switch (n) {
-            case 0:
-                return <Start startNewReport={() => setStep(1)} />
             case 1:
+                return <Start startNewReport={() => setStep(1)} />
+            case 0:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Personal {...{ validFormStep, ...propsPersonal, ...methodsPersonal }} />

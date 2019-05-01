@@ -35,14 +35,16 @@ const useStyles = makeStyles(theme => ({
         padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
     },
     singleValue: {
+        paddingTop: '10px',
         fontSize: 16,
     },
     paper: {
         position: 'absolute',
         zIndex: 99,
-        marginTop: theme.spacing.unit,
-        left: '5%',
-        right: '5%',
+        marginTop: 0,
+        left: 0,
+        right: 0,
+        padding: '2px',
     },
 }))
 
@@ -94,6 +96,9 @@ function Option(props) {
           component="div"
           style={{
                 fontWeight: props.isSelected ? 500 : 400,
+                fontSize: 18,
+                padding: 3,
+                margin: '1%',
             }}
           {...props.innerProps}
         >
