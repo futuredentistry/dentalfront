@@ -38,10 +38,10 @@ const Personal = ({
   includeDental, setIncludeDental,
 }) => {
   const { setDark, setShow } = useContext(HeaderFooterContext)
-    useEffect(() => {
-        setDark(false)
-        setShow(false)
-    }, [])
+  useEffect(() => {
+    setDark(false)
+    setShow(false)
+  }, [])
 
   const display = medicare !== '' ? [...medicare].map((char, i) => {
     if (i === 4) return ` ${char}`
@@ -80,6 +80,7 @@ const Personal = ({
 
       <div className="picker">
         <DatePicker
+          variant="filled"
           keyboard
           label="Date of birth"
           format="MM/dd/yyyy"
@@ -178,6 +179,7 @@ const Personal = ({
 
       <div className="picker">
         <DatePicker
+          variant="filled"
           keyboard
           label="Expire date"
           format="MM/dd/yyyy"
