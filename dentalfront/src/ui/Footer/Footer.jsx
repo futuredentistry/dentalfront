@@ -29,11 +29,11 @@ const Footer = () => {
                 Useful links
             </Typography>
 
-            <Link component={RouterLink} variant="body2" to="/" className={classes.whiteLink}>
+            <Link component={RouterLink} variant="body2" to={ROUTES.BEEMO} className={classes.whiteLink}>
                 what is beemo?
             </Link>
 
-            <Link component={RouterLink} variant="body2" to="/" className={classes.whiteLink}>
+            <Link component={RouterLink} variant="body2" to={ROUTES.FAQ} className={classes.whiteLink}>
                 FAQ
             </Link>
 
@@ -41,7 +41,7 @@ const Footer = () => {
                 privacy policy
             </Link>
 
-            <Link component={RouterLink} variant="body2" to="/" className={classes.whiteLink}>
+            <Link component={RouterLink} variant="body2" to="ROUTES.CONTACT_US" className={classes.whiteLink}>
                 contact us
             </Link>
 

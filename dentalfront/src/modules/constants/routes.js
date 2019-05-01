@@ -3,10 +3,10 @@ export const HOME = '/'
 
 export const SIGNIN = '/signin'
 export const SIGNUP = '/signup'
-export const PASSWORD_FORGET = '/pw-forget'
-export const GET_STARTED = '/get-started'
-export const CONTACTS_AS = '/contacts-as'
-export const CONFIRM_EMAIL = '/confirm-email'
+export const PASSWORD_FORGET = '/pw_forget'
+export const GET_STARTED = '/get_started'
+export const CONTACTS_AS = '/contacts_as'
+export const CONFIRM_EMAIL = '/confirm_email'
 
 // Patient
 export const PATIENT = '/patient'
