@@ -94,9 +94,6 @@ const MiuiTheme = {
       root: {
         width: '100%',
         marginTop: '16px',
-        // marginLeft: '5%',
-        // marginRight: '5%',
-
       },
     },
     MuiInputLabel: {
@@ -105,7 +102,6 @@ const MiuiTheme = {
         fontWeight: 'bold',
         letterSpacing: '1.2px',
         color: '#8996a6',
-        // marginTop: '2%',
       },
     },
     MuiInput: {
@@ -135,6 +131,12 @@ const MiuiTheme = {
     MuiLinearProgress: {
       root: {
         margin: '5% 5% 0 5%',
+      },
+    },
+    MuiMenuItem: {
+      root: {
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
       },
     },
   },
