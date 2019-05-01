@@ -4,10 +4,10 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
 import * as ROUTES from 'modules/constants/routes'
-
+import FormGrid from 'ui/FormGrid'
 
 const GetStarted = ({ history }) => (
-  <>
+  <FormGrid>
     <Typography variant="h3">
       Welcome to Beemo
     </Typography>
@@ -39,7 +39,7 @@ const GetStarted = ({ history }) => (
     >
       I'm a Dentist
     </Button>
-  </>
+  </FormGrid>
 )
 
 GetStarted.propTypes = {
