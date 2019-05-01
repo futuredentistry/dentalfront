@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import FirebaseContext from 'modules/Firebase'
-import { Typography } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 
 import PrimaryListItem from 'ui/PrimaryListItem/PrimaryListItem'

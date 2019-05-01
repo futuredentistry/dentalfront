@@ -3,7 +3,7 @@ import React from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/styles'
-import { Typography } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography'
 
 import * as ROUTES from 'modules/constants/routes'
 
@@ -41,7 +41,7 @@ const Footer = () => {
                 privacy policy
             </Link>
 
-            <Link component={RouterLink} variant="body2" to="ROUTES.CONTACT_US" className={classes.whiteLink}>
+            <Link component={RouterLink} variant="body2" to={ROUTES.CONTACT_US} className={classes.whiteLink}>
                 contact us
             </Link>
 

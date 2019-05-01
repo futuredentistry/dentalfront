@@ -16,6 +16,7 @@ import Home from 'screens/Home'
 import PrivacyPolicy from 'screens/PrivacyPolicy'
 import FAQ from 'screens/FAQ'
 import Beemo from 'screens/Beemo'
+import ContactUs from 'screens/ContactUs'
 import { UserAuthorized, UserEmailVerified } from 'utils/logonUser'
 import Header from 'ui/Header'
 
@@ -49,6 +50,7 @@ const App = () => {
         <Route path={ROUTES.PRIVACY_POLICY} exact component={PrivacyPolicy} />
         <Route path={ROUTES.FAQ} exact component={FAQ} />
         <Route path={ROUTES.BEEMO} exact component={Beemo} />
+        <Route path={ROUTES.CONTACT_US} exact component={ContactUs} />
         {/* {authorized() && emailVerified() && <Redirect to={ROUTES[authorized().role]} />} */}
         {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
       </>
