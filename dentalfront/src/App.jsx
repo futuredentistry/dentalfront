@@ -7,7 +7,6 @@ import {
 import FirebaseContext from 'modules/Firebase'
 import AuthorizedRoute from 'modules/AuthorizedRoute'
 import * as ROUTES from 'modules/constants/routes'
-// import * as ROLES from 'modules/constants/roles'
 import Patient from 'screens/Patient'
 import Admin from 'screens/Admin'
 import Dentist from 'screens/Dentist'
@@ -17,14 +16,14 @@ import PrivacyPolicy from 'screens/PrivacyPolicy'
 import FAQ from 'screens/FAQ'
 import Beemo from 'screens/Beemo'
 import ContactUs from 'screens/ContactUs'
-import { UserAuthorized, UserEmailVerified, UserRole } from 'utils/logonUser'
+import { UserAuthorized, UserEmailVerified /* UserRole */ } from 'utils/logonUser'
 import Header from 'ui/Header'
 import Footer from 'ui/Footer'
 import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 
 const App = () => {
   const firebase = useContext(FirebaseContext)
-  const [show, dark] = useContext(HeaderFooterContext)
+  const { show } = useContext(HeaderFooterContext)
 
   useEffect(() => {
     firebase.onAuthUserListener(
@@ -41,7 +40,7 @@ const App = () => {
   return (
     <Router>
       <>
-        <Header dark={dark} />
+        <Header />
         <Route path={ROUTES.HOME} component={Home} />
 
         <AuthorizedRoute path={ROUTES.PATIENT} exact authorized={UserAuthorized} component={Patient} />

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
+import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 import FirebaseContext from 'modules/Firebase'
 import { UserAuthorized } from 'utils/logonUser'
 import WhiteLogo from './images/white_logo.svg'
@@ -12,25 +12,26 @@ import WhiteBeemo from './images/white_beemo.svg'
 
 import './style.scss'
 
-const Header = ({
-    gradient,
-}) => {
+const Header = () => {
     const firebase = useContext(FirebaseContext)
+    const { dark } = useContext(HeaderFooterContext)
     return (
-        <div className={`header_row ${gradient ? 'gradient' : ''}`}>
+        <div className={`header_row ${dark ? '' : 'white'}`}>
             <div className="header_left_container">
-                <Button variant="text" color="primary" component={Link} to="/">
-                    home
-                </Button>
+                {dark && (
+                    <Button variant="text" color="primary" component={Link} to="/">
+                        home
+                    </Button>
+                )}
             </div>
             <div className="header_middle_logo">
-                <img src={DarkLogo} alt="Logo" />
+                <img src={dark ? DarkLogo : WhiteLogo} alt="Logo" />
             </div>
             <div className="header_middle_name">
-                <img src={WhiteBeemo} alt="Logo" />
+                <img src={!dark ? DarkBeemo : WhiteBeemo} alt="Logo" />
             </div>
             <div className="header_right_container">
-                {UserAuthorized() && (
+                {UserAuthorized() && dark && (
                     <Button variant="text" color="primary" component={Link} to="/" onClick={() => firebase.doSignOut()}>
                         log out
                     </Button>
@@ -39,16 +40,6 @@ const Header = ({
             </div>
         </div>
     )
-}
-
-Header.propTypes = {
-    gradient: PropTypes.bool.isRequired,
-    showButton: PropTypes.bool.isRequired,
-    historyLink: PropTypes.string,
-}
-
-Header.defaultProps = {
-    historyLink: null,
 }
 
 export default Header

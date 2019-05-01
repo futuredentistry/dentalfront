@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import SearchBar from 'material-ui-search-bar'
 
+import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import SelectOrganisation from 'ui/SelectOrganisation'
 import SelectPatientButton from 'ui/SelectPatientButton'
@@ -40,6 +41,12 @@ const SelectPatient = ({
             setFilteredPatients(matchedPatients)
         } else setFilteredPatients(patients)
     }, [patients, search])
+
+    const { setDark, setShow } = useContext(HeaderFooterContext)
+    useEffect(() => {
+        setDark(true)
+        setShow(true)
+    }, [])
 
     return (
         <>

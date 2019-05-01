@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import { differenceInYears } from 'date-fns'
 
+import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 
 const Review = ({
@@ -12,7 +13,13 @@ const Review = ({
   comfortable,
   allergies,
   allergiesList,
-}) => (
+}) => {
+  const { setDark, setShow } = useContext(HeaderFooterContext)
+  useEffect(() => {
+    setDark(false)
+    setShow(false)
+  }, [])
+  return (
     <>
       <Typography variant="h4">
         You'll be seeing
@@ -65,6 +72,7 @@ const Review = ({
       )}
     </>
   )
+}
 
 Review.propTypes = {
   firstName: PropTypes.string.isRequired,

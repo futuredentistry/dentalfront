@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import { differenceInYears } from 'date-fns'
 
+import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import PrimaryListItem from 'ui/PrimaryListItem/PrimaryListItem'
 
@@ -47,6 +48,11 @@ const Patient = ({
   loose,
 
 }) => {
+  const { setDark, setShow } = useContext(HeaderFooterContext)
+  useEffect(() => {
+    setDark(false)
+    setShow(false)
+  }, [])
   const conditionsMedical = [
     heartConditions,
     breathingProblems,

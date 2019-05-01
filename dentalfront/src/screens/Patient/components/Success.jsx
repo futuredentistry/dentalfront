@@ -1,12 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Typography from '@material-ui/core/Typography'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
+import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 import FirebaseContext from 'modules/Firebase'
 
 const Success = () => {
     const firebase = useContext(FirebaseContext)
+    const { setDark, setShow } = useContext(HeaderFooterContext)
+    useEffect(() => {
+        setDark(true)
+        setShow(true)
+    }, [])
     return (
         <>
             <Typography variant="h4">

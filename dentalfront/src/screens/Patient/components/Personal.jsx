@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { DatePicker } from 'material-ui-pickers'
 import Radio from '@material-ui/core/Radio'
@@ -12,11 +12,12 @@ import Typography from '@material-ui/core/Typography'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
+import { HeaderFooterContext } from 'modules/HeaderFooter/context'
+import { propsPersonal, methodsPersonal } from 'modules/Patient/props'
 import SelectOrganisation from 'ui/SelectOrganisation'
 import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 
 import 'modules/styles/datePicker.scss'
-import { propsPersonal, methodsPersonal } from 'modules/Patient/props'
 
 const Personal = ({
   validFormStep,
@@ -36,6 +37,12 @@ const Personal = ({
   privateInsuranceOther, setPrivateInsuranceOther,
   includeDental, setIncludeDental,
 }) => {
+  const { setDark, setShow } = useContext(HeaderFooterContext)
+    useEffect(() => {
+        setDark(false)
+        setShow(false)
+    }, [])
+
   const display = medicare !== '' ? [...medicare].map((char, i) => {
     if (i === 4) return ` ${char}`
     if (i === 9) return ` ${char}`

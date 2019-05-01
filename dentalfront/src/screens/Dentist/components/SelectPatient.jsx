@@ -7,24 +7,24 @@ import SelectPatientButton from 'ui/SelectPatientButton'
 import { UserFirstName } from 'utils/logonUser'
 
 const SelectPatient = ({ waitingReport, patientFirstName, nextStep }) => (
-    <>
-        <Typography variant="h4">
-            Welcome back
+        <>
+            <Typography variant="h4">
+                Welcome back
                         {' '}
-            {capitalizeFirstLetter(UserFirstName())}
-        </Typography>
+                {capitalizeFirstLetter(UserFirstName())}
+            </Typography>
 
-        {!waitingReport && <Typography variant="body2">No reports for today</Typography>}
+            {!waitingReport && <Typography variant="body2">No reports for today</Typography>}
 
-        {waitingReport && (
-            <SelectPatientButton
-              patientName={capitalizeFirstLetter(patientFirstName)}
-              message="We have new reports waiting to be completed. Let's get started!"
-              onClick={() => nextStep()}
-            />
-        )}
-    </>
-)
+            {waitingReport && (
+                <SelectPatientButton
+                    patientName={capitalizeFirstLetter(patientFirstName)}
+                    message="We have new reports waiting to be completed. Let's get started!"
+                    onClick={() => nextStep()}
+                />
+            )}
+        </>
+    )
 
 SelectPatient.propTypes = {
     waitingReport: PropTypes.bool.isRequired,
