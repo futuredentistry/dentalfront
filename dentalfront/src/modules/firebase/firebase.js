@@ -121,7 +121,14 @@ class Firebase {
     .where('organisation', '==', organisation)
     .get()
 
+  // ToDo
   updatePatientReport = patient => console.log(patient)
+
+  // Pages
+  getPage = page => this.firestore
+    .collection('content')
+    .doc(page)
+    .get()
 }
 
 export default Firebase

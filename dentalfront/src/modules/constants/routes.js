@@ -10,11 +10,9 @@ export const CONFIRM_EMAIL = '/confirm-email'
 
 // Patient
 export const PATIENT = '/patient'
-export const PATIENT_REPORT = `${PATIENT}/report`
 
 // Affiliate
 export const AFFILIATE = '/affiliate'
-export const REVIEW = `${AFFILIATE}/review`
 
 // Dentist
 export const DENTIST = '/dentist'
@@ -24,3 +22,9 @@ export const ADMIN = '/admin'
 export const ADMIN_ORGANISATION_REPORT = `${ADMIN}/organisation_report`
 export const ADMIN_PATIENT_REPORT = `${ADMIN}/patient_report`
 export const ADMIN_DENTIST_REPORT = `${ADMIN}/dentist_report`
+
+// Pages
+export const BEEMO = '/beemo'
+export const FAQ = '/faq'
+export const PRIVACY_POLICY = '/privacy'
+export const CONTACT_US = '/contact_us'

@@ -12,6 +12,7 @@ import Admin from 'screens/Admin'
 import Dentist from 'screens/Dentist'
 import Affiliate from 'screens/Affiliate'
 import Home from 'screens/Home'
+import PrivacyPolicy from 'screens/PrivacyPolicy'
 import FirebaseContext from 'modules/Firebase'
 import { UserAuthorized, UserEmailVerified } from 'utils/logonUser'
 import Header from 'ui/Header'
@@ -36,15 +37,14 @@ const App = () => {
 
 
         <Header />
-        <Route
-          path={ROUTES.HOME}
-          component={Home}
-        />
+        <Route path={ROUTES.HOME} component={Home} />
+
         <AuthorizedRoute path={ROUTES.PATIENT} exact authorized={UserAuthorized} component={Patient} />
         <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={UserAuthorized} component={Admin} />
         <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={UserAuthorized} component={Dentist} />
         <AuthorizedRoute path={ROUTES.AFFILIATE} exact authorized={UserAuthorized} component={Affiliate} />
 
+        <Route path={ROUTES.PRIVACY_POLICY} exact component={PrivacyPolicy} />
         {/* {authorized() && emailVerified() && <Redirect to={ROUTES[authorized().role]} />} */}
         {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
       </>

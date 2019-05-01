@@ -4,6 +4,9 @@ import { Link as RouterLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/styles'
 import { Typography } from '@material-ui/core'
+
+import * as ROUTES from 'modules/constants/routes'
+
 import './style.scss'
 
 const useStyles = makeStyles(() => ({
@@ -34,7 +37,7 @@ const Footer = () => {
                 FAQ
             </Link>
 
-            <Link component={RouterLink} variant="body2" to="/" className={classes.whiteLink}>
+            <Link component={RouterLink} variant="body2" to={ROUTES.PRIVACY_POLICY} className={classes.whiteLink}>
                 privacy policy
             </Link>
 
