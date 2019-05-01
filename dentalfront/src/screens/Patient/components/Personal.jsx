@@ -80,6 +80,7 @@ const Personal = ({
 
       <div className="picker">
         <DatePicker
+          error={validFormStep && birthDate === null}
           variant="filled"
           keyboard
           label="Date of birth"
@@ -179,6 +180,7 @@ const Personal = ({
 
       <div className="picker">
         <DatePicker
+          error={validFormStep && expiredDate === null}
           variant="filled"
           keyboard
           label="Expire date"
