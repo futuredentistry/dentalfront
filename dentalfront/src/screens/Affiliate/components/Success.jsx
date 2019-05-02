@@ -17,14 +17,15 @@ const Success = ({ patientFirstName, selectNext }) => {
             <Typography variant="h4">
                 Well done!
             </Typography>
-
+            <br />
             <Typography variant="body2">
                 That's all the images we need for
             {' '}
                 {capitalizeFirstLetter(patientFirstName)}
                 . You can now let them know that a dental report will be completed for them an emailed to them.
             </Typography>
-
+            <br />
+            <br />
             <Button
               variant="contained"
               color="primary"

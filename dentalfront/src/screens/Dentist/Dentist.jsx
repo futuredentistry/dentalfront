@@ -77,7 +77,7 @@ const Dentist = () => {
             setBottomLeft,
         }
         switch (n) {
-            case 9:
+            case 0:
                 return (
                     <SelectPatient {...{
                         waitingReport,
@@ -90,7 +90,7 @@ const Dentist = () => {
                 return patient && <Patient {...patient} />
             case 2:
                 return <Chart {...segmentsProps} />
-            case 0:
+            case 3:
                 return <Report {...{ ...segmentsProps, ...propsSummary, ...methodsSummary }} />
             default:
                 return (

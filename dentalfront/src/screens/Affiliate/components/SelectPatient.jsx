@@ -61,7 +61,7 @@ const SelectPatient = ({
             </Typography>
 
             <SelectOrganisation {...{ organisation, setOrganisation, validFormStep: false }} />
-
+            <br />
             <SearchBar
               value={search}
               disabled={organisation === ''}
@@ -76,7 +76,13 @@ const SelectPatient = ({
                 }}
             />
 
-            {filteredPatients.length === 0 && <Typography variant="body2">No reports available</Typography>}
+            {filteredPatients.length === 0 && (
+                <>
+                    <br />
+                    <Typography variant="body2">No reports available</Typography>
+                </>
+            )
+            }
 
             {filteredPatients.length > 0 && filteredPatients.map((patient, i) => {
                 // eslint-disable-next-line max-len
