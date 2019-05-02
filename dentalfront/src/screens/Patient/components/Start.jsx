@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
+import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import { UserFirstName } from 'utils/logonUser'
 import Carousele from 'ui/Carousele'
-import { HeaderFooterContext } from 'modules/HeaderFooter/context'
+import DeleteUser from 'ui/DeleteUser'
 
 const Start = ({ startNewReport }) => {
     const { setDark, setShow } = useContext(HeaderFooterContext)
@@ -35,6 +36,8 @@ const Start = ({ startNewReport }) => {
             <Carousele />
 
             <Button variant="contained" color="primary" onClick={startNewReport}>Create a new report</Button>
+
+            <DeleteUser />
         </>
     )
 }

@@ -77,13 +77,19 @@ class Firebase {
 
   user = uid => this.db.ref(`users/${uid}`)
 
-  // *** Change email/password API ***
   reauthenticate = (currentPassword) => {
     const user = this.auth.currentUser
     const cred = this.emailAuthProvider.credential(user.email, currentPassword)
 
     return user.reauthenticateAndRetrieveDataWithCredential(cred)
   }
+
+  deleteUser = () => {
+    const user = this.auth.currentUser
+    return user.delete()
+  }
+
+  // *** Change email/password API ***
 
   changePassword = (newPassword) => {
     const user = this.auth.currentUser
