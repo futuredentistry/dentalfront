@@ -1,16 +1,16 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/dentalfront/node_modules
-/dentalfront/functions/node_modules
-/dentalfront/.pnp
-/dentalfront/.pnp.js
+/node_modules
+/functions/node_modules
+/.pnp
+/.pnp.js
 
 # testing
-/dentalfront/coverage
+/coverage
 
 # production
-/dentalfront/build
+/build
 
 # misc
 .DS_Store
