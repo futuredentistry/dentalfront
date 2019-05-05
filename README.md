@@ -81,8 +81,17 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/ad
 
 `docker push *** ToDo`
 
-## Deployment
-ToDo with Docker
+###Firebase
+Config email
+`firebase functions:config:set gmail.login=beemoinfo@gamail.com gmail.pass=password`
+
+## Deployment Firebase
+Deploy
+`yarn build`
+`firebase deploy`
+
+Deploy only functions
+`firebase deploy --only functions`
 
 ## Docker tips
 Build image from folder
