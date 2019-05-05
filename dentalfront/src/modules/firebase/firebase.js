@@ -135,6 +135,16 @@ class Firebase {
     .collection('content')
     .doc(page)
     .get()
+
+    // Email
+    sendMessage = (message, email) => {
+      const refMsg = this.db.ref('contact_as')
+      const newMessage = refMsg.push()
+      return newMessage.set({
+        email,
+        message,
+      })
+    }
 }
 
 export default Firebase

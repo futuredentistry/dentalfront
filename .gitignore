@@ -2,6 +2,7 @@
 
 # dependencies
 /dentalfront/node_modules
+/dentalfront/functions/node_modules
 /dentalfront/.pnp
 /dentalfront/.pnp.js
 

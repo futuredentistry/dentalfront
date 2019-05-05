@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 import FormControl from '@material-ui/core/FormControl'
@@ -6,11 +6,14 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import Button from '@material-ui/core/Button'
 
+import FirebaseContext from 'modules/Firebase'
 import FormGrid from 'ui/FormGrid'
 
 const ContactUs = () => {
-    const [message, setMessage] = useState('')
+    const firebase = useContext(FirebaseContext)
+    const [emailMessage, setEmailMessage] = useState('')
     const [email, setEmail] = useState('')
+    const [errMessage, setErrMessage] = useState(null)
     return (
         <>
             <Typography variant="h4">
@@ -37,19 +40,28 @@ const ContactUs = () => {
 
                 <TextField
                   placeholder="Your message"
-                  value={message}
-                  onChange={e => setMessage(e.currentTarget.value)}
+                  value={emailMessage}
+                  onChange={e => setEmailMessage(e.currentTarget.value)}
                   margin="normal"
                   variant="filled"
                   multiline
                   rows={6}
                 />
+                <Typography color="error">{errMessage}</Typography>
                 <br />
                 <br />
                 <Button
                   variant="contained"
                   color="primary"
-                  onClick={() => { }}
+                  onClick={() => firebase
+                        .sendMessage(emailMessage, email)
+                        .then(() => {
+                            setEmailMessage('')
+                            setEmail('')
+                            setErrMessage(null)
+                        })
+                        .catch(({ message }) => setErrMessage(message))
+                    }
                 >
                     Send
                 </Button>
