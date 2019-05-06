@@ -2,6 +2,7 @@ import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/firestore'
+import 'firebase/storage'
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -26,6 +27,7 @@ class Firebase {
     this.auth = app.auth()
     this.db = app.database()
     this.firestore = app.firestore()
+    this.storage = app.storage()
     // this.collection = this.collection()
   }
 
@@ -136,15 +138,45 @@ class Firebase {
     .doc(page)
     .get()
 
-    // Email
-    sendMessage = (message, email) => {
-      const refMsg = this.db.ref('contact_as')
-      const newMessage = refMsg.push()
-      return newMessage.set({
-        email,
-        message,
-      })
-    }
+  // Email
+  sendMessage = (message, email) => {
+    const refMsg = this.db.ref('contact_as')
+    const newMessage = refMsg.push()
+    return newMessage.set({
+      email,
+      message,
+    })
+  }
+
+  // Image
+
+  uploadImage = (image) => {
+    let uploadTask = this.storage.ref('/img').child('file_name.jpeg').putString(image, 'data_url', { contentType: 'image/jpg' });
+    uploadTask.on('state_changed', // or this.storage.TaskEvent.STATE_CHANGED
+      function (snapshot) {
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        console.log(snapshot)
+
+        switch (snapshot.state) {
+          case 'paused': //this.storage.TaskState.PAUSED: 
+            console.log('Upload is paused');
+            break;
+          case 'running': //this.storage.TaskState.RUNNING: 
+            console.log('Upload is running');
+            break;
+
+
+        }
+      }, function (error) {
+        console.log(error);
+      }, function () {
+        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          console.log('File available at', downloadURL);
+        });
+      });
+  }
 }
 
 export default Firebase

@@ -1,5 +1,5 @@
-import React from 'react'
-import Camera from 'react-html5-camera-photo'
+import React, { useContext } from 'react'
+import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo'
 import 'react-html5-camera-photo/build/css/index.css'
 
 import { makeStyles } from '@material-ui/styles'
@@ -8,8 +8,20 @@ import Button from '@material-ui/core/Button'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import Grid from '@material-ui/core/Grid'
 
+import FirebaseContext from 'modules/Firebase'
+
 const url = 'https://firebasestorage.googleapis.com/v0/b/dental2-test.appspot.com/o/maxresdefault.jpg?alt=media&token=d34b37a3-29a6-47cc-9b01-a5246fe0adfb'
 
+function dataURItoBlob(dataURI) {
+    let byteString = atob(dataURI.split(',')[1]);
+
+    // separate out the mime component image/jpeg
+    let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // console.log(byteString.replace(/\s/g, ''))
+    // console.log(mimeString)
+    return dataURI;
+}
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -24,6 +36,7 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.down('xs')]: {
             width: '100% !important', // Overrides inline-style
             height: 200,
+
         },
         '&:hover, &$focusVisible': {
             zIndex: 1,
@@ -78,24 +91,28 @@ const useStyles = makeStyles(theme => ({
 
 const AffiliateImageCapture = () => {
     const classes = useStyles()
+    const firebase = useContext(FirebaseContext)
 
     const onTakePhoto = (dataUri) => {
         // Do stuff with the dataUri photo...
         console.log('takePhoto')
-        console.log(dataUri)
+        firebase.uploadImage(dataUri)
+        // console.log(dataUri)
     }
 
     return (
         <>
             <Camera
-              onTakePhoto={dataUri => onTakePhoto(dataUri)}
+                onTakePhoto={dataUri => onTakePhoto(dataUri)}
+                imageType={IMAGE_TYPES.JPG}
+                idealFacingMode={FACING_MODES.ENVIRONMENT}
             />
             {/* ToDo map for db objects */}
 
             <Grid
-              container
-              spacing={0}
-              direction="row"
+                container
+                spacing={0}
+                direction="row"
             >
                 <Grid item xs={6}>
                     <Typography variant="h5">
@@ -107,26 +124,26 @@ const AffiliateImageCapture = () => {
 
 
             <ButtonBase
-              focusRipple
+                focusRipple
                 //   key={image.title}
-              className={classes.image}
-              focusVisibleClassName={classes.focusVisible}
-              style={{
+                className={classes.image}
+                focusVisibleClassName={classes.focusVisible}
+                style={{
                     width: '100%',
                 }}
             >
                 <span
-                  className={classes.imageSrc}
-                  style={{
+                    className={classes.imageSrc}
+                    style={{
                         backgroundImage: `url(${url})`,
                     }}
                 />
                 <span className={classes.imageBackdrop} />
                 {/* <span className={classes.imageButton}> */}
                 <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.imageButton}
+                    variant="contained"
+                    color="primary"
+                    className={classes.imageButton}
                 //   onClick={() => setMethod({ ...segmentProps, ...emptyTreatment })}
                 >
                     take photo
