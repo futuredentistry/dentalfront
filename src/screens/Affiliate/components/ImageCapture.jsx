@@ -5,9 +5,9 @@ import AffiliateImageCapture from 'ui/AffiliateImageCapture'
 const ImageCapture = (props) => {
     console.log('')
     return (
-        <div>
+        <>
             <AffiliateImageCapture />
-        </div>
+        </>
     )
 }
 

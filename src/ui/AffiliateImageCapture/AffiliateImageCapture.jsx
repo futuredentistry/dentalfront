@@ -10,7 +10,34 @@ import Grid from '@material-ui/core/Grid'
 
 import FirebaseContext from 'modules/Firebase'
 
+import './style.scss'
+
 const url = 'https://firebasestorage.googleapis.com/v0/b/dental2-test.appspot.com/o/maxresdefault.jpg?alt=media&token=d34b37a3-29a6-47cc-9b01-a5246fe0adfb'
+
+function padWithZeroNumber(number, width) {
+    number = number + '';
+    return number.length >= width
+        ? number
+        : new Array(width - number.length + 1).join('0') + number;
+}
+
+function getFileExtention(blobType) {
+    // by default the extention is .png
+    let extention = IMAGE_TYPES.PNG;
+
+    if (blobType === 'image/jpeg') {
+        extention = IMAGE_TYPES.JPG;
+    }
+    return extention;
+}
+
+function getFileName(imageNumber, blobType) {
+    const prefix = 'photo';
+    const photoNumber = padWithZeroNumber(imageNumber, 4);
+    const extention = getFileExtention(blobType);
+
+    return `${prefix}-${photoNumber}.${extention}`;
+}
 
 function dataURItoBlob(dataURI) {
     let byteString = atob(dataURI.split(',')[1]);
@@ -102,11 +129,15 @@ const AffiliateImageCapture = () => {
 
     return (
         <>
-            <Camera
-                onTakePhoto={dataUri => onTakePhoto(dataUri)}
-                imageType={IMAGE_TYPES.JPG}
-                idealFacingMode={FACING_MODES.ENVIRONMENT}
-            />
+            <div className='Camera_css'>
+
+                <Camera
+                    onTakePhoto={dataUri => onTakePhoto(dataUri)}
+                    imageType={IMAGE_TYPES.JPG}
+                    idealFacingMode={FACING_MODES.ENVIRONMENT}
+                    onCameraStop={() => console.log('STOP')}
+                />
+            </div>
             {/* ToDo map for db objects */}
 
             <Grid
