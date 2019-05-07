@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import Grid from '@material-ui/core/Grid'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import CloseIcon from '@material-ui/icons/Close'
+import CloseIcon from '@material-ui/icons/CheckCircle'
 
 import FirebaseContext from 'modules/Firebase'
 
@@ -90,10 +90,10 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'left',
         marginLeft: '3px',
     },
-    iconHover: {
-        '&:hover': {
-            color: 'green',
-        }
+    iconColor: {
+        color: '#219653',
+        position: 'relative',
+        top: '5px',
     }
 }))
 
@@ -183,7 +183,7 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
             >
                 <Grid item xs={6}>
                     <Typography variant="h5" className={classes.photoHeader}>
-                        Top right <CloseIcon/>
+                        Top right {imageSrc && <CloseIcon className={classes.iconColor} />}
                     </Typography>
                 </Grid>
                 <Grid item xs={6} />
