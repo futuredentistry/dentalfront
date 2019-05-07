@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import PropTypes from 'prop-types'
 import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo'
 import 'react-html5-camera-photo/build/css/index.css'
 
@@ -7,6 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import Grid from '@material-ui/core/Grid'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import FirebaseContext from 'modules/Firebase'
 
@@ -14,40 +16,10 @@ import './style.scss'
 
 const url = 'https://firebasestorage.googleapis.com/v0/b/dental2-test.appspot.com/o/maxresdefault.jpg?alt=media&token=d34b37a3-29a6-47cc-9b01-a5246fe0adfb'
 
-function padWithZeroNumber(number, width) {
-    number = number + '';
-    return number.length >= width
-        ? number
-        : new Array(width - number.length + 1).join('0') + number;
-}
-
-function getFileExtention(blobType) {
-    // by default the extention is .png
-    let extention = IMAGE_TYPES.PNG;
-
-    if (blobType === 'image/jpeg') {
-        extention = IMAGE_TYPES.JPG;
-    }
-    return extention;
-}
-
-function getFileName(imageNumber, blobType) {
-    const prefix = 'photo';
-    const photoNumber = padWithZeroNumber(imageNumber, 4);
-    const extention = getFileExtention(blobType);
-
-    return `${prefix}-${photoNumber}.${extention}`;
-}
-
-function dataURItoBlob(dataURI) {
-    let byteString = atob(dataURI.split(',')[1]);
-
-    // separate out the mime component image/jpeg
-    let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-    // console.log(byteString.replace(/\s/g, ''))
-    // console.log(mimeString)
-    return dataURI;
+const MODE = {
+    START: 'START',
+    TAKE_PHOTO: 'TAKE_PHOTO',
+    READY: 'READY',
 }
 
 const useStyles = makeStyles(theme => ({
@@ -116,78 +88,111 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-const AffiliateImageCapture = () => {
+const AffiliateImageCapture = ({ photoNumber, reportId }) => {
+    const [imageSrc, setImageSrc] = useState(null)
+    const [mode, setMode] = useState(null)
     const classes = useStyles()
     const firebase = useContext(FirebaseContext)
+
+    const getFileName = () => `${reportId}-${photoNumber}.${IMAGE_TYPES.JPG}`
 
     const onTakePhoto = (dataUri) => {
         // Do stuff with the dataUri photo...
         console.log('takePhoto')
-        firebase.uploadImage(dataUri)
+        firebase.uploadImage(dataUri, getFileName())
         // console.log(dataUri)
+    }
+
+    const modeScreen = (mode) => {
+        switch (mode) {
+            case MODE.START:
+                return (
+                    <>
+                        <Grid
+                            container
+                            spacing={0}
+                            direction="row"
+                        >
+                            <Grid item xs={6}>
+                                <Typography variant="h5">
+                                    Top right
+                    </Typography>
+                            </Grid>
+                            <Grid item xs={6} />
+                        </Grid>
+
+
+                        <ButtonBase
+                            focusRipple
+                            //   key={image.title}
+                            className={classes.image}
+                            focusVisibleClassName={classes.focusVisible}
+                            style={{
+                                width: '100%',
+                            }}
+                        >
+                            <span
+                                className={classes.imageSrc}
+                                style={{
+                                    backgroundImage: `url(${url})`,
+                                }}
+                            />
+                            <span className={classes.imageBackdrop} />
+                            {/* <span className={classes.imageButton}> */}
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                className={classes.imageButton}
+                            //   onClick={() => setMethod({ ...segmentProps, ...emptyTreatment })}
+                            >
+                                take photo
+                </Button>
+                            {/* </span> */}
+                        </ButtonBase>
+                    </>
+                )
+            case MODE.TAKE_PHOTO:
+                return (
+                    <Camera
+                        onTakePhoto={dataUri => onTakePhoto(dataUri)}
+                        imageType={IMAGE_TYPES.JPG}
+                        idealFacingMode={FACING_MODES.ENVIRONMENT}
+                    />
+                )
+            case MODE.READY:
+                return (
+                    imageSrc && (
+                        <img
+                            src={imageSrc}
+                            alt=""
+                            style={{ width: '100%' }}
+                        />
+                    )
+                )
+            default: return (
+                <div className='loader_progress'>
+                    <div className='loader_progress_circular'>
+                        <CircularProgress />
+                    </div>
+                </div>
+            )
+        }
     }
 
     return (
         <>
-            <div className='Camera_css'>
 
-                <Camera
-                    onTakePhoto={dataUri => onTakePhoto(dataUri)}
-                    imageType={IMAGE_TYPES.JPG}
-                    idealFacingMode={FACING_MODES.ENVIRONMENT}
-                    onCameraStop={() => console.log('STOP')}
-                />
-            </div>
+            {modeScreen(mode)}
             {/* ToDo map for db objects */}
 
-            <Grid
-                container
-                spacing={0}
-                direction="row"
-            >
-                <Grid item xs={6}>
-                    <Typography variant="h5">
-                        Top right
-                    </Typography>
-                </Grid>
-                <Grid item xs={6} />
-            </Grid>
 
-
-            <ButtonBase
-                focusRipple
-                //   key={image.title}
-                className={classes.image}
-                focusVisibleClassName={classes.focusVisible}
-                style={{
-                    width: '100%',
-                }}
-            >
-                <span
-                    className={classes.imageSrc}
-                    style={{
-                        backgroundImage: `url(${url})`,
-                    }}
-                />
-                <span className={classes.imageBackdrop} />
-                {/* <span className={classes.imageButton}> */}
-                <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.imageButton}
-                //   onClick={() => setMethod({ ...segmentProps, ...emptyTreatment })}
-                >
-                    take photo
-                </Button>
-                {/* </span> */}
-            </ButtonBase>
         </>
     )
 }
 
 AffiliateImageCapture.propTypes = {
-    // segmentProps: segment.isRequired,
-    // setMethod: PropTypes.func.isRequired,
+    photoNumber: PropTypes.number.isRequired,
+    reportId: PropTypes.string.isRequired,
 }
 
 export default AffiliateImageCapture
