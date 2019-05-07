@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo'
 import 'react-html5-camera-photo/build/css/index.css'
-
 import { makeStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import Grid from '@material-ui/core/Grid'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import CloseIcon from '@material-ui/icons/Close'
 
 import FirebaseContext from 'modules/Firebase'
 
@@ -86,6 +86,15 @@ const useStyles = makeStyles(theme => ({
         left: 'calc(50% - 9px)',
         transition: theme.transitions.create('opacity'),
     },
+    photoHeader: {
+        textAlign: 'left',
+        marginLeft: '3px',
+    },
+    iconHover: {
+        '&:hover': {
+            color: 'green',
+        }
+    }
 }))
 
 const AffiliateImageCapture = ({ photoNumber, reportId }) => {
@@ -108,20 +117,6 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
             case MODE.START:
                 return (
                     <>
-                        <Grid
-                            container
-                            spacing={0}
-                            direction="row"
-                        >
-                            <Grid item xs={6}>
-                                <Typography variant="h5">
-                                    Top right
-                    </Typography>
-                            </Grid>
-                            <Grid item xs={6} />
-                        </Grid>
-
-
                         <ButtonBase
                             focusRipple
                             //   key={image.title}
@@ -181,7 +176,18 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
 
     return (
         <>
-
+            <Grid
+                container
+                spacing={0}
+                direction="row"
+            >
+                <Grid item xs={6}>
+                    <Typography variant="h5" className={classes.photoHeader}>
+                        Top right <CloseIcon/>
+                    </Typography>
+                </Grid>
+                <Grid item xs={6} />
+            </Grid>
             {modeScreen(mode)}
             {/* ToDo map for db objects */}
 

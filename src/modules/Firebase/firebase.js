@@ -150,10 +150,10 @@ class Firebase {
 
   // Image
 
-  uploadImage = (image) => {
-    let uploadTask = this.storage.ref('/img').child('file_name.jpeg').putString(image, 'data_url', { contentType: 'image/jpg' });
+  uploadImage = (image, fileName) => {
+    let uploadTask = this.storage.ref('/img').child(fileName).putString(image, 'data_url', { contentType: 'image/jpg' });
     uploadTask.on('state_changed', // or this.storage.TaskEvent.STATE_CHANGED
-      function (snapshot) {
+      snapshot => {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log('Upload is ' + progress + '% done');
@@ -166,13 +166,14 @@ class Firebase {
           case 'running': //this.storage.TaskState.RUNNING: 
             console.log('Upload is running');
             break;
+          default: return null
 
 
         }
-      }, function (error) {
+      }, error => {
         console.log(error);
-      }, function () {
-        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+      }, () => {
+        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
           console.log('File available at', downloadURL);
         });
       });
