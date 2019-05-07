@@ -2,7 +2,7 @@ video {
     width: 100%!important;
 }
 
-.loader_progress {
+.capture_container {
     border: 1px;
     display: flex;
     width: 100%;
@@ -13,12 +13,12 @@ video {
     border-style: solid;
 }
                                         
-.loader_progress:before {
+.capture_container:before {
     padding-top: 133.34%;
     content: "";
     display: block;
 }
 
-.loader_progress_circular {
+.capture_item {
     align-self: center;
 }

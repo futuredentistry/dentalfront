@@ -4,7 +4,7 @@ import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo'
 import 'react-html5-camera-photo/build/css/index.css'
 import { makeStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import Grid from '@material-ui/core/Grid'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -23,36 +23,35 @@ const MODE = {
 }
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        minWidth: 300,
-        width: '100%',
-    },
     image: {
         position: 'relative',
-        height: 400,
-        [theme.breakpoints.down('xs')]: {
-            width: '100% !important', // Overrides inline-style
-            height: 200,
-
+        width: '100% !important',
+        '&:before': {
+            paddingTop: '133.34%',
+            content: "close-quote",
+            display: 'block',
         },
-        '&:hover, &$focusVisible': {
+        '&:hover': {
             zIndex: 1,
             '& $imageBackdrop': {
                 opacity: 0.15,
             },
-            '& $imageMarked': {
-                opacity: 0,
-            },
-            '& $imageTitle': {
-                border: '4px solid currentColor',
-            },
         },
     },
-    focusVisible: {},
     imageButton: {
+        position: 'relative',
         height: 36,
+        marginBlockEnd: '10px',
+        marginBlockStart: '10px',
+        borderRadius: '200px',
+        width: '70%',
+        marginLeft: '15%',
+        marginRight: '15%',
+        color: 'white!important',
+        background: '#233D4D',
+        fontWeight: 900,
+        fontSize: '14px',
+        lineHeight: '36px',
     },
     imageSrc: {
         position: 'absolute',
@@ -62,6 +61,7 @@ const useStyles = makeStyles(theme => ({
         bottom: 0,
         backgroundSize: 'cover',
         backgroundPosition: 'center 40%',
+
     },
     imageBackdrop: {
         position: 'absolute',
@@ -71,19 +71,6 @@ const useStyles = makeStyles(theme => ({
         bottom: 0,
         backgroundColor: theme.palette.common.black,
         opacity: 0.4,
-        transition: theme.transitions.create('opacity'),
-    },
-    imageTitle: {
-        position: 'relative',
-        padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme.spacing.unit + 6}px`,
-    },
-    imageMarked: {
-        height: 3,
-        width: 18,
-        backgroundColor: theme.palette.common.white,
-        position: 'absolute',
-        bottom: -2,
-        left: 'calc(50% - 9px)',
         transition: theme.transitions.create('opacity'),
     },
     photoHeader: {
@@ -99,7 +86,7 @@ const useStyles = makeStyles(theme => ({
 
 const AffiliateImageCapture = ({ photoNumber, reportId }) => {
     const [imageSrc, setImageSrc] = useState(null)
-    const [mode, setMode] = useState(null)
+    const [mode, setMode] = useState(MODE.START)
     const classes = useStyles()
     const firebase = useContext(FirebaseContext)
 
@@ -119,12 +106,8 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                     <>
                         <ButtonBase
                             focusRipple
-                            //   key={image.title}
                             className={classes.image}
-                            focusVisibleClassName={classes.focusVisible}
-                            style={{
-                                width: '100%',
-                            }}
+                            onClick={() => setTimeout(() => setMode(MODE.TAKE_PHOTO), 500)}
                         >
                             <span
                                 className={classes.imageSrc}
@@ -134,25 +117,29 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                             />
                             <span className={classes.imageBackdrop} />
                             {/* <span className={classes.imageButton}> */}
-                            <Button
-                                variant="contained"
-                                color="primary"
+                            <Typography variant="body2"
+                                component="span"
+                                color="inherit"
                                 className={classes.imageButton}
                             //   onClick={() => setMethod({ ...segmentProps, ...emptyTreatment })}
                             >
                                 take photo
-                </Button>
+                            </Typography>
                             {/* </span> */}
                         </ButtonBase>
                     </>
                 )
             case MODE.TAKE_PHOTO:
                 return (
-                    <Camera
-                        onTakePhoto={dataUri => onTakePhoto(dataUri)}
-                        imageType={IMAGE_TYPES.JPG}
-                        idealFacingMode={FACING_MODES.ENVIRONMENT}
-                    />
+                    <div className='capture_container'>
+                        <div className='capture_item'>
+                            <Camera
+                                onTakePhoto={dataUri => onTakePhoto(dataUri)}
+                                imageType={IMAGE_TYPES.JPG}
+                                idealFacingMode={FACING_MODES.ENVIRONMENT}
+                            />
+                        </div>
+                    </div>
                 )
             case MODE.READY:
                 return (
@@ -165,8 +152,8 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                     )
                 )
             default: return (
-                <div className='loader_progress'>
-                    <div className='loader_progress_circular'>
+                <div className='capture_container'>
+                    <div className='capture_item'>
                         <CircularProgress />
                     </div>
                 </div>
@@ -189,7 +176,6 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                 <Grid item xs={6} />
             </Grid>
             {modeScreen(mode)}
-            {/* ToDo map for db objects */}
 
 
         </>
