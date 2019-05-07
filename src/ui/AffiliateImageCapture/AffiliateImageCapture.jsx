@@ -4,7 +4,7 @@ import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo'
 import 'react-html5-camera-photo/build/css/index.css'
 import { makeStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
-// import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import Grid from '@material-ui/core/Grid'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -81,6 +81,17 @@ const useStyles = makeStyles(theme => ({
         color: '#219653',
         position: 'relative',
         top: '5px',
+    },
+    greedRow: {
+        paddingBottom: '3%',
+    },
+    headerButton: {
+        marginBlockStart: '11px',
+        justifyContent: 'flex-end',
+        width: '96%',
+        marginLeft: '2%',
+        marginRight: '2%',
+        textDecoration: 'underline',
     }
 }))
 
@@ -116,16 +127,13 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                                 }}
                             />
                             <span className={classes.imageBackdrop} />
-                            {/* <span className={classes.imageButton}> */}
                             <Typography variant="body2"
                                 component="span"
                                 color="inherit"
                                 className={classes.imageButton}
-                            //   onClick={() => setMethod({ ...segmentProps, ...emptyTreatment })}
                             >
                                 take photo
                             </Typography>
-                            {/* </span> */}
                         </ButtonBase>
                     </>
                 )
@@ -167,13 +175,36 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                 container
                 spacing={0}
                 direction="row"
+                className={classes.greedRow}
             >
                 <Grid item xs={6}>
                     <Typography variant="h5" className={classes.photoHeader}>
                         Top right {imageSrc && <CloseIcon className={classes.iconColor} />}
                     </Typography>
                 </Grid>
-                <Grid item xs={6} />
+
+                <Grid item xs={6} >
+                    {
+                        imageSrc
+                            ? (<Button
+                                variant="text"
+                                color="primary"
+                                onClick={() => console.log('ccc')}
+                                className={classes.headerButton}
+                            >
+                                Retake image
+                        </Button>)
+                            : (<Button
+                                variant="text"
+                                color="primary"
+                                onClick={() => console.log('ccc')}
+                                className={classes.headerButton}
+                            >
+                                Show example
+                        </Button>)
+                    }
+
+                </Grid>
             </Grid>
             {modeScreen(mode)}
 
