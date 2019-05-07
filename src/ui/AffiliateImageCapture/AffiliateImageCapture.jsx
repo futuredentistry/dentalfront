@@ -87,16 +87,18 @@ const useStyles = makeStyles(theme => ({
     },
     headerButton: {
         marginBlockStart: '11px',
-        justifyContent: 'flex-end',
         width: '96%',
         marginLeft: '2%',
         marginRight: '2%',
         textDecoration: 'underline',
+    },
+    headerRight: {
+        justifyContent: 'flex-end',
     }
 }))
 
 const AffiliateImageCapture = ({ photoNumber, reportId }) => {
-    const [imageSrc, setImageSrc] = useState(null)
+    const [imageSrc, setImageSrc] = useState(true)
     const [mode, setMode] = useState(MODE.START)
     const classes = useStyles()
     const firebase = useContext(FirebaseContext)
@@ -189,16 +191,16 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                             ? (<Button
                                 variant="text"
                                 color="primary"
-                                onClick={() => console.log('ccc')}
-                                className={classes.headerButton}
+                                onClick={() => setImageSrc(false)}
+                                className={`${classes.headerButton} ${classes.headerRight}`}
                             >
                                 Retake image
                         </Button>)
                             : (<Button
                                 variant="text"
                                 color="primary"
-                                onClick={() => console.log('ccc')}
-                                className={classes.headerButton}
+                                onClick={() => setImageSrc(true)}
+                                className={`${classes.headerButton} ${classes.headerRight}`}
                             >
                                 Show example
                         </Button>)
@@ -206,9 +208,25 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
 
                 </Grid>
             </Grid>
+
             {modeScreen(mode)}
 
-
+            {
+                imageSrc
+                    ? (<Button
+                        variant="text"
+                        color="primary"
+                        onClick={() => {
+                            // ToDo firebase.delImage(name).then()
+                            setImageSrc(null)
+                            setMode(MODE.START)
+                        }}
+                        className={classes.headerButton}
+                    >
+                        Delete image
+                    </Button>)
+                    : <div className='empty_del_button_container' />
+            }
         </>
     )
 }
