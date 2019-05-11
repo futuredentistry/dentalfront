@@ -28,14 +28,17 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
     const classes = useStyles()
     const firebase = useContext(FirebaseContext)
 
-    const getFileName = () => `${reportId}-${photoNumber}.${IMAGE_TYPES.JPG}`
+    const getFileName = () => `${reportId}-${photoNumber}-${new Date().toISOString()}.${IMAGE_TYPES.JPG}`
 
-    const onTakePhoto = (dataUri) => {
-        // Do stuff with the dataUri photo...
-        console.log('takePhoto')
-        firebase.uploadImage(dataUri, getFileName())
-        // console.log(dataUri)
-    }
+    const onTakePhoto = (dataUri) =>
+        firebase.uploadImage(
+            dataUri,
+            getFileName(),
+            () => setMode(null),
+            (imgUrl) => {
+                setImageSrc(imgUrl)
+                setMode(MODE.READY)
+            })
 
     const modeScreen = (mode) => {
         switch (mode) {
