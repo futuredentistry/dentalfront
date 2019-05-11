@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo'
 import 'react-html5-camera-photo/build/css/index.css'
-import { makeStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import ButtonBase from '@material-ui/core/ButtonBase'
@@ -12,6 +11,7 @@ import CloseIcon from '@material-ui/icons/CheckCircle'
 
 import FirebaseContext from 'modules/Firebase'
 
+import useStyles from './useStyles'
 import './style.scss'
 
 const url = 'https://firebasestorage.googleapis.com/v0/b/dental2-test.appspot.com/o/maxresdefault.jpg?alt=media&token=d34b37a3-29a6-47cc-9b01-a5246fe0adfb'
@@ -21,81 +21,6 @@ const MODE = {
     TAKE_PHOTO: 'TAKE_PHOTO',
     READY: 'READY',
 }
-
-const useStyles = makeStyles(theme => ({
-    image: {
-        position: 'relative',
-        width: '100% !important',
-        '&:before': {
-            paddingTop: '133.34%',
-            content: "close-quote",
-            display: 'block',
-        },
-        '&:hover': {
-            zIndex: 1,
-            '& $imageBackdrop': {
-                opacity: 0.15,
-            },
-        },
-    },
-    imageButton: {
-        position: 'relative',
-        height: 36,
-        marginBlockEnd: '10px',
-        marginBlockStart: '10px',
-        borderRadius: '200px',
-        width: '70%',
-        marginLeft: '15%',
-        marginRight: '15%',
-        color: 'white!important',
-        background: '#233D4D',
-        fontWeight: 900,
-        fontSize: '14px',
-        lineHeight: '36px',
-    },
-    imageSrc: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 40%',
-
-    },
-    imageBackdrop: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        backgroundColor: theme.palette.common.black,
-        opacity: 0.4,
-        transition: theme.transitions.create('opacity'),
-    },
-    photoHeader: {
-        textAlign: 'left',
-        marginLeft: '3px',
-    },
-    iconColor: {
-        color: '#219653',
-        position: 'relative',
-        top: '5px',
-    },
-    greedRow: {
-        paddingBottom: '3%',
-    },
-    headerButton: {
-        marginBlockStart: '11px',
-        width: '96%',
-        marginLeft: '2%',
-        marginRight: '2%',
-        textDecoration: 'underline',
-    },
-    headerRight: {
-        justifyContent: 'flex-end',
-    }
-}))
 
 const AffiliateImageCapture = ({ photoNumber, reportId }) => {
     const [imageSrc, setImageSrc] = useState(true)
