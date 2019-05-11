@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
+// @ts-ignore
 import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo'
 import 'react-html5-camera-photo/build/css/index.css'
 import Typography from '@material-ui/core/Typography'
@@ -10,6 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import CloseIcon from '@material-ui/icons/CheckCircle'
 
 import FirebaseContext from 'modules/Firebase'
+import Dialog from 'ui/Dialog'
 
 import useStyles from './useStyles'
 import './style.scss'
@@ -22,9 +24,11 @@ const MODE = {
     READY: 'READY',
 }
 
-const AffiliateImageCapture = ({ photoNumber, reportId }) => {
+// ToDo pass example url
+const AffiliateImageCapture = ({ segmentName, photoNumber, reportId }) => {
     const [imageSrc, setImageSrc] = useState(null)
     const [mode, setMode] = useState(MODE.START)
+    const [open, setModalOpen] = useState(false)
     const classes = useStyles()
     const firebase = useContext(FirebaseContext)
 
@@ -87,11 +91,15 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
             case MODE.READY:
                 return (
                     imageSrc && (
-                        <img
-                            src={imageSrc}
-                            alt=""
-                            style={{ width: '100%' }}
-                        />
+                        <div className='capture_container'>
+                            <div className='capture_item'>
+                                <img
+                                    src={imageSrc}
+                                    alt=""
+                                    style={{ width: '100%' }}
+                                />
+                            </div>
+                        </div>
                     )
                 )
             default: return (
@@ -106,6 +114,34 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
 
     return (
         <>
+            <Dialog
+                disableBackdropClick
+                open={open}
+                showClose={false}
+                onClose={() => { }}
+            >
+                <>
+                    <div className='capture_container'>
+                        <div className='capture_item'>
+                            <img
+                                src={url}
+                                alt=""
+                                style={{ width: '100%' }}
+                            />
+                        </div>
+                    </div>
+
+                    <br />
+                    <Button
+                        variant="text"
+                        color="primary"
+                        onClick={() => setModalOpen(false)}
+                    >
+                        close
+            </Button>
+                </>
+            </Dialog>
+
             <Grid
                 container
                 spacing={0}
@@ -114,7 +150,7 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
             >
                 <Grid item xs={6}>
                     <Typography variant="h5" className={classes.photoHeader}>
-                        Top right {imageSrc && <CloseIcon className={classes.iconColor} />}
+                        {segmentName} {imageSrc && <CloseIcon className={classes.iconColor} />}
                     </Typography>
                 </Grid>
 
@@ -132,8 +168,7 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                             : (<Button
                                 variant="text"
                                 color="primary"
-                                // ToDo popup
-                                onClick={() => setImageSrc(true)}
+                                onClick={() => setModalOpen(true)}
                                 className={`${classes.headerButton} ${classes.headerRight}`}
                             >
                                 Show example
@@ -162,6 +197,7 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
 }
 
 AffiliateImageCapture.propTypes = {
+    segmentName: PropTypes.string.isRequired,
     photoNumber: PropTypes.number.isRequired,
     reportId: PropTypes.string.isRequired,
 }

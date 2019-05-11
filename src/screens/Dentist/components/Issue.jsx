@@ -10,9 +10,7 @@ import { segment } from 'modules/Dentist/props'
 const Issue = ({ onClose, segmentProps, setSegment }) => {
     const [validateForm, setValidateForm] = useState(false)
 
-    const validator = () => segmentProps.concern !== ''
-        && segmentProps.treatment !== ''
-        && segmentProps.toothNumber !== ''
+    const validator = () => segmentProps.concern !== '' && segmentProps.treatment !== ''
 
     const [starterProps, setStarterProps] = useState(null)
     useEffect(() => !starterProps && setStarterProps(segmentProps), [])
@@ -24,12 +22,12 @@ const Issue = ({ onClose, segmentProps, setSegment }) => {
             </Typography>
 
             <TextField
-              error={validateForm && segmentProps.concern === ''}
-              label="Concern"
-              value={segmentProps.concern}
-              onChange={e => setSegment({ ...segmentProps, ...{ concern: e.currentTarget.value } })}
-              margin="normal"
-              variant="filled"
+                error={validateForm && segmentProps.concern === ''}
+                label="Concern"
+                value={segmentProps.concern}
+                onChange={e => setSegment({ ...segmentProps, ...{ concern: e.currentTarget.value } })}
+                margin="normal"
+                variant="filled"
             />
             {
                 validateForm
@@ -37,12 +35,12 @@ const Issue = ({ onClose, segmentProps, setSegment }) => {
                 && <FormHelperText error>Please fill out this field</FormHelperText>}
 
             <TextField
-              error={validateForm && segmentProps.treatment === ''}
-              label="Recommended treatment"
-              value={segmentProps.treatment}
-              onChange={e => setSegment({ ...segmentProps, ...{ treatment: e.currentTarget.value } })}
-              margin="normal"
-              variant="filled"
+                error={validateForm && segmentProps.treatment === ''}
+                label="Recommended treatment"
+                value={segmentProps.treatment}
+                onChange={e => setSegment({ ...segmentProps, ...{ treatment: e.currentTarget.value } })}
+                margin="normal"
+                variant="filled"
             />
             {
                 validateForm
@@ -50,30 +48,24 @@ const Issue = ({ onClose, segmentProps, setSegment }) => {
                 && <FormHelperText error>Please fill out this field</FormHelperText>}
 
             <TextField
-              error={validateForm && segmentProps.toothNumber === ''}
-              label="Tooth number"
-              value={segmentProps.toothNumber}
-              inputProps={
+                label="Tooth number"
+                value={segmentProps.toothNumber}
+                inputProps={
                     { maxLength: 2 }
                 }
-              onChange={
+                onChange={
                     e => /^(\s*|\d+)$/.test(e.currentTarget.value)
                         && setSegment({ ...segmentProps, ...{ toothNumber: e.currentTarget.value } })
                 }
-              margin="normal"
-              variant="filled"
+                margin="normal"
+                variant="filled"
             />
-            {
-                validateForm
-                && segmentProps.toothNumber === ''
-                && <FormHelperText error>Please fill out this field</FormHelperText>}
-
 
             <Button
-              variant="contained"
-              color="primary"
-              disabled={!validator() && validateForm}
-              onClick={() => {
+                variant="contained"
+                color="primary"
+                disabled={!validator() && validateForm}
+                onClick={() => {
                     setValidateForm(true)
                     if (validator()) onClose()
                 }
@@ -83,9 +75,9 @@ const Issue = ({ onClose, segmentProps, setSegment }) => {
             </Button>
 
             <Button
-              variant="text"
-              color="primary"
-              onClick={() => {
+                variant="text"
+                color="primary"
+                onClick={() => {
                     onClose()
                     setSegment(starterProps)
                 }}
