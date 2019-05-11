@@ -149,7 +149,6 @@ class Firebase {
   }
 
   // Image
-
   uploadImage = (image, fileName, onLoad, onCompleat) => {
     let uploadTask = this.storage.ref('/img')
       .child(fileName)
@@ -172,6 +171,8 @@ class Firebase {
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => onCompleat(downloadURL))
       })
   }
+
+  deleteImage = fileName => this.storage.ref('/img').child(fileName).delete()
 }
 
 export default Firebase

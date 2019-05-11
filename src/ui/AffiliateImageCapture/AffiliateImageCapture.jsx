@@ -23,22 +23,27 @@ const MODE = {
 }
 
 const AffiliateImageCapture = ({ photoNumber, reportId }) => {
-    const [imageSrc, setImageSrc] = useState(true)
+    const [imageSrc, setImageSrc] = useState(null)
     const [mode, setMode] = useState(MODE.START)
     const classes = useStyles()
     const firebase = useContext(FirebaseContext)
 
-    const getFileName = () => `${reportId}-${photoNumber}-${new Date().toISOString()}.${IMAGE_TYPES.JPG}`
+    const getFileName = () => `${reportId}-${photoNumber}.${IMAGE_TYPES.JPG}`
 
-    const onTakePhoto = (dataUri) =>
-        firebase.uploadImage(
-            dataUri,
-            getFileName(),
-            () => setMode(null),
-            (imgUrl) => {
-                setImageSrc(imgUrl)
-                setMode(MODE.READY)
-            })
+    const onTakePhoto = (dataUri) => firebase.uploadImage(
+        dataUri,
+        getFileName(),
+        () => setMode(null),
+        (imgUrl) => {
+            setImageSrc(imgUrl)
+            setMode(MODE.READY)
+        })
+
+    const onDeletePhoto = () => firebase.deleteImage(getFileName())
+        .then(() => {
+            setImageSrc(null)
+            setMode(MODE.START)
+        })
 
     const modeScreen = (mode) => {
         switch (mode) {
@@ -119,7 +124,7 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                             ? (<Button
                                 variant="text"
                                 color="primary"
-                                onClick={() => setImageSrc(false)}
+                                onClick={() => setMode(MODE.TAKE_PHOTO)}
                                 className={`${classes.headerButton} ${classes.headerRight}`}
                             >
                                 Retake image
@@ -127,6 +132,7 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                             : (<Button
                                 variant="text"
                                 color="primary"
+                                // ToDo popup
                                 onClick={() => setImageSrc(true)}
                                 className={`${classes.headerButton} ${classes.headerRight}`}
                             >
@@ -144,11 +150,7 @@ const AffiliateImageCapture = ({ photoNumber, reportId }) => {
                     ? (<Button
                         variant="text"
                         color="primary"
-                        onClick={() => {
-                            // ToDo firebase.delImage(name).then()
-                            setImageSrc(null)
-                            setMode(MODE.START)
-                        }}
+                        onClick={() => onDeletePhoto()}
                         className={classes.headerButton}
                     >
                         Delete image
