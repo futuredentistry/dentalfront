@@ -16,6 +16,7 @@ import Dialog from 'ui/Dialog'
 import useStyles from './useStyles'
 import './style.scss'
 
+// ToDo change image
 const url = 'https://firebasestorage.googleapis.com/v0/b/dental2-test.appspot.com/o/maxresdefault.jpg?alt=media&token=d34b37a3-29a6-47cc-9b01-a5246fe0adfb'
 
 const MODE = {
@@ -25,8 +26,7 @@ const MODE = {
 }
 
 // ToDo pass example url
-const AffiliateImageCapture = ({ segmentName, photoNumber, reportId }) => {
-    const [imageSrc, setImageSrc] = useState(null)
+const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber, reportId }) => {
     const [mode, setMode] = useState(MODE.START)
     const [open, setModalOpen] = useState(false)
     const classes = useStyles()
@@ -39,13 +39,13 @@ const AffiliateImageCapture = ({ segmentName, photoNumber, reportId }) => {
         getFileName(),
         () => setMode(null),
         (imgUrl) => {
-            setImageSrc(imgUrl)
+            setImageSrc(segmentName, imgUrl)
             setMode(MODE.READY)
         })
 
     const onDeletePhoto = () => firebase.deleteImage(getFileName())
         .then(() => {
-            setImageSrc(null)
+            setImageSrc(segmentName, null)
             setMode(MODE.START)
         })
 
@@ -197,9 +197,15 @@ const AffiliateImageCapture = ({ segmentName, photoNumber, reportId }) => {
 }
 
 AffiliateImageCapture.propTypes = {
+    imageSrc: PropTypes.string,
+    setImageSrc: PropTypes.func.isRequired,
     segmentName: PropTypes.string.isRequired,
     photoNumber: PropTypes.number.isRequired,
     reportId: PropTypes.string.isRequired,
+}
+
+AffiliateImageCapture.defaultProps = {
+    imageSrc: null,
 }
 
 export default AffiliateImageCapture
