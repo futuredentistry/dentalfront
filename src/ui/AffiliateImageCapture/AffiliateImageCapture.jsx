@@ -12,6 +12,7 @@ import CloseIcon from '@material-ui/icons/CheckCircle'
 
 import FirebaseContext from 'modules/Firebase'
 import Dialog from 'ui/Dialog'
+import CaptureContainer from 'ui/CaptureContainer';
 
 import useStyles from './useStyles'
 import './style.scss'
@@ -81,36 +82,30 @@ const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber
                 )
             case MODE.TAKE_PHOTO:
                 return (
-                    <div className='capture_container'>
-                        <div className='capture_item'>
-                            <Camera
-                                onTakePhoto={dataUri => onTakePhoto(dataUri)}
-                                imageType={IMAGE_TYPES.JPG}
-                                idealFacingMode={FACING_MODES.ENVIRONMENT}
-                            />
-                        </div>
-                    </div>
+                    <CaptureContainer>
+                        <Camera
+                            onTakePhoto={dataUri => onTakePhoto(dataUri)}
+                            imageType={IMAGE_TYPES.JPG}
+                            idealFacingMode={FACING_MODES.ENVIRONMENT}
+                        />
+                    </CaptureContainer>
                 )
             case MODE.READY:
                 return (
                     imageSrc && (
-                        <div className='capture_container'>
-                            <div className='capture_item'>
-                                <img
-                                    src={imageUrl}
-                                    alt=""
-                                    style={{ width: '100%' }}
-                                />
-                            </div>
-                        </div>
+                        <CaptureContainer>
+                            <img
+                                src={imageUrl}
+                                alt=""
+                                style={{ width: '100%' }}
+                            />
+                        </CaptureContainer>
                     )
                 )
             default: return (
-                <div className='capture_container'>
-                    <div className='capture_item'>
-                        <CircularProgress />
-                    </div>
-                </div>
+                <CaptureContainer>
+                    <CircularProgress />
+                </CaptureContainer>
             )
         }
     }
@@ -124,15 +119,13 @@ const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber
                 onClose={() => { }}
             >
                 <>
-                    <div className='capture_container'>
-                        <div className='capture_item'>
-                            <img
-                                src={url}
-                                alt=""
-                                style={{ width: '100%' }}
-                            />
-                        </div>
-                    </div>
+                    <CaptureContainer>
+                        <img
+                            src={url}
+                            alt=""
+                            style={{ width: '100%' }}
+                        />
+                    </CaptureContainer>
 
                     <br />
                     <Button
