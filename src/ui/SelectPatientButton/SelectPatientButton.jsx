@@ -13,13 +13,14 @@ const SelectPatientButton = ({ patientName, message, onClick }) => (
         }
 
         <Typography variant="h4">
-            {patientName}
+            {patientName ? patientName : 'loading...'}
         </Typography>
 
         <Button
-          variant="contained"
-          color="primary"
-          onClick={onClick}
+            disabled={!patientName}
+            variant="contained"
+            color="primary"
+            onClick={onClick}
         >
             Start Report
         </Button>
