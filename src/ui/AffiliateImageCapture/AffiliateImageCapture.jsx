@@ -148,13 +148,13 @@ const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber
                 direction="row"
                 className={classes.greedRow}
             >
-                <Grid item xs={6}>
+                <Grid item xs={7}>
                     <Typography variant="h5" className={classes.photoHeader}>
                         {segmentName} {imageSrc && <CloseIcon className={classes.iconColor} />}
                     </Typography>
                 </Grid>
 
-                <Grid item xs={6} >
+                <Grid item xs={5} >
                     {
                         imageSrc
                             ? (<Button
