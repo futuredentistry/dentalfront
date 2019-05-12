@@ -4,6 +4,8 @@ import 'firebase/database'
 import 'firebase/firestore'
 import 'firebase/storage'
 
+import * as STATUS from 'modules/constants/reportStatus'
+
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -119,18 +121,21 @@ class Firebase {
 
   getPatientReportsForDentist = () => this.firestore
     .collection('reports')
-    .where('status', '==', 'IN_PROGRESS')
+    .where('status', '==', STATUS.REVIEW)
     .limit(1)
     .get()
 
   getPatientReportsForAffiliate = organisation => this.firestore
     .collection('reports')
-    .where('status', '==', 'IN_PROGRESS')
+    .where('status', '==', STATUS.IN_PROGRESS)
     .where('organisation', '==', organisation)
     .get()
 
-  // ToDo
-  updatePatientReport = patient => console.log(patient)
+  // Patient report
+  updatePatientReport = (reportId, data) => this.firestore
+    .collection('reports')
+    .doc(reportId)
+    .update(data)
 
   // Pages
   getPage = page => this.firestore

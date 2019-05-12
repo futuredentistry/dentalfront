@@ -2,14 +2,13 @@ import React, { useEffect, useContext, useState } from 'react'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import FirebaseContext from 'modules/Firebase'
-
+import * as STATUS from 'modules/constants/reportStatus'
 import StepperButtons from 'ui/StepperButtons'
 import FormGrid from 'ui/FormGrid'
 import SelectPatient from './components/SelectPatient'
 import Success from './components/Success'
 import ImageCapture from './components/ImageCapture'
 import Review from './components/Review'
-import { Object } from 'es6-shim';
 
 const segments = {
     'Top right': null,
@@ -21,7 +20,6 @@ const segments = {
 }
 
 const Affiliate = () => {
-    const [validFormStep, setValidFormStep] = useState(false)
     const maxStep = 2
     const [step, setStep] = useState(0)
     const [patients, setPatients] = useState([])
@@ -122,10 +120,17 @@ const Affiliate = () => {
                         increaseOnClick: () => setStep(step + 1),
                         decreaseOnClick: () => setStep(step - 1),
                         onSubmit: () => {
-                            setStep(step + 1)
-                            setReportId('')
+                            firebase.updatePatientReport(reportId,
+                                {
+                                    segmentImg,
+                                    additionalImg,
+                                    status: STATUS.REVIEW
+                                }
+                            ).then(() => {
+                                setStep(step + 1)
+                                setReportId('')
+                            })
                         },
-                        // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
                         disabledSubmit: !formValidator(maxStep),
                     }}
                     />
