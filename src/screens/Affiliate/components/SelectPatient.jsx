@@ -33,7 +33,7 @@ const SelectPatient = ({
             const matchedPatients = []
             const searchArray = search.split(' ')
             patients.map((patient) => {
-                if (searchArray.some(str => `${patient.firstName} ${patient.familyName}`.includes(str))) {
+                if (searchArray.some(str => `${patient.firstName} ${patient.familyName}`.toLowerCase().includes(str.toLowerCase()))) {
                     matchedPatients.push(patient)
                 }
                 return null
@@ -63,14 +63,14 @@ const SelectPatient = ({
             <SelectOrganisation {...{ organisation, setOrganisation, validFormStep: false }} />
             <br />
             <SearchBar
-              value={search}
-              disabled={organisation === ''}
-              onRequestSearch={(e) => {
+                value={search}
+                disabled={organisation === ''}
+                onRequestSearch={(e) => {
                     setSearch(e)
                     // @ts-ignore
                     document.activeElement.blur()
                 }}
-              style={{
+                style={{
                     margin: '0 auto',
                     maxWidth: '100%',
                 }}
@@ -90,9 +90,9 @@ const SelectPatient = ({
                 const selectPatientCard = (
                     <div key={patient.id}>
                         <SelectPatientButton
-                          patientName={fullName}
-                          message=""
-                          onClick={() => {
+                            patientName={fullName}
+                            message=""
+                            onClick={() => {
                                 setStep(1)
                                 setPatient(patient)
                                 setReportId(patient.id)
@@ -111,9 +111,9 @@ const SelectPatient = ({
 
             {filteredPatients.length > 2 && !showAll && (
                 <Button
-                  variant="text"
-                  color="primary"
-                  onClick={() => setShowAll(true)}
+                    variant="text"
+                    color="primary"
+                    onClick={() => setShowAll(true)}
                 >
                     Show all
                     {' '}
