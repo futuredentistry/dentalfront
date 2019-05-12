@@ -3,14 +3,12 @@
 // @ts-nocheck
 import React, { useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 import FirebaseContext from 'modules/Firebase'
 import { segment } from 'modules/Dentist/props'
 import CaptureContainer from 'ui/CaptureContainer'
+import PhotoCaptureHeader from 'ui/PhotoCaptureHeader'
 import Dialog from 'ui/Dialog'
 
 import Issue from './Issue'
@@ -19,9 +17,9 @@ import ImageIssue from './ImageIssue'
 const images = ['Top right', 'Top middle', 'Top left', 'Bottom right', 'Bottom middle', 'Bottom left']
 
 // ToDo move to ui
-const ImageSection = ({ sectionName, fileName, segmentImg, setWorkingOnImg,
-    setModalComponent,
-    setModalOpen }) => {
+const ImageSection = ({
+    sectionName, segmentImg, setWorkingOnImg, setModalComponent, setModalOpen,
+}) => {
     const [url, setUrl] = useState(null)
     const firebase = useContext(FirebaseContext)
 
@@ -33,33 +31,20 @@ const ImageSection = ({ sectionName, fileName, segmentImg, setWorkingOnImg,
         fetchData()
     }, [sectionName])
 
+    const handleWorkingOnIssue = (issue) => {
+        setWorkingOnImg(sectionName)
+        setModalComponent(issue)
+        setModalOpen(true)
+    }
+
     return (
         <>
-            <Grid
-                container
-                spacing={0}
-                direction="row"
-            >
-                <Grid item xs={6}>
-                    <Typography variant="h5">
-                        {sectionName}
-                    </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                    <Button
-                        variant="text"
-                        color="primary"
-                        onClick={() => {
-                            setWorkingOnImg(sectionName)
-                            setModalComponent(MODAL.IMAGE_ISSUE)
-                            setModalOpen(true)
-                        }
-                        }
-                    >
-                        Report an issue
-                            </Button>
-                </Grid>
-            </Grid>
+            <PhotoCaptureHeader {...{
+                header: sectionName,
+                onClick: () => handleWorkingOnIssue(MODAL.IMAGE_ISSUE),
+                buttonText: 'Report an issue'
+            }} />
+
             <div
                 style={{
                     cursor: 'pointer',
@@ -68,24 +53,16 @@ const ImageSection = ({ sectionName, fileName, segmentImg, setWorkingOnImg,
                 tabIndex="0"
                 role="button"
                 type="button"
-                onClick={() => {
-                    setWorkingOnImg(sectionName)
-                    setModalComponent(MODAL.ISSUE)
-                    setModalOpen(true)
-                }
-                }
+                onClick={() => handleWorkingOnIssue(MODAL.ISSUE)}
             >
                 <CaptureContainer>
                     {url
                         ? <img
                             src={url}
                             alt=""
-                            style={{
-                                width: '100%',
-                            }}
+                            style={{ width: '100%' }}
                         />
                         : <CircularProgress />}
-
                 </CaptureContainer>
             </div>
         </>
@@ -108,12 +85,9 @@ const Chart = ({
     bottomLeft, setBottomLeft,
     additionalImg, segmentImg,
 }) => {
-
-
     const [open, setModalOpen] = useState(false)
     const [modalComponent, setModalComponent] = useState(null)
     const [workingOnImg, setWorkingOnImg] = useState(null)
-
 
     // ImageIssue
     const getImageIssueProps = () => {
@@ -183,14 +157,11 @@ const Chart = ({
                 </>
             </Dialog>
 
-
-
             {images.map(sectionName =>
                 (
                     <div key={sectionName}>
                         <ImageSection {...{
                             sectionName,
-                            fileName: segmentImg,
                             segmentImg,
                             setWorkingOnImg,
                             setModalComponent,

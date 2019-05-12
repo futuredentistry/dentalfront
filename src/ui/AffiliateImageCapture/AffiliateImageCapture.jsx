@@ -6,13 +6,13 @@ import 'react-html5-camera-photo/build/css/index.css'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import ButtonBase from '@material-ui/core/ButtonBase'
-import Grid from '@material-ui/core/Grid'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import CloseIcon from '@material-ui/icons/CheckCircle'
+import CheckCircle from '@material-ui/icons/CheckCircle'
 
 import FirebaseContext from 'modules/Firebase'
 import Dialog from 'ui/Dialog'
 import CaptureContainer from 'ui/CaptureContainer';
+import PhotoCaptureHeader from 'ui/PhotoCaptureHeader';
 
 import useStyles from './useStyles'
 import './style.scss'
@@ -57,28 +57,24 @@ const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber
         switch (mode) {
             case MODE.START:
                 return (
-                    <>
-                        <ButtonBase
-                            focusRipple
-                            className={classes.image}
-                            onClick={() => setTimeout(() => setMode(MODE.TAKE_PHOTO), 500)}
+                    <ButtonBase
+                        focusRipple
+                        className={classes.image}
+                        onClick={() => setTimeout(() => setMode(MODE.TAKE_PHOTO), 500)}
+                    >
+                        <span
+                            className={classes.imageSrc}
+                            style={{ backgroundImage: `url(${url})` }}
+                        />
+                        <span className={classes.imageBackdrop} />
+                        <Typography variant="body2"
+                            component="span"
+                            color="inherit"
+                            className={classes.imageButton}
                         >
-                            <span
-                                className={classes.imageSrc}
-                                style={{
-                                    backgroundImage: `url(${url})`,
-                                }}
-                            />
-                            <span className={classes.imageBackdrop} />
-                            <Typography variant="body2"
-                                component="span"
-                                color="inherit"
-                                className={classes.imageButton}
-                            >
-                                take photo
+                            take photo
                             </Typography>
-                        </ButtonBase>
-                    </>
+                    </ButtonBase>
                 )
             case MODE.TAKE_PHOTO:
                 return (
@@ -134,58 +130,29 @@ const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber
                         onClick={() => setModalOpen(false)}
                     >
                         close
-            </Button>
+                    </Button>
                 </>
             </Dialog>
 
-            <Grid
-                container
-                spacing={0}
-                direction="row"
-                className={classes.greedRow}
-            >
-                <Grid item xs={7}>
-                    <Typography variant="h5" className={classes.photoHeader}>
-                        {segmentName} {imageSrc && <CloseIcon className={classes.iconColor} />}
-                    </Typography>
-                </Grid>
+            <PhotoCaptureHeader {...{
+                header: <>{segmentName} {imageSrc && <CheckCircle className={classes.iconColor} />}</>,
+                onClick: () => imageSrc ? setMode(MODE.TAKE_PHOTO) : setModalOpen(true),
+                buttonText: <>{imageSrc ? 'Retake image' : 'Show example'}</>
+            }} />
 
-                <Grid item xs={5} >
-                    {
-                        imageSrc
-                            ? (<Button
-                                variant="text"
-                                color="primary"
-                                onClick={() => setMode(MODE.TAKE_PHOTO)}
-                                className={`${classes.headerButton} ${classes.headerRight}`}
-                            >
-                                Retake image
-                        </Button>)
-                            : (<Button
-                                variant="text"
-                                color="primary"
-                                onClick={() => setModalOpen(true)}
-                                className={`${classes.headerButton} ${classes.headerRight}`}
-                            >
-                                Show example
-                        </Button>)
-                    }
-
-                </Grid>
-            </Grid>
 
             {modeScreen(mode)}
 
             {
                 imageSrc
-                    ? (<Button
+                    ? <Button
                         variant="text"
                         color="primary"
                         onClick={() => onDeletePhoto()}
-                        className={classes.headerButton}
+                        className={classes.deleteButton}
                     >
                         Delete image
-                    </Button>)
+                    </Button>
                     : <div className='empty_del_button_container' />
             }
         </>

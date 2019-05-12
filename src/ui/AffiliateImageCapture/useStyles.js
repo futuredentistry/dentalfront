@@ -39,7 +39,6 @@ const useStyles = makeStyles(theme => ({
         bottom: 0,
         backgroundSize: 'cover',
         backgroundPosition: 'center 40%',
-
     },
     imageBackdrop: {
         position: 'absolute',
@@ -51,28 +50,18 @@ const useStyles = makeStyles(theme => ({
         opacity: 0.4,
         transition: theme.transitions.create('opacity'),
     },
-    photoHeader: {
-        textAlign: 'left',
-        marginLeft: '3px',
-    },
-    iconColor: {
-        color: '#219653',
-        position: 'relative',
-        top: '5px',
-    },
-    greedRow: {
-        paddingBottom: '3%',
-    },
-    headerButton: {
+    deleteButton: {
         marginBlockStart: '11px',
         width: '96%',
         marginLeft: '2%',
         marginRight: '2%',
         textDecoration: 'underline',
     },
-    headerRight: {
-        justifyContent: 'flex-end',
-    }
+    iconColor: {
+        color: '#219653',
+        position: 'relative',
+        top: '5px',
+    },
 }))
 
 export default useStyles
