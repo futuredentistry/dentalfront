@@ -42,14 +42,18 @@ const PhotoCaptureHeader = ({ header, onClick, buttonText }) => {
             </Grid>
 
             <Grid item xs={5} >
-                <Button
-                    variant="text"
-                    color="primary"
-                    onClick={onClick}
-                    className={`${classes.headerButton} ${classes.headerRight}`}
-                >
-                    {buttonText}
-                </Button>
+                {
+                    buttonText && (
+                        <Button
+                            variant="text"
+                            color="primary"
+                            onClick={onClick}
+                            className={`${classes.headerButton} ${classes.headerRight}`}
+                        >
+                            {buttonText}
+                        </Button>
+                    )
+                }
             </Grid>
         </Grid>
     )
@@ -58,7 +62,11 @@ const PhotoCaptureHeader = ({ header, onClick, buttonText }) => {
 PhotoCaptureHeader.propTypes = {
     header: PropTypes.node.isRequired,
     onClick: PropTypes.func.isRequired,
-    buttonText: PropTypes.node.isRequired,
+    buttonText: PropTypes.node,
+}
+
+PhotoCaptureHeader.defaultProps = {
+    buttonText: null,
 }
 
 export default PhotoCaptureHeader

@@ -1,81 +1,20 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-// @ts-nocheck
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import CircularProgress from '@material-ui/core/CircularProgress'
 
-import FirebaseContext from 'modules/Firebase'
 import { segment } from 'modules/Dentist/props'
-import CaptureContainer from 'ui/CaptureContainer'
 import PhotoCaptureHeader from 'ui/PhotoCaptureHeader'
+import DentistImage from 'ui/DentistImage'
 import Dialog from 'ui/Dialog'
 
 import Issue from './Issue'
 import ImageIssue from './ImageIssue'
-
-const images = ['Top right', 'Top middle', 'Top left', 'Bottom right', 'Bottom middle', 'Bottom left']
-
-// ToDo move to ui
-const ImageSection = ({
-    sectionName, segmentImg, setWorkingOnImg, setModalComponent, setModalOpen,
-}) => {
-    const [url, setUrl] = useState(null)
-    const firebase = useContext(FirebaseContext)
-
-    useEffect(() => {
-        const fetchData = async () => firebase
-            .getImgDownloadURL(segmentImg[sectionName])
-            .then(url => setUrl(url))
-
-        fetchData()
-    }, [sectionName])
-
-    const handleWorkingOnIssue = (issue) => {
-        setWorkingOnImg(sectionName)
-        setModalComponent(issue)
-        setModalOpen(true)
-    }
-
-    return (
-        <>
-            <PhotoCaptureHeader {...{
-                header: sectionName,
-                onClick: () => handleWorkingOnIssue(MODAL.IMAGE_ISSUE),
-                buttonText: 'Report an issue'
-            }} />
-
-            <div
-                style={{
-                    cursor: 'pointer',
-                    outline: 0
-                }}
-                tabIndex="0"
-                role="button"
-                type="button"
-                onClick={() => handleWorkingOnIssue(MODAL.ISSUE)}
-            >
-                <CaptureContainer>
-                    {url
-                        ? <img
-                            src={url}
-                            alt=""
-                            style={{ width: '100%' }}
-                        />
-                        : <CircularProgress />}
-                </CaptureContainer>
-            </div>
-        </>
-    )
-}
-
+import { Object } from 'es6-shim';
 
 const MODAL = {
     ISSUE: 'ISSUE',
     IMAGE_ISSUE: 'IMAGE_ISSUE',
 }
 
-// ToDo request imgs by report id
 const Chart = ({
     topRight, setTopRight,
     topMiddle, setTopMiddle,
@@ -128,6 +67,11 @@ const Chart = ({
         }
     }
 
+    const handleWorkingOnIssue = (issue, sectionName) => {
+        setWorkingOnImg(sectionName)
+        setModalComponent(issue)
+        setModalOpen(true)
+    }
 
     return (
         <>
@@ -157,18 +101,40 @@ const Chart = ({
                 </>
             </Dialog>
 
-            {images.map(sectionName =>
-                (
-                    <div key={sectionName}>
-                        <ImageSection {...{
-                            sectionName,
-                            segmentImg,
-                            setWorkingOnImg,
-                            setModalComponent,
-                            setModalOpen
-                        }} />
-                    </div>
-                ))
+            {
+                Object.keys(segmentImg).reverse().map(sectionName =>
+                    (
+                        <div key={sectionName}>
+                            <DentistImage {...{
+                                header: <PhotoCaptureHeader {...{
+                                    header: sectionName,
+                                    onClick: () => handleWorkingOnIssue(MODAL.IMAGE_ISSUE, sectionName),
+                                    buttonText: 'Report an issue'
+                                }} />,
+                                sectionName,
+                                imagesObject: segmentImg,
+                                onClick: () => handleWorkingOnIssue(MODAL.ISSUE, sectionName)
+                            }} />
+                        </div>
+                    ))
+            }
+
+            {
+                Object.keys(additionalImg).map(sectionName =>
+                    (
+                        <div key={sectionName}>
+                            <DentistImage {...{
+                                header: <PhotoCaptureHeader {...{
+                                    header: sectionName,
+                                    onClick: () => { },
+                                    buttonText: null,
+                                }} />,
+                                sectionName,
+                                imagesObject: additionalImg,
+                                onClick: () => { }
+                            }} />
+                        </div>
+                    ))
             }
 
         </>
