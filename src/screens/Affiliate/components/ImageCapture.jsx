@@ -1,22 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
 import AffiliateImageCapture from 'ui/AffiliateImageCapture'
 
-const segments = {
-    'Top right': null,
-    'Top middle': null,
-    'Top left': null,
-    'Bottom right': null,
-    'Bottom middle': null,
-    'Bottom left': null,
-}
-
-const ImageCapture = ({ reportId }) => {
-    const [segmentImg, setSegmentImg] = useState(segments)
-    const [additionalImg, setAdditionalImg] = useState({})
+const ImageCapture = ({ reportId, segmentImg, setSegmentImg, additionalImg, setAdditionalImg }) => {
     const onSetSegment = (segmentName, url) => setSegmentImg({ ...segmentImg, ...{ [segmentName]: url } })
     const onSetAdditionalImg = (segmentName, url) => setAdditionalImg({ ...additionalImg, ...{ [segmentName]: url } })
 
@@ -89,6 +78,10 @@ const ImageCapture = ({ reportId }) => {
 }
 
 ImageCapture.propTypes = {
+    segmentImg: PropTypes.shape({}).isRequired,
+    setSegmentImg: PropTypes.func.isRequired,
+    additionalImg: PropTypes.shape({}).isRequired,
+    setAdditionalImg: PropTypes.func.isRequired,
     reportId: PropTypes.string.isRequired,
 }
 

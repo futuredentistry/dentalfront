@@ -9,16 +9,30 @@ import SelectPatient from './components/SelectPatient'
 import Success from './components/Success'
 import ImageCapture from './components/ImageCapture'
 import Review from './components/Review'
+import { Object } from 'es6-shim';
+
+const segments = {
+    'Top right': null,
+    'Top middle': null,
+    'Top left': null,
+    'Bottom right': null,
+    'Bottom middle': null,
+    'Bottom left': null,
+}
 
 const Affiliate = () => {
-    const maxStep = 3
+    const [validFormStep, setValidFormStep] = useState(false)
+    const maxStep = 2
     const [step, setStep] = useState(0)
     const [patients, setPatients] = useState([])
     const [patient, setPatient] = useState(null)
     // @ts-ignore
-    const [, setReportId] = useState(null)
+    const [reportId, setReportId] = useState(null)
     const [search, setSearch] = useState('')
     const [organisation, setOrganisation] = useState('')
+
+    const [segmentImg, setSegmentImg] = useState(segments)
+    const [additionalImg, setAdditionalImg] = useState({})
 
     const firebase = useContext(FirebaseContext)
     useEffect(() => {
@@ -33,9 +47,20 @@ const Affiliate = () => {
         }
     }, [organisation])
 
-    const stepper = (n) => {
+    const formValidator = (n) => {
+        let valid = true
         switch (n) {
             case 2:
+                if (Object.values(segmentImg).some(val => val === null)) valid = false
+                return valid
+            default:
+                return valid
+        }
+    }
+
+    const stepper = (n) => {
+        switch (n) {
+            case 0:
                 return (
                     <SelectPatient {...{
                         setStep,
@@ -51,13 +76,23 @@ const Affiliate = () => {
                 )
             case 1:
                 return patient && <Review {...patient} />
-            case 0:
-                return <ImageCapture />
+            case 2:
+                return (
+                    <ImageCapture
+                        {...{
+                            reportId,
+                            segmentImg,
+                            setSegmentImg,
+                            additionalImg,
+                            setAdditionalImg,
+                        }}
+                    />
+                )
             default:
                 return (
                     <Success
-                      patientFirstName={patient && patient.firstName}
-                      selectNext={() => setStep(0)}
+                        patientFirstName={patient && patient.firstName}
+                        selectNext={() => setStep(0)}
                     />
                 )
         }
@@ -79,16 +114,19 @@ const Affiliate = () => {
                         maxStep,
                         step,
                         setStep,
-                        disabledBackButton: step < 2,
-                        showSubmitButton: false,
-                        showNextButton: step !== maxStep,
+                        disabledBackButton: false,
+                        showSubmitButton: step === maxStep,
+                        showNextButton: step < maxStep,
                         disabledNextButton: false,
-                        showButtonsGrid: step !== maxStep && step !== 0,
+                        showButtonsGrid: step <= maxStep && step !== 0,
                         increaseOnClick: () => setStep(step + 1),
                         decreaseOnClick: () => setStep(step - 1),
-                        onSubmit: () => setReportId(''),
+                        onSubmit: () => {
+                            setStep(step + 1)
+                            setReportId('')
+                        },
                         // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
-                        disabledSubmit: false,
+                        disabledSubmit: !formValidator(maxStep),
                     }}
                     />
                 </>

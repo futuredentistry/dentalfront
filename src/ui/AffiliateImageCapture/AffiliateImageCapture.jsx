@@ -25,7 +25,7 @@ const MODE = {
     READY: 'READY',
 }
 
-// ToDo pass example url
+// ToDo example url
 const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber, reportId }) => {
     const [mode, setMode] = useState(MODE.START)
     const [open, setModalOpen] = useState(false)
