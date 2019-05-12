@@ -155,7 +155,8 @@ class Firebase {
 
   // Image
   uploadImage = (image, fileName, onLoad, onCompleat) => {
-    let uploadTask = this.storage.ref('/img')
+    const folder = '/img'
+    let uploadTask = this.storage.ref(folder)
       .child(fileName)
       .putString(image, 'data_url', { contentType: 'image/jpg' })
 
@@ -176,6 +177,9 @@ class Firebase {
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => onCompleat(downloadURL))
       })
   }
+
+  getImgDownloadURL = (fileName) =>
+    this.storage.ref('/img').child(fileName).getDownloadURL()
 
   deleteImage = fileName => this.storage.ref('/img').child(fileName).delete()
 }

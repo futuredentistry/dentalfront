@@ -16,7 +16,7 @@ const Dentist = () => {
     const [patient, setPatient] = useState(null)
     const [reportId, setReportId] = useState(null)
     const [waitingReport, setWaitingReport] = useState(true)
-
+    // console.log(patient)
     // Chart
     const [topRight, setTopRight] = useState({ ...segmentDefaultProps })
     const [topMiddle, setTopMiddle] = useState({ ...segmentDefaultProps })
@@ -24,7 +24,6 @@ const Dentist = () => {
     const [bottomRight, setBottomRight] = useState({ ...segmentDefaultProps })
     const [bottomMiddle, setBottomMiddle] = useState({ ...segmentDefaultProps })
     const [bottomLeft, setBottomLeft] = useState({ ...segmentDefaultProps })
-
 
     // Summary
     const [overallHealth, setOverallHealth] = useState('outstanding')
@@ -44,6 +43,7 @@ const Dentist = () => {
         setSummaryReview('')
         setRisk('no')
     }
+
     const firebase = useContext(FirebaseContext)
 
     useEffect(() => {
@@ -89,7 +89,7 @@ const Dentist = () => {
             case 1:
                 return patient && <Patient {...patient} />
             case 2:
-                return <Chart {...segmentsProps} />
+                return <Chart {...{ ...segmentsProps, ...patient }} />
             case 3:
                 return <Report {...{ ...segmentsProps, ...propsSummary, ...methodsSummary }} />
             default:

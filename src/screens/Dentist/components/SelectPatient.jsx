@@ -19,9 +19,9 @@ const SelectPatient = ({ waitingReport, patientFirstName, nextStep }) => (
 
         {waitingReport && (
             <SelectPatientButton
-              patientName={capitalizeFirstLetter(patientFirstName)}
-              message="We have new reports waiting to be completed. Let's get started!"
-              onClick={() => nextStep()}
+                patientName={capitalizeFirstLetter(patientFirstName) || 'Loading...'}
+                message="We have new reports waiting to be completed. Let's get started!"
+                onClick={() => nextStep()}
             />
         )}
 

@@ -29,6 +29,8 @@ const MODE = {
 const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber, reportId }) => {
     const [mode, setMode] = useState(MODE.START)
     const [open, setModalOpen] = useState(false)
+    const [imageUrl, setImageUrl] = useState(null)
+
     const classes = useStyles()
     const firebase = useContext(FirebaseContext)
 
@@ -39,7 +41,8 @@ const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber
         getFileName(),
         () => setMode(null),
         (imgUrl) => {
-            setImageSrc(segmentName, imgUrl)
+            setImageUrl(imgUrl)
+            setImageSrc(segmentName, getFileName())
             setMode(MODE.READY)
         })
 
@@ -94,7 +97,7 @@ const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber
                         <div className='capture_container'>
                             <div className='capture_item'>
                                 <img
-                                    src={imageSrc}
+                                    src={imageUrl}
                                     alt=""
                                     style={{ width: '100%' }}
                                 />

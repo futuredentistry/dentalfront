@@ -128,7 +128,8 @@ const Affiliate = () => {
                                 }
                             ).then(() => {
                                 setStep(step + 1)
-                                setReportId('')
+                                setSegmentImg(segments)
+                                setAdditionalImg({})
                             })
                         },
                         disabledSubmit: !formValidator(maxStep),
