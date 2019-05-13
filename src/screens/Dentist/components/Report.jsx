@@ -8,7 +8,6 @@ import Select from '@material-ui/core/Select'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 
-import { propsSegments } from 'modules/Dentist/props'
 import Eclipse from 'ui/MenuItemEclipse'
 
 const Report = ({

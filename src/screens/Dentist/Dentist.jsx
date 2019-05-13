@@ -52,8 +52,6 @@ const Dentist = () => {
         ).then(() => setReportDefaultProps())
     }, [reportId])
 
-    console.log('patient', patient)
-
     const maxStep = 3
     const [step, setStep] = useState(0)
 

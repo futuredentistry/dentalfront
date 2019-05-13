@@ -130,7 +130,7 @@ const MiuiTheme = {
     },
     MuiLinearProgress: {
       root: {
-        margin: '5% 5% 0 5%',
+        margin: '0 5% 0 5%',
       },
     },
     MuiMenuItem: {
