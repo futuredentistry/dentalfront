@@ -73,7 +73,7 @@ const Dentist = () => {
             case 2:
                 return <Chart {...{ segmentProps, handleSetSegmentProps, ...patient }} />
             case 3:
-                return <Report {...{ segmentProps, handleSetSegmentProps, ...propsSummary, ...methodsSummary }} />
+                return <Report {...{ ...propsSummary, ...methodsSummary }} />
             default:
                 return (
                     <Success {...{

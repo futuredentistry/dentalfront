@@ -9,36 +9,15 @@ import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
 
 import { propsSegments } from 'modules/Dentist/props'
-import ReportTreatment from 'ui/ReportTreatment'
 import Eclipse from 'ui/MenuItemEclipse'
 
 const Report = ({
-    segmentProps, handleSetSegmentProps,
     summaryReview, setSummaryReview,
     overallHealth, setOverallHealth,
     risk, setRisk,
 }) => {
-    // const treatmentSegments = [
-    //     { segmentProps: topRight, setMethod: setTopRight },
-    //     { segmentProps: topMiddle, setMethod: setTopMiddle },
-    //     { segmentProps: topLeft, setMethod: setTopLeft },
-    //     { segmentProps: bottomRight, setMethod: setBottomRight },
-    //     { segmentProps: bottomMiddle, setMethod: setBottomMiddle },
-    //     { segmentProps: bottomLeft, setMethod: setBottomLeft },
-    // ]
     return (
         <>
-            {/* {
-                treatmentSegments.map(treatment => treatment.segmentProps
-                    && treatment.segmentProps.concern !== ''
-                    && (
-                        <div key={treatment.segmentProps.concern}>
-                            <ReportTreatment {...treatment} />
-                        </div>
-                    ))
-            } */}
-
-            <br />
             <FormControl>
                 <InputLabel>Overall, what is the state of their oral health</InputLabel>
                 <Select
@@ -91,9 +70,6 @@ const Report = ({
 }
 
 Report.propTypes = {
-    segmentProps: propsSegments.isRequired,
-    handleSetSegmentProps: PropTypes.func.isRequired,
-
     summaryReview: PropTypes.string.isRequired,
     setSummaryReview: PropTypes.func.isRequired,
     overallHealth: PropTypes.string.isRequired,

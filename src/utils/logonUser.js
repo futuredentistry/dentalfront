@@ -6,5 +6,5 @@ export const UserEmailVerified = () => (logonUser() ? logonUser().emailVerified 
 export const UserRole = () => logonUser() && logonUser().role
 export const UserEmail = () => logonUser() && logonUser().email
 export const UserUid = () => logonUser() && logonUser().uid
-export const UserFirstName = () => (logonUser() && logonUser().firstName ? logonUser().firstName : 'user')
+export const UserFirstName = () => (logonUser() && logonUser().firstName ? logonUser().firstName : '')
 export const UserFamilyName = () => (logonUser() && logonUser().familyName ? logonUser().familyName : '')
