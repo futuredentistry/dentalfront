@@ -128,6 +128,7 @@ const Affiliate = () => {
                                     status: STATUS.REVIEW
                                 }
                             ).then(() => {
+                                // ToDo drop to default with useEffect as in Dentist
                                 setStep(step + 1)
                                 setSegmentImg(segments)
                                 setAdditionalImg({})

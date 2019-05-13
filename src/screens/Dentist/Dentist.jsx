@@ -111,14 +111,13 @@ const Dentist = () => {
                                     waitingReport: false,
                                     summary: propsSummary,
                                     report: segmentProps,
-                                    status: STATUS.COMPLEATED,
+                                    status: STATUS.COMPLETED,
                                 }
                             ).then(() => {
                                 setStep(step + 1)
                                 setReportId('')
                             })
                         },
-                        // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
                         disabledSubmit: summaryReview === '',
                     }}
                     />
