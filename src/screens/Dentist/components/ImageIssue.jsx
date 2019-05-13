@@ -6,9 +6,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 
-import { segment } from 'modules/Dentist/props'
+import { propsImageIssue } from 'modules/Dentist/props'
 
 const ImageIssue = ({ segmentProps, setSegment, onClose }) => {
+  console.log(segmentProps)
   const [starterProps, setStarterProps] = useState(null)
   useEffect(() => !starterProps && setStarterProps(segmentProps), [])
   return (
@@ -104,7 +105,7 @@ const ImageIssue = ({ segmentProps, setSegment, onClose }) => {
 
 ImageIssue.propTypes = {
   onClose: PropTypes.func.isRequired,
-  segmentProps: segment.isRequired,
+  segmentProps: propsImageIssue.isRequired,
   setSegment: PropTypes.func.isRequired,
 }
 

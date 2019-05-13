@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
-import { segment } from 'modules/Dentist/props'
+import { propsTreatment } from 'modules/Dentist/props'
 
 const Issue = ({ onClose, segmentProps, setSegment }) => {
     const [validateForm, setValidateForm] = useState(false)
@@ -13,6 +13,7 @@ const Issue = ({ onClose, segmentProps, setSegment }) => {
     const validator = () => segmentProps.concern !== '' && segmentProps.treatment !== ''
 
     const [starterProps, setStarterProps] = useState(null)
+
     useEffect(() => !starterProps && setStarterProps(segmentProps), [])
 
     return (
@@ -90,7 +91,7 @@ const Issue = ({ onClose, segmentProps, setSegment }) => {
 
 Issue.propTypes = {
     onClose: PropTypes.func.isRequired,
-    segmentProps: segment.isRequired,
+    segmentProps: propsTreatment.isRequired,
     setSegment: PropTypes.func.isRequired,
 }
 

@@ -122,6 +122,7 @@ const Affiliate = () => {
                         onSubmit: () => {
                             firebase.updatePatientReport(reportId,
                                 {
+                                    // ToDo check segmentImg reverse order at Dentist/Chart.jsx
                                     segmentImg,
                                     additionalImg,
                                     status: STATUS.REVIEW
