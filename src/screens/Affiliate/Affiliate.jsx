@@ -29,6 +29,14 @@ const Affiliate = () => {
     const [search, setSearch] = useState('')
     const [organisation, setOrganisation] = useState('')
 
+    const handleDropSearch = () => {
+        setPatients([])
+        setPatient(null)
+        setOrganisation('')
+        setSearch('')
+        setReportId(null)
+    }
+
     const [segmentImg, setSegmentImg] = useState(segments)
     const [additionalImg, setAdditionalImg] = useState({})
 
@@ -128,7 +136,7 @@ const Affiliate = () => {
                                     status: STATUS.REVIEW
                                 }
                             ).then(() => {
-                                // ToDo drop to default with useEffect as in Dentist
+                                handleDropSearch()
                                 setStep(step + 1)
                                 setSegmentImg(segments)
                                 setAdditionalImg({})
