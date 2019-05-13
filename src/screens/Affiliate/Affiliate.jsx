@@ -10,6 +10,7 @@ import Success from './components/Success'
 import ImageCapture from './components/ImageCapture'
 import Review from './components/Review'
 
+// ToDo make segments const in module
 const segments = {
     'Top right': null,
     'Top middle': null,
