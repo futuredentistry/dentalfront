@@ -74,12 +74,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/an
 This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
 # Production
-### Front end
-`cd dentalfront`
-
-`docker build . -t react-docker`
-
-`docker push *** ToDo`
 
 ###Firebase
 Config email
@@ -92,6 +86,12 @@ Deploy
 
 Deploy only functions
 `firebase deploy --only functions`
+
+
+### Frontend Docker
+`docker build . -t react-docker`
+
+`docker push *** ToDo`
 
 ## Docker tips
 Build image from folder
