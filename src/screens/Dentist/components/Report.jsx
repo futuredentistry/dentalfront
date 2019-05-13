@@ -28,7 +28,7 @@ const Report = ({
     // ]
     return (
         <>
-            {
+            {/* {
                 treatmentSegments.map(treatment => treatment.segmentProps
                     && treatment.segmentProps.concern !== ''
                     && (
@@ -36,7 +36,7 @@ const Report = ({
                             <ReportTreatment {...treatment} />
                         </div>
                     ))
-            }
+            } */}
 
             <br />
             <FormControl>

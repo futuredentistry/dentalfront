@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import FirebaseContext from 'modules/Firebase'
+import * as STATUS from 'modules/constants/reportStatus'
 import { defaultPropsSegments } from 'modules/Dentist/props'
 import StepperButtons from 'ui/StepperButtons'
 import FormGrid from 'ui/FormGrid'
@@ -103,7 +104,20 @@ const Dentist = () => {
                         showButtonsGrid: step !== (1 + maxStep) && step !== 0,
                         increaseOnClick: () => setStep(step + 1),
                         decreaseOnClick: () => setStep(step - 1),
-                        onSubmit: () => setReportId(''),
+                        onSubmit: () => {
+                            firebase.updatePatientReport(reportId,
+                                {
+
+                                    waitingReport: false,
+                                    summary: propsSummary,
+                                    report: segmentProps,
+                                    status: STATUS.COMPLEATED,
+                                }
+                            ).then(() => {
+                                setStep(step + 1)
+                                setReportId('')
+                            })
+                        },
                         // firebase.updatePatientReport({}), // ToDo drop to reload .then(()=>setReportId(''))
                         disabledSubmit: summaryReview === '',
                     }}
