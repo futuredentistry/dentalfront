@@ -16,7 +16,7 @@ const Dentist = () => {
     const [patient, setPatient] = useState(null)
     const [reportId, setReportId] = useState(null)
     const [waitingReport, setWaitingReport] = useState(true)
-    // console.log(patient)
+
     // Chart
     const [topRight, setTopRight] = useState({ ...segmentDefaultProps })
     const [topMiddle, setTopMiddle] = useState({ ...segmentDefaultProps })
