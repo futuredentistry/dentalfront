@@ -30,9 +30,9 @@ const Success = ({ waitingReport, patientFirstName, nextStep }) => {
 
             {waitingReport && (
                 <SelectPatientButton
-                  patientName={capitalizeFirstLetter(patientFirstName)}
-                  message="We have new reports waiting to be completed. Let\'s get started!"
-                  onClick={() => nextStep()}
+                    patientName={capitalizeFirstLetter(patientFirstName)}
+                    message="We have new reports waiting to be completed. Let\'s get started!"
+                    onClick={nextStep}
                 />
             )}
         </>

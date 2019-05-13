@@ -160,13 +160,11 @@ class Firebase {
       .child(fileName)
       .putString(image, 'data_url', { contentType: 'image/jpg' })
 
-    uploadTask.on('state_changed', // or this.storage.TaskEvent.STATE_CHANGED
+    uploadTask.on('state_changed',
       snapshot => {
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        // var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         switch (snapshot.state) {
-          case 'paused': //this.storage.TaskState.PAUSED: 
-          case 'running': //this.storage.TaskState.RUNNING: 
+          case 'paused':
+          case 'running':
             onLoad()
             break;
           default: break;

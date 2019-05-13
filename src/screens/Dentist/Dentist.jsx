@@ -41,14 +41,18 @@ const Dentist = () => {
     useEffect(() => {
         firebase.getPatientReportsForDentist().then(
             (querySnapshot) => {
+                console.log('querySnapshot')
+                setPatient(null)
                 setWaitingReport(!querySnapshot.empty)
                 querySnapshot.forEach((doc) => {
                     setPatient(doc.data())
                     setReportId(doc.id)
                 })
             },
-        ).then(() => patient != null && setReportDefaultProps())
+        ).then(() => setReportDefaultProps())
     }, [reportId])
+
+    console.log('patient', patient)
 
     const maxStep = 3
     const [step, setStep] = useState(0)
@@ -107,15 +111,14 @@ const Dentist = () => {
                         onSubmit: () => {
                             firebase.updatePatientReport(reportId,
                                 {
-
                                     waitingReport: false,
                                     summary: propsSummary,
                                     report: segmentProps,
                                     status: STATUS.COMPLETED,
                                 }
                             ).then(() => {
+                                setReportId(null) // set report id to null to fire useEffect
                                 setStep(step + 1)
-                                setReportId('')
                             })
                         },
                         disabledSubmit: summaryReview === '',
