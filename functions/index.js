@@ -27,8 +27,8 @@ const goMail = (message, email) => {
         from: 'Contact Beemo ✔', // gmailEmail, // sender address
         to: 'beemoinfo@gmail.com', // list of receivers
         subject: `Beemo ${email}`, // Subject line
-        text: `!${message}`, // plain text body
-        html: `!${message}`, // html body
+        text: `${message}`, // plain text body
+        html: `${message}`, // html body
     }
 
     // this is callback function to return status to firebase console

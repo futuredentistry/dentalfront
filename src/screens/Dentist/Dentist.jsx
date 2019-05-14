@@ -41,7 +41,6 @@ const Dentist = () => {
     useEffect(() => {
         firebase.getPatientReportsForDentist().then(
             (querySnapshot) => {
-                console.log('querySnapshot')
                 setPatient(null)
                 setWaitingReport(!querySnapshot.empty)
                 querySnapshot.forEach((doc) => {
