@@ -1,18 +1,16 @@
 import React, { useState, useRef } from 'react'
 import { DatePicker } from 'material-ui-pickers'
 
-
-export default function DateRangePicker({
+const DateRangePicker = ({
     value,
     onChange,
     labelFunc,
     format,
     emptyLabel,
-    autoOk,
     onClose,
     utils,
     ...props
-}) {
+}) => {
     const [begin, setBegin] = useState(value[0])
     const [end, setEnd] = useState(value[1])
     const [hover, setHover] = useState(null)
@@ -21,14 +19,14 @@ export default function DateRangePicker({
     const min = Math.min(begin, end || hover)
     const max = Math.max(begin, end || hover)
 
-    function renderDay(day, selectedDate, dayInCurrentMonth, dayComponent) {
+    const renderDay = (day, selectedDate, dayInCurrentMonth, dayComponent) => {
         const style = {
             margin: 0,
             width: '40px'
         }
 
         if (day >= min && day <= max) {
-            style.backgroundColor = '#3f51b5'
+            style.backgroundColor = '#233D4D'
             style.color = 'white'
         }
 
@@ -42,10 +40,7 @@ export default function DateRangePicker({
                 if (!begin) setBegin(day)
                 else if (!end) {
                     setEnd(day)
-                    if (autoOk) {
-                        onChange([begin, end].sort())
-                        picker.current.close()
-                    }
+
                 } else {
                     setBegin(day)
                     setEnd(null)
@@ -58,16 +53,21 @@ export default function DateRangePicker({
 
     const formatDate = date => utils.format(date, format || utils.dateFormat)
 
+    const handleDropDates = () => {
+        setBegin(null)
+        setEnd(null)
+        onChange([null, null])
+    }
+
     return (
         <DatePicker
             {...props}
-            value={begin}
+            onDismiss={() => handleDropDates()}
+            onAccept={() => (begin && end) ? onChange([begin, end].sort()) : handleDropDates()}
+            value={null}
             renderDay={renderDay}
-            onClose={() => {
-                onChange([begin, end].sort())
-                // onClose()
-            }}
-            onChange={() => onChange([begin, end])}
+            onClose={() => (!begin || !end) ? handleDropDates() : onChange([begin, end].sort())}
+            onChange={() => { }}
             ref={picker}
             labelFunc={(date, invalid) =>
                 labelFunc
@@ -79,3 +79,5 @@ export default function DateRangePicker({
         />
     )
 }
+
+export default DateRangePicker

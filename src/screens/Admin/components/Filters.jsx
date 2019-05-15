@@ -1,17 +1,16 @@
+// @ts-nocheck
 import React, { useContext, useState } from 'react'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider } from 'material-ui-pickers'
-import { DatePicker } from 'material-ui-pickers'
 import Typography from '@material-ui/core/Typography';
 
 import FirebaseContext from 'modules/Firebase';
-import DateMultiPicker from './DateMultiPicker';
+import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
 
 import 'modules/styles/datePicker.scss'
 
 const Filters = () => {
-    const [startDate, setStartDate] = useState(null)
-    const [date, setDate] = useState([new Date(), new Date()])
+    const [date, setDate] = useState([null, null])
     const firebase = useContext(FirebaseContext)
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -27,7 +26,7 @@ const Filters = () => {
                     utils={new DateFnsUtils()}
                     variant="filled"
                     keyboard={false}
-                    label="Start date"
+                    label="Date range"
                     format="MM/dd/yyyy"
                     mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])}
                     value={date}
@@ -35,8 +34,8 @@ const Filters = () => {
                     disableOpenOnEnter
                     animateYearScrolling={false}
                     maxDate={new Date()}
-                    emptyLabel={'Set date range'}
-                // labelFunc={() => 'fdfdfdfdf'}
+                    emptyLabel={''}
+                    labelFunc={null}
                 />
             </div>
 
