@@ -11,15 +11,42 @@ import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Paper from '@material-ui/core/Paper'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+
 import FirebaseContext from 'modules/Firebase';
 import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
 import Eclipse from 'ui/MenuItemEclipse';
+import App from '../../../App';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
     formGrid: {
         paddingLeft: '0.5%',
         paddingRight: '0.5%',
     },
+    //
+    paper: {
+        width: '100%',
+        overflowX: 'auto',
+    },
+    table: {
+        width: '100%',
+    },
+    hideCheck: {
+        display: 'none',
+    },
+    button: {
+        padding: 0,
+        margin: 0,
+        width: '100%'
+    }
 }))
 
 const Filters = () => {
@@ -120,7 +147,77 @@ const Filters = () => {
                 <Grid item xs={1} />
 
             </Grid>
+            <br />
 
+
+            <Grid container spacing={0} direction="row" >
+                <Grid item xs={1} />
+
+                <Grid item xs={10} className={classes.formGrid}>
+
+                    <Paper className={classes.paper} elevation={2}>
+                        <Table className={classes.table}>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell padding="checkbox">
+                                        <Checkbox
+                                            color="primary"
+                                            //   checked={}
+                                            onChange={e => { }} />
+                                    </TableCell>
+
+                                    <TableCell align="center">id</TableCell>
+                                    <TableCell align="center">patient name</TableCell>
+                                    <TableCell align="center">email</TableCell>
+                                    <TableCell align="center">organisation</TableCell>
+                                    <TableCell align="center">date added</TableCell>
+                                    <TableCell align="center"></TableCell>
+                                    <TableCell align="center"></TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+
+                                <TableRow hover>
+                                    <TableCell padding="checkbox">
+                                        <Checkbox
+                                            color="primary"
+                                            //   checked={}
+                                            onChange={e => { }} />
+                                    </TableCell>
+
+                                    <TableCell align="center">{2}</TableCell>
+                                    <TableCell align="center">{3}</TableCell>
+                                    <TableCell align="center">{4}</TableCell>
+                                    <TableCell align="center">{5}</TableCell>
+                                    <TableCell align="center">{6}</TableCell>
+                                    <TableCell align="center">
+                                        <Button
+                                            className={classes.button}
+                                            color="primary"
+                                            variant='text'
+                                            onClick={() => { }}
+                                        >
+                                            see report
+                                    </Button>
+                                    </TableCell>
+                                    <TableCell align="center">
+                                        <Button
+                                            className={classes.button}
+                                            color="primary"
+                                            variant='text'
+                                            onClick={() => { }}
+                                        >
+                                            send report</Button>
+                                    </TableCell>
+                                </TableRow>
+
+                            </TableBody>
+                        </Table>
+                    </Paper>
+
+                </Grid>
+                <Grid item xs={1} />
+            </Grid>
         </>
 
 
