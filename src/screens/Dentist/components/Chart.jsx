@@ -14,7 +14,7 @@ const MODAL = {
     IMAGE_ISSUE: 'IMAGE_ISSUE',
 }
 
-const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg }) => {
+const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg, treatmentSelect, concernSelect }) => {
     const [open, setModalOpen] = useState(false)
     const [modalComponent, setModalComponent] = useState(null)
     const [workingOnImg, setWorkingOnImg] = useState(null)
@@ -45,6 +45,8 @@ const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg 
                             onClose={() => setModalOpen(false)}
                             segmentProps={segmentProps[workingOnImg].treatment}
                             setSegment={handleSetSegmentIssue}
+                            treatmentSelect={treatmentSelect}
+                            concernSelect={concernSelect}
                         />
                     )
                     }
@@ -104,11 +106,15 @@ Chart.propTypes = {
     handleSetSegmentProps: PropTypes.func.isRequired,
     additionImg: PropTypes.shape({}),
     segmentImg: PropTypes.shape({}),
+    treatmentSelect: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })),
+    concernSelect: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })),
 }
 
 Chart.defaultProps = {
     additionImg: {},
     segmentImg: {},
+    treatmentSelect: [],
+    concernSelect: [],
 }
 
 export default Chart

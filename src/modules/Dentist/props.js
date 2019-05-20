@@ -2,8 +2,8 @@
 import PropTypes from 'prop-types'
 
 export const propsTreatment = PropTypes.shape({
-    concern: PropTypes.string.isRequired,
-    treatment: PropTypes.string.isRequired,
+    concern: PropTypes.arrayOf(PropTypes.string.isRequired),
+    treatment: PropTypes.arrayOf(PropTypes.string.isRequired),
     toothNumber: PropTypes.string.isRequired,
 })
 
@@ -22,8 +22,8 @@ export const propsSingleSegment = PropTypes.shape({
 })
 
 export const defaultPropsTreatment = {
-    concern: '',
-    treatment: '',
+    concern: [],
+    treatment: [],
     toothNumber: '',
 }
 

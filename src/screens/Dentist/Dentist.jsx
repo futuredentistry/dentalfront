@@ -25,7 +25,7 @@ const Dentist = () => {
     const propsSummary = { summaryReview, overallHealth, risk }
     const methodsSummary = { setSummaryReview, setOverallHealth, setRisk }
 
-    const [segmentProps, setSegmentProps] = useState()
+    const [segmentProps, setSegmentProps] = useState(defaultPropsSegments)
 
     const handleSetSegmentProps = (newSegmentProps) => setSegmentProps({ ...segmentProps, ...newSegmentProps })
 
@@ -51,6 +51,26 @@ const Dentist = () => {
         ).then(() => setReportDefaultProps())
     }, [reportId])
 
+    const [treatmentSelect, setTreatmentSelect] = useState([])
+    const [concernSelect, setConcernSelect] = useState([])
+    useEffect(() => {
+        firebase.getConcernCollection().then(
+            (doc) => {
+                if (doc.exists) {
+                    // @ts-ignore
+                    const concern = Object.values(doc.data()).map(val => ({ value: val, label: val }))
+                    setConcernSelect(concern)
+                }
+            },
+        )
+
+        const treatments = []
+        firebase.getTreatmentCollection().then(
+            (querySnapshot) => querySnapshot.forEach((doc) => treatments.push({ value: doc.id, label: `${doc.id} ${doc.data().minprice}$-${doc.data().maxprice}$` })),
+        ).then(() => setTreatmentSelect(treatments))
+
+    }, [])
+
     const maxStep = 3
     const [step, setStep] = useState(0)
 
@@ -68,7 +88,7 @@ const Dentist = () => {
             case 1:
                 return patient && <Patient {...patient} />
             case 2:
-                return <Chart {...{ segmentProps, handleSetSegmentProps, ...patient }} />
+                return <Chart {...{ segmentProps, handleSetSegmentProps, treatmentSelect, concernSelect, ...patient }} />
             case 3:
                 return <Report {...{ ...propsSummary, ...methodsSummary }} />
             default:

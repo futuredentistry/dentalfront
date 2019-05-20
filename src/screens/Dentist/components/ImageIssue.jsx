@@ -9,7 +9,6 @@ import FormGroup from '@material-ui/core/FormGroup'
 import { propsImageIssue } from 'modules/Dentist/props'
 
 const ImageIssue = ({ segmentProps, setSegment, onClose }) => {
-  console.log(segmentProps)
   const [starterProps, setStarterProps] = useState(null)
   useEffect(() => !starterProps && setStarterProps(segmentProps), [])
   return (
