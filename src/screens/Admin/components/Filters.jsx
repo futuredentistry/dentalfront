@@ -5,7 +5,6 @@ import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider } from 'material-ui-pickers'
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
-import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
@@ -22,7 +21,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 
 import FirebaseContext from 'modules/Firebase';
 import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
-import Eclipse from 'ui/MenuItemEclipse';
+import capitalizeFirstLetter from 'utils/capitalizeFirstLetter';
 
 const useStyles = makeStyles(() => ({
     formGrid: {
@@ -47,7 +46,12 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-const searchDefault = { treatment: [], concern: [], organisation: [] }
+const searchDefault = {
+    treatment: [],
+    concern: [],
+    organisation: [],
+    risk: [],
+}
 
 const Filters = () => {
     const classes = useStyles()
@@ -92,6 +96,9 @@ const Filters = () => {
             },
         )
     }, [])
+
+
+    const [risk] = useState(['outstanding', 'good', 'average', 'poor'])
 
     return (
         <NoSsr>
@@ -166,13 +173,19 @@ const Filters = () => {
                     <FormControl>
                         <InputLabel>Risk</InputLabel>
                         <Select
+                            variant="filled"
                             multiple
-                            value={[]}
-                            onChange={e => { }}
-                            input={<Input />}
+                            displayEmpty
+                            value={search.risk}
+                            onChange={e => setSearch({ ...search, ...{ risk: e.target.value } })}
                             autoWidth
                         >
-                            <MenuItem value="outstanding"><Eclipse text="m" /></MenuItem>
+                            {
+                                risk.map(value => 
+                                    <MenuItem key={value} value={value}>{capitalizeFirstLetter(value)}</MenuItem>
+                                )
+                            }
+                            <MenuItem key={0} value={null}>None</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
