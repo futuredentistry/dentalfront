@@ -118,6 +118,18 @@ class Firebase {
     .doc('organisations')
     .get()
 
+  // Concern documents
+  getConcernCollection = () => this.firestore
+    .collection('form')
+    .doc('concern')
+    .get()
+
+  // Treatment documents
+  getTreatmentCollection = () => this.firestore
+    .collection('form')
+    .doc('treatment')
+    .get()
+
 
   getPatientReportsForDentist = () => this.firestore
     .collection('reports')

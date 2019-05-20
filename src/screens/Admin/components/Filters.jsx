@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles';
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider } from 'material-ui-pickers'
@@ -10,21 +10,19 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
-
+import NoSsr from '@material-ui/core/NoSsr'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 
 import FirebaseContext from 'modules/Firebase';
 import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
 import Eclipse from 'ui/MenuItemEclipse';
-import App from '../../../App';
-import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
     formGrid: {
@@ -49,12 +47,33 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
+const searchDefault = { treatment: [], concern: [] }
+
 const Filters = () => {
+    const classes = useStyles()
+
     const [date, setDate] = useState([null, null])
-    const classes = useStyles();
+    const [treatment, setTreatment] = useState([])
+    const [concern, setConcern] = useState([])
+
+    const [search, setSearch] = useState(searchDefault)
+
     const firebase = useContext(FirebaseContext)
+
+    useEffect(() => {
+        firebase.getConcernCollection().then(
+            (doc) => {
+                if (doc.exists) {
+                    // @ts-ignore
+                    const concern = Object.values(doc.data()).map(val => ({ value: val, label: val }))
+                    setConcern(concern)
+                }
+            },
+        )
+    }, [])
+    console.log(search.concern)
     return (
-        <>
+        <NoSsr>
             <Typography variant='h4'>
                 Filters
             </Typography>
@@ -84,12 +103,25 @@ const Filters = () => {
                         <Select
                             variant="filled"
                             multiple
-                            value={[]}
-                            onChange={e => { }}
-                            input={<Input />}
+                            displayEmpty
+                            // value={[{
+                            //     value: 'organisation',
+                            //     label: 'organisation',
+                            // }]}
+                            value={search.concern}
+                            onChange={e => {
+                                console.log(e.target.value)
+                                setSearch({ ...search, ...{ concern: e.target.value } })
+                            }
+                            }
+                            // input={<Input id="select-concern" />}
                             autoWidth
                         >
-                            <MenuItem value="outstanding"><Eclipse text="m" /></MenuItem>
+                            {
+                                concern.map(({ value, label }) =>
+                                    <MenuItem key={value} value={value}>{label}</MenuItem>
+                                )
+                            }
                         </Select>
                     </FormControl>
                 </Grid>
@@ -218,7 +250,7 @@ const Filters = () => {
                 </Grid>
                 <Grid item xs={1} />
             </Grid>
-        </>
+        </NoSsr >
 
 
 
