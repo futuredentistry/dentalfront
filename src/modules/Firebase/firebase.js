@@ -126,8 +126,7 @@ class Firebase {
 
   // Treatment documents
   getTreatmentCollection = () => this.firestore
-    .collection('form')
-    .doc('treatment')
+    .collection('treatment')
     .get()
 
 

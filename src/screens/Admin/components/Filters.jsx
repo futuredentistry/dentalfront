@@ -70,8 +70,14 @@ const Filters = () => {
                 }
             },
         )
+
+        const treatments = []
+        firebase.getTreatmentCollection().then(
+            (querySnapshot) => querySnapshot.forEach((doc) => treatments.push({ value: doc.id, label: doc.id })),
+        ).then(() => setTreatment(treatments))
+
     }, [])
-    console.log(search.concern)
+
     return (
         <NoSsr>
             <Typography variant='h4'>
@@ -104,17 +110,8 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            // value={[{
-                            //     value: 'organisation',
-                            //     label: 'organisation',
-                            // }]}
                             value={search.concern}
-                            onChange={e => {
-                                console.log(e.target.value)
-                                setSearch({ ...search, ...{ concern: e.target.value } })
-                            }
-                            }
-                            // input={<Input id="select-concern" />}
+                            onChange={e => setSearch({ ...search, ...{ concern: e.target.value } })}
                             autoWidth
                         >
                             {
@@ -132,12 +129,16 @@ const Filters = () => {
                         <Select
                             variant="filled"
                             multiple
-                            value={[]}
-                            onChange={e => { }}
-                            input={<Input />}
+                            displayEmpty
+                            value={search.treatment}
+                            onChange={e => setSearch({ ...search, ...{ treatment: e.target.value } })}
                             autoWidth
                         >
-                            <MenuItem value="outstanding"><Eclipse text="m" /></MenuItem>
+                            {
+                                treatment.map(({ value, label }) =>
+                                    <MenuItem key={value} value={value}>{label}</MenuItem>
+                                )
+                            }
                         </Select>
                     </FormControl>
                 </Grid>
