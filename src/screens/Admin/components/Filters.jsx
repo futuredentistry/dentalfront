@@ -47,19 +47,18 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-const searchDefault = { treatment: [], concern: [] }
+const searchDefault = { treatment: [], concern: [], organisation: [] }
 
 const Filters = () => {
     const classes = useStyles()
 
     const [date, setDate] = useState([null, null])
-    const [treatment, setTreatment] = useState([])
-    const [concern, setConcern] = useState([])
 
     const [search, setSearch] = useState(searchDefault)
 
     const firebase = useContext(FirebaseContext)
 
+    const [concern, setConcern] = useState([])
     useEffect(() => {
         firebase.getConcernCollection().then(
             (doc) => {
@@ -70,12 +69,28 @@ const Filters = () => {
                 }
             },
         )
+    }, [])
 
+    const [treatment, setTreatment] = useState([])
+    useEffect(() => {
         const treatments = []
         firebase.getTreatmentCollection().then(
             (querySnapshot) => querySnapshot.forEach((doc) => treatments.push({ value: doc.id, label: doc.id })),
         ).then(() => setTreatment(treatments))
+    }, [])
 
+
+    const [organisation, setOrganisation] = useState([])
+    useEffect(() => {
+        firebase.getOrganisationsCollection().then(
+            (doc) => {
+                if (doc.exists) {
+                    // @ts-ignore
+                    const organisations = Object.values(doc.data()).map(val => ({ value: val, label: val }))
+                    setOrganisation(organisations)
+                }
+            },
+        )
     }, [])
 
     return (
@@ -93,12 +108,16 @@ const Filters = () => {
                         <Select
                             variant="filled"
                             multiple
-                            value={[]}
-                            onChange={e => { }}
-                            input={<Input />}
+                            displayEmpty
+                            value={search.organisation}
+                            onChange={e => setSearch({ ...search, ...{ organisation: e.target.value } })}
                             autoWidth
                         >
-                            <MenuItem value="outstanding"><Eclipse text="m" /></MenuItem>
+                            {
+                                organisation.map(({ value, label }) =>
+                                    <MenuItem key={value} value={value}>{label}</MenuItem>
+                                )
+                            }
                         </Select>
                     </FormControl>
                 </Grid>
