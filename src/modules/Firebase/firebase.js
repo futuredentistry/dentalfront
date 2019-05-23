@@ -191,6 +191,14 @@ class Firebase {
     this.storage.ref('/img').child(fileName).getDownloadURL()
 
   deleteImage = fileName => this.storage.ref('/img').child(fileName).delete()
+
+  // Admin report filter
+  getAdminReport = concern => this.firestore
+    .collection('reports')
+    .where('status', '==', STATUS.IN_PROGRESS)
+    // .where("concern", "array-contains", concern)
+    // .orderBy(id)
+    .get()
 }
 
 export default Firebase

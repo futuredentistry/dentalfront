@@ -100,6 +100,19 @@ const Filters = () => {
 
     const [risk] = useState(['outstanding', 'good', 'average', 'poor'])
 
+
+    // const [record, setRecord] = useState([])
+    // useEffect(() => {
+    //     const records = []
+    //     firebase.getTreatmentCollection().then(
+    //         (querySnapshot) => querySnapshot.forEach((doc) => {
+    //             const data = doc.data()
+    //             const fullName = `${capitalizeFirstLetter(data.firstName)} ${capitalizeFirstLetter(data.familyName)}`
+    //             records.push({ id: doc.id, fullName, email: data.email, organisation: data.organisation, date:  })
+    //         }),
+    //     ).then(() => setTreatment(records))
+    // }, [])
+
     return (
         <NoSsr>
             <Typography variant='h4'>
@@ -181,7 +194,7 @@ const Filters = () => {
                             autoWidth
                         >
                             {
-                                risk.map(value => 
+                                risk.map(value =>
                                     <MenuItem key={value} value={value}>{capitalizeFirstLetter(value)}</MenuItem>
                                 )
                             }
@@ -210,7 +223,6 @@ const Filters = () => {
                 </Grid>
 
                 <Grid item xs={1} />
-
             </Grid>
             <br />
 
