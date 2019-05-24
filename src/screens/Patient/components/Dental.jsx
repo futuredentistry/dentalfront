@@ -46,8 +46,8 @@ const Dental = ({
         formLabel="How frequently do you brush?"
         formValue={brush}
         onChange={setBrush}
-        leftValue="less than once a week"
-        centerValue="every few days"
+        leftValue="less than 4 times a week"
+        centerValue="4-7 times a week"
         fightValue="daily"
       />
 
@@ -55,8 +55,8 @@ const Dental = ({
         formLabel="How frequently do you floss?"
         formValue={floss}
         onChange={setFloss}
-        leftValue="less than once a week"
-        centerValue="every few days"
+        leftValue="less than 4 times a week"
+        centerValue="4-7 times a week"
         fightValue="daily"
       />
 
