@@ -15,7 +15,7 @@ const MODAL = {
     IMAGE_ISSUE: 'IMAGE_ISSUE',
 }
 
-const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg, treatmentSelect, concernSelect }) => {
+const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg, treatmentSelect, concernSelect, painMap }) => {
     const [open, setModalOpen] = useState(false)
     const [modalComponent, setModalComponent] = useState(null)
     const [workingOnImg, setWorkingOnImg] = useState(null)
@@ -31,6 +31,25 @@ const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg,
 
     const handleSetSegmentImageIssue = (newProps) =>
         handleSetSegmentProps({ [workingOnImg]: { ...segmentProps[workingOnImg], ...{ imageIssue: newProps } } })
+
+    const getPatientPain = (sectionName) => {
+        switch (sectionName) {
+            case 'Top right':
+                return painMap.painTopRight
+            case 'Top middle':
+                return painMap.painTopCenter
+            case 'Top left':
+                return painMap.painTopLeft
+            case 'Bottom right':
+                return painMap.painBottomRight
+            case 'Bottom middle':
+                return painMap.painBottomCenter
+            case 'Bottom left':
+                return painMap.painBottomLeft
+            default:
+                return false
+        }
+    }
 
     return (
         <>
@@ -72,6 +91,7 @@ const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg,
                                     onClick: () => handleWorkingOnIssue(MODAL.IMAGE_ISSUE, sectionName),
                                     buttonText: 'Report an issue'
                                 }} />,
+                                pain: getPatientPain(sectionName),
                                 sectionName,
                                 imagesObject: segmentImg,
                                 onClick: () => handleWorkingOnIssue(MODAL.ISSUE, sectionName)
@@ -114,6 +134,14 @@ Chart.propTypes = {
     segmentImg: PropTypes.shape({}),
     treatmentSelect: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })),
     concernSelect: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })),
+    painMap: PropTypes.shape({
+        painTopRight: PropTypes.bool.isRequired,
+        painTopCenter: PropTypes.bool.isRequired,
+        painTopLeft: PropTypes.bool.isRequired,
+        painBottomRight: PropTypes.bool.isRequired,
+        painBottomCenter: PropTypes.bool.isRequired,
+        painBottomLeft: PropTypes.bool.isRequired,
+    }).isRequired,
 }
 
 Chart.defaultProps = {

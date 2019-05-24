@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import Typography from '@material-ui/core/Typography'
 
 import FirebaseContext from 'modules/Firebase'
 import CaptureContainer from 'ui/CaptureContainer'
 
-const DentistImage = ({ header, sectionName, imagesObject, onClick, }) => {
+const DentistImage = ({ header, sectionName, pain, imagesObject, onClick, }) => {
     const [url, setUrl] = useState(null)
     const firebase = useContext(FirebaseContext)
 
@@ -20,6 +21,12 @@ const DentistImage = ({ header, sectionName, imagesObject, onClick, }) => {
     return (
         <>
             {header}
+            {pain && (
+                <Typography variant="body2"
+                style={{marginTop: '-12px'}}
+                >
+                    The patient reported pain in this image
+                </Typography>)}
             <div
                 style={{ cursor: 'pointer', outline: 0, }}
                 tabIndex={0}
@@ -43,6 +50,7 @@ const DentistImage = ({ header, sectionName, imagesObject, onClick, }) => {
 DentistImage.propsType = {
     header: PropTypes.node,
     sectionName: PropTypes.string.isRequired,
+    pain: PropTypes.bool.isRequired,
     imagesObject: PropTypes.shape({}).isRequired,
     onClick: PropTypes.func.isRequired,
 }
