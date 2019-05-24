@@ -13,11 +13,11 @@ const useStyles = makeStyles(() => ({
     whiteLink: {
         color: '#fff',
         textDecoration: 'underline',
-        margin: '2%',
+        margin: '0.7%',
     },
     whiteText: {
         color: '#fff',
-        margin: '1%',
+        margin: '0.7%',
     },
 }))
 
