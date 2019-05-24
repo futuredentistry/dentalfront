@@ -8,6 +8,7 @@ import Dialog from 'ui/Dialog'
 
 import Issue from './Issue'
 import ImageIssue from './ImageIssue'
+import TreatmentTable from './TreatmentTable';
 
 const MODAL = {
     ISSUE: 'ISSUE',
@@ -78,6 +79,11 @@ const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg,
                         </div>
                     ))
             }
+
+            <TreatmentTable {...{
+                segmentProps,
+                onClick: sectionName => handleWorkingOnIssue(MODAL.ISSUE, sectionName)
+            }} />
 
             {
                 Object.keys(additionalImg).map(sectionName =>
