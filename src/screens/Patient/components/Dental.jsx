@@ -93,15 +93,17 @@ const Dental = ({
         <PrimaryCheckbox formLabel="Loose tooth" formValue={loose} onChange={setLoose} />
       </FormGroup>
 
-      <PainMap {...{
+      {(teethPain || gumPain || damagedTeeth || loose) && (
+        <PainMap {...{
           painTopRight, setPainTopRight,
           painTopCenter, setPainTopCenter,
           painTopLeft, setPainTopLeft,
           painBottomRight, setPainBottomRight,
           painBottomCenter, setPainBottomCenter,
           painBottomLeft, setPainBottomLeft,
-        }} 
-      />
+        }}
+        />
+      )}
 
     </>
   )

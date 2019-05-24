@@ -245,7 +245,7 @@ const Patient = () => {
 
     const stepper = (n) => {
         switch (n) {
-            case 10:
+            case 0:
                 return <Start startNewReport={() => setStep(1)} />
             case 1:
                 return (
@@ -257,7 +257,7 @@ const Patient = () => {
                 return (
                     <Lifestyle {...{ ...propsLifestyle, ...methodsLifestyle }} />
                 )
-            case 0:
+            case 3:
                 return (
                     <Dental {...{
                         ...propsDental,
@@ -325,6 +325,7 @@ const Patient = () => {
                                 ...propsPersonal,
                                 ...propsLifestyle,
                                 ...propsDental,
+                                painMap: { ...propsPainMap },
                                 ...propsMedical,
                                 ...propsSummary,
                                 // Initial report status

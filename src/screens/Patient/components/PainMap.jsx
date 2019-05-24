@@ -24,8 +24,8 @@ const PainMap = ({
 
             <Typography variant="h5">
                 Where are you experiencing pain?
-      </Typography>
-
+            </Typography>
+            <br />
             <FormGroup row style={{ flexWrap: 'inherit' }}>
                 <FormControlLabel
                     labelPlacement="top"
