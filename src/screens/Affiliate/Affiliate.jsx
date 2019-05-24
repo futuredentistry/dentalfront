@@ -105,6 +105,14 @@ const Affiliate = () => {
         }
     }
 
+    const removeEmptyValues = (obj) => {
+        Object.keys(obj).forEach(key =>
+            (!obj[key] && obj[key] == null || obj[key] === '') && delete obj[key]
+        )
+        return obj
+    }
+
+
     return (
         <>
             {
@@ -133,7 +141,7 @@ const Affiliate = () => {
                                 {
                                     // ToDo check segmentImg reverse order at Dentist/Chart.jsx
                                     segmentImg,
-                                    additionalImg,
+                                    additionalImg: removeEmptyValues(additionalImg),
                                     status: STATUS.REVIEW
                                 }
                             ).then(() => {

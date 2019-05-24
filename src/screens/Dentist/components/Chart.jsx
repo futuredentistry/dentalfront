@@ -86,7 +86,7 @@ const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg,
             }} />
 
             {
-                Object.keys(additionalImg).map(sectionName =>
+                Object.keys(additionalImg).map(sectionName => additionalImg[sectionName] &&
                     (
                         <div key={sectionName}>
                             <DentistImage {...{
