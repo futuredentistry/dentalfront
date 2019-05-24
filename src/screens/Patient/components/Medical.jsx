@@ -88,7 +88,7 @@ const Medical = ({
           <>
             <TextField
               error={validFormStep && otherConditions && otherConditionsList === ''}
-              label="Please list any serious allergies"
+              label="Please list any other conditions"
               value={otherConditionsList}
               onChange={e => setOtherConditionsList(e.currentTarget.value)}
               margin="normal"
