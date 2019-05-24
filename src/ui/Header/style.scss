@@ -11,24 +11,36 @@
 }
 
 .header_left_container {
-    width: 30%; 
+    width: 25%; 
     text-align: center;
+    &.white {
+        width: 5%;
+    }
 }
 
 .header_middle_logo {
-    width: 18%; 
+    width: 23%; 
     text-align: right;
     margin: 5px;
+    &.white {
+        width: 43%;
+    }
 }
 
 .header_middle_name {
-    width: 22%; 
+    width: 25%; 
     text-align: center;
     text-align: left;
-    margin-left: 5px;
+    margin-left: 2px;
+    &.white {
+        width: 47%;
+    }
 }
 
 .header_right_container {
-    width: 30%;
+    width: 27%;
     text-align: center;
+    &.white {
+        width: 5%;
+    }
 }

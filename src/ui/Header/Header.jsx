@@ -17,21 +17,21 @@ const Header = () => {
     const { dark } = useContext(HeaderFooterContext)
     return (
         <div className={`header_row ${dark ? '' : 'white'}`}>
-            <div className="header_left_container">
+            <div className={`header_left_container ${dark ? '' : 'white'}`}>
                 {dark && (
                     <Button variant="text" color="primary" component={Link} to="/">
                         home
                     </Button>
                 )}
             </div>
-            <div className="header_middle_logo">
+            <div className={`header_middle_logo ${dark ? '' : 'white'}`}>
                 <img src={dark ? DarkLogo : WhiteLogo} alt="Logo" />
             </div>
-            <div className="header_middle_name">
+            <div className={`header_middle_name ${dark ? '' : 'white'}`}>
                 <img src={!dark ? DarkBeemo : WhiteBeemo} alt="Logo" />
             </div>
-            <div className="header_right_container">
-                {UserAuthorized() && dark && (
+            <div className={`header_right_container ${dark ? '' : 'white'}`}>
+                { UserAuthorized() && dark && (
                     <Button variant="text" color="primary" component={Link} to="/" onClick={() => firebase.doSignOut()}>
                         log out
                     </Button>
