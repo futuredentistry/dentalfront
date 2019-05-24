@@ -107,7 +107,7 @@ const Affiliate = () => {
 
     const removeEmptyValues = (obj) => {
         Object.keys(obj).forEach(key =>
-            (!obj[key] && obj[key] == null || obj[key] === '') && delete obj[key]
+            (!obj[key] && (obj[key] == null || obj[key] === '')) && delete obj[key]
         )
         return obj
     }
