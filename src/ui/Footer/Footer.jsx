@@ -24,32 +24,34 @@ const useStyles = makeStyles(() => ({
 const Footer = () => {
     const classes = useStyles()
     return (
-        <div className="footer_row">
-            <Typography variant="h5" className={classes.whiteText}>
-                Useful links
+        <div className="footer">
+            <div className="footer_row">
+                <Typography variant="h5" className={classes.whiteText}>
+                    Useful links
             </Typography>
 
-            <Link component={RouterLink} variant="body2" to={ROUTES.BEEMO} className={classes.whiteLink}>
-                what is beemo?
+                <Link component={RouterLink} variant="body2" to={ROUTES.BEEMO} className={classes.whiteLink}>
+                    what is beemo?
             </Link>
 
-            <Link component={RouterLink} variant="body2" to={ROUTES.FAQ} className={classes.whiteLink}>
-                FAQ
+                <Link component={RouterLink} variant="body2" to={ROUTES.FAQ} className={classes.whiteLink}>
+                    FAQ
             </Link>
 
-            <Link component={RouterLink} variant="body2" to={ROUTES.PRIVACY_POLICY} className={classes.whiteLink}>
-                privacy policy
+                <Link component={RouterLink} variant="body2" to={ROUTES.PRIVACY_POLICY} className={classes.whiteLink}>
+                    privacy policy
             </Link>
 
-            <Link component={RouterLink} variant="body2" to={ROUTES.CONTACT_US} className={classes.whiteLink}>
-                contact us
+                <Link component={RouterLink} variant="body2" to={ROUTES.CONTACT_US} className={classes.whiteLink}>
+                    contact us
             </Link>
 
-            <br />
-            <Typography variant="body2" className={classes.whiteText}>
-                A product of Future Dentistry Australia Pty Ltd
+                <br />
+                <Typography variant="body2" className={classes.whiteText}>
+                    A product of Future Dentistry Australia Pty Ltd
             </Typography>
 
+            </div>
         </div>
     )
 }

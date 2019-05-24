@@ -40,21 +40,23 @@ const App = () => {
   return (
     <Router>
       <>
-        <Header />
-        <Route path={ROUTES.HOME} component={Home} />
+        <div className='content'>
+          <Header />
+          <Route path={ROUTES.HOME} component={Home} />
 
-        <AuthorizedRoute path={ROUTES.PATIENT} exact authorized={UserAuthorized} component={Patient} />
-        <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={UserAuthorized} component={Admin} />
-        <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={UserAuthorized} component={Dentist} />
-        <AuthorizedRoute path={ROUTES.AFFILIATE} exact authorized={UserAuthorized} component={Affiliate} />
+          <AuthorizedRoute path={ROUTES.PATIENT} exact authorized={UserAuthorized} component={Patient} />
+          <AuthorizedRoute path={ROUTES.ADMIN} exact authorized={UserAuthorized} component={Admin} />
+          <AuthorizedRoute path={ROUTES.DENTIST} exact authorized={UserAuthorized} component={Dentist} />
+          <AuthorizedRoute path={ROUTES.AFFILIATE} exact authorized={UserAuthorized} component={Affiliate} />
 
-        <Route path={ROUTES.PRIVACY_POLICY} exact component={PrivacyPolicy} />
-        <Route path={ROUTES.FAQ} exact component={FAQ} />
-        <Route path={ROUTES.BEEMO} exact component={Beemo} />
-        <Route path={ROUTES.CONTACT_US} exact component={ContactUs} />
+          <Route path={ROUTES.PRIVACY_POLICY} exact component={PrivacyPolicy} />
+          <Route path={ROUTES.FAQ} exact component={FAQ} />
+          <Route path={ROUTES.BEEMO} exact component={Beemo} />
+          <Route path={ROUTES.CONTACT_US} exact component={ContactUs} />
 
-        {/* {UserAuthorized() && UserEmailVerified() && <Redirect to={ROUTES[UserRole()]} />} */}
-        {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
+          {/* {UserAuthorized() && UserEmailVerified() && <Redirect to={ROUTES[UserRole()]} />} */}
+          {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
+        </div>
         {show && <Footer />}
       </>
     </Router>
