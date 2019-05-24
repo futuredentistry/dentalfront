@@ -2,7 +2,6 @@
 import React from 'react'
 
 import Typography from '@material-ui/core/Typography'
-import Checkbox from '@material-ui/core/Checkbox'
 import FormGroup from '@material-ui/core/FormGroup'
 
 import LineRadioGroup from 'ui/LineRadioGroup'
@@ -11,6 +10,8 @@ import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 import {
   propsDental, methodsDental, propsPainMap, methodsPainMap,
 } from 'modules/Patient/props'
+
+import PainMap from './PainMap'
 
 const Dental = ({
   brush, setBrush,
@@ -28,6 +29,7 @@ const Dental = ({
   oldFillings, setOldFillings,
   dentures, setDentures,
   loose, setLoose,
+  // Pain map
   painTopRight, setPainTopRight,
   painTopCenter, setPainTopCenter,
   painTopLeft, setPainTopLeft,
@@ -91,49 +93,16 @@ const Dental = ({
         <PrimaryCheckbox formLabel="Loose tooth" formValue={loose} onChange={setLoose} />
       </FormGroup>
 
-      <Typography variant="h5">
-        Where are you experiencing pain?
-      </Typography>
+      <PainMap {...{
+          painTopRight, setPainTopRight,
+          painTopCenter, setPainTopCenter,
+          painTopLeft, setPainTopLeft,
+          painBottomRight, setPainBottomRight,
+          painBottomCenter, setPainBottomCenter,
+          painBottomLeft, setPainBottomLeft,
+        }} 
+      />
 
-      <FormGroup row>
-        <Checkbox
-          checked={painTopRight}
-          onChange={() => setPainTopRight(!painTopRight)}
-          color="primary"
-        />
-
-        <Checkbox
-          checked={painTopCenter}
-          onChange={() => setPainTopCenter(!painTopCenter)}
-          color="primary"
-        />
-
-        <Checkbox
-          checked={painTopLeft}
-          onChange={() => setPainTopLeft(!painTopLeft)}
-          color="primary"
-        />
-      </FormGroup>
-
-      <FormGroup row>
-        <Checkbox
-          checked={painBottomRight}
-          onChange={() => setPainBottomRight(!painBottomRight)}
-          color="primary"
-        />
-
-        <Checkbox
-          checked={painBottomCenter}
-          onChange={() => setPainBottomCenter(!painBottomCenter)}
-          color="primary"
-        />
-
-        <Checkbox
-          checked={painBottomLeft}
-          onChange={() => setPainBottomLeft(!painBottomLeft)}
-          color="primary"
-        />
-      </FormGroup>
     </>
   )
 
