@@ -67,7 +67,6 @@ export const propsPersonal = {
     individualNumber: PropTypes.string.isRequired,
     expiredDate: PropTypes.instanceOf(Date),
     privateInsurance: PropTypes.string.isRequired,
-    privateInsuranceOther: PropTypes.string.isRequired,
     includeDental: PropTypes.bool.isRequired,
 }
 export const methodsPersonal = {
@@ -82,7 +81,6 @@ export const methodsPersonal = {
     setIndividualNumber: PropTypes.func.isRequired,
     handleExpiredChange: PropTypes.func.isRequired,
     setPrivateInsurance: PropTypes.func.isRequired,
-    setPrivateInsuranceOther: PropTypes.func.isRequired,
     setIncludeDental: PropTypes.func.isRequired,
 }
 

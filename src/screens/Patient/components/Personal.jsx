@@ -34,7 +34,6 @@ const Personal = ({
   individualNumber, setIndividualNumber,
   expiredDate, handleExpiredChange,
   privateInsurance, setPrivateInsurance,
-  privateInsuranceOther, setPrivateInsuranceOther,
   includeDental, setIncludeDental,
 }) => {
   const { setDark, setShow } = useContext(HeaderFooterContext)
@@ -199,14 +198,6 @@ const Personal = ({
         label="Private health insurance or other"
         value={privateInsurance}
         onChange={e => setPrivateInsurance(e.currentTarget.value)}
-        margin="normal"
-        variant="filled"
-      />
-
-      <TextField
-        label="Other"
-        value={privateInsuranceOther}
-        onChange={e => setPrivateInsuranceOther(e.currentTarget.value)}
         margin="normal"
         variant="filled"
       />

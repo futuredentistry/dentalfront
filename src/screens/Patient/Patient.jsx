@@ -37,7 +37,6 @@ const Patient = () => {
     const [individualNumber, setIndividualNumber] = useState('')
     const [expiredDate, handleExpiredChange] = useState(null)
     const [privateInsurance, setPrivateInsurance] = useState('')
-    const [privateInsuranceOther, setPrivateInsuranceOther] = useState('')
     const [includeDental, setIncludeDental] = useState(false)
     const propsPersonal = {
         firstName,
@@ -51,7 +50,6 @@ const Patient = () => {
         individualNumber,
         expiredDate,
         privateInsurance,
-        privateInsuranceOther,
         includeDental,
     }
     const methodsPersonal = {
@@ -66,7 +64,6 @@ const Patient = () => {
         setIndividualNumber,
         handleExpiredChange,
         setPrivateInsurance,
-        setPrivateInsuranceOther,
         setIncludeDental,
     }
 
