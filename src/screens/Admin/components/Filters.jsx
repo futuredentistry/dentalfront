@@ -209,7 +209,7 @@ const Filters = () => {
                             utils={new DateFnsUtils()}
                             keyboard={false}
                             label="Date range"
-                            format="MM/dd/yyyy"
+                            format="dd/MM/yyyy"
                             mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])}
                             value={date}
                             onChange={setDate}

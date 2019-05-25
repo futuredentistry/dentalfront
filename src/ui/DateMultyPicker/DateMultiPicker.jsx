@@ -62,6 +62,7 @@ const DateRangePicker = ({
     return (
         <DatePicker
             {...props}
+            format="dd/MM/yyyy"
             onDismiss={() => handleDropDates()}
             onAccept={() => (begin && end) ? onChange([begin, end].sort()) : handleDropDates()}
             value={null}

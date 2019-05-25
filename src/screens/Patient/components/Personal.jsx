@@ -84,7 +84,7 @@ const Personal = ({
           variant="filled"
           keyboard
           label="Date of birth"
-          format="MM/dd/yyyy"
+          format="dd/MM/yyyy"
           mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])
           }
           value={birthDate}
@@ -184,7 +184,7 @@ const Personal = ({
           variant="filled"
           keyboard
           label="Expire date"
-          format="MM/dd/yyyy"
+          format="dd/MM/yyyy"
           mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])}
           value={expiredDate}
           onChange={handleExpiredChange}
