@@ -152,7 +152,6 @@ const Personal = ({
           { maxLength: 12 }
         }
         onKeyDown={(e) => {
-          console.log(e)
           const key = e.keyCode
           // bug on Pixel 3
           // if (key === 8 || key === 46) {
