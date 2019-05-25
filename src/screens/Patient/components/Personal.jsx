@@ -145,16 +145,22 @@ const Personal = ({
         label="Medicare"
         value={display}
         error={
-          (!/^[2-6]\d{3}[ ]?\d{5}[ ]?\d{1}[- ]?\d?$/.test(display) && medicare !== '')
+          (!/\d{3}[ ]?\d{5}[ ]?\d{1}$/.test(display) && medicare !== '')
           || (validFormStep && medicare === '')
         }
         inputProps={
-          { maxLength: 14 }
+          { maxLength: 12 }
         }
         onKeyDown={(e) => {
-          const key = e.keyCode || e.charCode
-          if (key === 8 || key === 46) return setMedicare('')
-          return null
+          console.log(e)
+          const key = e.keyCode
+          // bug on Pixel 3
+          // if (key === 8 || key === 46) {
+          if (key === 8) {
+            e.preventDefault()
+            setMedicare('')
+          }
+
         }}
         // eslint-disable-next-line max-len
         onChange={e => /^(\d)$/.test(e.currentTarget.value.slice(-1)) && setMedicare(medicare + e.currentTarget.value.slice(-1))
