@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import { UserFirstName } from 'utils/logonUser'
-import Carousele from 'ui/Carousele'
+import Carousel from 'ui/Carousel'
 import DeleteUser from 'ui/DeleteUser'
 
 const Start = ({ startNewReport }) => {
@@ -33,7 +33,7 @@ const Start = ({ startNewReport }) => {
             </Typography>
             <br />
 
-            <Carousele />
+            <Carousel />
 
             <Button variant="contained" color="primary" onClick={startNewReport}>Create a new report</Button>
 
