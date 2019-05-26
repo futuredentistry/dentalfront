@@ -99,18 +99,21 @@ const Signup = ({ history }) => {
         color="primary"
         onClick={() => firebase
           .doSignInWithGoogle()
-          .then((authUser) => {
-            const authUserEmail = authUser.user.email
-            firebase
-              .user(authUser.user.uid)
-              .set({
-                email: authUserEmail,
-                role: 'PATIENT',
-              })
+          .then(socialUser => {
 
-            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser.user))
-            history.push(ROUTES.PATIENT)
+            if (socialUser.additionalUserInfo.isNewUser) {
+              const socialUserEmail = socialUser.user.email
+              firebase
+                .user(socialUser.user.uid)
+                .set({
+                  email: socialUserEmail,
+                  role: 'PATIENT',
+                })
+            }
+
+            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(socialUser.user))
           })
+          .then(() => history.push(ROUTES.PATIENT))
           .catch(({ message }) => setErrMessage(message))
         }
       >
