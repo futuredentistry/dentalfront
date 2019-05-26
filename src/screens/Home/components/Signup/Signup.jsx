@@ -94,6 +94,29 @@ const Signup = ({ history }) => {
         Back
       </Button>
 
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => firebase
+          .doSignInWithGoogle()
+          .then((authUser) => {
+            const authUserEmail = authUser.user.email
+            firebase
+              .user(authUser.user.uid)
+              .set({
+                email: authUserEmail,
+                role: 'PATIENT',
+              })
+
+            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser.user))
+            history.push(ROUTES.PATIENT)
+          })
+          .catch(({ message }) => setErrMessage(message))
+        }
+      >
+        google
+      </Button>
+
     </FormGrid>
   )
 }

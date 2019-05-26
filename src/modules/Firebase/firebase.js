@@ -23,7 +23,7 @@ class Firebase {
 
     this.serverValue = app.database.ServerValue
     this.emailAuthProvider = app.auth.EmailAuthProvider
-
+    this.googleAuthProvider = new app.auth.GoogleAuthProvider()
     /* Firebase APIs */
 
     this.auth = app.auth()
@@ -40,6 +40,8 @@ class Firebase {
 
   // eslint-disable-next-line max-len
   doSignInWithEmailAndPassword = (email, password) => this.auth.signInWithEmailAndPassword(email, password)
+
+  doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleAuthProvider)
 
   doSignOut = () => this.auth.signOut()
 
