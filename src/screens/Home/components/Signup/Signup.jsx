@@ -120,6 +120,32 @@ const Signup = ({ history }) => {
         google
       </Button>
 
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => firebase
+          .doSignInWithFacebook()
+          .then(socialUser => {
+
+            if (socialUser.additionalUserInfo.isNewUser) {
+              const socialUserEmail = socialUser.additionalUserInfo.profile.email
+              firebase
+                .user(socialUser.user.uid)
+                .set({
+                  email: socialUserEmail,
+                  role: 'PATIENT',
+                })
+            }
+
+            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(socialUser.user))
+          })
+          .then(() => history.push(ROUTES.PATIENT))
+          .catch(({ message }) => setErrMessage(message))
+        }
+      >
+        facebook
+      </Button>
+
     </FormGrid>
   )
 }
