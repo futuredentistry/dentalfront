@@ -282,7 +282,7 @@ const Patient = () => {
                     />
                 )
             default:
-                return <Success />
+                return <Success onClick={() => setStep(0)} />
         }
     }
 

@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
-import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 
 import { HeaderFooterContext } from 'modules/HeaderFooter/context'
-import FirebaseContext from 'modules/Firebase'
 
-const Success = () => {
-    const firebase = useContext(FirebaseContext)
+const Success = ({ onClick }) => {
     const { setDark, setShow } = useContext(HeaderFooterContext)
     useEffect(() => {
         setDark(true)
@@ -18,15 +16,14 @@ const Success = () => {
             <Typography variant="h4">
                 Success!
             </Typography>
-
+            <br />
             <Typography variant="body2">
-                That wasn't so bad was it? Next we'll get some pictures of your teeth!
+                That wasn't so bad was it?
             </Typography>
             <br />
-            <br />
-            <Button variant="contained" color="primary" component={Link} to="/" onClick={() => firebase.doSignOut()}>
-                log out
-            </Button>
+            <Typography variant="body2">
+                Next someone at your organisation will take some pictures of your teeth.
+            </Typography>
             <br />
             <br />
             <Typography variant="body2">
@@ -34,8 +31,16 @@ const Success = () => {
                 {' '}
                 that if you're brushing too hard you can damage your gums. Take it easy, your teeth are your friends not your foe.
             </Typography>
+            <br />
+            <Button variant="text" color="primary" onClick={() => onClick()}>
+                Return to your account
+            </Button>
         </>
     )
+}
+
+Success.propTypes = {
+    onClick: PropTypes.func.isRequired,
 }
 
 export default Success
