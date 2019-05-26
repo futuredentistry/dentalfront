@@ -14,7 +14,6 @@ const Patient = ({
   gender,
   medicare,
   privateInsurance,
-  privateInsuranceOther,
   smoker,
   softDrinks,
   alcohol,
@@ -103,7 +102,7 @@ const Patient = ({
         <PrimaryListItem primary={medicare ? 'Yes' : 'No'} />
 
         <PrimaryListItem primary={<b>Health insurance provider</b>} />
-        <PrimaryListItem primary={`${privateInsurance} ${privateInsuranceOther}`} />
+        <PrimaryListItem primary={`${privateInsurance}`} />
 
         <PrimaryListItem primary={<b>Smoker</b>} />
         <PrimaryListItem primary={capitalizeFirstLetter(smoker)} />
@@ -186,7 +185,6 @@ Patient.propTypes = {
   gender: PropTypes.string.isRequired,
   medicare: PropTypes.string.isRequired,
   privateInsurance: PropTypes.string.isRequired,
-  privateInsuranceOther: PropTypes.string.isRequired,
   smoker: PropTypes.string.isRequired,
   softDrinks: PropTypes.string.isRequired,
   alcohol: PropTypes.string.isRequired,

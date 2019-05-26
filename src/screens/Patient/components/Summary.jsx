@@ -22,7 +22,6 @@ const Summary = ({
     contactNumber,
     medicare,
     privateInsurance,
-    privateInsuranceOther,
     includeDental,
     // Lifestyle
     smoker,
@@ -132,11 +131,11 @@ const Summary = ({
                 <b>{` ${medicare}`}</b>
                 <br />
 
-                {(privateInsurance || privateInsuranceOther) && (
+                {privateInsurance && (
                     <>
                         {'and you have health insurance with'}
                         <b>
-                            {` ${privateInsurance} ${privateInsuranceOther} ${includeDental
+                            {` ${privateInsurance} ${includeDental
                                 ? ' with optional extras'
                                 : ''}`}
                         </b>
