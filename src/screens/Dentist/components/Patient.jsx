@@ -101,8 +101,12 @@ const Patient = ({
         <PrimaryListItem primary={<b>Medicare</b>} />
         <PrimaryListItem primary={medicare ? 'Yes' : 'No'} />
 
-        <PrimaryListItem primary={<b>Health insurance provider</b>} />
-        <PrimaryListItem primary={`${privateInsurance}`} />
+        {privateInsurance !== '' && (
+          <>
+            <PrimaryListItem primary={<b>Health insurance provider</b>} />
+            <PrimaryListItem primary={`${privateInsurance}`} />
+          </>
+        )}
 
         <PrimaryListItem primary={<b>Smoker</b>} />
         <PrimaryListItem primary={capitalizeFirstLetter(smoker)} />
