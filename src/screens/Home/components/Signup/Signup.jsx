@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import * as ROUTES from 'modules/constants/routes'
 import FirebaseContext from 'modules/Firebase'
 import FormGrid from 'ui/FormGrid'
+import SocialMediaButtons from 'ui/SocialMediaButtons/SocialMediaButtons';
 
 const Signup = ({ history }) => {
   const firebase = useContext(FirebaseContext)
@@ -16,13 +17,66 @@ const Signup = ({ history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+
+  const handlPasswordLogin = () => firebase
+    .doCreateUserWithEmailAndPassword(email, password)
+    .then((authUser) => {
+      firebase
+        .user(authUser.user.uid)
+        .set({
+          email,
+          role: 'PATIENT',
+        })
+
+      localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser.user))
+    })
+    .then(() => history.push(ROUTES.CONFIRM_EMAIL))
+    .catch(({ message }) => setErrMessage(message))
+
+  const handleFacebookLogin = () => firebase
+    .doSignInWithFacebook()
+    .then(socialUser => {
+      if (socialUser.additionalUserInfo.isNewUser) {
+        // @ts-ignore
+        const socialUserEmail = socialUser.additionalUserInfo.profile.email
+        firebase
+          .user(socialUser.user.uid)
+          .set({
+            email: socialUserEmail,
+            role: 'PATIENT',
+          })
+      }
+
+      localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(socialUser.user))
+    })
+    .then(() => history.push(ROUTES.CONFIRM_EMAIL))
+    .catch(({ message }) => setErrMessage(message))
+
+  const handleGmailLogin = () => firebase
+    .doSignInWithGoogle()
+    .then(socialUser => {
+      if (socialUser.additionalUserInfo.isNewUser) {
+        const socialUserEmail = socialUser.user.email
+        firebase
+          .user(socialUser.user.uid)
+          .set({
+            email: socialUserEmail,
+            role: 'PATIENT',
+          })
+      }
+
+      localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(socialUser.user))
+    })
+    .then(() => history.push(ROUTES.PATIENT))
+    .catch(({ message }) => setErrMessage(message))
+
   return (
     <FormGrid>
       <Typography variant="h3">
         Create Account
       </Typography>
 
-      <Typography variant="subtitle1">
+      <Typography variant="body2">
         Please enter your name and best email address to get started.
       </Typography>
       <br />
@@ -71,21 +125,7 @@ const Signup = ({ history }) => {
         disabled={email === '' || password === '' || password !== confirmPassword}
         variant="contained"
         color="primary"
-        onClick={() => firebase
-          .doCreateUserWithEmailAndPassword(email, password)
-          .then((authUser) => {
-            firebase
-              .user(authUser.user.uid)
-              .set({
-                email,
-                role: 'PATIENT',
-              })
-
-            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser.user))
-          })
-          .then(() => history.push(ROUTES.CONFIRM_EMAIL))
-          .catch(({ message }) => setErrMessage(message))
-        }
+        onClick={() => handlPasswordLogin()}
       >
         Next
       </Button>
@@ -93,58 +133,18 @@ const Signup = ({ history }) => {
       <Button variant="text" color="primary" onClick={() => history.goBack()}>
         Back
       </Button>
+      <br />
+      <br />
+      <br />
+      <Typography variant="body2">
+        Don't want another password to remember? You can create and account or login with
+      </Typography>
 
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => firebase
-          .doSignInWithGoogle()
-          .then(socialUser => {
-            if (socialUser.additionalUserInfo.isNewUser) {
-              const socialUserEmail = socialUser.user.email
-              firebase
-                .user(socialUser.user.uid)
-                .set({
-                  email: socialUserEmail,
-                  role: 'PATIENT',
-                })
-            }
-
-            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(socialUser.user))
-          })
-          .then(() => history.push(ROUTES.PATIENT))
-          .catch(({ message }) => setErrMessage(message))
-        }
-      >
-        google
-      </Button>
-
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => firebase
-          .doSignInWithFacebook()
-          .then(socialUser => {
-            if (socialUser.additionalUserInfo.isNewUser) {
-              // @ts-ignore
-              const socialUserEmail = socialUser.additionalUserInfo.profile.email
-              firebase
-                .user(socialUser.user.uid)
-                .set({
-                  email: socialUserEmail,
-                  role: 'PATIENT',
-                })
-            }
-
-            localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(socialUser.user))
-          })
-          .then(() => history.push(ROUTES.CONFIRM_EMAIL))
-          .catch(({ message }) => setErrMessage(message))
-        }
-      >
-        facebook
-      </Button>
-
+      <SocialMediaButtons showFacebook showGmail {...{
+        onClickFacebook: handleFacebookLogin,
+        onClickGmail: handleGmailLogin,
+      }}
+      />
     </FormGrid>
   )
 }
