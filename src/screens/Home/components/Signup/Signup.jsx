@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import * as ROUTES from 'modules/constants/routes'
 import FirebaseContext from 'modules/Firebase'
 import FormGrid from 'ui/FormGrid'
-import SocialMediaButtons from 'ui/SocialMediaButtons/SocialMediaButtons';
+import SocialMediaButtons from 'ui/SocialMediaButtons';
 
 const Signup = ({ history }) => {
   const firebase = useContext(FirebaseContext)
@@ -18,7 +18,7 @@ const Signup = ({ history }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const handlPasswordLogin = () => firebase
+  const handlPasswordSignup = () => firebase
     .doCreateUserWithEmailAndPassword(email, password)
     .then((authUser) => {
       firebase
@@ -33,7 +33,7 @@ const Signup = ({ history }) => {
     .then(() => history.push(ROUTES.CONFIRM_EMAIL))
     .catch(({ message }) => setErrMessage(message))
 
-  const handleFacebookLogin = () => firebase
+  const handleFacebookSignup = () => firebase
     .doSignInWithFacebook()
     .then(socialUser => {
       if (socialUser.additionalUserInfo.isNewUser) {
@@ -52,7 +52,7 @@ const Signup = ({ history }) => {
     .then(() => history.push(ROUTES.CONFIRM_EMAIL))
     .catch(({ message }) => setErrMessage(message))
 
-  const handleGmailLogin = () => firebase
+  const handleGmailSignup = () => firebase
     .doSignInWithGoogle()
     .then(socialUser => {
       if (socialUser.additionalUserInfo.isNewUser) {
@@ -125,7 +125,7 @@ const Signup = ({ history }) => {
         disabled={email === '' || password === '' || password !== confirmPassword}
         variant="contained"
         color="primary"
-        onClick={() => handlPasswordLogin()}
+        onClick={() => handlPasswordSignup()}
       >
         Next
       </Button>
@@ -137,12 +137,12 @@ const Signup = ({ history }) => {
       <br />
       <br />
       <Typography variant="body2">
-        Don't want another password to remember? You can create and account or login with
+        Don't want another password to remember? You can create an account or login with
       </Typography>
 
       <SocialMediaButtons showFacebook showGmail {...{
-        onClickFacebook: handleFacebookLogin,
-        onClickGmail: handleGmailLogin,
+        onClickFacebook: handleFacebookSignup,
+        onClickGmail: handleGmailSignup,
       }}
       />
     </FormGrid>

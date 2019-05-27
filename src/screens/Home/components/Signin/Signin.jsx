@@ -9,19 +9,77 @@ import Typography from '@material-ui/core/Typography'
 import * as ROUTES from 'modules/constants/routes'
 import FirebaseContext from 'modules/Firebase'
 import FormGrid from 'ui/FormGrid'
+import SocialMediaButtons from 'ui/SocialMediaButtons';
 
 const SignIn = ({ history }) => {
   const firebase = useContext(FirebaseContext)
   const [errMessage, setErrMessage] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const handleErrorMsg = message => {
+    localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
+    firebase.doSignOut()
+    setErrMessage(message)
+  }
+
+  const handlePasswordLogin = () => {
+    let emailVerified
+    firebase
+      .doSignInWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        emailVerified = authUser.user.emailVerified
+
+        if (!emailVerified) history.push(ROUTES.CONFIRM_EMAIL)
+
+        if (emailVerified) firebase.user(authUser.user.uid)
+          .once('value')
+          .then((snapshot) => {
+            const dbUser = snapshot.val()
+            history.push(ROUTES[dbUser.role])
+          })
+      })
+      .catch(({ message }) => handleErrorMsg(message))
+  }
+
+  const handleFacebookLogin = () => {
+    let emailVerified
+    firebase
+      .doSignInWithFacebook()
+      .then(authUser => {
+        emailVerified = authUser.user.emailVerified
+
+        if (!emailVerified) history.push(ROUTES.CONFIRM_EMAIL)
+
+        if (emailVerified) firebase.user(authUser.user.uid)
+          .once('value')
+          .then((snapshot) => {
+            const dbUser = snapshot.val()
+            history.push(ROUTES[dbUser.role])
+          })
+      })
+      .catch(({ message }) => handleErrorMsg(message))
+  }
+
+  const handleGmailLogin = () => firebase
+    .doSignInWithGoogle()
+    .then(authUser => {
+      firebase.user(authUser.user.uid)
+        .once('value')
+        .then((snapshot) => {
+          const dbUser = snapshot.val()
+          history.push(ROUTES[dbUser.role])
+        })
+    })
+    .catch(({ message }) => handleErrorMsg(message))
+
   return (
     <FormGrid>
       <Typography variant="h3">
         Welcome to Beemo
       </Typography>
 
-      <Typography variant="subtitle1">
+      <Typography variant="body2">
         Please sign to get started.
       </Typography>
       <br />
@@ -62,24 +120,7 @@ const SignIn = ({ history }) => {
         disabled={email === '' || password === ''}
         variant="contained"
         color="primary"
-        onClick={() => firebase
-          .doSignInWithEmailAndPassword(email, password)
-          .then((authUser) => {
-            if (!authUser.user.emailVerified) history.push(ROUTES.CONFIRM_EMAIL)
-
-            firebase.user(authUser.user.uid)
-              .once('value')
-              .then((snapshot) => {
-                const dbUser = snapshot.val()
-                history.push(ROUTES[dbUser.role])
-              })
-          })
-          .catch(({ message }) => {
-            localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
-            firebase.doSignOut()
-            setErrMessage(message)
-          })
-        }
+        onClick={() => handlePasswordLogin()}
       >
         Login
       </Button>
@@ -87,6 +128,18 @@ const SignIn = ({ history }) => {
       <Button variant="text" color="primary" onClick={() => history.goBack()}>
         Back
       </Button>
+      <br />
+      <br />
+      <br />
+      <Typography variant="body2">
+        You can login with
+      </Typography>
+
+      <SocialMediaButtons showFacebook showGmail {...{
+        onClickFacebook: handleFacebookLogin,
+        onClickGmail: handleGmailLogin,
+      }}
+      />
     </FormGrid>
   )
 }
