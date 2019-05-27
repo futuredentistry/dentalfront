@@ -82,8 +82,8 @@ const Signup = ({ history }) => {
               })
 
             localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser.user))
-            history.push(ROUTES.CONFIRM_EMAIL)
           })
+          .then(() => history.push(ROUTES.CONFIRM_EMAIL))
           .catch(({ message }) => setErrMessage(message))
         }
       >
@@ -100,7 +100,6 @@ const Signup = ({ history }) => {
         onClick={() => firebase
           .doSignInWithGoogle()
           .then(socialUser => {
-
             if (socialUser.additionalUserInfo.isNewUser) {
               const socialUserEmail = socialUser.user.email
               firebase
@@ -126,8 +125,8 @@ const Signup = ({ history }) => {
         onClick={() => firebase
           .doSignInWithFacebook()
           .then(socialUser => {
-
             if (socialUser.additionalUserInfo.isNewUser) {
+              // @ts-ignore
               const socialUserEmail = socialUser.additionalUserInfo.profile.email
               firebase
                 .user(socialUser.user.uid)
@@ -139,7 +138,7 @@ const Signup = ({ history }) => {
 
             localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(socialUser.user))
           })
-          .then(() => history.push(ROUTES.PATIENT))
+          .then(() => history.push(ROUTES.CONFIRM_EMAIL))
           .catch(({ message }) => setErrMessage(message))
         }
       >
