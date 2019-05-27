@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import ReactRouterPropTypes from 'react-router-prop-types'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import InputLabel from '@material-ui/core/InputLabel'
@@ -18,15 +19,17 @@ const AUTH_PROVIDER = {
     FACEBOOK: 'facebook.com',
 }
 
-const DeleteUser = () => {
+const DeleteUser = ({ history }) => {
     const [open, setOpen] = useState(false)
+    const [openSuccessfullyDeleted, setSuccessfullyDeleted] = useState(false)
     const [agree, setAgree] = useState(false)
     const [errMessage, setErrMessage] = useState(null)
     const [password, setPassword] = useState('')
     const firebase = useContext(FirebaseContext)
-    console.log(UserAuthProvider() === AUTH_PROVIDER.FACEBOOK)
+
     const handleAfterDelete = () => {
-        // Your account as been successfully deleted
+        setSuccessfullyDeleted(true)
+        setTimeout(() => history.push('/'), 1500)
     }
 
     const handleDeleteWithPassword = () => firebase
@@ -36,7 +39,7 @@ const DeleteUser = () => {
             .set(null))
         .then(() => firebase
             .deleteUser()
-            .then(() => { })
+            .then(() => handleAfterDelete())
             .catch(({ message }) => setErrMessage(message)))
         .catch(({ message }) => setErrMessage(message))
 
@@ -44,7 +47,7 @@ const DeleteUser = () => {
         .doSignInWithFacebook()
         .then(socialUser => {
             firebase.user(socialUser.user.uid).set(null).then(() => firebase.deleteUser()
-                .then(() => { })
+                .then(() => handleAfterDelete())
                 .catch(({ message }) => setErrMessage(message))
             )
                 .catch(({ message }) => setErrMessage(message))
@@ -56,7 +59,7 @@ const DeleteUser = () => {
         .doSignInWithGoogle()
         .then(socialUser => {
             firebase.user(socialUser.user.uid).set(null).then(() => firebase.deleteUser()
-                .then(() => { })
+                .then(() => handleAfterDelete())
                 .catch(({ message }) => setErrMessage(message))
             )
                 .catch(({ message }) => setErrMessage(message))
@@ -72,6 +75,13 @@ const DeleteUser = () => {
                 onClose={() => setOpen(false)}
             >
                 <FormGrid>
+
+                    {openSuccessfullyDeleted && (
+                        <Typography variant="h4" color="error">
+                            Your account has been successfully deleted
+                            </Typography>
+                    )}
+
 
                     {UserAuthProvider() === AUTH_PROVIDER.PASSWORD && (
                         <>
@@ -121,7 +131,6 @@ const DeleteUser = () => {
 
                     <Typography color="error">{errMessage}</Typography>
 
-
                 </FormGrid>
             </Dialog>
 
@@ -151,6 +160,10 @@ const DeleteUser = () => {
 
         </>
     )
+}
+
+DeleteUser.propTypes = {
+    history: ReactRouterPropTypes.history.isRequired,
 }
 
 export default DeleteUser

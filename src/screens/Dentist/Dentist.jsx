@@ -1,4 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react'
+import ReactRouterPropTypes from 'react-router-prop-types'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import FirebaseContext from 'modules/Firebase'
@@ -11,9 +12,8 @@ import Patient from './components/Patient'
 import Chart from './components/Chart'
 import Report from './components/Report'
 import Success from './components/Success'
-// import * as ROUTES from 'modules/constants/routes'
 
-const Dentist = () => {
+const Dentist = ({ history }) => {
     const [patient, setPatient] = useState(null)
     const [reportId, setReportId] = useState(null)
     const [waitingReport, setWaitingReport] = useState(true)
@@ -82,6 +82,7 @@ const Dentist = () => {
                         waitingReport,
                         patientFirstName: patient && patient.firstName,
                         nextStep: () => setStep(1),
+                        history,
                     }}
                     />
                 )
@@ -145,6 +146,10 @@ const Dentist = () => {
             </FormGrid>
         </>
     )
+}
+
+Dentist.propTypes = {
+    history: ReactRouterPropTypes.history.isRequired,
 }
 
 export default Dentist

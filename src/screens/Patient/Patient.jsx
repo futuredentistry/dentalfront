@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import ReactRouterPropTypes from 'react-router-prop-types'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider } from 'material-ui-pickers'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -16,7 +17,7 @@ import Lifestyle from './components/Lifestyle'
 import Dental from './components/Dental'
 import Summary from './components/Summary'
 
-const Patient = () => {
+const Patient = ({ history }) => {
     const [validFormStep, setValidFormStep] = useState(false)
 
     const firebase = useContext(FirebaseContext)
@@ -243,7 +244,7 @@ const Patient = () => {
     const stepper = (n) => {
         switch (n) {
             case 0:
-                return <Start startNewReport={() => setStep(1)} />
+                return <Start startNewReport={() => setStep(1)} history={history} />
             case 1:
                 return (
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -343,6 +344,10 @@ const Patient = () => {
             </FormGrid>
         </>
     )
+}
+
+Patient.propTypes = {
+    history: ReactRouterPropTypes.history.isRequired,
 }
 
 export default Patient

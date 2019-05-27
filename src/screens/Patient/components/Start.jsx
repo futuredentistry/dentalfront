@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import ReactRouterPropTypes from 'react-router-prop-types'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
@@ -9,7 +10,7 @@ import { UserFirstName } from 'utils/logonUser'
 import Carousel from 'ui/Carousel'
 import DeleteUser from 'ui/DeleteUser'
 
-const Start = ({ startNewReport }) => {
+const Start = ({ startNewReport, history }) => {
     const { setDark, setShow } = useContext(HeaderFooterContext)
     useEffect(() => {
         setDark(true)
@@ -37,13 +38,14 @@ const Start = ({ startNewReport }) => {
 
             <Button variant="contained" color="primary" onClick={startNewReport}>Create a new report</Button>
 
-            <DeleteUser />
+            <DeleteUser history={history} />
         </>
     )
 }
 
 Start.propTypes = {
     startNewReport: PropTypes.func.isRequired,
+history: ReactRouterPropTypes.history.isRequired,
 }
 
 export default Start
