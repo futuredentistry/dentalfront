@@ -8,3 +8,4 @@ export const UserEmail = () => logonUser() && logonUser().email
 export const UserUid = () => logonUser() && logonUser().uid
 export const UserFirstName = () => (logonUser() && logonUser().firstName ? logonUser().firstName : '')
 export const UserFamilyName = () => (logonUser() && logonUser().familyName ? logonUser().familyName : '')
+export const UserAuthProvider = () => logonUser() && logonUser().provider

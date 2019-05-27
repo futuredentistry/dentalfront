@@ -55,7 +55,7 @@ const App = () => {
           <Route path={ROUTES.CONTACT_US} exact component={ContactUs} />
 
           {/* {UserAuthorized() && UserEmailVerified() && <Redirect to={ROUTES[UserRole()]} />} */}
-          {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
+          {/* {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />} */}
         </div>
         {show && <Footer />}
       </>

@@ -20,16 +20,7 @@ const Signup = ({ history }) => {
 
   const handlPasswordSignup = () => firebase
     .doCreateUserWithEmailAndPassword(email, password)
-    .then((authUser) => {
-      firebase
-        .user(authUser.user.uid)
-        .set({
-          email,
-          role: 'PATIENT',
-        })
-
-      localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser.user))
-    })
+    .then((authUser) => firebase.user(authUser.user.uid).set({ email, role: 'PATIENT' }))
     .then(() => history.push(ROUTES.CONFIRM_EMAIL))
     .catch(({ message }) => setErrMessage(message))
 
@@ -37,17 +28,10 @@ const Signup = ({ history }) => {
     .doSignInWithFacebook()
     .then(socialUser => {
       if (socialUser.additionalUserInfo.isNewUser) {
+        firebase.user(socialUser.user.uid)
         // @ts-ignore
-        const socialUserEmail = socialUser.additionalUserInfo.profile.email
-        firebase
-          .user(socialUser.user.uid)
-          .set({
-            email: socialUserEmail,
-            role: 'PATIENT',
-          })
+          .set({ email: socialUser.additionalUserInfo.profile.email, role: 'PATIENT'})
       }
-
-      localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(socialUser.user))
     })
     .then(() => history.push(ROUTES.CONFIRM_EMAIL))
     .catch(({ message }) => setErrMessage(message))
@@ -56,16 +40,9 @@ const Signup = ({ history }) => {
     .doSignInWithGoogle()
     .then(socialUser => {
       if (socialUser.additionalUserInfo.isNewUser) {
-        const socialUserEmail = socialUser.user.email
-        firebase
-          .user(socialUser.user.uid)
-          .set({
-            email: socialUserEmail,
-            role: 'PATIENT',
-          })
+        firebase.user(socialUser.user.uid)
+          .set({ email: socialUser.user.email, role: 'PATIENT' })
       }
-
-      localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(socialUser.user))
     })
     .then(() => history.push(ROUTES.PATIENT))
     .catch(({ message }) => setErrMessage(message))

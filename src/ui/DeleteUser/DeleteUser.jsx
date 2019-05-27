@@ -9,57 +9,119 @@ import Dialog from 'ui/Dialog'
 import FirebaseContext from 'modules/Firebase'
 import FormGrid from 'ui/FormGrid'
 import PrimaryCheckbox from 'ui/PrimaryCheckbox'
-import { UserUid } from 'utils/logonUser'
+import { UserUid, UserAuthProvider } from 'utils/logonUser'
+import SocialMediaButtons from 'ui/SocialMediaButtons';
+
+const AUTH_PROVIDER = {
+    PASSWORD: 'password',
+    GMAIL: 'google.com',
+    FACEBOOK: 'facebook.com',
+}
 
 const DeleteUser = () => {
     const [open, setOpen] = useState(false)
-    const [agry, setAgry] = useState(false)
+    const [agree, setAgree] = useState(false)
     const [errMessage, setErrMessage] = useState(null)
     const [password, setPassword] = useState('')
     const firebase = useContext(FirebaseContext)
+    console.log(UserAuthProvider() === AUTH_PROVIDER.FACEBOOK)
+    const handleAfterDelete = () => {
+        // Your account as been successfully deleted
+    }
+
+    const handleDeleteWithPassword = () => firebase
+        .reauthenticate(password)
+        .then(() => firebase
+            .user(UserUid())
+            .set(null))
+        .then(() => firebase
+            .deleteUser()
+            .then(() => { })
+            .catch(({ message }) => setErrMessage(message)))
+        .catch(({ message }) => setErrMessage(message))
+
+    const handleDeleteWithFacebook = () => firebase
+        .doSignInWithFacebook()
+        .then(socialUser => {
+            firebase.user(socialUser.user.uid).set(null).then(() => firebase.deleteUser()
+                .then(() => { })
+                .catch(({ message }) => setErrMessage(message))
+            )
+                .catch(({ message }) => setErrMessage(message))
+        })
+        .catch(({ message }) => setErrMessage(message))
+
+
+    const handleDeleteWithGmail = () => firebase
+        .doSignInWithGoogle()
+        .then(socialUser => {
+            firebase.user(socialUser.user.uid).set(null).then(() => firebase.deleteUser()
+                .then(() => { })
+                .catch(({ message }) => setErrMessage(message))
+            )
+                .catch(({ message }) => setErrMessage(message))
+        })
+        .catch(({ message }) => setErrMessage(message))
+
     return (
         <>
             <Dialog
-              disableBackdropClick
-              open={open}
-              showClose
-              onClose={() => setOpen(false)}
+                disableBackdropClick
+                open={open}
+                showClose
+                onClose={() => setOpen(false)}
             >
                 <FormGrid>
 
-                    <FormControl margin="normal" required>
-                        <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input
-                          name="password"
-                          id="password"
-                          value={password}
-                          onChange={e => setPassword(e.currentTarget.value)}
-                          type="password"
-                        />
-                    </FormControl>
+                    {UserAuthProvider() === AUTH_PROVIDER.PASSWORD && (
+                        <>
+                            <Typography variant="h5">
+                                Please enter your password before we delete your account
+                            </Typography>
+                            <FormControl margin="normal" required>
+                                <InputLabel htmlFor="password">Password</InputLabel>
+                                <Input
+                                    name="password"
+                                    id="password"
+                                    value={password}
+                                    onChange={e => setPassword(e.currentTarget.value)}
+                                    type="password"
+                                />
+                            </FormControl>
+                            <Button
+                                variant="contained"
+                                disabled={password === ''}
+                                onClick={() => handleDeleteWithPassword()}
+                            >
+                                delete account
+                            </Button>
+                        </>
+                    )}
+
+                    {UserAuthProvider() !== AUTH_PROVIDER.PASSWORD && (
+                        <>
+                            <Typography variant="h5">
+                                Please use your {' '}
+                                {UserAuthProvider() === AUTH_PROVIDER.FACEBOOK && 'Facebook'}
+                                {UserAuthProvider() === AUTH_PROVIDER.GMAIL && 'Gmail'}
+                                {' '}
+                                to delete your account
+                            </Typography>
+
+                            <SocialMediaButtons
+                                showFacebook={UserAuthProvider() === AUTH_PROVIDER.FACEBOOK}
+                                showGmail={UserAuthProvider() === AUTH_PROVIDER.GMAIL}
+                                {...{
+                                    onClickFacebook: handleDeleteWithFacebook,
+                                    onClickGmail: handleDeleteWithGmail,
+                                }}
+                            />
+                        </>
+                    )}
 
                     <Typography color="error">{errMessage}</Typography>
 
-                    <Button
-                      disabled={password === ''}
-                      onClick={() => {
-                            firebase
-                                .reauthenticate(password)
-                                .then(() => firebase
-                                    .user(UserUid())
-                                    .set(null))
-                                .then(() => firebase
-                                    .deleteUser()
-                                    .then(() => { })
-                                    .catch(({ message }) => setErrMessage(message)))
-                                .catch(({ message }) => {
-                                    // setModal(true)
-                                    setErrMessage(message)
-                                })
-                        }}
-                    >
-                        confirm
-                    </Button>
+
                 </FormGrid>
             </Dialog>
 
@@ -72,17 +134,17 @@ const DeleteUser = () => {
 
             <br />
             <PrimaryCheckbox
-              formLabel="I understand that by deleting my account all infromation captured will be removed and cannot be retrieved"
-              formValue={agry}
-              onChange={() => setAgry(!agry)}
+                formLabel="I understand that by deleting my account all information captured will be removed and cannot be retrieved"
+                formValue={agree}
+                onChange={() => setAgree(!agree)}
             />
             <br />
 
             <Button
-              variant="contained"
-              color="primary"
-              disabled={!agry}
-              onClick={() => setOpen(true)}
+                variant="contained"
+                color="primary"
+                disabled={!agree}
+                onClick={() => setOpen(true)}
             >
                 delete account
             </Button>

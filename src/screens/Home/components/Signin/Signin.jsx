@@ -46,12 +46,18 @@ const SignIn = ({ history }) => {
     let emailVerified
     firebase
       .doSignInWithFacebook()
-      .then(authUser => {
-        emailVerified = authUser.user.emailVerified
+      .then(socialUser => {
+        emailVerified = socialUser.user.emailVerified
+
+        if (socialUser.additionalUserInfo.isNewUser) {
+          firebase.user(socialUser.user.uid)
+            // @ts-ignore
+            .set({ email: socialUser.additionalUserInfo.profile.email, role: 'PATIENT' })
+        }
 
         if (!emailVerified) history.push(ROUTES.CONFIRM_EMAIL)
 
-        if (emailVerified) firebase.user(authUser.user.uid)
+        if (emailVerified) firebase.user(socialUser.user.uid)
           .once('value')
           .then((snapshot) => {
             const dbUser = snapshot.val()
@@ -61,17 +67,27 @@ const SignIn = ({ history }) => {
       .catch(({ message }) => handleErrorMsg(message))
   }
 
-  const handleGmailLogin = () => firebase
-    .doSignInWithGoogle()
-    .then(authUser => {
-      firebase.user(authUser.user.uid)
+  const handleGmailLogin = () => {
+    let uid
+    firebase
+      .doSignInWithGoogle()
+      .then(socialUser => {
+        uid = socialUser.user.uid
+
+        if (socialUser.additionalUserInfo.isNewUser) {
+          firebase.user(socialUser.user.uid)
+            .set({ email: socialUser.user.email, role: 'PATIENT' })
+        }
+
+      })
+      .then(() => firebase.user(uid)
         .once('value')
         .then((snapshot) => {
           const dbUser = snapshot.val()
           history.push(ROUTES[dbUser.role])
-        })
-    })
-    .catch(({ message }) => handleErrorMsg(message))
+        }))
+      .catch(({ message }) => setErrMessage(message))
+  }
 
   return (
     <FormGrid>

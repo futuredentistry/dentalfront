@@ -10,12 +10,12 @@ const SocialMediaButtons = ({ showGmail, showFacebook, onClickFacebook, onClickG
     return (
         <div className='social_row'>
             <div className='social_container'>
-                {showGmail && (
+                {showFacebook && (
                     <IconButton onClick={() => onClickFacebook()}>
                         <img src={Facebook} alt="icon" />
                     </IconButton>)}
 
-                {showFacebook && (
+                {showGmail&& (
                     <IconButton onClick={() => onClickGmail()}>
                         <img src={Gmail} alt="icon" />
                     </IconButton>)
