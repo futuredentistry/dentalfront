@@ -135,13 +135,13 @@ Chart.propTypes = {
     treatmentSelect: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })),
     concernSelect: PropTypes.arrayOf(PropTypes.shape({ value: PropTypes.string, label: PropTypes.string })),
     painMap: PropTypes.shape({
-        painTopRight: PropTypes.bool.isRequired,
-        painTopCenter: PropTypes.bool.isRequired,
-        painTopLeft: PropTypes.bool.isRequired,
-        painBottomRight: PropTypes.bool.isRequired,
-        painBottomCenter: PropTypes.bool.isRequired,
-        painBottomLeft: PropTypes.bool.isRequired,
-    }).isRequired,
+        painTopRight: PropTypes.bool,
+        painTopCenter: PropTypes.bool,
+        painTopLeft: PropTypes.bool,
+        painBottomRight: PropTypes.bool,
+        painBottomCenter: PropTypes.bool,
+        painBottomLeft: PropTypes.bool,
+    }),
 }
 
 Chart.defaultProps = {
@@ -149,6 +149,7 @@ Chart.defaultProps = {
     segmentImg: {},
     treatmentSelect: [],
     concernSelect: [],
+    painMap: {},
 }
 
 export default Chart
