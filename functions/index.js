@@ -1,13 +1,11 @@
-
-
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 const nodemailer = require('nodemailer')
+const mysql = require('mysql')
 
 // to make it work you need gmail account
 // const gmailEmail = functions.config().gmail.login
-const gmailPassword = functions.config().gmail.pass
-
+const gmailPassword = 'dddd' //functions.config().gmail.pass
 admin.initializeApp()
 
 // creating function for sending emails
@@ -53,4 +51,62 @@ exports.onDataAdded = functions.database.ref('/contact_as/{sessionId}').onCreate
 
     // here we send new data using function for sending emails
     goMail(text, mail)
+})
+
+
+
+
+// SQL
+const mysqlConfig = {
+    connectionLimit: 1,
+    user: 'beemo',
+    password: '9733a7hdgcFP4wwK',
+    database: 'reports',
+}
+
+// Connection pools reuse connections between invocations,
+// and handle dropped or expired connections automatically.
+let mysqlPool
+
+// Add report sql data
+// exports.addReportSQL = functions.https.onCall((data) => {
+//     console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+//     const query = data.query
+//     // Checking attribute.
+//     if (!(typeof query === 'string') || query.length === 0) {
+//         // Throwing an HttpsError so that the client gets the error details.
+//         throw new functions.https.HttpsError('invalid-argument', 'The function must be called with ' +
+//             'one arguments "query" containing the report data to add.')
+//     }
+//     // Checking that the user is authenticated.
+//     // if (!context.auth) {
+//     //     // Throwing an HttpsError so that the client gets the error details.
+//     //     throw new functions.https.HttpsError('failed-precondition', 'The function must be called ' + 'while authenticated.')
+//     // }
+
+//     if (!mysqlPool) {
+//         mysqlPool = mysql.createPool(mysqlConfig);
+//     }
+
+//     mysqlPool.query("CREATE TABLE IF NOT EXISTS dentist (report_id varchar(255), patient_name varchar(255))",
+//         (err, results) => {
+//             if (err) {
+//                 throw new functions.https.HttpsError('failed-precondition', err)
+//             } else {
+//                 mysqlPool.query('SELECT * FROM dentist', (err, results) => {
+//                     if (err) {
+//                         throw new functions.https.HttpsError('failed-precondition', err)
+//                     } else {
+//                         return results
+//                     }
+//                 })
+//             }
+//         })
+
+//     return null
+// })
+
+exports.addReportSQL = functions.https.onCall((data = 'TEST') => {
+    console.log('TEST!!!')
+    return data
 })

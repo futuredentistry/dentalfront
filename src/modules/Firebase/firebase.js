@@ -3,6 +3,7 @@ import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/firestore'
 import 'firebase/storage'
+import 'firebase/functions'
 
 import * as STATUS from 'modules/constants/reportStatus'
 
@@ -30,8 +31,13 @@ class Firebase {
     this.auth = app.auth()
     this.db = app.database()
     this.firestore = app.firestore()
+    this.functions = app.functions()
     this.storage = app.storage()
     // this.collection = this.collection()
+
+    if (process.env.NODE_ENV === 'development')
+      app.functions().useFunctionsEmulator('http://localhost:5000')
+
   }
 
   // *** Auth API ***
@@ -205,6 +211,14 @@ class Firebase {
     // .where("concern", "array-contains", concern)
     // .orderBy(id)
     .get()
+
+
+  // SQL
+  addReportSQL = (database) => {
+    console.log(database)
+
+    return this.functions.httpsCallable('addReportSQL', {})
+  }
 }
 
 export default Firebase

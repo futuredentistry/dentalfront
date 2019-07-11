@@ -119,6 +119,10 @@ const Filters = () => {
                 Filters
             </Typography>
 
+            <Button onClick={() => firebase.addReportSQL('Data')} >
+                Click
+            </Button>
+
             <Grid container spacing={0} direction="row" >
                 <Grid item xs={1} />
 
