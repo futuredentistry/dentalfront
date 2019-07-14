@@ -119,7 +119,16 @@ const Filters = () => {
                 Filters
             </Typography>
 
-            <Button onClick={() => firebase.addReportSQL('Data')} >
+            <Button onClick={() => {
+                const test = firebase.addReportSQL('Data')
+
+                test()
+                    .catch(error => console.log(error))
+                    .then(result => console.log(result))
+
+            }
+            }
+            >
                 Click
             </Button>
 

@@ -20,6 +20,9 @@ class Firebase {
   constructor() {
     app.initializeApp(config)
 
+    if (process.env.NODE_ENV === 'development') 
+      app.functions().useFunctionsEmulator('http://localhost:5000')
+
     /* Helper */
 
     this.serverValue = app.database.ServerValue
@@ -34,9 +37,6 @@ class Firebase {
     this.functions = app.functions()
     this.storage = app.storage()
     // this.collection = this.collection()
-
-    if (process.env.NODE_ENV === 'development')
-      app.functions().useFunctionsEmulator('http://localhost:5000')
 
   }
 
