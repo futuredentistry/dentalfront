@@ -115,6 +115,7 @@ const Chart = ({ segmentProps, handleSetSegmentProps, additionalImg, segmentImg,
                                     onClick: () => { },
                                     buttonText: null,
                                 }} />,
+                                pain: false,
                                 sectionName,
                                 imagesObject: additionalImg,
                                 onClick: () => { }
