@@ -586,3 +586,845 @@
 [debug] [2019-07-16T20:34:45.035Z] Ephemeral server used!
 [debug] [2019-07-16T20:34:45.095Z] Ephemeral server survived.
 [info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T20:50:29.668Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T20:50:31.022Z] Functions runtime initialized.
+[debug] [2019-07-16T20:50:31.023Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T20:50:31.664Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/dental2-test/us-central1/searchReportSQL
+[debug] [2019-07-16T20:51:59.021Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T20:52:00.302Z] Functions runtime initialized.
+[debug] [2019-07-16T20:52:00.303Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T20:52:00.875Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T20:54:54.434Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T20:54:54.731Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T20:54:54.732Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T20:54:55.295Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T20:54:55.337Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T20:54:55.337Z] 
+[debug] [2019-07-16T20:54:55.337Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T20:54:55.343Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54766.sock"}
+[debug] [2019-07-16T20:54:55.344Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54766.sock"}
+[debug] [2019-07-16T20:54:55.369Z] Ephemeral server used!
+[debug] [2019-07-16T20:54:55.425Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-16T20:55:42.125Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T20:55:43.388Z] Functions runtime initialized.
+[debug] [2019-07-16T20:55:43.389Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T20:55:43.959Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T20:55:47.381Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T20:55:47.659Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T20:55:47.661Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T20:55:48.240Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T20:55:48.283Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T20:55:48.283Z] 
+[debug] [2019-07-16T20:55:48.283Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T20:55:48.289Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54810.sock"}
+[debug] [2019-07-16T20:55:48.290Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54810.sock"}
+[debug] [2019-07-16T20:55:48.312Z] Ephemeral server used!
+[debug] [2019-07-16T20:55:48.366Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-16T20:56:12.976Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T20:56:14.314Z] Functions runtime initialized.
+[debug] [2019-07-16T20:56:14.315Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T20:56:14.934Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T20:56:19.361Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T20:56:19.646Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T20:56:19.647Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T20:56:20.234Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T20:56:20.279Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T20:56:20.279Z] 
+[debug] [2019-07-16T20:56:20.279Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T20:56:20.286Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54844.sock"}
+[debug] [2019-07-16T20:56:20.287Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54844.sock"}
+[debug] [2019-07-16T20:56:20.310Z] Ephemeral server used!
+[debug] [2019-07-16T20:56:20.360Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[debug] [2019-07-16T21:07:24.447Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:07:25.811Z] Functions runtime initialized.
+[debug] [2019-07-16T21:07:25.812Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:07:26.517Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:07:30.728Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:07:31.008Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:07:31.009Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:07:31.602Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:07:31.646Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:07:31.646Z] 
+[debug] [2019-07-16T21:07:31.646Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:07:31.653Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54889.sock"}
+[debug] [2019-07-16T21:07:31.654Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54889.sock"}
+[debug] [2019-07-16T21:07:31.675Z] Ephemeral server used!
+[debug] [2019-07-16T21:07:31.725Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[debug] [2019-07-16T21:13:43.802Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:13:45.128Z] Functions runtime initialized.
+[debug] [2019-07-16T21:13:45.129Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:13:45.800Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:13:49.666Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:13:49.944Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:13:49.945Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:13:50.541Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:13:50.584Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:13:50.584Z] 
+[debug] [2019-07-16T21:13:50.584Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:13:50.591Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54927.sock"}
+[debug] [2019-07-16T21:13:50.592Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54927.sock"}
+[debug] [2019-07-16T21:13:50.614Z] Ephemeral server used!
+[debug] [2019-07-16T21:13:50.664Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-16T21:15:27.881Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:15:28.216Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:15:28.217Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:15:28.828Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:15:28.882Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:15:28.882Z] 
+[debug] [2019-07-16T21:15:28.882Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:15:28.889Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54967.sock"}
+[debug] [2019-07-16T21:15:28.890Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_54967.sock"}
+[debug] [2019-07-16T21:15:28.914Z] Ephemeral server used!
+[debug] [2019-07-16T21:15:28.960Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-16T21:16:46.182Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:16:47.596Z] Functions runtime initialized.
+[debug] [2019-07-16T21:16:47.597Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:16:48.332Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:17:43.742Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:17:45.063Z] Functions runtime initialized.
+[debug] [2019-07-16T21:17:45.064Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:17:45.674Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:18:00.789Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:18:02.087Z] Functions runtime initialized.
+[debug] [2019-07-16T21:18:02.088Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:18:02.688Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:19:06.493Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:19:07.789Z] Functions runtime initialized.
+[debug] [2019-07-16T21:19:07.789Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:19:08.402Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:19:17.134Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:19:17.420Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:19:17.421Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:19:18.014Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:19:18.056Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:19:18.056Z] 
+[debug] [2019-07-16T21:19:18.057Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:19:18.064Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55180.sock"}
+[debug] [2019-07-16T21:19:18.065Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55180.sock"}
+[debug] [2019-07-16T21:19:18.091Z] Ephemeral server used!
+[debug] [2019-07-16T21:19:18.136Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[debug] [2019-07-16T21:22:37.267Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:22:38.628Z] Functions runtime initialized.
+[debug] [2019-07-16T21:22:38.629Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:22:39.278Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:22:45.651Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:22:45.751Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:22:47.057Z] Functions runtime initialized.
+[debug] [2019-07-16T21:22:47.058Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:22:47.763Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:22:50.350Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:22:50.633Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:22:50.635Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:22:51.228Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:22:51.275Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:22:51.275Z] 
+[debug] [2019-07-16T21:22:51.275Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:22:51.281Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55249.sock"}
+[debug] [2019-07-16T21:22:51.282Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55249.sock"}
+[debug] [2019-07-16T21:22:51.305Z] Ephemeral server used!
+[debug] [2019-07-16T21:22:51.356Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[debug] [2019-07-16T21:23:02.809Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:23:04.114Z] Functions runtime initialized.
+[debug] [2019-07-16T21:23:04.115Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:23:04.701Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:23:04.824Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:23:05.112Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:23:05.114Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:23:05.710Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:23:05.754Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:23:05.754Z] 
+[debug] [2019-07-16T21:23:05.754Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:23:05.761Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55276.sock"}
+[debug] [2019-07-16T21:23:05.761Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55276.sock"}
+[debug] [2019-07-16T21:23:05.782Z] Ephemeral server used!
+[debug] [2019-07-16T21:23:05.823Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[debug] [2019-07-16T21:26:14.637Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:26:15.964Z] Functions runtime initialized.
+[debug] [2019-07-16T21:26:15.964Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:26:16.594Z] firebase-admin has been stubbed.
+[warn] ⚠  /Users/ninjamate/Documents/projects/dental/functions/index.js:94
+    return await res
+           ^^^^^
+
+SyntaxError: await is only valid in async function
+    at new Script (vm.js:80:7)
+    at createScript (vm.js:274:10)
+    at Object.runInThisContext (vm.js:326:10)
+    at Module._compile (internal/modules/cjs/loader.js:664:28)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:531:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-07-16T21:26:49.681Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:26:50.981Z] Functions runtime initialized.
+[debug] [2019-07-16T21:26:50.983Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:26:51.636Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:26:56.686Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:26:56.974Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:26:56.975Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:26:57.565Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[warn] ⚠  Could not find trigger "searchReportSQL" in your functions directory.
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-07-16T21:27:25.309Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:27:26.600Z] Functions runtime initialized.
+[debug] [2019-07-16T21:27:26.601Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:27:27.200Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:30:19.103Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:30:20.373Z] Functions runtime initialized.
+[debug] [2019-07-16T21:30:20.374Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:30:20.956Z] firebase-admin has been stubbed.
+[warn] ⚠  /Users/ninjamate/Documents/projects/dental/functions/index.js:95
+    }
+    ^
+
+SyntaxError: missing ) after argument list
+    at new Script (vm.js:80:7)
+    at createScript (vm.js:274:10)
+    at Object.runInThisContext (vm.js:326:10)
+    at Module._compile (internal/modules/cjs/loader.js:664:28)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:531:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-07-16T21:31:37.597Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:31:38.883Z] Functions runtime initialized.
+[debug] [2019-07-16T21:31:38.884Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:31:39.541Z] firebase-admin has been stubbed.
+[warn] ⚠  /Users/ninjamate/Documents/projects/dental/functions/index.js:95
+    }
+    ^
+
+SyntaxError: missing ) after argument list
+    at new Script (vm.js:80:7)
+    at createScript (vm.js:274:10)
+    at Object.runInThisContext (vm.js:326:10)
+    at Module._compile (internal/modules/cjs/loader.js:664:28)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:531:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-07-16T21:31:46.776Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:31:48.097Z] Functions runtime initialized.
+[debug] [2019-07-16T21:31:48.098Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:31:48.722Z] firebase-admin has been stubbed.
+[warn] ⚠  /Users/ninjamate/Documents/projects/dental/functions/index.js:95
+    }
+    ^
+
+SyntaxError: missing ) after argument list
+    at new Script (vm.js:80:7)
+    at createScript (vm.js:274:10)
+    at Object.runInThisContext (vm.js:326:10)
+    at Module._compile (internal/modules/cjs/loader.js:664:28)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:531:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-07-16T21:32:04.916Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:32:06.183Z] Functions runtime initialized.
+[debug] [2019-07-16T21:32:06.183Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:32:06.738Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:32:12.305Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:32:12.584Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:32:12.586Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:32:13.162Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:32:13.205Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:32:13.205Z] 
+[debug] [2019-07-16T21:32:13.205Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:32:13.212Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55451.sock"}
+[debug] [2019-07-16T21:32:13.212Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55451.sock"}
+[debug] [2019-07-16T21:32:13.235Z] Ephemeral server used!
+[debug] [2019-07-16T21:32:13.288Z] Ephemeral server survived.
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-16T21:34:22.923Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:34:24.214Z] Functions runtime initialized.
+[debug] [2019-07-16T21:34:24.215Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:34:24.826Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:34:27.527Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:34:27.812Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:34:27.813Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:34:28.414Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:34:28.465Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:34:28.466Z] 
+[debug] [2019-07-16T21:34:28.466Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:34:28.473Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55484.sock"}
+[debug] [2019-07-16T21:34:28.474Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55484.sock"}
+[debug] [2019-07-16T21:34:28.503Z] Ephemeral server used!
+[debug] [2019-07-16T21:34:28.558Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[debug] [2019-07-16T21:34:51.272Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:34:52.609Z] Functions runtime initialized.
+[debug] [2019-07-16T21:34:52.610Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:34:53.271Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:35:01.792Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:35:03.057Z] Functions runtime initialized.
+[debug] [2019-07-16T21:35:03.058Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:35:03.652Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:35:07.052Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:35:07.328Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:35:07.330Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:35:07.903Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:35:07.944Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:35:07.945Z] 
+[debug] [2019-07-16T21:35:07.945Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:35:07.951Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55531.sock"}
+[debug] [2019-07-16T21:35:07.952Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55531.sock"}
+[debug] [2019-07-16T21:35:07.971Z] Ephemeral server used!
+[debug] [2019-07-16T21:35:08.009Z] Ephemeral server survived.
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-16T21:35:14.729Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:35:15.039Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:35:15.041Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:35:15.623Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:35:15.666Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:35:15.666Z] 
+[debug] [2019-07-16T21:35:15.666Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:35:15.673Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55538.sock"}
+[debug] [2019-07-16T21:35:15.674Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55538.sock"}
+[debug] [2019-07-16T21:35:15.693Z] Ephemeral server used!
+[debug] [2019-07-16T21:35:15.736Z] Ephemeral server survived.
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-16T21:35:29.348Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:35:30.671Z] Functions runtime initialized.
+[debug] [2019-07-16T21:35:30.671Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:35:31.284Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:35:34.393Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:35:34.677Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:35:34.678Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:35:35.267Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:35:35.310Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:35:35.310Z] 
+[debug] [2019-07-16T21:35:35.310Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:35:35.317Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55566.sock"}
+[debug] [2019-07-16T21:35:35.318Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55566.sock"}
+[debug] [2019-07-16T21:35:35.341Z] Ephemeral server used!
+[debug] [2019-07-16T21:35:35.393Z] Ephemeral server survived.
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-16T21:36:22.731Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:36:24.055Z] Functions runtime initialized.
+[debug] [2019-07-16T21:36:24.056Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:36:24.676Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:36:27.292Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-16T21:36:27.572Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-16T21:36:27.573Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:36:28.166Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T21:36:28.210Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T21:36:28.211Z] 
+[debug] [2019-07-16T21:36:28.211Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-16T21:36:28.217Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55593.sock"}
+[debug] [2019-07-16T21:36:28.218Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_55593.sock"}
+[debug] [2019-07-16T21:36:28.240Z] Ephemeral server used!
+[debug] [2019-07-16T21:36:28.291Z] Ephemeral server survived.
+[info] >  [ RowDataPacket {
+[info] >      id: '2019-07-12T14:48:45.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Eldercare',
+[info] >      email: 'antibioticvz',
+[info] >      risk: 'medium',
+[info] >      caries: 1,
+[info] >      gum_disease: 0,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z },
+[info] >    RowDataPacket {
+[info] >      id: '2016-01-11T12:43:47.926Z',
+[info] >      name: 'victor zadorozhnyy',
+[info] >      organisation: 'Other',
+[info] >      email: 'antibioticvz@gmail.com',
+[info] >      risk: 'low',
+[info] >      caries: 0,
+[info] >      gum_disease: 1,
+[info] >      wear: 0,
+[info] >      trauma: 0,
+[info] >      cancer: 0,
+[info] >      infection: 0,
+[info] >      other: 0,
+[info] >      capping: 0,
+[info] >      crown: 0,
+[info] >      filling: 0,
+[info] >      root_canal: 0,
+[info] >      tooth_extraction: 0,
+[info] >      date: 2019-07-15T20:00:00.000Z } ]
+[info] >  /Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:437
+[info] >        throw err; // Rethrow non-MySQL errors
+[info] >        ^
+[info] >  
+[info] >  TypeError: Cannot destructure property `data` of 'undefined' or 'null'.
+[info] >      at Query.mysqlPool.query (/Users/ninjamate/Documents/projects/dental/functions/index.js:91:32)
+[info] >      at Query.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:525:10)
+[info] >      at Query._callback (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:491:16)
+[info] >      at Query.Sequence.end (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+[info] >      at Query._handleFinalResultPacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Query.js:139:8)
+[info] >      at Query.EofPacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Query.js:123:8)
+[info] >      at Protocol._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+[info] >      at Parser._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:433:10)
+[info] >      at Parser.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:43:10)
+[info] >      at Protocol.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+[debug] [2019-07-16T21:37:23.717Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T21:37:24.986Z] Functions runtime initialized.
+[debug] [2019-07-16T21:37:24.987Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T21:37:25.584Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.

@@ -98,20 +98,7 @@ const Filters = () => {
     }, [])
 
 
-    const [risk] = useState(['no risk', 'low', 'medium', 'high'])
-
-
-    // const [record, setRecord] = useState([])
-    // useEffect(() => {
-    //     const records = []
-    //     firebase.getTreatmentCollection().then(
-    //         (querySnapshot) => querySnapshot.forEach((doc) => {
-    //             const data = doc.data()
-    //             const fullName = `${capitalizeFirstLetter(data.firstName)} ${capitalizeFirstLetter(data.familyName)}`
-    //             records.push({ id: doc.id, fullName, email: data.email, organisation: data.organisation, date:  })
-    //         }),
-    //     ).then(() => setTreatment(records))
-    // }, [])
+    const [risk] = useState(['no', 'low', 'medium', 'high'])
 
     const sqlReportData = () => ({
         id: '12345',
@@ -140,9 +127,12 @@ const Filters = () => {
             </Typography>
 
             <Button onClick={() => {
-                const test = firebase.addReportSQL()
+                const test = firebase.searchReportSQL()
 
-                test(sqlReportData())
+                test()
+                 .then(r=>console.log(r))
+                 .catch(e=>console.log(e))
+                 .finally(e=>console.log(e))
 
             }
             }

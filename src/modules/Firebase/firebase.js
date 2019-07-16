@@ -221,6 +221,8 @@ class Firebase {
   // SQL
   addReportSQL = () => this.functions.httpsCallable('addReportSQL', {})
 
+  searchReportSQL = () => this.functions.httpsCallable('searchReportSQL', {})
+
 }
 
 export default Firebase
