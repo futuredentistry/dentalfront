@@ -57,7 +57,7 @@ const Filters = () => {
     const classes = useStyles()
 
     const [date, setDate] = useState([null, null])
-
+    console.log(date[0])
     const [search, setSearch] = useState(searchDefault)
 
     const firebase = useContext(FirebaseContext)
@@ -100,25 +100,27 @@ const Filters = () => {
 
     const [risk] = useState(['no', 'low', 'medium', 'high'])
 
-    const sqlReportData = () => ({
-        id: '12345',
-        name: 'vic vvvv',
-        organisation: 'Other',
-        email: 'fdfdfd',
-        risk: 'no',
-        caries: 1,
-        gum_disease: 1,
-        wear: 1,
-        trauma: 1,
-        cancer: 1,
-        infection: 1,
-        other: 1,
-        capping: 1,
-        crown: 1,
-        filling: 1,
-        root_canal: 1,
-        tooth_extraction: 1,
-    })
+    const sqlSearchData = () => {
+        const searchReportSQL = firebase.searchReportSQL()
+        return searchReportSQL({
+            organisation: search.organisation,
+            risk: search.risk,
+            caries: search.concern.includes('Caries') ? 1 : 0,
+            gum_disease: search.concern.includes('Gum Disease') ? 1 : 0,
+            wear: search.concern.includes('Wear') ? 1 : 0,
+            trauma: search.concern.includes('Trauma') ? 1 : 0,
+            cancer: search.concern.includes('Oral Cancer') ? 1 : 0,
+            infection: search.concern.includes('Infection') ? 1 : 0,
+            other: search.concern.includes('Other') ? 1 : 0,
+            capping: search.treatment.includes('Capping') ? 1 : 0,
+            crown: search.treatment.includes('Crown') ? 1 : 0,
+            filling: search.treatment.includes('Filling') ? 1 : 0,
+            root_canal: search.treatment.includes('Root Canal') ? 1 : 0,
+            tooth_extraction: search.treatment.includes('Tooth Extraction') ? 1 : 0,
+            date_start: date[0],
+            date_finish: date[1],
+        })
+    }
 
     return (
         <NoSsr>
@@ -127,12 +129,10 @@ const Filters = () => {
             </Typography>
 
             <Button onClick={() => {
-                const test = firebase.searchReportSQL()
 
-                test()
-                 .then(r=>console.log(r))
-                 .catch(e=>console.log(e))
-                 .finally(e=>console.log(e))
+                sqlSearchData()
+                    .then(r => console.log(r))
+                    .catch(e => console.log(e))
 
             }
             }
