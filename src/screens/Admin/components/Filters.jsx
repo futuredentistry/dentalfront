@@ -113,6 +113,26 @@ const Filters = () => {
     //     ).then(() => setTreatment(records))
     // }, [])
 
+    const sqlReportData = () => ({
+        id: '12345',
+        name: 'vic vvvv',
+        organisation: 'Other',
+        email: 'fdfdfd',
+        risk: 'no',
+        caries: 1,
+        gum_disease: 1,
+        wear: 1,
+        trauma: 1,
+        cancer: 1,
+        infection: 1,
+        other: 1,
+        capping: 1,
+        crown: 1,
+        filling: 1,
+        root_canal: 1,
+        tooth_extraction: 1,
+    })
+
     return (
         <NoSsr>
             <Typography variant='h4'>
@@ -120,11 +140,9 @@ const Filters = () => {
             </Typography>
 
             <Button onClick={() => {
-                const test = firebase.addReportSQL('Data')
+                const test = firebase.addReportSQL()
 
-                test()
-                    .catch(error => console.log(error))
-                    .then(result => console.log(result))
+                test(sqlReportData())
 
             }
             }

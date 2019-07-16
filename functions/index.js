@@ -94,6 +94,7 @@ exports.OLDaddReportSQL = functions.https.onCall((data, context) => {
 })
 
 exports.addReportSQL = functions.https.onCall((data, context) => {
+    const { id, name, organisation, email, risk, caries, gum_disease, wear, trauma, cancer, infection, other, capping, crown, filling, root_canal, tooth_extraction } = data
 
     // Checking that the user is authenticated.
     if (!context.auth) {
@@ -104,8 +105,8 @@ exports.addReportSQL = functions.https.onCall((data, context) => {
     if (!mysqlPool) mysqlPool = mysql.createPool(mysqlConfig);
 
     const CURRENT_DAY = mysql.raw('CURDATE()')
-    var sql = mysql.format('INSERT INTO dentist(id, name, organisation, email, risk, gum_disease, date) VALUES(?, ?, ?, ?, ?, ?, ?)',
-        ['2016-01-11T12:43:47.926Z', 'victor zadorozhnyy', 'Other', 'antibioticvz@gmail.com', 'low', 1, CURRENT_DAY])
+    const sql = mysql.format('INSERT INTO dentist(id, name, organisation, email, risk, caries, gum_disease, wear, trauma, cancer, infection, other, capping, crown, filling, root_canal, tooth_extraction, date) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        [id, name, organisation, email, risk, caries, gum_disease, wear, trauma, cancer, infection, other, capping, crown, filling, root_canal, tooth_extraction, CURRENT_DAY])
 
     mysqlPool.query(
         sql,
@@ -115,5 +116,5 @@ exports.addReportSQL = functions.https.onCall((data, context) => {
             if (results) return results
         })
 
-    return 'add'
+    return null
 })

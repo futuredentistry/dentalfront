@@ -13,6 +13,7 @@ import NoSsr from '@material-ui/core/NoSsr'
 import { propsTreatment } from 'modules/Dentist/props'
 
 const Issue = ({ onClose, segmentProps, setSegment, treatmentSelect, concernSelect }) => {
+
     const [validateForm, setValidateForm] = useState(false)
 
     const validator = () => segmentProps.concern.length > 0 && segmentProps.treatment.length > 0

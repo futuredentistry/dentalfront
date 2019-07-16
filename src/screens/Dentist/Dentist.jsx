@@ -15,6 +15,7 @@ import Success from './components/Success'
 
 const Dentist = ({ history }) => {
     const [patient, setPatient] = useState(null)
+
     const [reportId, setReportId] = useState(null)
     const [waitingReport, setWaitingReport] = useState(true)
 
@@ -104,6 +105,36 @@ const Dentist = ({ history }) => {
         }
     }
 
+    const insertSqlReport = () => {
+        const mapSegment = obj => Object.keys(obj).map(key => [...obj[key].treatment.treatment, ...obj[key].treatment.concern])
+
+        const uniqueFlatArr = arr => [...new Set([].concat(...arr))]
+
+        const reportValues = uniqueFlatArr(mapSegment(segmentProps))
+
+        const addReportSQL = firebase.addReportSQL()
+
+        return addReportSQL({
+            id: reportId,
+            name: `${patient.firstName} ${patient.familyName}`,
+            organisation: patient.organisation,
+            email: patient.email,
+            risk,
+            caries: reportValues.includes('Caries') ? 1 : 0,
+            gum_disease: reportValues.includes('Gum Disease') ? 1 : 0,
+            wear: reportValues.includes('Wear') ? 1 : 0,
+            trauma: reportValues.includes('Trauma') ? 1 : 0,
+            cancer: reportValues.includes('Oral Cancer') ? 1 : 0,
+            infection: reportValues.includes('Infection') ? 1 : 0,
+            other: reportValues.includes('Other') ? 1 : 0,
+            capping: reportValues.includes('Capping') ? 1 : 0,
+            crown: reportValues.includes('Crown') ? 1 : 0,
+            filling: reportValues.includes('Filling') ? 1 : 0,
+            root_canal: reportValues.includes('Root Canal') ? 1 : 0,
+            tooth_extraction: reportValues.includes('Tooth Extraction') ? 1 : 0,
+        })
+    }
+
     return (
         <>
             {
@@ -134,10 +165,12 @@ const Dentist = ({ history }) => {
                                     report: segmentProps,
                                     status: STATUS.COMPLETED,
                                 }
-                            ).then(() => {
-                                setReportId(null) // set report id to null to fire useEffect
-                                setStep(step + 1)
-                            })
+                            )
+                                .then(() => {
+                                    insertSqlReport()
+                                    setReportId(null) // set report id to null to fire useEffect
+                                    setStep(step + 1)
+                                })
                         },
                         disabledSubmit: summaryReview === '',
                     }}
