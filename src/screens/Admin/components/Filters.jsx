@@ -98,7 +98,7 @@ const Filters = () => {
     }, [])
 
 
-    const [risk] = useState(['outstanding', 'good', 'average', 'poor'])
+    const [risk] = useState(['no risk', 'low', 'medium', 'high'])
 
 
     // const [record, setRecord] = useState([])
@@ -211,7 +211,6 @@ const Filters = () => {
                                     <MenuItem key={value} value={value}>{capitalizeFirstLetter(value)}</MenuItem>
                                 )
                             }
-                            <MenuItem key={0} value={null}>None</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>

@@ -20,7 +20,7 @@ class Firebase {
   constructor() {
     app.initializeApp(config)
 
-    if (process.env.NODE_ENV === 'development') 
+    if (process.env.NODE_ENV === 'development')
       app.functions().useFunctionsEmulator('http://localhost:5000')
 
     /* Helper */
@@ -39,6 +39,11 @@ class Firebase {
     // this.collection = this.collection()
 
   }
+
+  arrToInQueryString = arr => `('${arr.join("', '")}')`
+
+
+
 
   // *** Auth API ***
 

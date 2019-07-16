@@ -72,6 +72,27 @@ if (process.env.NODE_ENV === 'production') {
 let mysqlPool
 
 // Add report sql data
+exports.OLDaddReportSQL = functions.https.onCall((data, context) => {
+
+    // Checking that the user is authenticated.
+    if (!context.auth) {
+        // Throwing an HttpsError so that the client gets the error details.
+        throw new functions.https.HttpsError('failed-precondition', 'The function must be called ' + 'while authenticated.')
+    }
+
+    if (!mysqlPool) mysqlPool = mysql.createPool(mysqlConfig);
+    const today = new Date()
+    mysqlPool.query(
+        "INSERT INTO dentist (`id`, `name`, `organisation`, `email`, `risk`, `gum_disease`, `date`) VALUES ('2016-01-11T12:43:47.926Z', 'victor zadorozhnyy', 'Eldercare', 'antibioticvz@gmail.com', 'low', 1, " + today + ");",
+        (err, results) => {
+            if (err) throw new functions.https.HttpsError('failed-precondition', err)
+
+            if (results) return results
+        })
+
+    return 'hi'
+})
+
 exports.addReportSQL = functions.https.onCall((data, context) => {
 
     // Checking that the user is authenticated.
@@ -82,13 +103,17 @@ exports.addReportSQL = functions.https.onCall((data, context) => {
 
     if (!mysqlPool) mysqlPool = mysql.createPool(mysqlConfig);
 
+    const CURRENT_DAY = mysql.raw('CURDATE()')
+    var sql = mysql.format('INSERT INTO dentist(id, name, organisation, email, risk, gum_disease, date) VALUES(?, ?, ?, ?, ?, ?, ?)',
+        ['2016-01-11T12:43:47.926Z', 'victor zadorozhnyy', 'Other', 'antibioticvz@gmail.com', 'low', 1, CURRENT_DAY])
+
     mysqlPool.query(
-        "INSERT INTO dentist (`id`, `name`, `organisation`, `email`, `risk`, `gum_disease`) VALUES ('2016-01-11T12:43:47.926Z', 'victor zadorozhnyy', 'Eldercare', 'antibioticvz@gmail.com', 'low', 1);",
+        sql,
         (err, results) => {
             if (err) throw new functions.https.HttpsError('failed-precondition', err)
 
             if (results) return results
         })
 
-    return
+    return 'add'
 })

@@ -1,0 +1,472 @@
+[debug] [2019-07-16T09:43:49.366Z] ----------------------------------------------------------------------
+[debug] [2019-07-16T09:43:49.368Z] Command:       /usr/local/Cellar/node@10/10.15.3/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2019-07-16T09:43:49.369Z] CLI Version:   6.10.0
+[debug] [2019-07-16T09:43:49.369Z] Platform:      darwin
+[debug] [2019-07-16T09:43:49.369Z] Node Version:  v10.15.3
+[debug] [2019-07-16T09:43:49.372Z] Time:          Tue Jul 16 2019 13:43:49 GMT+0400 (Georgia Standard Time)
+[debug] [2019-07-16T09:43:49.372Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-16T09:43:49.387Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-16T09:43:49.388Z] > authorizing via signed-in user
+[debug] [2019-07-16T09:43:49.388Z] [iam] checking project dental2-test for permissions ["firebase.projects.get"]
+[debug] [2019-07-16T09:43:49.389Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-07-16T09:43:49.390Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-07-16T09:43:49.854Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-16T09:43:49.871Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/dental2-test:testIamPermissions  
+
+[debug] [2019-07-16T09:43:51.112Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-16T09:43:51.113Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/dental2-test  
+ 
+[debug] [2019-07-16T09:43:52.167Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Using node@10 from host.
+[debug] [2019-07-16T09:43:52.177Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/897675393840:getServerAppConfig  
+ 
+[debug] [2019-07-16T09:43:52.784Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/ninjamate/Documents/projects/dental/functions" for Cloud Functions...
+[debug] [2019-07-16T09:43:53.077Z] Functions runtime initialized.
+[debug] [2019-07-16T09:43:53.077Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:43:53.738Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:43:53.802Z] Unsupported trigger: {"eventTrigger":{"resource":"projects/_/instances/dental2-test/refs/contact_as/{sessionId}","eventType":"providers/google.firebase.database/eventTypes/ref.create","service":"firebaseio.com"},"name":"onDataAdded","entryPoint":"onDataAdded"}
+[info] Ignoring trigger "onDataAdded" because the service "firebaseio.com" is not yet supported.
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/dental2-test/us-central1/addReportSQL
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/dental2-test/us-central1/selectReportSQL
+[debug] [2019-07-16T09:44:30.079Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T09:44:30.425Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T09:44:30.426Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:44:31.066Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:44:31.121Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T09:44:31.121Z] 
+[debug] [2019-07-16T09:44:31.121Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T09:44:31.129Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50092.sock"}
+[debug] [2019-07-16T09:44:31.132Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50092.sock"}
+[debug] [2019-07-16T09:44:31.155Z] Ephemeral server used!
+[debug] [2019-07-16T09:44:31.214Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T09:45:30.594Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T09:45:31.925Z] Functions runtime initialized.
+[debug] [2019-07-16T09:45:31.926Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:45:32.607Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:45:37.624Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T09:45:37.910Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T09:45:37.911Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:45:38.558Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:45:38.603Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T09:45:38.603Z] 
+[debug] [2019-07-16T09:45:38.603Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T09:45:38.610Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50125.sock"}
+[debug] [2019-07-16T09:45:38.612Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50125.sock"}
+[debug] [2019-07-16T09:45:38.638Z] Ephemeral server used!
+[debug] [2019-07-16T09:45:38.682Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T09:45:56.814Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T09:45:58.112Z] Functions runtime initialized.
+[debug] [2019-07-16T09:45:58.113Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:45:58.725Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:46:01.240Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T09:46:01.525Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T09:46:01.527Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:46:02.129Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:46:02.176Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T09:46:02.176Z] 
+[debug] [2019-07-16T09:46:02.176Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T09:46:02.184Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50152.sock"}
+[debug] [2019-07-16T09:46:02.185Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50152.sock"}
+[debug] [2019-07-16T09:46:02.209Z] Ephemeral server used!
+[debug] [2019-07-16T09:46:02.247Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T09:48:18.042Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T09:48:19.383Z] Functions runtime initialized.
+[debug] [2019-07-16T09:48:19.384Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:48:20.069Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:48:34.499Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T09:48:34.826Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T09:48:34.827Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:48:35.474Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:48:35.528Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T09:48:35.528Z] 
+[debug] [2019-07-16T09:48:35.528Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T09:48:35.536Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50194.sock"}
+[debug] [2019-07-16T09:48:35.538Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50194.sock"}
+[debug] [2019-07-16T09:48:35.561Z] Ephemeral server used!
+[debug] [2019-07-16T09:48:35.612Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T09:53:02.047Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T09:53:03.373Z] Functions runtime initialized.
+[debug] [2019-07-16T09:53:03.374Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:53:04.032Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:53:09.851Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T09:53:10.171Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T09:53:10.173Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:53:10.772Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:53:10.815Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T09:53:10.815Z] 
+[debug] [2019-07-16T09:53:10.815Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T09:53:10.822Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50229.sock"}
+[debug] [2019-07-16T09:53:10.823Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50229.sock"}
+[debug] [2019-07-16T09:53:10.846Z] Ephemeral server used!
+[debug] [2019-07-16T09:53:10.894Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T09:56:36.280Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T09:56:37.612Z] Functions runtime initialized.
+[debug] [2019-07-16T09:56:37.614Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:56:38.260Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:56:47.631Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T09:56:47.921Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T09:56:47.922Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:56:48.540Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:56:48.600Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T09:56:48.600Z] 
+[debug] [2019-07-16T09:56:48.600Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T09:56:48.608Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50261.sock"}
+[debug] [2019-07-16T09:56:48.611Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50261.sock"}
+[debug] [2019-07-16T09:56:48.634Z] Ephemeral server used!
+[debug] [2019-07-16T09:56:48.690Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T09:57:34.874Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T09:57:36.280Z] Functions runtime initialized.
+[debug] [2019-07-16T09:57:36.281Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:57:36.956Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:57:44.268Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T09:57:45.562Z] Functions runtime initialized.
+[debug] [2019-07-16T09:57:45.564Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:57:46.184Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:57:47.209Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T09:57:47.490Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T09:57:47.491Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:57:48.078Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T09:57:48.122Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T09:57:48.122Z] 
+[debug] [2019-07-16T09:57:48.122Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T09:57:48.129Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50308.sock"}
+[debug] [2019-07-16T09:57:48.130Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50308.sock"}
+[debug] [2019-07-16T09:57:48.158Z] Ephemeral server used!
+[debug] [2019-07-16T09:57:48.202Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T09:58:36.125Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T09:58:37.457Z] Functions runtime initialized.
+[debug] [2019-07-16T09:58:37.458Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T09:58:38.125Z] firebase-admin has been stubbed.
+[warn] ⚠  /Users/ninjamate/Documents/projects/dental/functions/index.js:109
+        [INSERT INTO dentist(`id`, `name`, `organisation`, `email`, `risk`, `gum_disease`, `date`) VALUES('2016-01-11T12:43:47.926Z', 'victor zadorozhnyy', 'Eldercare', 'antibioticvz@gmail.com', 'low', 1, today });],
+                ^^^^
+
+SyntaxError: Unexpected identifier
+    at new Script (vm.js:80:7)
+    at createScript (vm.js:274:10)
+    at Object.runInThisContext (vm.js:326:10)
+    at Module._compile (internal/modules/cjs/loader.js:664:28)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:531:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-07-16T10:02:18.958Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T10:02:20.231Z] Functions runtime initialized.
+[debug] [2019-07-16T10:02:20.232Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:02:20.858Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:03:54.165Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T10:03:55.440Z] Functions runtime initialized.
+[debug] [2019-07-16T10:03:55.441Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:03:56.026Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:04:12.567Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T10:04:12.849Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T10:04:12.850Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:04:13.438Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:04:13.480Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T10:04:13.481Z] 
+[debug] [2019-07-16T10:04:13.481Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T10:04:13.487Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50394.sock"}
+[debug] [2019-07-16T10:04:13.488Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50394.sock"}
+[debug] [2019-07-16T10:04:13.515Z] Ephemeral server used!
+[debug] [2019-07-16T10:04:13.559Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T10:04:33.410Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T10:04:33.690Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T10:04:33.691Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:04:34.276Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:04:34.320Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T10:04:34.321Z] 
+[debug] [2019-07-16T10:04:34.321Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T10:04:34.328Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50401.sock"}
+[debug] [2019-07-16T10:04:34.329Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50401.sock"}
+[debug] [2019-07-16T10:04:34.352Z] Ephemeral server used!
+[debug] [2019-07-16T10:04:34.390Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T10:04:58.461Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T10:04:58.737Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T10:04:58.738Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:04:59.352Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:04:59.407Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T10:04:59.407Z] 
+[debug] [2019-07-16T10:04:59.409Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T10:04:59.417Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50408.sock"}
+[debug] [2019-07-16T10:04:59.418Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50408.sock"}
+[debug] [2019-07-16T10:04:59.444Z] Ephemeral server used!
+[debug] [2019-07-16T10:04:59.500Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T10:06:03.183Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T10:06:04.509Z] Functions runtime initialized.
+[debug] [2019-07-16T10:06:04.510Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:06:05.096Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:06:11.649Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T10:06:11.933Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T10:06:11.934Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:06:12.576Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:06:12.619Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T10:06:12.619Z] 
+[debug] [2019-07-16T10:06:12.619Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T10:06:12.627Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50440.sock"}
+[debug] [2019-07-16T10:06:12.628Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50440.sock"}
+[debug] [2019-07-16T10:06:12.649Z] Ephemeral server used!
+[debug] [2019-07-16T10:06:12.692Z] Ephemeral server survived.
+[info] >  7/16/2019, 2:06:13 PM
+[info] i  functions: Finished "addReportSQL" in ~1s
+[info] >  /Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:437
+[info] >        throw err; // Rethrow non-MySQL errors
+[info] >        ^
+[info] >  
+[info] >  Error: Error: ER_TRUNCATED_WRONG_VALUE: Incorrect date value: '7/16/2019, 2:06:13 PM' for column 'date' at row 1
+[info] >      at Query.mysqlPool.query (/Users/ninjamate/Documents/projects/dental/functions/index.js:115:28)
+[info] >      at Query.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:525:10)
+[info] >      at Query._callback (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:491:16)
+[info] >      at Query.Sequence.end (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+[info] >      at Query.ErrorPacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+[info] >      at Protocol._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+[info] >      at Parser._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:433:10)
+[info] >      at Parser.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:43:10)
+[info] >      at Protocol.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+[info] >      at Socket.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:91:28)
+[debug] [2019-07-16T10:06:29.751Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T10:06:30.030Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T10:06:30.031Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:06:30.677Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:06:30.728Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T10:06:30.728Z] 
+[debug] [2019-07-16T10:06:30.729Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T10:06:30.739Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50447.sock"}
+[debug] [2019-07-16T10:06:30.739Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50447.sock"}
+[debug] [2019-07-16T10:06:30.769Z] Ephemeral server used!
+[debug] [2019-07-16T10:06:30.808Z] Ephemeral server survived.
+[info] >  7/16/2019, 2:06:31 PM
+[info] i  functions: Finished "addReportSQL" in ~1s
+[info] >  /Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:437
+[info] >        throw err; // Rethrow non-MySQL errors
+[info] >        ^
+[info] >  
+[info] >  Error: Error: ER_TRUNCATED_WRONG_VALUE: Incorrect date value: '7/16/2019, 2:06:31 PM' for column 'date' at row 1
+[info] >      at Query.mysqlPool.query (/Users/ninjamate/Documents/projects/dental/functions/index.js:115:28)
+[info] >      at Query.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:525:10)
+[info] >      at Query._callback (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:491:16)
+[info] >      at Query.Sequence.end (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+[info] >      at Query.ErrorPacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+[info] >      at Protocol._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+[info] >      at Parser._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:433:10)
+[info] >      at Parser.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:43:10)
+[info] >      at Protocol.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+[info] >      at Socket.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:91:28)
+[debug] [2019-07-16T10:08:05.336Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T10:08:06.631Z] Functions runtime initialized.
+[debug] [2019-07-16T10:08:06.632Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:08:07.251Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:08:10.761Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T10:08:11.043Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T10:08:11.044Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:08:11.687Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:08:11.731Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T10:08:11.732Z] 
+[debug] [2019-07-16T10:08:11.732Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T10:08:11.738Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50475.sock"}
+[debug] [2019-07-16T10:08:11.739Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50475.sock"}
+[debug] [2019-07-16T10:08:11.762Z] Ephemeral server used!
+[debug] [2019-07-16T10:08:11.798Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[info] >  /Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:437
+[info] >        throw err; // Rethrow non-MySQL errors
+[info] >        ^
+[info] >  
+[info] >  Error: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':08:12 PM)' at line 1
+[info] >      at Query.mysqlPool.query (/Users/ninjamate/Documents/projects/dental/functions/index.js:88:28)
+[info] >      at Query.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:525:10)
+[info] >      at Query._callback (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:491:16)
+[info] >      at Query.Sequence.end (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+[info] >      at Query.ErrorPacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+[info] >      at Protocol._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+[info] >      at Parser._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:433:10)
+[info] >      at Parser.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:43:10)
+[info] >      at Protocol.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+[info] >      at Socket.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:91:28)
+[debug] [2019-07-16T10:08:34.865Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T10:08:35.152Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T10:08:35.154Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:08:35.746Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:08:35.790Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T10:08:35.790Z] 
+[debug] [2019-07-16T10:08:35.790Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T10:08:35.797Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50483.sock"}
+[debug] [2019-07-16T10:08:35.798Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50483.sock"}
+[debug] [2019-07-16T10:08:35.819Z] Ephemeral server used!
+[debug] [2019-07-16T10:08:35.863Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[info] >  /Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:437
+[info] >        throw err; // Rethrow non-MySQL errors
+[info] >        ^
+[info] >  
+[info] >  Error: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':08:36 PM)' at line 1
+[info] >      at Query.mysqlPool.query (/Users/ninjamate/Documents/projects/dental/functions/index.js:88:28)
+[info] >      at Query.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:525:10)
+[info] >      at Query._callback (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:491:16)
+[info] >      at Query.Sequence.end (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+[info] >      at Query.ErrorPacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+[info] >      at Protocol._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+[info] >      at Parser._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:433:10)
+[info] >      at Parser.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:43:10)
+[info] >      at Protocol.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+[info] >      at Socket.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:91:28)
+[debug] [2019-07-16T10:09:03.800Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T10:09:05.078Z] Functions runtime initialized.
+[debug] [2019-07-16T10:09:05.078Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:09:05.690Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:09:08.373Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T10:09:08.654Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T10:09:08.655Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T10:09:09.257Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T10:09:09.300Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T10:09:09.300Z] 
+[debug] [2019-07-16T10:09:09.300Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T10:09:09.307Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50503.sock"}
+[debug] [2019-07-16T10:09:09.308Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50503.sock"}
+[debug] [2019-07-16T10:09:09.334Z] Ephemeral server used!
+[debug] [2019-07-16T10:09:09.372Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[info] >  /Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:437
+[info] >        throw err; // Rethrow non-MySQL errors
+[info] >        ^
+[info] >  
+[info] >  Error: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Jul 16 2019 14:09:09 GMT+0400 (Georgia Standard Time))' at line 1
+[info] >      at Query.mysqlPool.query (/Users/ninjamate/Documents/projects/dental/functions/index.js:88:28)
+[info] >      at Query.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:525:10)
+[info] >      at Query._callback (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:491:16)
+[info] >      at Query.Sequence.end (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+[info] >      at Query.ErrorPacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+[info] >      at Protocol._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+[info] >      at Parser._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:433:10)
+[info] >      at Parser.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:43:10)
+[info] >      at Protocol.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+[info] >      at Socket.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:91:28)
+[debug] [2019-07-16T11:19:10.928Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T11:19:12.282Z] Functions runtime initialized.
+[debug] [2019-07-16T11:19:12.283Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T11:19:12.918Z] firebase-admin has been stubbed.
+[warn] ⚠  /Users/ninjamate/Documents/projects/dental/functions/index.js:108
+    var sql = mysql.format('UPDATE posts SET modified = ? WHERE id = ?', [CURRENT_TIMESTAMP, 42]);
+        ^
+
+SyntaxError: Identifier 'sql' has already been declared
+    at new Script (vm.js:80:7)
+    at createScript (vm.js:274:10)
+    at Object.runInThisContext (vm.js:326:10)
+    at Module._compile (internal/modules/cjs/loader.js:664:28)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:531:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-07-16T11:20:39.959Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T11:20:41.237Z] Functions runtime initialized.
+[debug] [2019-07-16T11:20:41.238Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T11:20:41.830Z] firebase-admin has been stubbed.
+[warn] ⚠  /Users/ninjamate/Documents/projects/dental/functions/index.js:108
+    var sql = mysql.format(INSERT INTO dentist(id, name, organisation, email, risk, gum_disease, date) VALUES(?, ?, ?, ?, ?, ?, ? ), [CURRENT_TIMESTAMP, 42]);
+                           ^^^^^^
+
+SyntaxError: missing ) after argument list
+    at new Script (vm.js:80:7)
+    at createScript (vm.js:274:10)
+    at Object.runInThisContext (vm.js:326:10)
+    at Module._compile (internal/modules/cjs/loader.js:664:28)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:531:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+[warn] ⚠  Your function was killed because it raised an unhandled error.
+[debug] [2019-07-16T11:21:42.054Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T11:21:43.690Z] Functions runtime initialized.
+[debug] [2019-07-16T11:21:43.692Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T11:21:45.025Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/dental2-test/us-central1/OLDaddReportSQL
+[debug] [2019-07-16T11:21:48.503Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T11:21:50.155Z] Functions runtime initialized.
+[debug] [2019-07-16T11:21:50.157Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T11:21:51.047Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T11:22:05.934Z] Accepted request POST /dental2-test/us-central1/addReportSQL --> addReportSQL
+[debug] [2019-07-16T11:22:06.222Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "addReportSQL"
+[debug] [2019-07-16T11:22:06.223Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T11:22:06.806Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-16T11:22:06.849Z] Trigger "addReportSQL" has been found, beginning invocation!
+[debug] [2019-07-16T11:22:06.849Z] 
+[debug] [2019-07-16T11:22:06.849Z] Running addReportSQL in mode HTTPS
+[debug] [2019-07-16T11:22:06.856Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50751.sock"}
+[debug] [2019-07-16T11:22:06.857Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_50751.sock"}
+[debug] [2019-07-16T11:22:06.882Z] Ephemeral server used!
+[debug] [2019-07-16T11:22:06.957Z] Ephemeral server survived.
+[info] i  functions: Finished "addReportSQL" in ~1s
+[debug] [2019-07-16T11:54:41.752Z] File /Users/ninjamate/Documents/projects/dental/functions/index.js changed, reloading triggers
+[debug] [2019-07-16T11:54:43.035Z] Functions runtime initialized.
+[debug] [2019-07-16T11:54:43.036Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-16T11:54:43.622Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
