@@ -19,6 +19,8 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
+import Checkbox from '@material-ui/core/Checkbox'
+import ListItemText from '@material-ui/core/ListItemText'
 
 import FirebaseContext from 'modules/Firebase';
 import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
@@ -48,10 +50,10 @@ const useStyles = makeStyles(() => ({
 }))
 
 const searchDefault = {
-    treatment: [],
-    concern: [],
-    organisation: [],
-    risk: [],
+    treatment: ['all'],
+    concern: ['all'],
+    organisation: ['all'],
+    risk: ['all'],
 }
 
 const Filters = () => {
@@ -91,8 +93,10 @@ const Filters = () => {
             (doc) => {
                 if (doc.exists) {
                     // @ts-ignore
-                    const organisations = Object.values(doc.data()).map(val => ({ value: val, label: val }))
-                    setOrganisation(organisations)
+                    // const organisations = Object.values(doc.data()).map(val => ({ value: val, label: val }))
+                    // setOrganisation(organisations) // ToDo uncomment
+                    const testOrganistions = ["Eldercare", "Yatla Prison", "dfdfd", "blblblb", "dfdfdfdf"].map(val => ({ value: val, label: val }))
+                    setOrganisation(testOrganistions)
                 }
             },
         )
@@ -125,6 +129,8 @@ const Filters = () => {
         })
     }
 
+    const organisationList = Object.values(organisation).map(val => val.value)
+
     return (
         <NoSsr>
             <Typography variant='h4'>
@@ -153,11 +159,23 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            value={search.organisation}
-                            onChange={e => setSearch({ ...search, ...{ organisation: e.target.value } })}
+                            value={search.organisation.includes('all') ? organisationList : search.organisation}
+                            onChange={e => {
+                                console.log(e.currentTarget.dataset.value)
+                                if (e.target.value.includes('all')) setSearch({ ...search, ...{ organisation: organisationList } })
+
+                                if (!e.target.value.includes('all') && e.target.value.length === --organisationList.length || e.target.value.length === 0) setSearch({ ...search, ...{ organisation: [e.currentTarget.dataset.value] } })
+                                else setSearch({ ...search, ...{ organisation: e.target.value } })
+
+
+                            }
+                            }
                             autoWidth
+                            renderValue={selected => selected.map(x => x).join(', ')}
                         >
-                            <MenuItem value={null}>All</MenuItem>
+                            <MenuItem value='all'>
+                                Select all
+                            </MenuItem>
                             <Divider />
                             {
                                 organisation.map(({ value, label }) =>
@@ -179,7 +197,7 @@ const Filters = () => {
                             onChange={e => setSearch({ ...search, ...{ concern: e.target.value } })}
                             autoWidth
                         >
-                            <MenuItem value={null}>All</MenuItem>
+                            <MenuItem value='all'>All</MenuItem>
                             <Divider />
                             {
                                 concern.map(({ value, label }) =>
@@ -201,7 +219,7 @@ const Filters = () => {
                             onChange={e => setSearch({ ...search, ...{ treatment: e.target.value } })}
                             autoWidth
                         >
-                            <MenuItem value={null}>All</MenuItem>
+                            <MenuItem value='all'>All</MenuItem>
                             <Divider />
                             {
                                 treatment.map(({ value, label }) =>
@@ -223,7 +241,7 @@ const Filters = () => {
                             onChange={e => setSearch({ ...search, ...{ risk: e.target.value } })}
                             autoWidth
                         >
-                            <MenuItem value={null}>All</MenuItem>
+                            <MenuItem value='all'>All</MenuItem>
                             <Divider />
                             {
                                 risk.map(value =>
