@@ -2,6 +2,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/styles';
 import DateFnsUtils from '@date-io/date-fns'
+import { format } from 'date-fns'
 import { MuiPickersUtilsProvider } from 'material-ui-pickers'
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
@@ -57,7 +58,7 @@ const Filters = () => {
     const classes = useStyles()
 
     const [date, setDate] = useState([null, null])
-    console.log(date[0])
+
     const [search, setSearch] = useState(searchDefault)
 
     const firebase = useContext(FirebaseContext)
@@ -102,6 +103,8 @@ const Filters = () => {
 
     const sqlSearchData = () => {
         const searchReportSQL = firebase.searchReportSQL()
+        const sortedDate = date.sort((a, b) => a - b)
+
         return searchReportSQL({
             organisation: search.organisation,
             risk: search.risk,
@@ -117,8 +120,8 @@ const Filters = () => {
             filling: search.treatment.includes('Filling') ? 1 : 0,
             root_canal: search.treatment.includes('Root Canal') ? 1 : 0,
             tooth_extraction: search.treatment.includes('Tooth Extraction') ? 1 : 0,
-            date_start: date[0],
-            date_finish: date[1],
+            date_start: format(new Date(sortedDate[0]), 'Y-MM-d'),
+            date_finish: format(new Date(sortedDate[1]), 'Y-MM-d'),
         })
     }
 
