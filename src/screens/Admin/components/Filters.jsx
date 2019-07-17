@@ -18,7 +18,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
-import Checkbox from '@material-ui/core/Checkbox'
+import Divider from '@material-ui/core/Divider'
 
 import FirebaseContext from 'modules/Firebase';
 import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
@@ -157,6 +157,8 @@ const Filters = () => {
                             onChange={e => setSearch({ ...search, ...{ organisation: e.target.value } })}
                             autoWidth
                         >
+                            <MenuItem value={null}>All</MenuItem>
+                            <Divider />
                             {
                                 organisation.map(({ value, label }) =>
                                     <MenuItem key={value} value={value}>{label}</MenuItem>
@@ -177,6 +179,8 @@ const Filters = () => {
                             onChange={e => setSearch({ ...search, ...{ concern: e.target.value } })}
                             autoWidth
                         >
+                            <MenuItem value={null}>All</MenuItem>
+                            <Divider />
                             {
                                 concern.map(({ value, label }) =>
                                     <MenuItem key={value} value={value}>{label}</MenuItem>
@@ -197,6 +201,8 @@ const Filters = () => {
                             onChange={e => setSearch({ ...search, ...{ treatment: e.target.value } })}
                             autoWidth
                         >
+                            <MenuItem value={null}>All</MenuItem>
+                            <Divider />
                             {
                                 treatment.map(({ value, label }) =>
                                     <MenuItem key={value} value={value}>{label}</MenuItem>
@@ -217,6 +223,8 @@ const Filters = () => {
                             onChange={e => setSearch({ ...search, ...{ risk: e.target.value } })}
                             autoWidth
                         >
+                            <MenuItem value={null}>All</MenuItem>
+                            <Divider />
                             {
                                 risk.map(value =>
                                     <MenuItem key={value} value={value}>{capitalizeFirstLetter(value)}</MenuItem>
@@ -259,13 +267,6 @@ const Filters = () => {
                         <Table className={classes.table}>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell padding="checkbox">
-                                        <Checkbox
-                                            color="primary"
-                                            //   checked={}
-                                            onChange={e => { }} />
-                                    </TableCell>
-
                                     <TableCell align="center">id</TableCell>
                                     <TableCell align="center">patient name</TableCell>
                                     <TableCell align="center">email</TableCell>
@@ -278,13 +279,6 @@ const Filters = () => {
                             <TableBody>
 
                                 <TableRow hover>
-                                    <TableCell padding="checkbox">
-                                        <Checkbox
-                                            color="primary"
-                                            //   checked={}
-                                            onChange={e => { }} />
-                                    </TableCell>
-
                                     <TableCell align="center">{2}</TableCell>
                                     <TableCell align="center">{3}</TableCell>
                                     <TableCell align="center">{4}</TableCell>
