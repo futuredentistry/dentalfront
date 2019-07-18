@@ -19,8 +19,6 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
-import Checkbox from '@material-ui/core/Checkbox'
-import ListItemText from '@material-ui/core/ListItemText'
 
 import FirebaseContext from 'modules/Firebase';
 import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
@@ -46,6 +44,10 @@ const useStyles = makeStyles(() => ({
         padding: 0,
         margin: 0,
         width: '100%'
+    },
+    allMenu: {
+        marginBottom: '6px',
+        backgroundColor: '#FE7F2D',
     }
 }))
 
@@ -161,19 +163,17 @@ const Filters = () => {
                             displayEmpty
                             value={search.organisation.includes('all') ? organisationList : search.organisation}
                             onChange={e => {
-                                console.log(e.currentTarget.dataset.value)
                                 if (e.target.value.includes('all')) setSearch({ ...search, ...{ organisation: organisationList } })
 
                                 if (!e.target.value.includes('all') && e.target.value.length === --organisationList.length || e.target.value.length === 0) setSearch({ ...search, ...{ organisation: [e.currentTarget.dataset.value] } })
                                 else setSearch({ ...search, ...{ organisation: e.target.value } })
-
-
                             }
                             }
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
+
                         >
-                            <MenuItem value='all'>
+                            <MenuItem value='all' className={classes.allMenu}>
                                 Select all
                             </MenuItem>
                             <Divider />
