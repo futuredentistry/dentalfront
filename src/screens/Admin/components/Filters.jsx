@@ -57,6 +57,8 @@ const searchDefault = {
     risk: ['all'],
 }
 
+const risk = ['no', 'low', 'medium', 'high']
+
 const Filters = () => {
     const classes = useStyles()
 
@@ -68,22 +70,17 @@ const Filters = () => {
 
     const [concern, setConcern] = useState([])
     useEffect(() => {
-        firebase.getConcernCollection().then(
-            (doc) => {
-                if (doc.exists) {
-                    // @ts-ignore
-                    const concern = Object.values(doc.data()).map(val => ({ value: val, label: val }))
-                    setConcern(concern)
-                }
-            },
-        )
+        firebase.getConcernCollection()
+            .then(
+                doc => doc.exists &&
+                    setConcern(Object.values(doc.data()).map(value => value)))
     }, [])
 
     const [treatment, setTreatment] = useState([])
     useEffect(() => {
         const treatments = []
         firebase.getTreatmentCollection().then(
-            (querySnapshot) => querySnapshot.forEach((doc) => treatments.push({ value: doc.id, label: doc.id })),
+            querySnapshot => querySnapshot.forEach(doc => treatments.push(doc.id)),
         ).then(() => setTreatment(treatments))
     }, [])
 
@@ -95,8 +92,6 @@ const Filters = () => {
                 doc => doc.exists &&
                     setOrganisation(Object.values(doc.data()).map(value => value)))
     }, [])
-
-    const risk = ['no', 'low', 'medium', 'high']
 
     const sqlSearchData = () => {
         const searchReportSQL = firebase.searchReportSQL()
@@ -122,6 +117,24 @@ const Filters = () => {
         })
     }
 
+    // Expected behavior
+    // if all selected the first click deselect all except clicked one
+    // cannot deselect all
+    // can select all
+    const selectSwitch = (e, name, defaultList) => {
+        switch (true) {
+            case e.target.value.includes('all'):
+                setSearch({ ...search, ...{ [name]: defaultList } })
+                break
+            case e.target.value.length === 0:
+            case e.target.value.length === defaultList.length - 1 &&
+                !e.target.value.includes(e.currentTarget.dataset.value):
+                setSearch({ ...search, ...{ [name]: [e.currentTarget.dataset.value] } })
+                break
+            default:
+                setSearch({ ...search, ...{ [name]: e.target.value } })
+        }
+    }
 
     return (
         <NoSsr>
@@ -135,8 +148,7 @@ const Filters = () => {
                     .then(r => console.log(r))
                     .catch(e => console.log(e))
 
-            }
-            }
+            }}
             >
                 Click
             </Button>
@@ -152,19 +164,7 @@ const Filters = () => {
                             multiple
                             displayEmpty
                             value={search.organisation.includes('all') ? organisation : search.organisation}
-                            onChange={e => {
-                                switch (true) {
-                                    case e.target.value.includes('all'):
-                                        setSearch({ ...search, ...{ organisation } })
-                                        break
-                                    case e.target.value.length === 0:
-                                    case e.target.value.length === organisation.length - 1 && !e.target.value.includes(e.currentTarget.dataset.value):
-                                        setSearch({ ...search, ...{ organisation: [e.currentTarget.dataset.value] } })
-                                        break
-                                    default:
-                                        setSearch({ ...search, ...{ organisation: e.target.value } })
-                                }
-                            }}
+                            onChange={e => selectSwitch(e, 'organisation', organisation)}
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
                         >
@@ -185,15 +185,15 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            value={search.concern}
-                            onChange={e => setSearch({ ...search, ...{ concern: e.target.value } })}
+                            value={search.concern.includes('all') ? concern : search.concern}
+                            onChange={e => selectSwitch(e, 'concern', concern)}
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
                         >
                             <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
                             {
-                                concern.map(({ value, label }) =>
-                                    <MenuItem key={value} value={value}>{label}</MenuItem>
+                                concern.map(value =>
+                                    <MenuItem key={value} value={value}>{value}</MenuItem>
                                 )
                             }
                         </Select>
@@ -207,15 +207,15 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            value={search.treatment}
-                            onChange={e => setSearch({ ...search, ...{ treatment: e.target.value } })}
+                            value={search.treatment.includes('all') ? treatment : search.treatment}
+                            onChange={e => selectSwitch(e, 'treatment', treatment)}
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
                         >
                             <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
                             {
-                                treatment.map(({ value, label }) =>
-                                    <MenuItem key={value} value={value}>{label}</MenuItem>
+                                treatment.map(value =>
+                                    <MenuItem key={value} value={value}>{value}</MenuItem>
                                 )
                             }
                         </Select>
@@ -229,8 +229,8 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            value={search.risk}
-                            onChange={e => setSearch({ ...search, ...{ risk: e.target.value } })}
+                            value={search.risk.includes('all') ? risk : search.risk}
+                            onChange={e => selectSwitch(e, 'risk', risk)}
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
                         >
