@@ -18,7 +18,6 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
-import Divider from '@material-ui/core/Divider'
 
 import FirebaseContext from 'modules/Firebase';
 import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
@@ -91,21 +90,13 @@ const Filters = () => {
 
     const [organisation, setOrganisation] = useState([])
     useEffect(() => {
-        firebase.getOrganisationsCollection().then(
-            (doc) => {
-                if (doc.exists) {
-                    // @ts-ignore
-                    // const organisations = Object.values(doc.data()).map(val => ({ value: val, label: val }))
-                    // setOrganisation(organisations) // ToDo uncomment
-                    const testOrganistions = ["Eldercare", "Yatla Prison", "dfdfd", "blblblb", "dfdfdfdf"].map(val => ({ value: val, label: val }))
-                    setOrganisation(testOrganistions)
-                }
-            },
-        )
+        firebase.getOrganisationsCollection()
+            .then(
+                doc => doc.exists &&
+                    setOrganisation(Object.values(doc.data()).map(value => value)))
     }, [])
 
-
-    const [risk] = useState(['no', 'low', 'medium', 'high'])
+    const risk = ['no', 'low', 'medium', 'high']
 
     const sqlSearchData = () => {
         const searchReportSQL = firebase.searchReportSQL()
@@ -131,7 +122,6 @@ const Filters = () => {
         })
     }
 
-    const organisationList = Object.values(organisation).map(val => val.value)
 
     return (
         <NoSsr>
@@ -161,25 +151,27 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            value={search.organisation.includes('all') ? organisationList : search.organisation}
+                            value={search.organisation.includes('all') ? organisation : search.organisation}
                             onChange={e => {
-                                if (e.target.value.includes('all')) setSearch({ ...search, ...{ organisation: organisationList } })
-
-                                if (!e.target.value.includes('all') && e.target.value.length === --organisationList.length || e.target.value.length === 0) setSearch({ ...search, ...{ organisation: [e.currentTarget.dataset.value] } })
-                                else setSearch({ ...search, ...{ organisation: e.target.value } })
-                            }
-                            }
+                                switch (true) {
+                                    case e.target.value.includes('all'):
+                                        setSearch({ ...search, ...{ organisation } })
+                                        break
+                                    case e.target.value.length === 0:
+                                    case e.target.value.length === organisation.length - 1 && !e.target.value.includes(e.currentTarget.dataset.value):
+                                        setSearch({ ...search, ...{ organisation: [e.currentTarget.dataset.value] } })
+                                        break
+                                    default:
+                                        setSearch({ ...search, ...{ organisation: e.target.value } })
+                                }
+                            }}
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
-
                         >
-                            <MenuItem value='all' className={classes.allMenu}>
-                                Select all
-                            </MenuItem>
-                            <Divider />
+                            <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
                             {
-                                organisation.map(({ value, label }) =>
-                                    <MenuItem key={value} value={value}>{label}</MenuItem>
+                                organisation.map(value =>
+                                    <MenuItem key={value} value={value}>{value}</MenuItem>
                                 )
                             }
                         </Select>
@@ -196,9 +188,9 @@ const Filters = () => {
                             value={search.concern}
                             onChange={e => setSearch({ ...search, ...{ concern: e.target.value } })}
                             autoWidth
+                            renderValue={selected => selected.map(x => x).join(', ')}
                         >
-                            <MenuItem value='all'>All</MenuItem>
-                            <Divider />
+                            <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
                             {
                                 concern.map(({ value, label }) =>
                                     <MenuItem key={value} value={value}>{label}</MenuItem>
@@ -218,9 +210,9 @@ const Filters = () => {
                             value={search.treatment}
                             onChange={e => setSearch({ ...search, ...{ treatment: e.target.value } })}
                             autoWidth
+                            renderValue={selected => selected.map(x => x).join(', ')}
                         >
-                            <MenuItem value='all'>All</MenuItem>
-                            <Divider />
+                            <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
                             {
                                 treatment.map(({ value, label }) =>
                                     <MenuItem key={value} value={value}>{label}</MenuItem>
@@ -240,9 +232,9 @@ const Filters = () => {
                             value={search.risk}
                             onChange={e => setSearch({ ...search, ...{ risk: e.target.value } })}
                             autoWidth
+                            renderValue={selected => selected.map(x => x).join(', ')}
                         >
-                            <MenuItem value='all'>All</MenuItem>
-                            <Divider />
+                            <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
                             {
                                 risk.map(value =>
                                     <MenuItem key={value} value={value}>{capitalizeFirstLetter(value)}</MenuItem>
