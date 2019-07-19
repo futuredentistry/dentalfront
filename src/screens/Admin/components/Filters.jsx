@@ -72,6 +72,8 @@ const Filters = () => {
     const [treatment, setTreatment] = useState([])
     const [organisation, setOrganisation] = useState([])
 
+    const [report, setReport] = useState(null)
+
     useEffect(() => {
         const treatment = []
         const organisation = []
@@ -159,6 +161,9 @@ const Filters = () => {
                 sqlSearchData()
                     .then(r => { // ToDo refactoring
                         if (r.data.length > 0) {
+
+                            setReport(r.data)
+
                             const exportedFilename = `${new Date()}.csv`
 
                             const json2csvParser = new Parser({ fields: Object.keys(r.data[0]) });
@@ -323,37 +328,38 @@ const Filters = () => {
                                     <TableCell align="center">organisation</TableCell>
                                     <TableCell align="center">date added</TableCell>
                                     <TableCell align="center"></TableCell>
-                                    <TableCell align="center"></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
 
-                                <TableRow hover>
-                                    <TableCell align="center">{2}</TableCell>
-                                    <TableCell align="center">{3}</TableCell>
-                                    <TableCell align="center">{4}</TableCell>
-                                    <TableCell align="center">{5}</TableCell>
-                                    <TableCell align="center">{6}</TableCell>
-                                    <TableCell align="center">
-                                        <Button
-                                            className={classes.button}
-                                            color="primary"
-                                            variant='text'
-                                            onClick={() => { }}
-                                        >
-                                            see report
-                                    </Button>
-                                    </TableCell>
-                                    <TableCell align="center">
-                                        <Button
-                                            className={classes.button}
-                                            color="primary"
-                                            variant='text'
-                                            onClick={() => { }}
-                                        >
-                                            send report</Button>
-                                    </TableCell>
-                                </TableRow>
+                                {
+                                    report && report.map(
+                                        // ToDo Loader
+                                        // ToDo Empty
+                                        // ToDo react window
+                                        rep => (
+
+                                            <TableRow hover key={rep.Id}>
+                                                <TableCell align="center">{rep['Id']}</TableCell>
+                                                <TableCell align="center">{rep['Name']}</TableCell>
+                                                <TableCell align="center">{rep['Email']}</TableCell>
+                                                <TableCell align="center">{rep['Organisation']}</TableCell>
+                                                <TableCell align="center">{rep['Date']}</TableCell>
+                                                <TableCell align="center">
+                                                    <Button
+                                                        className={classes.button}
+                                                        color="primary"
+                                                        variant='text'
+                                                        onClick={() => { }}
+                                                    >
+                                                        send report</Button>
+                                                </TableCell>
+                                            </TableRow>
+
+                                        )
+                                    )
+                                }
+
 
                             </TableBody>
                         </Table>

@@ -89,7 +89,7 @@ exports.searchReportSQL = functions.https.onCall((data, context) => {
     const DAY_FINISH = date_finish ? date_finish : CURRENT_DAY
 
     const sql = mysql.format(
-        'SELECT organisation AS `Organisation`, risk AS `Risk`, caries AS `Caries`, gum_disease AS `Gum disease`, wear AS `Wear`, trauma AS `Trauma`, cancer AS `Cancer`, infection AS `Infection`, other AS `Other concern`, capping AS `Capping`, crown AS `Crown`, filling AS `Filling`, root_canal AS `Root canal`, tooth_extraction AS `Tooth extraction`, ? FROM dentist WHERE organisation IN (?) AND risk IN (?) AND (caries=? OR gum_disease=? OR wear=? OR trauma=? OR cancer=? OR infection=? OR other=? OR capping=? OR crown=? OR filling=? OR root_canal=? OR tooth_extraction=?) AND date >=? AND date <=?',
+        'SELECT id AS `Id`, name AS `Name`, organisation AS `Organisation`, email AS `Email`, risk AS `Risk`, caries AS `Caries`, gum_disease AS `Gum disease`, wear AS `Wear`, trauma AS `Trauma`, cancer AS `Cancer`, infection AS `Infection`, other AS `Other concern`, capping AS `Capping`, crown AS `Crown`, filling AS `Filling`, root_canal AS `Root canal`, tooth_extraction AS `Tooth extraction`, ? FROM dentist WHERE organisation IN (?) AND risk IN (?) AND (caries=? OR gum_disease=? OR wear=? OR trauma=? OR cancer=? OR infection=? OR other=? OR capping=? OR crown=? OR filling=? OR root_canal=? OR tooth_extraction=?) AND date >=? AND date <=?',
         [DATE_FORMAT, organisation, risk, caries, gum_disease, wear, trauma, cancer, infection, other, capping, crown, filling, root_canal, tooth_extraction, DAY_START, DAY_FINISH]
     )
 
