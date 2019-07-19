@@ -91,7 +91,7 @@ exports.searchReportSQL = functions.https.onCall((data, context) => {
         'SELECT * FROM dentist WHERE organisation IN (?) AND risk IN (?) AND (caries=? OR gum_disease=? OR wear=? OR trauma=? OR cancer=? OR infection=? OR other=? OR capping=? OR crown=? OR filling=? OR root_canal=? OR tooth_extraction=?) AND date >=? AND date <=?',
         [organisation, risk, caries, gum_disease, wear, trauma, cancer, infection, other, capping, crown, filling, root_canal, tooth_extraction, DAY_START, DAY_FINISH]
     )
-
+    console.log(sql)
     return new Promise((resolve) => {
         mysqlPool.query(
             sql,

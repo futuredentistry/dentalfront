@@ -50,14 +50,13 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-const searchDefault = {
-    treatment: ['all'],
-    concern: ['all'],
-    organisation: ['all'],
-    risk: ['all'],
-}
-
 const risk = ['no', 'low', 'medium', 'high']
+const searchDefault = {
+    treatment: [],
+    concern: [],
+    organisation: [],
+    risk,
+}
 
 const Filters = () => {
     const classes = useStyles()
@@ -69,29 +68,41 @@ const Filters = () => {
     const firebase = useContext(FirebaseContext)
 
     const [concern, setConcern] = useState([])
-    useEffect(() => {
-        firebase.getConcernCollection()
-            .then(
-                doc => doc.exists &&
-                    setConcern(Object.values(doc.data()).map(value => value)))
-    }, [])
-
     const [treatment, setTreatment] = useState([])
-    useEffect(() => {
-        const treatments = []
-        firebase.getTreatmentCollection().then(
-            querySnapshot => querySnapshot.forEach(doc => treatments.push(doc.id)),
-        ).then(() => setTreatment(treatments))
-    }, [])
-
-
     const [organisation, setOrganisation] = useState([])
+
     useEffect(() => {
-        firebase.getOrganisationsCollection()
+        const treatment = []
+        const organisation = []
+        const concern = []
+        const promises = []
+
+        promises.push(firebase.getTreatmentCollection()
             .then(
-                doc => doc.exists &&
-                    setOrganisation(Object.values(doc.data()).map(value => value)))
+                querySnapshot => querySnapshot.forEach(doc => treatment.push(doc.id)),
+            ).then(() => setTreatment(treatment)))
+
+        promises.push(firebase.getConcernCollection()
+            .then(
+                doc => {
+                    if (doc.exists) {
+                        Object.values(doc.data()).map(value => concern.push(value))
+                        setConcern(concern)
+                    }
+                }))
+
+        promises.push(firebase.getOrganisationsCollection()
+            .then(
+                doc => {
+                    if (doc.exists) {
+                        Object.values(doc.data()).map(value => organisation.push(value))
+                        setOrganisation(organisation)
+                    }
+                }))
+
+        Promise.all(promises).then(() => setSearch({ ...search, ...{ organisation, treatment, concern } }))
     }, [])
+
 
     const sqlSearchData = () => {
         const searchReportSQL = firebase.searchReportSQL()
@@ -112,8 +123,8 @@ const Filters = () => {
             filling: search.treatment.includes('Filling') ? 1 : 0,
             root_canal: search.treatment.includes('Root Canal') ? 1 : 0,
             tooth_extraction: search.treatment.includes('Tooth Extraction') ? 1 : 0,
-            date_start: format(new Date(sortedDate[0]), 'Y-MM-d'),
-            date_finish: format(new Date(sortedDate[1]), 'Y-MM-d'),
+            date_start: sortedDate[0] && format(new Date(sortedDate[0]), 'Y-MM-d'),
+            date_finish: sortedDate[1] && format(new Date(sortedDate[1]), 'Y-MM-d'),
         })
     }
 
@@ -163,7 +174,7 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            value={search.organisation.includes('all') ? organisation : search.organisation}
+                            value={search.organisation}
                             onChange={e => selectSwitch(e, 'organisation', organisation)}
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
@@ -185,7 +196,7 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            value={search.concern.includes('all') ? concern : search.concern}
+                            value={search.concern}
                             onChange={e => selectSwitch(e, 'concern', concern)}
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
@@ -207,7 +218,7 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            value={search.treatment.includes('all') ? treatment : search.treatment}
+                            value={search.treatment}
                             onChange={e => selectSwitch(e, 'treatment', treatment)}
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
@@ -229,7 +240,7 @@ const Filters = () => {
                             variant="filled"
                             multiple
                             displayEmpty
-                            value={search.risk.includes('all') ? risk : search.risk}
+                            value={search.risk}
                             onChange={e => selectSwitch(e, 'risk', risk)}
                             autoWidth
                             renderValue={selected => selected.map(x => x).join(', ')}
