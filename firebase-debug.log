@@ -1,0 +1,133 @@
+[debug] [2019-07-19T02:38:03.239Z] ----------------------------------------------------------------------
+[debug] [2019-07-19T02:38:03.241Z] Command:       /usr/local/Cellar/node@10/10.15.3/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2019-07-19T02:38:03.241Z] CLI Version:   6.10.0
+[debug] [2019-07-19T02:38:03.241Z] Platform:      darwin
+[debug] [2019-07-19T02:38:03.241Z] Node Version:  v10.15.3
+[debug] [2019-07-19T02:38:03.242Z] Time:          Fri Jul 19 2019 06:38:03 GMT+0400 (Georgia Standard Time)
+[debug] [2019-07-19T02:38:03.242Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-19T02:38:03.257Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-19T02:38:03.257Z] > authorizing via signed-in user
+[debug] [2019-07-19T02:38:03.257Z] [iam] checking project dental2-test for permissions ["firebase.projects.get"]
+[debug] [2019-07-19T02:38:03.259Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-07-19T02:38:03.259Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-07-19T02:38:03.908Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-19T02:38:03.928Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/dental2-test:testIamPermissions  
+
+[debug] [2019-07-19T02:38:05.129Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-19T02:38:05.130Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/dental2-test  
+ 
+[debug] [2019-07-19T02:38:06.167Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Using node@10 from host.
+[debug] [2019-07-19T02:38:06.177Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/897675393840:getServerAppConfig  
+ 
+[debug] [2019-07-19T02:38:06.876Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/ninjamate/Documents/projects/dental/functions" for Cloud Functions...
+[debug] [2019-07-19T02:38:07.149Z] Functions runtime initialized.
+[debug] [2019-07-19T02:38:07.150Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-19T02:38:07.733Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-19T02:38:07.792Z] Unsupported trigger: {"eventTrigger":{"resource":"projects/_/instances/dental2-test/refs/contact_as/{sessionId}","eventType":"providers/google.firebase.database/eventTypes/ref.create","service":"firebaseio.com"},"name":"onDataAdded","entryPoint":"onDataAdded"}
+[info] Ignoring trigger "onDataAdded" because the service "firebaseio.com" is not yet supported.
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/dental2-test/us-central1/searchReportSQL
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/dental2-test/us-central1/addReportSQL
+[debug] [2019-07-19T02:39:05.385Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-19T02:39:05.658Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-19T02:39:05.659Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-19T02:39:06.218Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-19T02:39:06.258Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-19T02:39:06.258Z] 
+[debug] [2019-07-19T02:39:06.258Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-19T02:39:06.264Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64789.sock"}
+[debug] [2019-07-19T02:39:06.267Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64789.sock"}
+[debug] [2019-07-19T02:39:06.290Z] Ephemeral server used!
+[debug] [2019-07-19T02:39:06.342Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-19T02:41:31.626Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-19T02:41:31.891Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-19T02:41:31.892Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-19T02:41:32.481Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-19T02:41:32.523Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-19T02:41:32.523Z] 
+[debug] [2019-07-19T02:41:32.523Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-19T02:41:32.530Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64811.sock"}
+[debug] [2019-07-19T02:41:32.531Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64811.sock"}
+[debug] [2019-07-19T02:41:32.554Z] Ephemeral server used!
+[debug] [2019-07-19T02:41:32.591Z] Ephemeral server survived.
+[info] >  /Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:437
+[info] >        throw err; // Rethrow non-MySQL errors
+[info] >        ^
+[info] >  
+[info] >  Error: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') AND risk IN ('no', 'low', 'medium', 'high') AND (caries=0 OR gum_disease=0 OR ' at line 1
+[info] >      at Query.mysqlPool.query (/Users/ninjamate/Documents/projects/dental/functions/index.js:100:32)
+[info] >      at Query.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:525:10)
+[info] >      at Query._callback (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:491:16)
+[info] >      at Query.Sequence.end (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+[info] >      at Query.ErrorPacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/sequences/Query.js:90:8)
+[info] >      at Protocol._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+[info] >      at Parser._parsePacket (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:433:10)
+[info] >      at Parser.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Parser.js:43:10)
+[info] >      at Protocol.write (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+[info] >      at Socket.<anonymous> (/Users/ninjamate/Documents/projects/dental/functions/node_modules/mysql/lib/Connection.js:91:28)
+[debug] [2019-07-19T02:42:15.690Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-19T02:42:15.953Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-19T02:42:15.954Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-19T02:42:16.553Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-19T02:42:16.597Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-19T02:42:16.597Z] 
+[debug] [2019-07-19T02:42:16.597Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-19T02:42:16.603Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64831.sock"}
+[debug] [2019-07-19T02:42:16.604Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64831.sock"}
+[debug] [2019-07-19T02:42:16.623Z] Ephemeral server used!
+[debug] [2019-07-19T02:42:16.662Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-19T02:42:43.326Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-19T02:42:43.598Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-19T02:42:43.599Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-19T02:42:44.167Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-19T02:42:44.208Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-19T02:42:44.208Z] 
+[debug] [2019-07-19T02:42:44.208Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-19T02:42:44.214Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64839.sock"}
+[debug] [2019-07-19T02:42:44.215Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64839.sock"}
+[debug] [2019-07-19T02:42:44.234Z] Ephemeral server used!
+[debug] [2019-07-19T02:42:44.271Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-19T02:43:12.335Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-19T02:43:12.608Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-19T02:43:12.609Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-19T02:43:13.171Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-19T02:43:13.212Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-19T02:43:13.212Z] 
+[debug] [2019-07-19T02:43:13.212Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-19T02:43:13.218Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64860.sock"}
+[debug] [2019-07-19T02:43:13.219Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64860.sock"}
+[debug] [2019-07-19T02:43:13.239Z] Ephemeral server used!
+[debug] [2019-07-19T02:43:13.279Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
+[debug] [2019-07-19T02:44:36.458Z] Accepted request POST /dental2-test/us-central1/searchReportSQL --> searchReportSQL
+[debug] [2019-07-19T02:44:36.728Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "searchReportSQL"
+[debug] [2019-07-19T02:44:36.729Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-19T02:44:37.295Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-19T02:44:37.336Z] Trigger "searchReportSQL" has been found, beginning invocation!
+[debug] [2019-07-19T02:44:37.336Z] 
+[debug] [2019-07-19T02:44:37.336Z] Running searchReportSQL in mode HTTPS
+[debug] [2019-07-19T02:44:37.342Z] {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64901.sock"}
+[debug] [2019-07-19T02:44:37.343Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/9t/q4xt1px94fz8scy5f3b0vc5r0000gn/T/firebase_emulator_invocation_64901.sock"}
+[debug] [2019-07-19T02:44:37.362Z] Ephemeral server used!
+[debug] [2019-07-19T02:44:37.399Z] Ephemeral server survived.
+[info] i  functions: Finished "searchReportSQL" in ~1s
