@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { Parser } from 'json2csv'
 import React, { useContext, useState, useEffect } from 'react'
+import { Parser } from 'json2csv'
 import { makeStyles } from '@material-ui/styles';
 import DateFnsUtils from '@date-io/date-fns'
 import { format } from 'date-fns'
@@ -156,43 +156,51 @@ const Filters = () => {
                 Filters
             </Typography>
 
+
             <Button onClick={() => {
 
                 sqlSearchData()
                     .then(r => { // ToDo refactoring
                         if (r.data.length > 0) {
-
+                            console.log(r.data)
                             setReport(r.data)
-
-                            const exportedFilename = `${new Date()}.csv`
-
-                            const json2csvParser = new Parser({ fields: Object.keys(r.data[0]) });
-                            const csv = json2csvParser.parse(r.data)
-
-                            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-                            if (navigator.msSaveBlob) { // IE 10+
-                                navigator.msSaveBlob(blob, exportedFilename);
-                            } else {
-                                var link = document.createElement("a");
-                                if (link.download !== undefined) { // feature detection
-                                    // Browsers that support HTML5 download attribute
-                                    var url = URL.createObjectURL(blob);
-                                    link.setAttribute("href", url);
-                                    link.setAttribute("download", exportedFilename);
-                                    link.style.visibility = 'hidden';
-                                    document.body.appendChild(link);
-                                    link.click();
-                                    document.body.removeChild(link);
-                                }
-                            }
                         }
                     })
                     .catch(e => console.log(e))
 
             }}
             >
-                Click
+                Search
             </Button>
+
+            <Button onClick={() => {
+
+                const exportedFilename = `${new Date()}.csv`
+
+                const json2csvParser = new Parser({ fields: Object.keys(report[0]) });
+                const csv = json2csvParser.parse(report)
+
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                if (navigator.msSaveBlob) { // IE 10+
+                    navigator.msSaveBlob(blob, exportedFilename);
+                } else {
+                    const link = document.createElement("a");
+                    if (link.download !== undefined) { // feature detection
+                        // Browsers that support HTML5 download attribute
+                        const url = URL.createObjectURL(blob);
+                        link.setAttribute("href", url);
+                        link.setAttribute("download", exportedFilename);
+                        link.style.visibility = 'hidden';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }
+                }
+            }}
+            >
+                Report
+            </Button>
+
 
             <Grid container spacing={0} direction="row" >
                 <Grid item xs={1} />
