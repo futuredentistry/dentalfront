@@ -84,8 +84,8 @@ const Patient = ({ history }) => {
     }
 
     // Dental
-    const [brush, setBrush] = useState('every few days')
-    const [floss, setFloss] = useState('every few days')
+    const [brush, setBrush] = useState('4-7 times a week')
+    const [floss, setFloss] = useState('4-7 times a week')
     const [visitDentist, setVisitDentist] = useState('every 1-3 years')
     const [comfortable, setComfortable] = useState('yes')
     const [breath, setBreath] = useState(false)
