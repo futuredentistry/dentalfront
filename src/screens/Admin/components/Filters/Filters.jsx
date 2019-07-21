@@ -19,25 +19,13 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
-import CircularProgress from '@material-ui/core/CircularProgress'
 
 import FirebaseContext from 'modules/Firebase';
 import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter';
 
-const LoadingRecords = ({ loading, report }) => {
-    console.log(loading)
-    console.log(report)
-    return (
-        <TableRow>
-            <TableCell colSpan={2} />
-            {!report && !loading && <TableCell align="center" colSpan={2}>No records</TableCell>}
-            {loading && <TableCell align="center" colSpan={2}><CircularProgress /></TableCell>
-            }
-            <TableCell colSpan={2} />
-        </TableRow>
-    )
-}
+import LoadingRecords from './components/LoadingRecords'
+
 
 const useStyles = makeStyles(() => ({
     formGrid: {
@@ -89,12 +77,15 @@ const Filters = () => {
 
     const [report, setReport] = useState(null)
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         const treatment = []
         const organisation = []
         const concern = []
         const promises = []
+
+        setLoading(true)
 
         promises.push(firebase.getTreatmentCollection()
             .then(
@@ -119,7 +110,10 @@ const Filters = () => {
                     }
                 }))
 
-        Promise.all(promises).then(() => setSearch({ ...search, ...{ organisation, treatment, concern } }))
+        Promise.all(promises).then(() => {
+            setSearch({ ...search, ...{ organisation, treatment, concern } })
+            setLoading(false)
+        })
     }, [])
 
 
@@ -174,16 +168,18 @@ const Filters = () => {
 
 
             <Button onClick={() => {
-
                 setLoading(true)
+
                 sqlSearchData()
                     .then(r => { // ToDo refactoring
                         setLoading(false)
+                        setError(false)
                         if (r.data.length > 0) setReport(r.data)
-
                     })
-                    .catch(e => console.log(e))
-
+                    .catch(() => {
+                        setLoading(false)
+                        setError(true)
+                    })
             }}
             >
                 Search
@@ -357,12 +353,11 @@ const Filters = () => {
 
                             <TableBody>
                                 {
-                                    report && !loading && report.map(
+                                    report && !loading && !error && report.map(
                                         // ToDo Loader
                                         // ToDo Empty
                                         // ToDo react window
                                         rep => (
-
                                             <TableRow hover key={rep.Id}>
                                                 <TableCell align="center">{rep['Id']}</TableCell>
                                                 <TableCell align="center">{rep['Name']}</TableCell>
@@ -379,12 +374,11 @@ const Filters = () => {
                                                         send report</Button>
                                                 </TableCell>
                                             </TableRow>
-
                                         )
                                     )
                                 }
 
-                                <LoadingRecords loading={loading} report={report} />
+                                <LoadingRecords loading={loading} report={report} error={error} />
 
                             </TableBody>
                         </Table>
