@@ -1,16 +1,12 @@
 // @ts-nocheck
 import React, { useContext, useState, useEffect } from 'react'
 import { Parser } from 'json2csv'
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles'
 import DateFnsUtils from '@date-io/date-fns'
 import { format } from 'date-fns'
 import { MuiPickersUtilsProvider } from 'material-ui-pickers'
-import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import InputLabel from '@material-ui/core/InputLabel'
-import MenuItem from '@material-ui/core/MenuItem'
-import FormControl from '@material-ui/core/FormControl'
-import Select from '@material-ui/core/Select'
 import NoSsr from '@material-ui/core/NoSsr'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -20,11 +16,11 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 
-import FirebaseContext from 'modules/Firebase';
-import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
-import capitalizeFirstLetter from 'utils/capitalizeFirstLetter';
+import FirebaseContext from 'modules/Firebase'
+import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker'
 
 import LoadingRecords from './components/LoadingRecords'
+import SelectFilter from './components/SelectFilter'
 
 
 const useStyles = makeStyles(() => ({
@@ -179,23 +175,23 @@ const Filters = () => {
     const downloadReport = () => {
         const exportedFilename = `${new Date()}.csv`
 
-        const json2csvParser = new Parser({ fields: Object.keys(report[0]) });
+        const json2csvParser = new Parser({ fields: Object.keys(report[0]) })
         const csv = json2csvParser.parse(report)
 
-        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
         if (navigator.msSaveBlob) { // IE 10+
-            navigator.msSaveBlob(blob, exportedFilename);
+            navigator.msSaveBlob(blob, exportedFilename)
         } else {
-            const link = document.createElement("a");
+            const link = document.createElement("a")
             if (link.download !== undefined) { // feature detection
                 // Browsers that support HTML5 download attribute
-                const url = URL.createObjectURL(blob);
-                link.setAttribute("href", url);
-                link.setAttribute("download", exportedFilename);
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                const url = URL.createObjectURL(blob)
+                link.setAttribute("href", url)
+                link.setAttribute("download", exportedFilename)
+                link.style.visibility = 'hidden'
+                document.body.appendChild(link)
+                link.click()
+                document.body.removeChild(link)
             }
         }
     }
@@ -226,95 +222,39 @@ const Filters = () => {
                 <Grid item xs={1} />
 
                 <Grid item xs={2} className={classes.formGrid}>
-                    <FormControl >
-                        <InputLabel>Organisation</InputLabel>
-                        {/* ToDo refactoring */}
-                        <Select
-                            variant="filled"
-                            multiple
-                            displayEmpty
-                            value={search.organisation}
-                            onChange={e => selectSwitch(e, 'organisation', organisation)}
-                            autoWidth
-                            renderValue={selected => selected.map(x => x).join(', ')}
-                        >
-                            <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
-                            {
-                                organisation.map(value =>
-                                    <MenuItem key={value} value={value}>{value}</MenuItem>
-                                )
-                            }
-                        </Select>
-                    </FormControl>
+                    <SelectFilter
+                        label={'organisation'}
+                        onChange={selectSwitch}
+                        search={search.organisation}
+                        defaultSearch={organisation}
+                    />
                 </Grid>
 
                 <Grid item xs={2} className={classes.formGrid}>
-                    <FormControl>
-                        <InputLabel>Concern</InputLabel>
-                        {/* ToDo refactoring */}
-                        <Select
-                            variant="filled"
-                            multiple
-                            displayEmpty
-                            value={search.concern}
-                            onChange={e => selectSwitch(e, 'concern', concern)}
-                            autoWidth
-                            renderValue={selected => selected.map(x => x).join(', ')}
-                        >
-                            <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
-                            {
-                                concern.map(value =>
-                                    <MenuItem key={value} value={value}>{value}</MenuItem>
-                                )
-                            }
-                        </Select>
-                    </FormControl>
+                    <SelectFilter
+                        label={'concern'}
+                        onChange={selectSwitch}
+                        search={search.concern}
+                        defaultSearch={concern}
+                    />
                 </Grid>
 
                 <Grid item xs={2} className={classes.formGrid}>
-                    <FormControl>
-                        <InputLabel>Treatment</InputLabel>
-                        {/* ToDo refactoring */}
-                        <Select
-                            variant="filled"
-                            multiple
-                            displayEmpty
-                            value={search.treatment}
-                            onChange={e => selectSwitch(e, 'treatment', treatment)}
-                            autoWidth
-                            renderValue={selected => selected.map(x => x).join(', ')}
-                        >
-                            <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
-                            {
-                                treatment.map(value =>
-                                    <MenuItem key={value} value={value}>{value}</MenuItem>
-                                )
-                            }
-                        </Select>
-                    </FormControl>
+                    <SelectFilter
+                        label={'treatment'}
+                        onChange={selectSwitch}
+                        search={search.treatment}
+                        defaultSearch={treatment}
+                    />
                 </Grid>
 
                 <Grid item xs={2} className={classes.formGrid}>
-                    <FormControl>
-                        <InputLabel>Risk</InputLabel>
-                        {/* ToDo refactoring */}
-                        <Select
-                            variant="filled"
-                            multiple
-                            displayEmpty
-                            value={search.risk}
-                            onChange={e => selectSwitch(e, 'risk', risk)}
-                            autoWidth
-                            renderValue={selected => selected.map(x => x).join(', ')}
-                        >
-                            <MenuItem value='all' className={classes.allMenu}>Select all</MenuItem>
-                            {
-                                risk.map(value =>
-                                    <MenuItem key={value} value={value}>{capitalizeFirstLetter(value)}</MenuItem>
-                                )
-                            }
-                        </Select>
-                    </FormControl>
+                    <SelectFilter
+                        label={'risk'}
+                        onChange={selectSwitch}
+                        search={search.risk}
+                        defaultSearch={risk}
+                    />
                 </Grid>
 
                 <Grid item xs={2} className={classes.formGrid}>
@@ -354,7 +294,7 @@ const Filters = () => {
                                     <TableCell align="center">patient name</TableCell>
                                     <TableCell align="center">email</TableCell>
                                     <TableCell align="center">organisation</TableCell>
-                                    <TableCell align="center">date added</TableCell>
+                                    <TableCell align="center" >date added</TableCell>
                                     <TableCell align="center"></TableCell>
                                 </TableRow>
                             </TableHead>
@@ -362,9 +302,6 @@ const Filters = () => {
                             <TableBody>
                                 {
                                     report && !loading && !error && report.map(
-                                        // ToDo Loader
-                                        // ToDo Empty
-                                        // ToDo react window
                                         rep => (
                                             <TableRow hover key={rep.Id}>
                                                 <TableCell align="center">{rep['Id']}</TableCell>
@@ -386,7 +323,7 @@ const Filters = () => {
                                     )
                                 }
 
-                                <LoadingRecords loading={loading} report={report} error={error} />
+                                <LoadingRecords loading={loading} report={!!report} error={error} />
 
                             </TableBody>
                         </Table>
@@ -396,9 +333,6 @@ const Filters = () => {
                 <Grid item xs={1} />
             </Grid>
         </NoSsr >
-
-
-
     )
 }
 
