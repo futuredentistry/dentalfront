@@ -32,7 +32,7 @@ const Success = ({ onClick }) => {
                 that if you're brushing too hard you can damage your gums. Take it easy, your teeth are your friends not your foe.
             </Typography>
             <br />
-            <Button variant="text" color="primary" onClick={() => onClick()}>
+            <Button variant="contained" color="primary" onClick={() => onClick()}>
                 Return to your account
             </Button>
         </>
