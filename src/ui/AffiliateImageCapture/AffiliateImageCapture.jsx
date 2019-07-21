@@ -11,8 +11,8 @@ import CheckCircle from '@material-ui/icons/CheckCircle'
 
 import FirebaseContext from 'modules/Firebase'
 import Dialog from 'ui/Dialog'
-import CaptureContainer from 'ui/CaptureContainer';
-import PhotoCaptureHeader from 'ui/PhotoCaptureHeader';
+import CaptureContainer from 'ui/CaptureContainer'
+import PhotoCaptureHeader from 'ui/PhotoCaptureHeader'
 
 import useStyles from './useStyles'
 import './style.scss'

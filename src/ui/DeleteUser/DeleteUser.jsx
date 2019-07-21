@@ -11,7 +11,7 @@ import FirebaseContext from 'modules/Firebase'
 import FormGrid from 'ui/FormGrid'
 import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 import { UserUid, UserAuthProvider } from 'utils/logonUser'
-import SocialMediaButtons from 'ui/SocialMediaButtons';
+import SocialMediaButtons from 'ui/SocialMediaButtons'
 
 const AUTH_PROVIDER = {
     PASSWORD: 'password',

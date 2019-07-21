@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import * as ROUTES from 'modules/constants/routes'
 import FirebaseContext from 'modules/Firebase'
 import FormGrid from 'ui/FormGrid'
-import SocialMediaButtons from 'ui/SocialMediaButtons';
+import SocialMediaButtons from 'ui/SocialMediaButtons'
 
 const Signup = ({ history }) => {
   const firebase = useContext(FirebaseContext)

@@ -8,7 +8,7 @@ import Dialog from 'ui/Dialog'
 
 import Issue from './Issue'
 import ImageIssue from './ImageIssue'
-import TreatmentTable from './TreatmentTable';
+import TreatmentTable from './TreatmentTable'
 
 const MODAL = {
     ISSUE: 'ISSUE',

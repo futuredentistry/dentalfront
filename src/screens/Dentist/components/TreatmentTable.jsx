@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles'
 import NoSsr from '@material-ui/core/NoSsr'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -11,7 +11,7 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import { propsSegments } from 'modules/Dentist/props';
+import { propsSegments } from 'modules/Dentist/props'
 
 const useStyles = makeStyles(() => ({
     paper: {
