@@ -1,7 +1,7 @@
 
 const logonUser = () => JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE))
 
-export const UserAuthorized = () => logonUser() || false
+export const UserAuthorized = () => !!logonUser()
 export const UserEmailVerified = () => (logonUser() ? logonUser().emailVerified : false)
 export const UserRole = () => logonUser() && logonUser().role
 export const UserEmail = () => logonUser() && logonUser().email

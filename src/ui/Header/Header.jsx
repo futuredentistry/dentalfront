@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button'
@@ -31,8 +32,14 @@ const Header = () => {
                 <img src={!dark ? DarkBeemo : WhiteBeemo} alt="Logo" />
             </div>
             <div className={`header_right_container ${dark ? '' : 'white'}`}>
-                { UserAuthorized() && dark && (
-                    <Button variant="text" color="primary" component={Link} to="/" onClick={() => firebase.doSignOut()}>
+                {UserAuthorized() && dark && (
+                    <Button variant="text" color="primary" component={Link} to="/"
+                        onClick={() => {
+                            firebase.doSignOut()
+                            // It's a husk to update state of un auth user
+                            localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
+                        }}
+                    >
                         log out
                     </Button>
                 )}
