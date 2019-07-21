@@ -19,10 +19,25 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import FirebaseContext from 'modules/Firebase';
 import DateMultiPicker from 'ui/DateMultyPicker/DateMultiPicker';
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter';
+
+const LoadingRecords = ({ loading, report }) => {
+    console.log(loading)
+    console.log(report)
+    return (
+        <TableRow>
+            <TableCell colSpan={2} />
+            {!report && !loading && <TableCell align="center" colSpan={2}>No records</TableCell>}
+            {loading && <TableCell align="center" colSpan={2}><CircularProgress /></TableCell>
+            }
+            <TableCell colSpan={2} />
+        </TableRow>
+    )
+}
 
 const useStyles = makeStyles(() => ({
     formGrid: {
@@ -73,6 +88,7 @@ const Filters = () => {
     const [organisation, setOrganisation] = useState([])
 
     const [report, setReport] = useState(null)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const treatment = []
@@ -159,12 +175,12 @@ const Filters = () => {
 
             <Button onClick={() => {
 
+                setLoading(true)
                 sqlSearchData()
                     .then(r => { // ToDo refactoring
-                        if (r.data.length > 0) {
-                            console.log(r.data)
-                            setReport(r.data)
-                        }
+                        setLoading(false)
+                        if (r.data.length > 0) setReport(r.data)
+
                     })
                     .catch(e => console.log(e))
 
@@ -338,10 +354,10 @@ const Filters = () => {
                                     <TableCell align="center"></TableCell>
                                 </TableRow>
                             </TableHead>
-                            <TableBody>
 
+                            <TableBody>
                                 {
-                                    report && report.map(
+                                    report && !loading && report.map(
                                         // ToDo Loader
                                         // ToDo Empty
                                         // ToDo react window
@@ -368,6 +384,7 @@ const Filters = () => {
                                     )
                                 }
 
+                                <LoadingRecords loading={loading} report={report} />
 
                             </TableBody>
                         </Table>
