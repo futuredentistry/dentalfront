@@ -160,59 +160,67 @@ const Filters = () => {
         }
     }
 
+    const searchReport = () => {
+        setLoading(true)
+        setReport(null)
+
+        sqlSearchData()
+            .then(r => {
+                if (r.data.length > 0) setReport(r.data)
+                setLoading(false)
+                setError(false)
+            })
+            .catch(() => {
+                setLoading(false)
+                setError(true)
+            })
+    }
+
+    const downloadReport = () => {
+        const exportedFilename = `${new Date()}.csv`
+
+        const json2csvParser = new Parser({ fields: Object.keys(report[0]) });
+        const csv = json2csvParser.parse(report)
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        if (navigator.msSaveBlob) { // IE 10+
+            navigator.msSaveBlob(blob, exportedFilename);
+        } else {
+            const link = document.createElement("a");
+            if (link.download !== undefined) { // feature detection
+                // Browsers that support HTML5 download attribute
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", exportedFilename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    }
+
     return (
         <NoSsr>
             <Typography variant='h4'>
                 Filters
             </Typography>
 
-
-            <Button onClick={() => {
-                setLoading(true)
-
-                sqlSearchData()
-                    .then(r => { // ToDo refactoring
-                        setLoading(false)
-                        setError(false)
-                        if (r.data.length > 0) setReport(r.data)
-                    })
-                    .catch(() => {
-                        setLoading(false)
-                        setError(true)
-                    })
-            }}
-            >
-                Search
-            </Button>
-
-            <Button onClick={() => {
-
-                const exportedFilename = `${new Date()}.csv`
-
-                const json2csvParser = new Parser({ fields: Object.keys(report[0]) });
-                const csv = json2csvParser.parse(report)
-
-                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-                if (navigator.msSaveBlob) { // IE 10+
-                    navigator.msSaveBlob(blob, exportedFilename);
-                } else {
-                    const link = document.createElement("a");
-                    if (link.download !== undefined) { // feature detection
-                        // Browsers that support HTML5 download attribute
-                        const url = URL.createObjectURL(blob);
-                        link.setAttribute("href", url);
-                        link.setAttribute("download", exportedFilename);
-                        link.style.visibility = 'hidden';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    }
-                }
-            }}
-            >
-                Report
-            </Button>
-
+            <Grid container spacing={0} direction="row" >
+                <Grid item xs={4} >
+                    <Button disabled={loading || error || !report} onClick={() => downloadReport()} >Report</Button>
+                </ Grid>
+                <Grid item xs={4} >
+                    {report && (
+                        <Typography variant='body2'>
+                            Reports: {report.length}
+                        </Typography>
+                    )}
+                </ Grid>
+                <Grid item xs={4} >
+                    <Button disabled={loading} onClick={() => searchReport()} >Search</Button>
+                </ Grid>
+            </ Grid>
 
             <Grid container spacing={0} direction="row" >
                 <Grid item xs={1} />
