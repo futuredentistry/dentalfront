@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import CircularProgress from '@material-ui/core/CircularProgress'
 import TableRow from '@material-ui/core/TableRow'
@@ -19,5 +20,11 @@ const LoadingRecords = ({ loading, report, error }) => (
         <TableCell colSpan={2} />
     </TableRow>
 )
+
+LoadingRecords.propTypes = {
+    loading: PropTypes.bool.isRequired,
+    report: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
+}
 
 export default LoadingRecords
