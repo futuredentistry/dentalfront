@@ -6,12 +6,19 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import FormControl from '@material-ui/core/FormControl'
 
+import { makeStyles } from '@material-ui/styles'
 import Dialog from 'ui/Dialog'
 import FirebaseContext from 'modules/Firebase'
 import FormGrid from 'ui/FormGrid'
 import PrimaryCheckbox from 'ui/PrimaryCheckbox'
 import { UserUid, UserAuthProvider } from 'utils/logonUser'
 import SocialMediaButtons from 'ui/SocialMediaButtons'
+
+const useStyles = makeStyles(() => ({
+    green: {
+        color: 'green'
+    }
+}))
 
 const AUTH_PROVIDER = {
     PASSWORD: 'password',
@@ -20,6 +27,8 @@ const AUTH_PROVIDER = {
 }
 
 const DeleteUser = ({ history }) => {
+    const classes = useStyles()
+
     const [open, setOpen] = useState(false)
     const [openSuccessfullyDeleted, setSuccessfullyDeleted] = useState(false)
     const [agree, setAgree] = useState(false)
@@ -29,7 +38,7 @@ const DeleteUser = ({ history }) => {
 
     const handleAfterDelete = () => {
         setSuccessfullyDeleted(true)
-        setTimeout(() => history.push('/'), 1500)
+        setTimeout(() => history.push('/'), 5000)
     }
 
     const handleDeleteWithPassword = () => firebase
@@ -71,19 +80,19 @@ const DeleteUser = ({ history }) => {
             <Dialog
                 disableBackdropClick
                 open={open}
-                showClose
+                showClose={!openSuccessfullyDeleted}
                 onClose={() => setOpen(false)}
             >
                 <FormGrid>
 
                     {openSuccessfullyDeleted && (
-                        <Typography variant="h4" color="error">
+                        <Typography variant="h5" className={classes.green}>
                             Your account has been successfully deleted
-                            </Typography>
+                        </Typography>
                     )}
 
 
-                    {UserAuthProvider() === AUTH_PROVIDER.PASSWORD && (
+                    {!openSuccessfullyDeleted && UserAuthProvider() === AUTH_PROVIDER.PASSWORD && (
                         <>
                             <Typography variant="h5">
                                 Please enter your password before we delete your account
@@ -108,7 +117,7 @@ const DeleteUser = ({ history }) => {
                         </>
                     )}
 
-                    {UserAuthProvider() !== AUTH_PROVIDER.PASSWORD && (
+                    {!openSuccessfullyDeleted && UserAuthProvider() !== AUTH_PROVIDER.PASSWORD && (
                         <>
                             <Typography variant="h5">
                                 Please use your {' '}
