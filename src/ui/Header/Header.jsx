@@ -11,6 +11,8 @@ import DarkBeemo from './images/dark_beemo.svg'
 import DarkLogo from './images/dark_logo.svg'
 import WhiteBeemo from './images/white_beemo.svg'
 
+import { SIGNIN } from 'modules/constants/routes'
+
 import './style.scss'
 
 const Header = () => {
@@ -32,19 +34,26 @@ const Header = () => {
                 <img src={!dark ? DarkBeemo : WhiteBeemo} alt="Logo" />
             </div>
             <div className={`header_right_container ${dark ? '' : 'white'}`}>
-                {UserAuthorized() && dark && (
-                    <Button variant="text" color="primary" component={Link} to="/"
-                        onClick={() => {
-                            firebase.doSignOut()
-                            // It's a husk to update state of un auth user
-                            localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
-                        }}
-                    >
-                        log out
-                    </Button>
-                )}
+                {dark && (
+                    UserAuthorized() ? (
 
+                        <Button variant="text" color="primary" component={Link} to="/"
+                            onClick={() => {
+                                firebase.doSignOut()
+                                // It's a husk to update state of un auth user
+                                localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE)
+                            }}
+                        >
+                            log out
+                    </Button>
+                    ) : (
+                            <Button variant="text" color="primary" component={Link} to={SIGNIN}>
+                                login
+                            </Button>
+                        )
+                )}
             </div>
+
         </div>
     )
 }
