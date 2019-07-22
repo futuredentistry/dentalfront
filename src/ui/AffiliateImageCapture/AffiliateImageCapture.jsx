@@ -41,11 +41,12 @@ const AffiliateImageCapture = ({ imageSrc, reqiredImg, setImageSrc, segmentName,
         dataUri,
         getFileName(),
         () => setMode(null),
-        (imgUrl) => {
+        imgUrl => {
             setImageUrl(imgUrl)
             setImageSrc(segmentName, getFileName())
-            setMode(MODE.READY)
-        })
+        },
+        () => setTimeout(() => setMode(MODE.READY), 350)
+    )
 
     const onDeletePhoto = () => firebase.deleteImage(getFileName())
         .then(() => {

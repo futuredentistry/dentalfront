@@ -182,7 +182,7 @@ class Firebase {
   }
 
   // Image
-  uploadImage = (image, fileName, onLoad, onCompleat) => {
+  uploadImage = (image, fileName, onLoad, onCompleat, setMode) => {
     const folder = '/img'
     let uploadTask = this.storage.ref(folder)
       .child(fileName)
@@ -200,7 +200,9 @@ class Firebase {
       }, error => {
         console.log(error)
       }, () => {
-        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => onCompleat(downloadURL))
+        uploadTask.snapshot.ref.getDownloadURL()
+          .then(downloadURL => onCompleat(downloadURL))
+          .finally(() => setMode())
       })
   }
 
