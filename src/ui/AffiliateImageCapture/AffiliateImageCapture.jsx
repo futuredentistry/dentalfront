@@ -81,6 +81,7 @@ const AffiliateImageCapture = ({ imageSrc, reqiredImg, setImageSrc, segmentName,
                 return (
                     <CaptureContainer>
                         <Camera
+                            isImageMirror={false}
                             onTakePhoto={dataUri => onTakePhoto(dataUri)}
                             imageType={IMAGE_TYPES.JPG}
                             idealFacingMode={FACING_MODES.ENVIRONMENT}
