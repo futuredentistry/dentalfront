@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useContext, useEffect } from 'react'
 import {
-  BrowserRouter as Router, Route, Redirect,
+  BrowserRouter as Router, Route, // Redirect,
 } from 'react-router-dom'
 
 import FirebaseContext from 'modules/Firebase'
@@ -16,7 +16,7 @@ import PrivacyPolicy from 'screens/PrivacyPolicy'
 import FAQ from 'screens/FAQ'
 import Beemo from 'screens/Beemo'
 import ContactUs from 'screens/ContactUs'
-import { UserAuthorized, UserEmailVerified /* UserRole */ } from 'utils/logonUser'
+import { UserAuthorized, /* UserEmailVerified  UserRole */ } from 'utils/logonUser'
 import Header from 'ui/Header'
 import Footer from 'ui/Footer'
 import { HeaderFooterContext } from 'modules/HeaderFooter/context'
