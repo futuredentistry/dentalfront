@@ -37,7 +37,7 @@ const PainMap = ({
                             color="primary"
                         />
                     )}
-                    label='Top left'
+                    label='Top right'
                 />
                 <FormControlLabel
                     labelPlacement="top"
@@ -61,7 +61,7 @@ const PainMap = ({
                             color="primary"
                         />
                     )}
-                    label='Top right'
+                    label='Top left'
                 />
             </FormGroup>
 
@@ -82,7 +82,7 @@ const PainMap = ({
                             color="primary"
                         />
                     )}
-                    label='Bottom left'
+                    label='Bottom right'
                 />
 
                 <FormControlLabel
@@ -108,7 +108,7 @@ const PainMap = ({
                             color="primary"
                         />
                     )}
-                    label='Bottom right'
+                    label='Bottom left'
                 />
             </FormGroup>
 
