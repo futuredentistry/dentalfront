@@ -27,9 +27,9 @@ const Success = ({ patientFirstName, selectNext }) => {
             <br />
             <br />
             <Button
-              variant="contained"
-              color="primary"
-              onClick={selectNext}
+                variant="contained"
+                color="primary"
+                onClick={selectNext}
             >
                 select next
             </Button>

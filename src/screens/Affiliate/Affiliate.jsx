@@ -25,12 +25,16 @@ const Affiliate = () => {
     const [step, setStep] = useState(0)
     const [patients, setPatients] = useState([])
     const [patient, setPatient] = useState(null)
+    const [patientFirstName, setPatientFirstName] = useState(null)
     // @ts-ignore
     const [reportId, setReportId] = useState(null)
     const [search, setSearch] = useState('')
     const [organisation, setOrganisation] = useState('')
 
     const handleDropSearch = () => {
+        // huck to save patient first name for Success screen
+        setPatientFirstName(patient.firstName)
+
         setPatients([])
         setPatient(null)
         setOrganisation('')
@@ -98,7 +102,7 @@ const Affiliate = () => {
             default:
                 return (
                     <Success
-                        patientFirstName={patient && patient.firstName}
+                        patientFirstName={patientFirstName}
                         selectNext={() => setStep(0)}
                     />
                 )
