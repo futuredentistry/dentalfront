@@ -27,6 +27,7 @@ const ImageCapture = ({ reportId, segmentImg, setSegmentImg, additionalImg, setA
                                     reportId,
                                     imageSrc: segmentImg[segmentName],
                                     setImageSrc: onSetSegment,
+                                    reqiredImg: true,
                                 }}
                             />
                         </div>
@@ -50,6 +51,7 @@ const ImageCapture = ({ reportId, segmentImg, setSegmentImg, additionalImg, setA
                                     reportId,
                                     imageSrc: additionalImg[segmentName],
                                     setImageSrc: onSetAdditionalImg,
+                                    reqiredImg: false,
                                 }}
                             />
                         </div>

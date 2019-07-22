@@ -27,7 +27,7 @@ const MODE = {
 }
 
 // ToDo example url
-const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber, reportId }) => {
+const AffiliateImageCapture = ({ imageSrc, reqiredImg, setImageSrc, segmentName, photoNumber, reportId }) => {
     const [mode, setMode] = useState(MODE.START)
     const [open, setModalOpen] = useState(false)
     const [imageUrl, setImageUrl] = useState(null)
@@ -144,7 +144,7 @@ const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber
             {modeScreen(mode)}
 
             {
-                imageSrc
+                (imageSrc && !reqiredImg)
                     ? <Button
                         variant="text"
                         color="primary"
@@ -161,6 +161,7 @@ const AffiliateImageCapture = ({ imageSrc, setImageSrc, segmentName, photoNumber
 
 AffiliateImageCapture.propTypes = {
     imageSrc: PropTypes.string,
+    reqiredImg: PropTypes.bool.isRequired,
     setImageSrc: PropTypes.func.isRequired,
     segmentName: PropTypes.string.isRequired,
     photoNumber: PropTypes.number.isRequired,
