@@ -30,7 +30,7 @@ const Patient = ({ history }) => {
     const [familyName, setFamilyName] = useState('')
     const [birthDate, handleDateBirthChange] = useState(null)
     const [postcode, setPostcode] = useState('')
-    const [gender, setGender] = useState('male')
+    const [gender, setGender] = useState('other')
     const [contactNumber, setContactNumber] = useState('')
     const [organisation, setOrganisation] = useState('')
     //

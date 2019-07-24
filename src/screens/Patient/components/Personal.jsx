@@ -116,9 +116,9 @@ const Personal = ({
           value={gender}
           onChange={e => setGender(e.currentTarget.value)}
         >
+          <FormControlLabel value="other" control={<Radio color="primary" />} label="Other" />
           <FormControlLabel value="female" control={<Radio color="primary" />} label="Female" />
           <FormControlLabel value="male" control={<Radio color="primary" />} label="Male" />
-          <FormControlLabel value="other" control={<Radio color="primary" />} label="Other" />
         </RadioGroup>
       </FormControl>
 

@@ -1,0 +1,31 @@
+[debug] [2019-07-22T07:02:34.088Z] ----------------------------------------------------------------------
+[debug] [2019-07-22T07:02:34.090Z] Command:       /usr/local/Cellar/node@10/10.15.3/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2019-07-22T07:02:34.091Z] CLI Version:   6.10.0
+[debug] [2019-07-22T07:02:34.091Z] Platform:      darwin
+[debug] [2019-07-22T07:02:34.091Z] Node Version:  v10.15.3
+[debug] [2019-07-22T07:02:34.092Z] Time:          Mon Jul 22 2019 11:02:34 GMT+0400 (Georgia Standard Time)
+[debug] [2019-07-22T07:02:34.092Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-22T07:02:34.101Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-22T07:02:34.102Z] > authorizing via signed-in user
+[debug] [2019-07-22T07:02:34.102Z] [iam] checking project dental2-test for permissions ["firebase.projects.get"]
+[debug] [2019-07-22T07:02:34.103Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/dental2-test:testIamPermissions  
+
+[debug] [2019-07-22T07:02:36.796Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-22T07:02:36.798Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/dental2-test  
+ 
+[debug] [2019-07-22T07:02:38.538Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Using node@10 from host.
+[debug] [2019-07-22T07:02:38.550Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/897675393840:getServerAppConfig  
+ 
+[debug] [2019-07-22T07:02:39.797Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/ninjamate/Documents/projects/dental/functions" for Cloud Functions...
+[debug] [2019-07-22T07:02:40.073Z] Functions runtime initialized.
+[debug] [2019-07-22T07:02:40.073Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-22T07:02:40.668Z] firebase-admin has been stubbed.
+[info] i  Your code has been provided a "firebase-admin" instance.
+[debug] [2019-07-22T07:02:40.711Z] Unsupported trigger: {"eventTrigger":{"resource":"projects/_/instances/dental2-test/refs/contact_as/{sessionId}","eventType":"providers/google.firebase.database/eventTypes/ref.create","service":"firebaseio.com"},"name":"onDataAdded","entryPoint":"onDataAdded"}
+[info] Ignoring trigger "onDataAdded" because the service "firebaseio.com" is not yet supported.
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/dental2-test/us-central1/searchReportSQL
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/dental2-test/us-central1/addReportSQL
