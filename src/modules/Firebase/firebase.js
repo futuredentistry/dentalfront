@@ -97,7 +97,7 @@ class Firebase {
 
   user = uid => this.db.ref(`users/${uid}`)
 
-  reauthenticate = (currentPassword) => {
+  reauthenticate = currentPassword => {
     const user = this.auth.currentUser
     const cred = this.emailAuthProvider.credential(user.email, currentPassword)
 
@@ -111,12 +111,12 @@ class Firebase {
 
   // *** Change email/password API ***
 
-  changePassword = (newPassword) => {
+  changePassword = newPassword => {
     const user = this.auth.currentUser
     return user.updatePassword(newPassword)
   }
 
-  changeEmail = (newEmail) => {
+  changeEmail = newEmail => {
     const user = this.auth.currentUser
     return user.updateEmail(newEmail)
   }
@@ -163,6 +163,16 @@ class Firebase {
     .collection('reports')
     .doc(reportId)
     .update(data)
+
+  getPatientReportForPatient = id => this.firestore
+    .collection('patient_report')
+    .doc(id)
+    .get()
+
+  setPatientReportForPatient = (id, data) => this.firestore
+    .collection('patient_report')
+    .doc(id)
+    .set(data)
 
   // Pages
   getPage = page => this.firestore

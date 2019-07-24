@@ -49,7 +49,7 @@ const Affiliate = () => {
     useEffect(() => {
         if (organisation !== '') {
             firebase.getPatientReportsForAffiliate(organisation).then(
-                (querySnapshot) => {
+                querySnapshot => {
                     const newPatients = []
                     querySnapshot.forEach(doc => newPatients.push({ ...doc.data(), id: doc.id }))
                     setPatients(newPatients)

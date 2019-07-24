@@ -60,8 +60,8 @@ const Report = ({
                 >
                     <MenuItem value="no"><Eclipse text="No risk - The patient has good oral health" /></MenuItem>
                     <MenuItem value="low"><Eclipse text="Low risk - The patient has some corrective measures to implement" /></MenuItem>
-                    <MenuItem value="medium"><Eclipse text="Medium risk - there are items that left untreated will causes serious distress" /></MenuItem>
-                    <MenuItem value="high"><Eclipse text="High risk - they should seek immediate treatment" /></MenuItem>
+                    <MenuItem value="medium"><Eclipse text="Medium risk - There are items that left untreated will causes serious distress" /></MenuItem>
+                    <MenuItem value="high"><Eclipse text="High risk - They should seek immediate treatment" /></MenuItem>
                 </Select>
             </FormControl>
         </>

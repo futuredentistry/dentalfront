@@ -16,6 +16,7 @@ import PrivacyPolicy from 'screens/PrivacyPolicy'
 import FAQ from 'screens/FAQ'
 import Beemo from 'screens/Beemo'
 import ContactUs from 'screens/ContactUs'
+import PatientReport from 'screens/PatientReport'
 import { UserAuthorized, /* UserEmailVerified  UserRole */ } from 'utils/logonUser'
 import Header from 'ui/Header'
 import Footer from 'ui/Footer'
@@ -53,6 +54,8 @@ const App = () => {
           <Route path={ROUTES.FAQ} exact component={FAQ} />
           <Route path={ROUTES.BEEMO} exact component={Beemo} />
           <Route path={ROUTES.CONTACT_US} exact component={ContactUs} />
+
+          <Route path={ROUTES.PATIENT_REPORT} component={PatientReport} />
 
           {/* {UserAuthorized() && UserEmailVerified() && <Redirect to={ROUTES[UserRole()]} />} */}
           {/* {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />} */}

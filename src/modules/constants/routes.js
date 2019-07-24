@@ -11,6 +11,9 @@ export const CONFIRM_EMAIL = '/confirm_email'
 // Patient
 export const PATIENT = '/patient'
 
+// Report
+export const PATIENT_REPORT = '/report/:id'
+
 // Affiliate
 export const AFFILIATE = '/affiliate'
 

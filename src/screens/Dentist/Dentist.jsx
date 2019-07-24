@@ -41,10 +41,10 @@ const Dentist = ({ history }) => {
 
     useEffect(() => {
         firebase.getPatientReportsForDentist().then(
-            (querySnapshot) => {
+            querySnapshot => {
                 setPatient(null)
                 setWaitingReport(!querySnapshot.empty)
-                querySnapshot.forEach((doc) => {
+                querySnapshot.forEach(doc => {
                     setPatient(doc.data())
                     setReportId(doc.id)
                 })
@@ -67,7 +67,7 @@ const Dentist = ({ history }) => {
 
         const treatments = []
         firebase.getTreatmentCollection().then(
-            (querySnapshot) => querySnapshot.forEach((doc) => treatments.push({ value: doc.id, label: `${doc.id} ${doc.data().minprice}$-${doc.data().maxprice}$` })),
+            querySnapshot => querySnapshot.forEach((doc) => treatments.push({ value: doc.id, label: `${doc.id} ${doc.data().minprice}$-${doc.data().maxprice}$` })),
         ).then(() => setTreatmentSelect(treatments))
 
     }, [])
