@@ -4,6 +4,8 @@ import { format } from 'date-fns'
 import Typography from '@material-ui/core/Typography'
 import FormGroup from '@material-ui/core/FormGroup'
 import List from '@material-ui/core/List'
+import IconButton from '@material-ui/core/IconButton'
+import Edit from '@material-ui/icons/BorderColorRounded'
 
 import PrimaryListItem from 'ui/PrimaryListItem/PrimaryListItem'
 import PrimaryCheckbox from 'ui/PrimaryCheckbox'
@@ -63,6 +65,8 @@ const Summary = ({
     setResearch,
     policy,
     setPolicy,
+
+    setStep
 }) => {
     const conditionsMedical = [
         heartConditions,
@@ -101,6 +105,9 @@ const Summary = ({
 
             <Typography variant="h4">
                 Personal
+                <IconButton aria-label="Close" onClick={() => setStep(1)}>
+                    <Edit />
+                </IconButton>
             </Typography>
             <Typography variant="body1">
                 {'Hi'}
@@ -147,6 +154,9 @@ const Summary = ({
 
             <Typography variant="h4">
                 Lifestyle
+                <IconButton aria-label="Close" onClick={() => setStep(2)}>
+                    <Edit />
+                </IconButton>
             </Typography>
 
             <Typography variant="body1">
@@ -165,6 +175,9 @@ const Summary = ({
 
             <Typography variant="h4">
                 Dental
+                <IconButton aria-label="Close" onClick={() => setStep(3)}>
+                    <Edit />
+                </IconButton>
             </Typography>
 
             <Typography variant="body1">
@@ -212,6 +225,9 @@ const Summary = ({
 
             <Typography variant="h4">
                 Medical
+                <IconButton aria-label="Close" onClick={() => setStep(4)}>
+                    <Edit />
+                </IconButton>
             </Typography>
 
             <Typography variant="body1">
@@ -280,6 +296,7 @@ Summary.propTypes = {
     setResearch: PropTypes.func.isRequired,
     policy: PropTypes.bool.isRequired,
     setPolicy: PropTypes.func.isRequired,
+    setStep: PropTypes.func.isRequired,
 }
 
 export default Summary

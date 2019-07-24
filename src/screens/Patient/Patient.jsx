@@ -279,6 +279,7 @@ const Patient = ({ history }) => {
                         ...propsMedical,
                         ...propsSummary,
                         ...methodsSummary,
+                        setStep,
                     }}
                     />
                 )
