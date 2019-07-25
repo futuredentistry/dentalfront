@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import SearchBar from 'material-ui-search-bar'
-
 import { HeaderFooterContext } from 'modules/HeaderFooter/context'
 import capitalizeFirstLetter from 'utils/capitalizeFirstLetter'
 import SelectOrganisation from 'ui/SelectOrganisation'
 import SelectPatientButton from 'ui/SelectPatientButton'
 import Button from '@material-ui/core/Button'
+
 import { UserFirstName } from 'utils/logonUser'
 
 const SelectPatient = ({
@@ -32,7 +32,7 @@ const SelectPatient = ({
         if (patients !== [] && search !== '') {
             const matchedPatients = []
             const searchArray = search.split(' ')
-            patients.map((patient) => {
+            patients.map(patient => {
                 if (searchArray.some(str => `${patient.firstName} ${patient.familyName}`.toLowerCase().includes(str.toLowerCase()))) {
                     matchedPatients.push(patient)
                 }

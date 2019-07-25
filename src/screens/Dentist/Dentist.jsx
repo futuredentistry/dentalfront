@@ -7,6 +7,7 @@ import * as STATUS from 'modules/constants/reportStatus'
 import { defaultPropsSegments } from 'modules/Dentist/props'
 import StepperButtons from 'ui/StepperButtons'
 import FormGrid from 'ui/FormGrid'
+import { UserFirstName } from 'utils/logonUser'
 import SelectPatient from './components/SelectPatient'
 import Patient from './components/Patient'
 import Chart from './components/Chart'
@@ -158,6 +159,16 @@ const Dentist = ({ history }) => {
                         increaseOnClick: () => setStep(step + 1),
                         decreaseOnClick: () => setStep(step - 1),
                         onSubmit: () => {
+                            firebase.setPatientReportForPatient(reportId,
+                                {
+                                    doctor: UserFirstName(),
+                                    overallHealth: propsSummary.overallHealth,
+                                    risk: propsSummary.risk,
+                                    summary: summaryReview,
+                                    treatment: [].concat(...Object.keys(segmentProps).map(key => [...segmentProps[key].treatment.treatment])),
+                                }
+                            )
+
                             firebase.updatePatientReport(reportId,
                                 {
                                     waitingReport: false,
@@ -165,12 +176,11 @@ const Dentist = ({ history }) => {
                                     report: segmentProps,
                                     status: STATUS.COMPLETED,
                                 }
-                            )
-                                .then(() => {
-                                    insertSqlReport()
-                                    setReportId(null) // set report id to null to fire useEffect
-                                    setStep(step + 1)
-                                })
+                            ).then(() => {
+                                insertSqlReport()
+                                setReportId(null) // set report id to null to fire useEffect
+                                setStep(step + 1)
+                            })
                         },
                         disabledSubmit: summaryReview === '',
                     }}
