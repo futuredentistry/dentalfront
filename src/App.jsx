@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useContext, useEffect } from 'react'
 import {
-  BrowserRouter as Router, Route, // Redirect,
+  BrowserRouter as Router, Route, Redirect,
 } from 'react-router-dom'
 
 import FirebaseContext from 'modules/Firebase'
@@ -17,7 +17,7 @@ import FAQ from 'screens/FAQ'
 import Beemo from 'screens/Beemo'
 import ContactUs from 'screens/ContactUs'
 import PatientReport from 'screens/PatientReport'
-import { UserAuthorized, /* UserEmailVerified  UserRole */ } from 'utils/logonUser'
+import { UserAuthorized, UserEmailVerified, UserRole } from 'utils/logonUser'
 import Header from 'ui/Header'
 import Footer from 'ui/Footer'
 import { HeaderFooterContext } from 'modules/HeaderFooter/context'
@@ -57,8 +57,8 @@ const App = () => {
 
           <Route path={ROUTES.PATIENT_REPORT} component={PatientReport} />
 
-          {/* {UserAuthorized() && UserEmailVerified() && <Redirect to={ROUTES[UserRole()]} />} */}
-          {/* {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />} */}
+          {UserAuthorized() && UserEmailVerified() && <Redirect to={ROUTES[UserRole()]} />}
+          {UserAuthorized() && !UserEmailVerified() && <Redirect to={ROUTES.CONFIRM_EMAIL} />}
         </div>
         {show && <Footer />}
       </>
