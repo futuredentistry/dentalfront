@@ -174,6 +174,16 @@ class Firebase {
     .doc(id)
     .set(data)
 
+  sendPatientReportLinkEmail = (id, email) => {
+    const refMsg = this.db.ref('patient_report')
+    const message = `${process.env.REACT_APP_DOMAIN}/report/${id}`
+    const newMessage = refMsg.push()
+    return newMessage.set({
+      email: 'antibioticvz@gmail.com',
+      message,
+    })
+  }
+
   // Pages
   getPage = page => this.firestore
     .collection('content')

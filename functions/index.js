@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'production') {
 admin.initializeApp()
 
 // creating function for sending emails
-const goMail = (message, email) => {
+const goMail = (message, email, from) => {
     // transporter is a way to send your emails
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -28,7 +28,7 @@ const goMail = (message, email) => {
     // setup email data with unicode symbols
     // this is how your email are going to look like
     const mailOptions = {
-        from: 'Contact Beemo ✔', // gmailEmail, // sender address
+        from: `Beemo ${from} ✔`, // gmailEmail, // sender address
         to: gmailEmail, // list of receivers
         subject: `Beemo ${email}`, // Subject line
         text: `${message}`, // plain text body
@@ -48,9 +48,22 @@ exports.onDataAdded = functions.database.ref('/contact_as/{sessionId}').onCreate
     const createdData = snap.val()
     const text = createdData.message
     const mail = createdData.email
+    const from = 'Contact'
 
     // here we send new data using function for sending emails
-    goMail(text, mail)
+    goMail(text, mail, from)
+})
+
+// .onDataAdded is watches for changes in database
+exports.onDataAddedPatientReport = functions.database.ref('/patient_report/{sessionId}').onCreate((snap, context) => {
+    // here we catch a new data, added to firebase database, it stored in a snap variable
+    const createdData = snap.val()
+    const text = createdData.message
+    const mail = createdData.email
+    const from = 'Dentist Report'
+
+    // here we send new data using function for sending emails
+    goMail(text, mail, from)
 })
 
 

@@ -314,7 +314,7 @@ const Filters = () => {
                                                         className={classes.button}
                                                         color="primary"
                                                         variant='text'
-                                                        onClick={() => { }}
+                                                        onClick={() => firebase.sendPatientReportLinkEmail(rep.Id, rep['Email'])}
                                                     >
                                                         send report</Button>
                                                 </TableCell>
