@@ -179,7 +179,7 @@ class Firebase {
     const message = `${process.env.REACT_APP_DOMAIN}/report/${id}`
     const newMessage = refMsg.push()
     return newMessage.set({
-      email: 'antibioticvz@gmail.com',
+      email,
       message,
     })
   }
