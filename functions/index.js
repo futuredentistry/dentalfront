@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'production') {
 admin.initializeApp()
 
 // creating function for sending emails
-const goMail = (message, email, from) => {
+const goMail = async (message, to, from, subject) => {
     // transporter is a way to send your emails
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -28,51 +28,60 @@ const goMail = (message, email, from) => {
     // setup email data with unicode symbols
     // this is how your email are going to look like
     const mailOptions = {
-        from: `Beemo ${from} ✔`, // gmailEmail, // sender address
-        to: gmailEmail, // list of receivers
-        subject: `Beemo ${email}`, // Subject line
+        from: `Beemo ${from} ✔`, // sender address
+        to: to, // list of receivers
+        subject: `Beemo ${subject}`, // Subject line
         text: `${message}`, // plain text body
         html: `${message}`, // html body
     }
 
-    // this is callback function to return status to firebase console
-    const getDeliveryStatus = (error, info) => error && console.log(error)
-
-    // call of this function send an email, and return status
-    return transporter.sendMail(mailOptions, getDeliveryStatus)
+    try {
+        await transporter.sendMail(mailOptions)
+    } catch (error) {
+        console.error('There was an error while sending the email:', error)
+    }
+    return null
 }
 
 // .onDataAdded is watches for changes in database
 exports.onDataAdded = functions.database.ref('/contact_as/{sessionId}').onCreate((snap, context) => {
     // here we catch a new data, added to firebase database, it stored in a snap variable
     const createdData = snap.val()
-    const text = createdData.message
+    const message = createdData.message
     const mail = createdData.email
-    const from = 'Contact'
+    const from = 'ContactUs'
 
     // here we send new data using function for sending emails
-    goMail(text, mail, from)
+    goMail(message, gmailEmail, from, mail)
 })
 
-// .onDataAdded is watches for changes in database
+//.onDataAdded is watches for changes in database
 exports.onDataAddedPatientReport = functions.database.ref('/patient_report/{sessionId}').onCreate((snap, context) => {
     // here we catch a new data, added to firebase database, it stored in a snap variable
     const createdData = snap.val()
-    const text = createdData.message
-    const mail = createdData.email
-    const from = 'Dentist Report'
+    const message = createdData.message
+    const to = createdData.email
+    const subject = 'Dentist Report'
 
     // here we send new data using function for sending emails
-    goMail(text, mail, from)
+    goMail(message, to, gmailEmail, subject)
 })
 
 
 // SQL
+let dbsqlUser = process.env.REACT_APP_DBSQL_USER
+let dbsqlPassword = process.env.REACT_APP_DBSQL_PASSWORD
+
+if (process.env.NODE_ENV === 'production') {
+    dbsqlUser = functions.config().dbsql.user
+    dbsqlPassword = functions.config().dbsql.password
+}
+
 const mysqlConfig = {
     host: '35.233.67.234',
     connectionLimit: 1,
-    user: 'beemo',
-    password: '9733a7hdgcFP4wwK',
+    user: dbsqlUser,
+    password: dbsqlPassword,
     database: 'reports',
 }
 const connectionName = 'dental2-test:europe-west1:beemo'
