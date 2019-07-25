@@ -27,6 +27,10 @@ const App = () => {
   const { show } = useContext(HeaderFooterContext)
 
   useEffect(() => {
+    document.title = "Beemo"
+  }, [])
+
+  useEffect(() => {
     firebase.onAuthUserListener(
       (authUser) => {
         if (authUser.role) return localStorage.setItem(process.env.REACT_APP_LOCAL_STORAGE, JSON.stringify(authUser))
