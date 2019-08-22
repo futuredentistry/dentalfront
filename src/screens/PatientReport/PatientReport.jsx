@@ -48,7 +48,7 @@ const PatientReport = ({ match: { params: { id } } }) => {
         promises.push(firebase.getTreatmentCollection()
             .then(
                 querySnapshot => querySnapshot.forEach(doc => {
-                    collection = { ...collection, ...{ [doc.id]: `${doc.data().minprice}$-${doc.data().maxprice}$` } }
+                    collection = { ...collection, ...{ [doc.id]: `$${doc.data().minprice}-$${doc.data().maxprice}` } }
                 }
                 )).then(() => setTreatmentsCollection(collection)))
 

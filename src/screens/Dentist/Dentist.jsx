@@ -68,7 +68,7 @@ const Dentist = ({ history }) => {
 
         const treatments = []
         firebase.getTreatmentCollection().then(
-            querySnapshot => querySnapshot.forEach((doc) => treatments.push({ value: doc.id, label: `${doc.id} ${doc.data().minprice}$-${doc.data().maxprice}$` })),
+            querySnapshot => querySnapshot.forEach((doc) => treatments.push({ value: doc.id, label: `${doc.id} $${doc.data().minprice}-$${doc.data().maxprice}` })),
         ).then(() => setTreatmentSelect(treatments))
 
     }, [])
