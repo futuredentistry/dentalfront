@@ -69,8 +69,8 @@ exports.onDataAddedPatientReport = functions.database.ref('/patient_report/{sess
 
 
 // SQL
-let dbsqlUser = process.env.REACT_APP_DBSQL_USER
-let dbsqlPassword = process.env.REACT_APP_DBSQL_PASSWORD
+let dbsqlUser = 'beemo'//process.env.REACT_APP_DBSQL_USER
+let dbsqlPassword = '9733a7hdgcFP4wwK'//process.env.REACT_APP_DBSQL_PASSWORD
 
 if (process.env.NODE_ENV === 'production') {
     dbsqlUser = functions.config().dbsql.user
