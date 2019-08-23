@@ -45,6 +45,8 @@ const MiuiTheme = {
       },
       body2: {
         textAlign: 'center',
+        marginLeft: '1.25%',
+        marginRight: '1.25%'
       },
     },
     MuiButton: {

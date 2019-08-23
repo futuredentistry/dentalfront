@@ -294,7 +294,7 @@ const Filters = () => {
                                     <TableCell align="center">patient name</TableCell>
                                     <TableCell align="center">email</TableCell>
                                     <TableCell align="center">organisation</TableCell>
-                                    <TableCell align="center" >date added</TableCell>
+                                    <TableCell align="center">date added</TableCell>
                                     <TableCell align="center"></TableCell>
                                 </TableRow>
                             </TableHead>
