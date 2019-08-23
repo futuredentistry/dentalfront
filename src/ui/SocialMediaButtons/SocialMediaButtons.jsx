@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import IconButton from '@material-ui/core/IconButton'
-import Facebook from './icons/facebook.svg'
-import Gmail from './icons/gmail.svg'
+import Facebook from './icons/icons8-facebook.svg'
+import Gmail from './icons/google-icon.svg'
 
 import './styles.scss'
 
@@ -15,7 +15,7 @@ const SocialMediaButtons = ({ showGmail, showFacebook, onClickFacebook, onClickG
                         <img src={Facebook} alt="icon" />
                     </IconButton>)}
 
-                {showGmail&& (
+                {showGmail && (
                     <IconButton onClick={() => onClickGmail()}>
                         <img src={Gmail} alt="icon" />
                     </IconButton>)
