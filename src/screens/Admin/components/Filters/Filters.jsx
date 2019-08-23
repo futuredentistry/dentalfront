@@ -204,7 +204,7 @@ const Filters = () => {
 
             <Grid container spacing={0} direction="row" >
                 <Grid item xs={4} >
-                    <Button disabled={loading || error || !report} onClick={() => downloadReport()} >Report</Button>
+                    <Button disabled={loading || error || !report} onClick={() => downloadReport()} >Export</Button>
                 </ Grid>
                 <Grid item xs={4} >
                     {report && (
